@@ -1,63 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction to Programming - Data Structures</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Introduction to Programming</h1>
-      <h2>Data Structures: Tuples, Sets, and Dictionaries</h2>
-    </header>
 
-    <div class="container">
-      <aside class="sidebar">
-        <nav>
-          <ul>
-            <li><a href="index.html">Programming Basics</a></li>
-            <li><a href="if_else_statement.html">If/Else Statements</a></li>
-            <li><a href="for_loops.html">For Loops</a></li>
-            <li><a href="while_loops.html">While Loops</a></li>
-            <li><a href="functions_1.html">Functions I</a></li>
-            <li><a href="functions_2.html">Functions II</a></li>
-            <li>
-              <a href="data-structures_1.html">Data Structures I</a>
-            </li>
-            <li>
-              <a href="data-structures_2.html" class="active"
-                >Data Structures II</a
-              >
-            </li>
-            <li><a href="debugging.html">Debugging</a></li>
-          </ul>
-        </nav>
-      </aside>
-      <main>
-        <section class="introduction">
-          <h2>Introduction to Data Structures</h2>
-          <p>
-            Python provides several built-in data structures to store and manage
-            data efficiently. This section introduces <b>tuples</b>,
-            <b>sets</b>, and <b>dictionaries</b>, which are versatile and
-            powerful tools for handling data.
-          </p>
-        </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to Programming - Data Structures</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-        <section class="tuples">
-          <h2>Python Tuples</h2>
-          <p>
-            Tuples are immutable sequences used to store a collection of items.
-            They are similar to lists, but unlike lists, tuples cannot be
-            changed (i.e., immutable). Tuples are defined using parentheses
-            <code>()</code> and can hold elements of different data types. They
-            are often used when the data should not be modified after creation.
-          </p>
+<body>
+  <header>
+    <h1>Introduction to Programming</h1>
+    <h2>Data Structures: Tuples, Sets, and Dictionaries</h2>
+  </header>
 
-          <h3>Creating Tuples</h3>
-          <p>Here are some examples of creating tuples:</p>
-          <pre class="code-block">
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Programming Basics</a></li>
+          <li><a href="if_else_statement.html">If/Else Statements</a></li>
+          <li><a href="for_loops.html">For Loops</a></li>
+          <li><a href="while_loops.html">While Loops</a></li>
+          <li><a href="functions_1.html">Functions I</a></li>
+          <li><a href="functions_2.html">Functions II</a></li>
+          <li>
+            <a href="data-structures_1.html">Data Structures I</a>
+          </li>
+          <li>
+            <a href="data-structures_2.html" class="active">Data Structures II</a>
+          </li>
+          <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+          <li><a href="debugging.html">Debugging</a></li>
+          <li><a href="libraries.html">Libraries & Imports</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main>
+      <section class="introduction">
+        <h2>Introduction to Data Structures</h2>
+        <p>
+          Python provides several built-in data structures to store and manage
+          data efficiently. This section introduces <b>tuples</b>,
+          <b>sets</b>, and <b>dictionaries</b>, which are versatile and
+          powerful tools for handling data.
+        </p>
+      </section>
+
+      <section class="tuples">
+        <h2>Python Tuples</h2>
+        <p>
+          Tuples are immutable sequences used to store a collection of items.
+          They are similar to lists, but unlike lists, tuples cannot be
+          changed (i.e., immutable). Tuples are defined using parentheses
+          <code>()</code> and can hold elements of different data types. They
+          are often used when the data should not be modified after creation.
+        </p>
+
+        <h3>Creating Tuples</h3>
+        <p>Here are some examples of creating tuples:</p>
+        <pre class="code-block">
 # Creating tuples:
 empty_tuple = ()
 single_element_tuple = (42,)  # Note the comma for single-element tuples
@@ -65,16 +67,15 @@ mixed_tuple = (1, "apple", 3.14, True)
 nested_tuple = (1, (2, 3), [4, 5])
 
 print(mixed_tuple)   # Output: (1, "apple", 3.14, True)
-print(nested_tuple)  # Output: (1, (2, 3), [4, 5])</pre
-          >
+print(nested_tuple)  # Output: (1, (2, 3), [4, 5])</pre>
 
-          <h3>Accessing Tuple Elements</h3>
-          <p>
-            You can access tuple elements using zero-based indexing or negative
-            indexing (to count from the end). Tuples also support slicing to
-            retrieve portions of the tuple.
-          </p>
-          <pre class="code-block">
+        <h3>Accessing Tuple Elements</h3>
+        <p>
+          You can access tuple elements using zero-based indexing or negative
+          indexing (to count from the end). Tuples also support slicing to
+          retrieve portions of the tuple.
+        </p>
+        <pre class="code-block">
 my_tuple = (10, 20, 30, 40, 50)
 
 # Accessing elements:
@@ -84,16 +85,15 @@ print(my_tuple[-1])   # Output: 50 (last element)
 # Slicing tuples:
 print(my_tuple[1:4])  # Output: (20, 30, 40)
 print(my_tuple[:3])   # Output: (10, 20, 30)
-print(my_tuple[::2])  # Output: (10, 30, 50) (every second element)</pre
-          >
+print(my_tuple[::2])  # Output: (10, 30, 50) (every second element)</pre>
 
-          <h3>Tuple Unpacking</h3>
-          <p>
-            Tuple unpacking allows you to assign the values of a tuple to
-            multiple variables in one step. The number of variables must match
-            the number of elements in the tuple.
-          </p>
-          <pre class="code-block">
+        <h3>Tuple Unpacking</h3>
+        <p>
+          Tuple unpacking allows you to assign the values of a tuple to
+          multiple variables in one step. The number of variables must match
+          the number of elements in the tuple.
+        </p>
+        <pre class="code-block">
 # Example of tuple unpacking:
 my_tuple = (1, 2, 3)
 a, b, c = my_tuple
@@ -107,15 +107,14 @@ numbers = (1, 2, 3, 4, 5)
 first, *middle, last = numbers
 print(first)   # Output: 1
 print(middle)  # Output: [2, 3, 4]
-print(last)    # Output: 5</pre
-          >
+print(last)    # Output: 5</pre>
 
-          <h3>Looping Through Tuples</h3>
-          <p>
-            You can iterate over the elements of a tuple using a
-            <code>for</code> loop:
-          </p>
-          <pre class="code-block">
+        <h3>Looping Through Tuples</h3>
+        <p>
+          You can iterate over the elements of a tuple using a
+          <code>for</code> loop:
+        </p>
+        <pre class="code-block">
 # Example of looping through a tuple:
 fruits = ("apple", "banana", "cherry")
 for fruit in fruits:
@@ -124,15 +123,14 @@ for fruit in fruits:
 # Output:
 # apple
 # banana
-# cherry</pre
-          >
+# cherry</pre>
 
-          <h3>Joining Tuples</h3>
-          <p>
-            Tuples can be concatenated using the <code>+</code> operator and
-            repeated using the <code>*</code> operator:
-          </p>
-          <pre class="code-block">
+        <h3>Joining Tuples</h3>
+        <p>
+          Tuples can be concatenated using the <code>+</code> operator and
+          repeated using the <code>*</code> operator:
+        </p>
+        <pre class="code-block">
 tuple1 = (1, 2, 3)
 tuple2 = (4, 5, 6)
 
@@ -142,26 +140,25 @@ print(result)  # Output: (1, 2, 3, 4, 5, 6)
 
 # Repetition:
 repeated = tuple1 * 2
-print(repeated)  # Output: (1, 2, 3, 1, 2, 3)</pre
-          >
+print(repeated)  # Output: (1, 2, 3, 1, 2, 3)</pre>
 
-          <h3>Tuple Methods</h3>
-          <p>
-            Tuples have two main built-in methods: <code>count()</code> and
-            <code>index()</code>.
-          </p>
+        <h3>Tuple Methods</h3>
+        <p>
+          Tuples have two main built-in methods: <code>count()</code> and
+          <code>index()</code>.
+        </p>
 
-          <ul>
-            <li>
-              <b>count()</b>: Returns the number of occurrences of a specified
-              value in the tuple.
-            </li>
-            <li>
-              <b>index()</b>: Returns the index of the first occurrence of a
-              specified value. Raises a ValueError if the value is not found.
-            </li>
-          </ul>
-          <pre class="code-block">
+        <ul>
+          <li>
+            <b>count()</b>: Returns the number of occurrences of a specified
+            value in the tuple.
+          </li>
+          <li>
+            <b>index()</b>: Returns the index of the first occurrence of a
+            specified value. Raises a ValueError if the value is not found.
+          </li>
+        </ul>
+        <pre class="code-block">
 # Using tuple methods:
 numbers = (10, 20, 10, 30, 40, 10)
 
@@ -169,16 +166,15 @@ numbers = (10, 20, 10, 30, 40, 10)
 print(numbers.count(10))  # Output: 3
 
 # Find the index of the first occurrence of 30:
-print(numbers.index(30))  # Output: 3</pre
-          >
+print(numbers.index(30))  # Output: 3</pre>
 
-          <h3>Immutability of Tuples</h3>
-          <p>
-            Tuples are immutable, meaning their content cannot be changed after
-            creation. If you need a similar data structure that allows
-            modification, consider using a list.
-          </p>
-          <pre class="code-block">
+        <h3>Immutability of Tuples</h3>
+        <p>
+          Tuples are immutable, meaning their content cannot be changed after
+          creation. If you need a similar data structure that allows
+          modification, consider using a list.
+        </p>
+        <pre class="code-block">
 # Trying to modify a tuple will raise an error:
 my_tuple = (1, 2, 3)
 # my_tuple[1] = 20  # This will raise a TypeError
@@ -186,35 +182,33 @@ my_tuple = (1, 2, 3)
 # However, if a tuple contains mutable elements (e.g., a list), those elements can be modified:
 nested_tuple = (1, [2, 3], 4)
 nested_tuple[1][0] = 99
-print(nested_tuple)  # Output: (1, [99, 3], 4)</pre
-          >
-        </section>
+print(nested_tuple)  # Output: (1, [99, 3], 4)</pre>
+      </section>
 
-        <section class="sets">
-          <h2>Python Sets</h2>
-          <p>
-            Sets are unordered collections of unique elements. They are defined
-            using curly braces <code>{}</code> or the
-            <code>set()</code> function. Since sets do not allow duplicate
-            elements, they are useful for tasks that require unique data.
-          </p>
+      <section class="sets">
+        <h2>Python Sets</h2>
+        <p>
+          Sets are unordered collections of unique elements. They are defined
+          using curly braces <code>{}</code> or the
+          <code>set()</code> function. Since sets do not allow duplicate
+          elements, they are useful for tasks that require unique data.
+        </p>
 
-          <h3>Creating Sets</h3>
-          <p>Here are some examples of creating sets:</p>
-          <pre class="code-block">
+        <h3>Creating Sets</h3>
+        <p>Here are some examples of creating sets:</p>
+        <pre class="code-block">
 # Examples of sets:
 fruits = {"apple", "banana", "cherry"}
 empty_set = set()  # Note: {} creates an empty dictionary, not a set
 numbers = set([1, 2, 3, 4, 4])  # Duplicate values are removed
-print(numbers)  # Output: {1, 2, 3, 4}</pre
-          >
+print(numbers)  # Output: {1, 2, 3, 4}</pre>
 
-          <h3>Accessing Set Elements</h3>
-          <p>
-            Sets are unordered, so they do not support indexing or slicing.
-            However, you can iterate through the elements of a set using a loop:
-          </p>
-          <pre class="code-block">
+        <h3>Accessing Set Elements</h3>
+        <p>
+          Sets are unordered, so they do not support indexing or slicing.
+          However, you can iterate through the elements of a set using a loop:
+        </p>
+        <pre class="code-block">
 # Example of iterating through a set:
 fruits = {"apple", "banana", "cherry"}
 for fruit in fruits:
@@ -223,16 +217,15 @@ for fruit in fruits:
 # Output (order may vary):
 # apple
 # banana
-# cherry</pre
-          >
+# cherry</pre>
 
-          <h3>Adding Elements to a Set</h3>
-          <p>
-            You can add elements to a set using the <code>add()</code> method
-            for single elements or the <code>update()</code> method for multiple
-            elements.
-          </p>
-          <pre class="code-block">
+        <h3>Adding Elements to a Set</h3>
+        <p>
+          You can add elements to a set using the <code>add()</code> method
+          for single elements or the <code>update()</code> method for multiple
+          elements.
+        </p>
+        <pre class="code-block">
 # Adding elements to a set:
 fruits = {"apple", "banana"}
 fruits.add("cherry")
@@ -240,17 +233,16 @@ print(fruits)  # Output: {"apple", "banana", "cherry"}
 
 # Adding multiple elements:
 fruits.update(["orange", "grape"])
-print(fruits)  # Output: {"apple", "banana", "cherry", "orange", "grape"}</pre
-          >
+print(fruits)  # Output: {"apple", "banana", "cherry", "orange", "grape"}</pre>
 
-          <h3>Removing Elements from a Set</h3>
-          <p>
-            You can remove elements using the <code>remove()</code> or
-            <code>discard()</code> methods. The <code>remove()</code> method
-            raises an error if the element is not found, while
-            <code>discard()</code> does not.
-          </p>
-          <pre class="code-block">
+        <h3>Removing Elements from a Set</h3>
+        <p>
+          You can remove elements using the <code>remove()</code> or
+          <code>discard()</code> methods. The <code>remove()</code> method
+          raises an error if the element is not found, while
+          <code>discard()</code> does not.
+        </p>
+        <pre class="code-block">
 # Removing elements:
 fruits = {"apple", "banana", "cherry"}
 fruits.remove("banana")
@@ -263,22 +255,21 @@ print(fruits)  # Output: {"apple", "cherry"}
 # Remove and return a random element:
 popped_element = fruits.pop()
 print(popped_element)  # Random element from set
-print(fruits)  # Remaining elements</pre
-          >
-        </section>
+print(fruits)  # Remaining elements</pre>
+      </section>
 
-        <section class="dictionaries">
-          <h2>Python Dictionaries</h2>
-          <p>
-            Dictionaries store data as key-value pairs, making them ideal for
-            associating related information. They are defined using curly braces
-            <code>{}</code>, and keys must be unique and immutable (e.g.,
-            strings, numbers, or tuples). Values can be of any data type.
-          </p>
+      <section class="dictionaries">
+        <h2>Python Dictionaries</h2>
+        <p>
+          Dictionaries store data as key-value pairs, making them ideal for
+          associating related information. They are defined using curly braces
+          <code>{}</code>, and keys must be unique and immutable (e.g.,
+          strings, numbers, or tuples). Values can be of any data type.
+        </p>
 
-          <h3>Creating Dictionaries</h3>
-          <p>Here are some examples of creating dictionaries:</p>
-          <pre class="code-block">
+        <h3>Creating Dictionaries</h3>
+        <p>Here are some examples of creating dictionaries:</p>
+        <pre class="code-block">
 # Example of a dictionary:
 student = {"name": "Alice", "age": 25, "course": "Python"}
 
@@ -287,47 +278,44 @@ empty_dict = {}
 
 # Using the dict() function:
 person = dict(name="Bob", age=30, profession="Engineer")
-print(person)  # Output: {'name': 'Bob', 'age': 30, 'profession': 'Engineer'}</pre
-          >
+print(person)  # Output: {'name': 'Bob', 'age': 30, 'profession': 'Engineer'}</pre>
 
-          <h3>Accessing and Modifying Values</h3>
-          <p>
-            You can access a dictionary value using its key. If the key does not
-            exist, a <code>KeyError</code> is raised unless you use the
-            <code>get()</code> method.
-          </p>
-          <pre class="code-block">
+        <h3>Accessing and Modifying Values</h3>
+        <p>
+          You can access a dictionary value using its key. If the key does not
+          exist, a <code>KeyError</code> is raised unless you use the
+          <code>get()</code> method.
+        </p>
+        <pre class="code-block">
 # Accessing values:
 student = {"name": "Alice", "age": 25, "course": "Python"}
 print(student["name"])  # Output: Alice
 
 # Using the get() method (returns None if the key is missing):
 print(student.get("grade"))  # Output: None
-print(student.get("grade", "Not Assigned"))  # Output: Not Assigned</pre
-          >
+print(student.get("grade", "Not Assigned"))  # Output: Not Assigned</pre>
 
-          <h3>Adding and Modifying Key-Value Pairs</h3>
-          <p>
-            Adding a new key-value pair is as simple as assigning a value to a
-            new key. You can also modify an existing value by reassigning it to
-            the key.
-          </p>
-          <pre class="code-block">
+        <h3>Adding and Modifying Key-Value Pairs</h3>
+        <p>
+          Adding a new key-value pair is as simple as assigning a value to a
+          new key. You can also modify an existing value by reassigning it to
+          the key.
+        </p>
+        <pre class="code-block">
 # Adding a new key-value pair:
 student["grade"] = "A"
 print(student)  # Output: {'name': 'Alice', 'age': 25, 'course': 'Python', 'grade': 'A'}
 
 # Modifying an existing value:
 student["age"] = 26
-print(student)  # Output: {'name': 'Alice', 'age': 26, 'course': 'Python', 'grade': 'A'}</pre
-          >
+print(student)  # Output: {'name': 'Alice', 'age': 26, 'course': 'Python', 'grade': 'A'}</pre>
 
-          <h3>Removing Key-Value Pairs</h3>
-          <p>
-            You can remove key-value pairs using methods like
-            <code>pop()</code>, <code>popitem()</code>, and <code>del</code>.
-          </p>
-          <pre class="code-block">
+        <h3>Removing Key-Value Pairs</h3>
+        <p>
+          You can remove key-value pairs using methods like
+          <code>pop()</code>, <code>popitem()</code>, and <code>del</code>.
+        </p>
+        <pre class="code-block">
 # Removing a specific key:
 grade = student.pop("grade")  # Removes and returns the value
 print(grade)  # Output: A
@@ -340,14 +328,13 @@ print(student)  # Output: {'name': 'Alice', 'age': 26}
 
 # Using del:
 del student["age"]
-print(student)  # Output: {'name': 'Alice'}</pre
-          >
+print(student)  # Output: {'name': 'Alice'}</pre>
 
-          <h3>Looping Through Dictionaries</h3>
-          <p>
-            You can loop through dictionaries to access keys, values, or both.
-          </p>
-          <pre class="code-block">
+        <h3>Looping Through Dictionaries</h3>
+        <p>
+          You can loop through dictionaries to access keys, values, or both.
+        </p>
+        <pre class="code-block">
 # Looping through keys:
 for key in student:
     print(key)
@@ -361,31 +348,30 @@ for key, value in student.items():
     print(f"{key}: {value}")
 
 # Output:
-# name: Alice</pre
-          >
+# name: Alice</pre>
 
-          <h3>Common Dictionary Methods</h3>
-          <p>
-            Python provides several useful methods for working with
-            dictionaries:
-          </p>
-          <ul>
-            <li><b>keys()</b>: Returns a view object containing all keys.</li>
-            <li>
-              <b>values()</b>: Returns a view object containing all values.
-            </li>
-            <li>
-              <b>items()</b>: Returns a view object containing all key-value
-              pairs as tuples.
-            </li>
-            <li>
-              <b>update()</b>: Merges another dictionary into the current
-              dictionary.
-            </li>
-            <li><b>clear()</b>: Removes all key-value pairs.</li>
-            <li><b>copy()</b>: Returns a shallow copy of the dictionary.</li>
-          </ul>
-          <pre class="code-block">
+        <h3>Common Dictionary Methods</h3>
+        <p>
+          Python provides several useful methods for working with
+          dictionaries:
+        </p>
+        <ul>
+          <li><b>keys()</b>: Returns a view object containing all keys.</li>
+          <li>
+            <b>values()</b>: Returns a view object containing all values.
+          </li>
+          <li>
+            <b>items()</b>: Returns a view object containing all key-value
+            pairs as tuples.
+          </li>
+          <li>
+            <b>update()</b>: Merges another dictionary into the current
+            dictionary.
+          </li>
+          <li><b>clear()</b>: Removes all key-value pairs.</li>
+          <li><b>copy()</b>: Returns a shallow copy of the dictionary.</li>
+        </ul>
+        <pre class="code-block">
 # Using common dictionary methods:
 student = {"name": "Alice", "age": 25, "course": "Python"}
 
@@ -401,182 +387,168 @@ print(student)  # Output: {'name': 'Alice', 'age': 25, 'course': 'Python', 'grad
 
 # Clearing a dictionary:
 student.clear()
-print(student)  # Output: {}</pre
-          >
-        </section>
+print(student)  # Output: {}</pre>
+      </section>
 
-        <section class="practice">
-          <h2>Practice Questions</h2>
+      <section class="practice">
+        <h2>Practice Questions</h2>
 
-          <!-- Tuple Questions -->
-          <h3>1. Tuple Indexing</h3>
-          <p>
-            Write a program to access the last element of a tuple using negative
-            indexing.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <!-- Tuple Questions -->
+        <h3>1. Tuple Indexing</h3>
+        <p>
+          Write a program to access the last element of a tuple using negative
+          indexing.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 my_tuple = (5, 10, 15, 20)
-print(my_tuple[-1])</pre
-            >
-          </details>
+print(my_tuple[-1])</pre>
+        </details>
 
-          <h3>2. Tuple Unpacking</h3>
-          <p>
-            Given a tuple with three elements, unpack the values into three
-            variables and print them.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>2. Tuple Unpacking</h3>
+        <p>
+          Given a tuple with three elements, unpack the values into three
+          variables and print them.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 my_tuple = (1, 2, 3)
 a, b, c = my_tuple
-print(a, b, c)</pre
-            >
-          </details>
+print(a, b, c)</pre>
+        </details>
 
-          <h3>3. Iterating Over a Tuple</h3>
-          <p>Write a program to print each element of a tuple on a new line.</p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>3. Iterating Over a Tuple</h3>
+        <p>Write a program to print each element of a tuple on a new line.</p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 my_tuple = (100, 200, 300)
 for item in my_tuple:
-    print(item)</pre
-            >
-          </details>
+    print(item)</pre>
+        </details>
 
-          <h3>4. Tuple Methods</h3>
-          <p>
-            Count the occurrences of the number 3 in the tuple
-            <code>my_tuple = (1, 3, 3, 7, 3, 9)</code>.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>4. Tuple Methods</h3>
+        <p>
+          Count the occurrences of the number 3 in the tuple
+          <code>my_tuple = (1, 3, 3, 7, 3, 9)</code>.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 my_tuple = (1, 3, 3, 7, 3, 9)
-print(my_tuple.count(3))</pre
-            >
-          </details>
+print(my_tuple.count(3))</pre>
+        </details>
 
-          <!-- Set Questions -->
-          <h3>5. Set Membership</h3>
-          <p>
-            Check if the number 5 is present in the set
-            <code>numbers = {1, 3, 5, 7}</code>.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <!-- Set Questions -->
+        <h3>5. Set Membership</h3>
+        <p>
+          Check if the number 5 is present in the set
+          <code>numbers = {1, 3, 5, 7}</code>.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 numbers = {1, 3, 5, 7}
-print(5 in numbers)</pre
-            >
-          </details>
+print(5 in numbers)</pre>
+        </details>
 
-          <h3>6. Adding Elements to a Set</h3>
-          <p>Add the element 10 to the set <code>my_set = {1, 2, 3}</code>.</p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>6. Adding Elements to a Set</h3>
+        <p>Add the element 10 to the set <code>my_set = {1, 2, 3}</code>.</p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 my_set = {1, 2, 3}
 my_set.add(10)
-print(my_set)</pre
-            >
-          </details>
+print(my_set)</pre>
+        </details>
 
-          <h3>7. Looping Through a Set</h3>
-          <p>
-            Write a program to print each element of the set
-            <code>fruits = {"apple", "banana", "cherry"}</code>.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>7. Looping Through a Set</h3>
+        <p>
+          Write a program to print each element of the set
+          <code>fruits = {"apple", "banana", "cherry"}</code>.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 fruits = {"apple", "banana", "cherry"}
 for fruit in fruits:
-    print(fruit)</pre
-            >
-          </details>
+    print(fruit)</pre>
+        </details>
 
-          <!-- Dictionary Questions -->
-          <h3>8. Dictionary Lookup</h3>
-          <p>
-            Retrieve the value associated with the key
-            <code>"course"</code> from the dictionary
-            <code>student = {"name": "Bob", "course": "Math", "age": 20}</code>.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <!-- Dictionary Questions -->
+        <h3>8. Dictionary Lookup</h3>
+        <p>
+          Retrieve the value associated with the key
+          <code>"course"</code> from the dictionary
+          <code>student = {"name": "Bob", "course": "Math", "age": 20}</code>.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 student = {"name": "Bob", "course": "Math", "age": 20}
-print(student["course"])</pre
-            >
-          </details>
+print(student["course"])</pre>
+        </details>
 
-          <h3>9. Adding a Key-Value Pair</h3>
-          <p>
-            Add a new key-value pair <code>"grade": "A"</code> to the dictionary
-            <code>student = {"name": "Alice", "age": 25}</code>.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>9. Adding a Key-Value Pair</h3>
+        <p>
+          Add a new key-value pair <code>"grade": "A"</code> to the dictionary
+          <code>student = {"name": "Alice", "age": 25}</code>.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 student = {"name": "Alice", "age": 25}
 student["grade"] = "A"
-print(student)</pre
-            >
-          </details>
+print(student)</pre>
+        </details>
 
-          <h3>10. Looping Through a Dictionary</h3>
-          <p>
-            Print all keys and values from the dictionary
-            <code>person = {"name": "Sam", "age": 29, "city": "Chicago"}</code>.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>10. Looping Through a Dictionary</h3>
+        <p>
+          Print all keys and values from the dictionary
+          <code>person = {"name": "Sam", "age": 29, "city": "Chicago"}</code>.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 person = {"name": "Sam", "age": 29, "city": "Chicago"}
 for key, value in person.items():
-    print(f"{key}: {value}")</pre
-            >
-          </details>
+    print(f"{key}: {value}")</pre>
+        </details>
 
-          <h3>11. Removing a Key</h3>
-          <p>
-            Remove the key <code>"age"</code> from the dictionary
-            <code>person = {"name": "Sam", "age": 29, "city": "Chicago"}</code>.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>11. Removing a Key</h3>
+        <p>
+          Remove the key <code>"age"</code> from the dictionary
+          <code>person = {"name": "Sam", "age": 29, "city": "Chicago"}</code>.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 person = {"name": "Sam", "age": 29, "city": "Chicago"}
 del person["age"]
-print(person)</pre
-            >
-          </details>
+print(person)</pre>
+        </details>
 
-          <h3>12. Dictionary Default Value</h3>
-          <p>
-            Use the <code>get()</code> method to safely access the value for the
-            key <code>"grade"</code> in the dictionary
-            <code>student = {"name": "Alice", "age": 25}</code>. If the key does
-            not exist, return <code>"Not Assigned"</code>.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
-student = {"name": "Alice", "age": 25}
-print(student.get("grade", "Not Assigned"))</pre
-            >
-          </details>
-        </section>
+        <h3>12. Dictionary Default Value</h3>
         <p>
-          <a href="assignments/data-structures2-practice.html"
-            >Practice Exercises</a
-          >
+          Use the <code>get()</code> method to safely access the value for the
+          key <code>"grade"</code> in the dictionary
+          <code>student = {"name": "Alice", "age": 25}</code>. If the key does
+          not exist, return <code>"Not Assigned"</code>.
         </p>
-      </main>
-    </div>
-  </body>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+student = {"name": "Alice", "age": 25}
+print(student.get("grade", "Not Assigned"))</pre>
+        </details>
+      </section>
+      <p>
+        <a href="assignments/data-structures2-practice.html">Practice Exercises</a>
+      </p>
+    </main>
+  </div>
+</body>
+
 </html>

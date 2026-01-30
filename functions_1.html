@@ -1,292 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction to Programming - Week 4</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Introduction to Programming</h1>
-      <h2>Introduction to Python Functions</h2>
-    </header>
 
-    <div class="container">
-      <aside class="sidebar">
-        <nav>
-          <ul>
-            <li><a href="index.html">Programming Basics</a></li>
-            <li>
-              <a href="if_else_statement.html">If/Else Statements</a>
-            </li>
-            <li><a href="for_loops.html">For Loops</a></li>
-            <li><a href="while_loops.html">While Loops</a></li>
-            <li>
-              <a href="functions_1.html" class="active">Functions I</a>
-            </li>
-            <li><a href="functions_2.html">Functions II</a></li>
-            <li><a href="data-structures_1.html">Data Structures I</a></li>
-            <li>
-              <a href="data-structures_2.html">Data Structures II</a>
-            </li>
-            <li><a href="debugging.html">Debugging</a></li>
-          </ul>
-        </nav>
-      </aside>
-      <main>
-        <section class="overview">
-          <h2>Overview</h2>
-          <p>
-            This week, we will explore the basics of functions in Python.
-            Functions are a fundamental concept in programming that allow you to
-            organize your code, make it reusable, and improve its readability.
-            Understanding how to create and use functions is essential for
-            writing clean, maintainable code.
-          </p>
-          <p>
-            Functions help you break down complex problems into smaller,
-            manageable pieces. Additionally, functions can be reused across
-            different parts of your program, saving you time and effort in
-            coding.
-          </p>
-        </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to Programming - Week 4</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-        <section class="what-are-functions">
-          <h2>What Are Functions?</h2>
-          <p>
-            A function is a block of organized, reusable code that performs a
-            specific task. Functions provide better modularity for your
-            application and a high degree of code reusability.
-          </p>
+<body>
+  <header>
+    <h1>Introduction to Programming</h1>
+    <h2>Introduction to Python Functions</h2>
+  </header>
 
-          <p>
-            Using functions effectively can lead to cleaner code that is easier
-            to read and understand. It also promotes code reuse, meaning you can
-            write a function once and use it multiple times throughout your
-            program. This reduces redundancy and helps maintain consistency in
-            your code.
-          </p>
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Programming Basics</a></li>
+          <li>
+            <a href="if_else_statement.html">If/Else Statements</a>
+          </li>
+          <li><a href="for_loops.html">For Loops</a></li>
+          <li><a href="while_loops.html">While Loops</a></li>
+          <li>
+            <a href="functions_1.html" class="active">Functions I</a>
+          </li>
+          <li><a href="functions_2.html">Functions II</a></li>
+          <li><a href="data-structures_1.html">Data Structures I</a></li>
+          <li>
+            <a href="data-structures_2.html">Data Structures II</a>
+          </li>
+          <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+          <li><a href="debugging.html">Debugging</a></li>
+          <li><a href="libraries.html">Libraries & Imports</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main>
+      <section class="overview">
+        <h2>Overview</h2>
+        <p>
+          This week, we will explore the basics of functions in Python.
+          Functions are a fundamental concept in programming that allow you to
+          organize your code, make it reusable, and improve its readability.
+          Understanding how to create and use functions is essential for
+          writing clean, maintainable code.
+        </p>
+        <p>
+          Functions help you break down complex problems into smaller,
+          manageable pieces. Additionally, functions can be reused across
+          different parts of your program, saving you time and effort in
+          coding.
+        </p>
+      </section>
 
-          <p>
-            Functions typically take input parameters and may return a value.
-            This allows you to customize their behavior based on the inputs you
-            provide. For example, a function that adds two numbers together can
-            be called with different pairs of numbers to get different results.
-          </p>
-        </section>
+      <section class="what-are-functions">
+        <h2>What Are Functions?</h2>
+        <p>
+          A function is a block of organized, reusable code that performs a
+          specific task. Functions provide better modularity for your
+          application and a high degree of code reusability.
+        </p>
 
-        <section class="creating-functions">
-          <h2>Creating a Function in Python</h2>
-          <p>
-            In Python, a function is defined using the <code>def</code> keyword,
-            followed by the function name and parentheses <code>()</code>.
-            Functions allow you to encapsulate code into reusable blocks, making
-            your programs more organized and easier to maintain.
-          </p>
+        <p>
+          Using functions effectively can lead to cleaner code that is easier
+          to read and understand. It also promotes code reuse, meaning you can
+          write a function once and use it multiple times throughout your
+          program. This reduces redundancy and helps maintain consistency in
+          your code.
+        </p>
 
-          <p>Basic syntax:</p>
-          <pre class="code-block">
+        <p>
+          Functions typically take input parameters and may return a value.
+          This allows you to customize their behavior based on the inputs you
+          provide. For example, a function that adds two numbers together can
+          be called with different pairs of numbers to get different results.
+        </p>
+      </section>
+
+      <section class="creating-functions">
+        <h2>Creating a Function in Python</h2>
+        <p>
+          In Python, a function is defined using the <code>def</code> keyword,
+          followed by the function name and parentheses <code>()</code>.
+          Functions allow you to encapsulate code into reusable blocks, making
+          your programs more organized and easier to maintain.
+        </p>
+
+        <p>Basic syntax:</p>
+        <pre class="code-block">
 def function_name():
     # Code block to be executed when the function is called
-    pass</pre
-          >
+    pass</pre>
 
-          <p>Example of a simple function:</p>
-          <pre class="code-block">
+        <p>Example of a simple function:</p>
+        <pre class="code-block">
 def greet():
-    print("Hello, welcome to Python functions!")</pre
-          >
+    print("Hello, welcome to Python functions!")</pre>
 
-          <p>
-            To call a function, use the function name followed by parentheses:
-          </p>
-          <pre class="code-block">
-greet()  # Output: Hello, welcome to Python functions!</pre
-          >
+        <p>
+          To call a function, use the function name followed by parentheses:
+        </p>
+        <pre class="code-block">
+greet()  # Output: Hello, welcome to Python functions!</pre>
 
-          <p>
-            Functions can help reduce code duplication and enhance readability.
-            For example, if you need to greet multiple users, you can simply
-            call the <code>greet</code> function multiple times instead of
-            rewriting the greeting message each time.
-          </p>
-        </section>
+        <p>
+          Functions can help reduce code duplication and enhance readability.
+          For example, if you need to greet multiple users, you can simply
+          call the <code>greet</code> function multiple times instead of
+          rewriting the greeting message each time.
+        </p>
+      </section>
 
-        <section class="function-parameters">
-          <h2>Function Parameters</h2>
-          <p>
-            Functions can accept parameters, which allow you to pass data into
-            the function. These parameters are specified within the parentheses
-            when defining the function. Parameters help you create more flexible
-            and reusable functions.
-          </p>
+      <section class="function-parameters">
+        <h2>Function Parameters</h2>
+        <p>
+          Functions can accept parameters, which allow you to pass data into
+          the function. These parameters are specified within the parentheses
+          when defining the function. Parameters help you create more flexible
+          and reusable functions.
+        </p>
 
-          <p>Example of a function with a single parameter:</p>
-          <pre class="code-block">
+        <p>Example of a function with a single parameter:</p>
+        <pre class="code-block">
 def greet(name):
-    print("Hello, " + name + "! Welcome to Python functions!")</pre
-          >
+    print("Hello, " + name + "! Welcome to Python functions!")</pre>
 
-          <p>You can now pass an argument when calling the function:</p>
-          <pre class="code-block">
+        <p>You can now pass an argument when calling the function:</p>
+        <pre class="code-block">
 greet("John")  # Output: Hello, John! Welcome to Python functions!
-greet("Sam")  # Output: Hello, Sam! Welcome to Python functions!</pre
-          >
+greet("Sam")  # Output: Hello, Sam! Welcome to Python functions!</pre>
 
-          <p>
-            You can also define functions with multiple parameters to perform
-            operations on different values. For instance:
-          </p>
-          <pre class="code-block">
+        <p>
+          You can also define functions with multiple parameters to perform
+          operations on different values. For instance:
+        </p>
+        <pre class="code-block">
 def add_numbers(a, b):
-    print(a + b)</pre
-          >
+    print(a + b)</pre>
 
-          <p>To call this function and obtain the result:</p>
-          <pre class="code-block">add_numbers(5, 3) # Output: 8</pre>
-        </section>
+        <p>To call this function and obtain the result:</p>
+        <pre class="code-block">add_numbers(5, 3) # Output: 8</pre>
+      </section>
 
-        <section class="return-statement">
-          <h2>The Return Statement</h2>
-          <p>
-            The <code>return</code> statement is used to send a result back to
-            the caller. If a function doesn't have a
-            <code>return</code> statement, it returns <code>None</code> by
-            default. This makes the function versatile, allowing it to compute
-            values and return results when needed.
-          </p>
+      <section class="return-statement">
+        <h2>The Return Statement</h2>
+        <p>
+          The <code>return</code> statement is used to send a result back to
+          the caller. If a function doesn't have a
+          <code>return</code> statement, it returns <code>None</code> by
+          default. This makes the function versatile, allowing it to compute
+          values and return results when needed.
+        </p>
 
-          <p>Example of a function that returns a value:</p>
-          <pre class="code-block">
+        <p>Example of a function that returns a value:</p>
+        <pre class="code-block">
 def multiply(a, b):
-    return a * b</pre
-          >
+    return a * b</pre>
 
-          <p>
-            When you call the <code>multiply</code> function, it calculates the
-            product of <code>a</code> and <code>b</code> and sends the result
-            back to the caller:
-          </p>
-          <pre class="code-block">
+        <p>
+          When you call the <code>multiply</code> function, it calculates the
+          product of <code>a</code> and <code>b</code> and sends the result
+          back to the caller:
+        </p>
+        <pre class="code-block">
 result = multiply(4, 5)
-print(result)  # Output: 20</pre
-          >
+print(result)  # Output: 20</pre>
 
-          <p>
-            The result can then be stored in a variable, used in further
-            calculations, or printed directly. For instance, you can use the
-            returned value in another calculation:
-          </p>
-          <pre class="code-block">
+        <p>
+          The result can then be stored in a variable, used in further
+          calculations, or printed directly. For instance, you can use the
+          returned value in another calculation:
+        </p>
+        <pre class="code-block">
 total = result + 10
-print(total)  # Output: 30</pre
-          >
-        </section>
+print(total)  # Output: 30</pre>
+      </section>
 
-        <section class="practice">
-          <h2>Practice Problems</h2>
+      <section class="practice">
+        <h2>Practice Problems</h2>
 
-          <h3>1. Simple Greeting Function</h3>
-          <p>
-            Create a function called `greet_user` that takes a name as a
-            parameter and prints "Hello, [name]!".
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <div>
-              <pre class="code-block">
+        <h3>1. Simple Greeting Function</h3>
+        <p>
+          Create a function called `greet_user` that takes a name as a
+          parameter and prints "Hello, [name]!".
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <div>
+            <pre class="code-block">
 def greet_user(name):
     print("Hello, " + name + "!")
 
-greet_user("Alice")  # Output: Hello, Alice!</pre
-              >
-            </div>
-          </details>
+greet_user("Alice")  # Output: Hello, Alice!</pre>
+          </div>
+        </details>
 
-          <h3>2. Temperature Converter</h3>
-          <p>
-            Create a function called `celsius_to_fahrenheit` that takes a
-            temperature in Celsius as a parameter and returns the temperature in
-            Fahrenheit.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <div>
-              <pre class="code-block">
+        <h3>2. Temperature Converter</h3>
+        <p>
+          Create a function called `celsius_to_fahrenheit` that takes a
+          temperature in Celsius as a parameter and returns the temperature in
+          Fahrenheit.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <div>
+            <pre class="code-block">
 def celsius_to_fahrenheit(celsius):
     return (celsius * 9/5) + 32
 
-print(celsius_to_fahrenheit(25))  # Output: 77.0</pre
-              >
-            </div>
-          </details>
+print(celsius_to_fahrenheit(25))  # Output: 77.0</pre>
+          </div>
+        </details>
 
-          <h3>3. Calculate Area of a Circle</h3>
-          <p>
-            Create a function called `area_of_circle` that takes the radius as a
-            parameter and returns the area of the circle. (Use the formula:
-            `area = π * r^2`, where `π` can be approximated as `3.14159`.)
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <div>
-              <pre class="code-block">
+        <h3>3. Calculate Area of a Circle</h3>
+        <p>
+          Create a function called `area_of_circle` that takes the radius as a
+          parameter and returns the area of the circle. (Use the formula:
+          `area = π * r^2`, where `π` can be approximated as `3.14159`.)
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <div>
+            <pre class="code-block">
 def area_of_circle(radius):
     pi = 3.14159
     return pi * (radius ** 2)
 
-print(area_of_circle(5))  # Output: 78.53975</pre
-              >
-            </div>
-          </details>
+print(area_of_circle(5))  # Output: 78.53975</pre>
+          </div>
+        </details>
 
-          <h3>4. Check Even or Odd</h3>
-          <p>
-            Create a function called `is_even` that takes an integer as a
-            parameter and returns `True` if the number is even, and `False` if
-            it's odd.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <div>
-              <pre class="code-block">
+        <h3>4. Check Even or Odd</h3>
+        <p>
+          Create a function called `is_even` that takes an integer as a
+          parameter and returns `True` if the number is even, and `False` if
+          it's odd.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <div>
+            <pre class="code-block">
 def is_even(number):
     return number % 2 == 0
 
 print(is_even(10))  # Output: True
-print(is_even(7))   # Output: False</pre
-              >
-            </div>
-          </details>
+print(is_even(7))   # Output: False</pre>
+          </div>
+        </details>
 
-          <h3>5. Find the Maximum of Two Numbers</h3>
-          <p>
-            Create a function called `max_of_two` that takes two numbers as
-            parameters and returns the larger of the two.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <div>
-              <pre class="code-block">
+        <h3>5. Find the Maximum of Two Numbers</h3>
+        <p>
+          Create a function called `max_of_two` that takes two numbers as
+          parameters and returns the larger of the two.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <div>
+            <pre class="code-block">
 def max_of_two(a, b):
     if a > b:
         return a
     else:
         return b
 
-print(max_of_two(10, 20))  # Output: 20</pre
-              >
-            </div>
-          </details>
-        </section>
-        <p>
-          <a href="assignments/functions1-practice.html">Practice Exercises</a>
-        </p>
-      </main>
-    </div>
-    <footer>
-      <p>&copy; 2024 Introduction to Programming (Python)</p>
-    </footer>
-  </body>
+print(max_of_two(10, 20))  # Output: 20</pre>
+          </div>
+        </details>
+      </section>
+      <p>
+        <a href="assignments/functions1-practice.html">Practice Exercises</a>
+      </p>
+    </main>
+  </div>
+  <footer>
+    <p>&copy; 2024 Introduction to Programming (Python)</p>
+  </footer>
+</body>
+
 </html>

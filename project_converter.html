@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project 2: Unit Converter - Introduction to Programming</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .code-explanation {
+            background-color: #f9f9f9;
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .line-number {
+            font-weight: bold;
+            color: #555;
+            margin-right: 10px;
+        }
+
+        .concept-box {
+            background-color: #e7f3fe;
+            border: 1px solid #b6d4fe;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .concept-title {
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Introduction to Programming</h1>
+        <h2>Project 2: Temperature Converter Breakdown</h2>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Programming Basics</a></li>
+                    <li><a href="if_else_statement.html">If/Else Statements</a></li>
+                    <li><a href="for_loops.html">For Loops</a></li>
+                    <li><a href="while_loops.html">While Loops</a></li>
+                    <li><a href="functions_1.html">Functions I</a></li>
+                    <li><a href="functions_2.html">Functions II</a></li>
+                    <li><a href="data-structures_1.html">Data Structures I</a></li>
+                    <li><a href="data-structures_2.html">Data Structures II</a></li>
+                    <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+                    <li><a href="libraries.html">Libraries & Imports</a></li>
+                    <li><a href="debugging.html">Debugging</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <p><a href="projects.html">&larr; Back to Projects</a></p>
+
+            <section class="overview">
+                <h2>The Big Picture: Logic Separation</h2>
+                <p>
+                    In the calculator, we only had 4 operations. Here, we can convert Celsius to Fahrenheit, Celsius to
+                    Kelvin, Fahrenheit to Celsius... there are <strong>6 possible combinations</strong>!
+                </p>
+                <div class="concept-box">
+                    <span class="concept-title">Frontend vs Backend Roles</span>
+                    <ul>
+                        <li><strong>Frontend (converter.py):</strong> Asks user "What are we converting <em>from</em>?"
+                            and "What are we converting <em>to</em>?". Then it acts as a <strong>Traffic
+                                Controller</strong> to route the data.</li>
+                        <li><strong>Backend (backend_temperature.py):</strong> Contains the physics formulas. It doesn't
+                            know what the user selected, it just knows how to calculate.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="backend">
+                <h2>Part 1: The Formulas (backend_temperature.py)</h2>
+
+                <div class="code-explanation">
+                    <h3>Specific Single-Purpose Functions</h3>
+                    <p><span class="line-number">Lines 3-5:</span></p>
+                    <pre class="code-block">
+def celsius_to_kelvin(val):
+    kelvin = val + 273.15
+    return kelvin</pre>
+                    <p>
+                        Each function does exactly <strong>one thing</strong>. This makes it easy to test. If Celsius to
+                        Kelvin conversion is wrong, we know exactly which 3 lines of code to check.
+                    </p>
+                </div>
+            </section>
+
+            <section class="frontend">
+                <h2>Part 2: The Traffic Controller (converter.py)</h2>
+
+                <div class="code-explanation">
+                    <h3>1. Reusable Input Helper</h3>
+                    <p><span class="line-number">Lines 15-26:</span></p>
+                    <pre class="code-block">
+def get_unit_choice(prompt_type):
+    while True:
+        print(f"\nSelect {prompt_type} Unit:")
+        # ... prints 1. Celsius 2. Fahrenheit ...</pre>
+                    <p>
+                        We need to ask the user to choose a unit twice: once for the <strong>Source</strong> (Start) and
+                        once for the <strong>Target</strong> (End).
+                        <br>Instead of writing the same code twice, we create a function <code>get_unit_choice</code>.
+                        We pass in <code>"Source"</code> or <code>"Target"</code> as the <code>prompt_type</code> to
+                        slightly change what it prints.
+                    </p>
+                </div>
+
+                <div class="code-explanation">
+                    <h3>2. The "Switchboard" Logic</h3>
+                    <p><span class="line-number">Lines 34-53:</span></p>
+                    <pre class="code-block">
+def convert(val, src, tgt):
+    # Celsius Source
+    if src == '1': 
+        if tgt == '2': return backend_temperature.celsius_to_fahrenheit(val)
+        if tgt == '3': return backend_temperature.celsius_to_kelvin(val)</pre>
+                    <p>
+                        This function determines which Backend function to call.
+                        <br><strong>How it works:</strong>
+                    <ul>
+                        <li>If <code>src == '1'</code> (Celsius) AND <code>tgt == '2'</code> (Fahrenheit)...</li>
+                        <li>...then call the specific function <code>celsius_to_fahrenheit(val)</code>.</li>
+                    </ul>
+                    This keeps the main part of our program clean. We just say "Convert this", and this function figures
+                    out <em>how</em>.
+                    </p>
+                </div>
+
+                <div class="code-explanation">
+                    <h3>3. String Formating for Display</h3>
+                    <p><span class="line-number">Line 69:</span></p>
+                    <pre class="code-block">
+print(f"Result: ... {result:.2f} {get_unit_name(tgt_choice)}")</pre>
+                    <p>
+                        <code>{result:.2f}</code> tells Python to format the decimal number to only show <strong>2
+                            decimal places</strong>. So instead of <code>75.59999999</code>, the user sees
+                        <code>75.60</code>.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Introduction to Programming (Python)</p>
+    </footer>
+</body>
+
+</html>

@@ -1,105 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction to Programming - For Loops</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Introduction to Programming</h1>
-      <h2>Control Flow: For Loops</h2>
-    </header>
 
-    <div class="container">
-      <aside class="sidebar">
-        <nav>
-          <ul>
-            <li><a href="index.html">Programming Basics</a></li>
-            <li>
-              <a href="if_else_statement.html">If/Else Statements</a>
-            </li>
-            <li><a href="for_loops.html" class="active">For Loops</a></li>
-            <li><a href="while_loops.html">While Loops</a></li>
-            <li><a href="functions_1.html">Functions I</a></li>
-            <li><a href="functions_2.html">Functions II</a></li>
-            <li><a href="data-structures_1.html">Data Structures I</a></li>
-            <li>
-              <a href="data-structures_2.html">Data Structures II</a>
-            </li>
-            <li><a href="debugging.html">Debugging</a></li>
-          </ul>
-        </nav>
-      </aside>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to Programming - For Loops</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-      <main>
-        <section class="overview">
-          <h2>Overview</h2>
-          <p>
-            This section focuses on using <code>for</code> loops to iterate over
-            sequences in Python. A <code>for</code> loop allows you to execute a
-            block of code repeatedly for each item in a sequence, such as a
-            list, tuple, string, or any iterable object. This is particularly
-            useful when you want to perform the same action on multiple items
-            without needing to manually write out each operation.
-          </p>
-        </section>
+<body>
+  <header>
+    <h1>Introduction to Programming</h1>
+    <h2>Control Flow: For Loops</h2>
+  </header>
 
-        <section class="loops">
-          <h2>For Loops</h2>
-          <p>Basic structure:</p>
-          <pre class="code-block">
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Programming Basics</a></li>
+          <li>
+            <a href="if_else_statement.html">If/Else Statements</a>
+          </li>
+          <li><a href="for_loops.html" class="active">For Loops</a></li>
+          <li><a href="while_loops.html">While Loops</a></li>
+          <li><a href="functions_1.html">Functions I</a></li>
+          <li><a href="functions_2.html">Functions II</a></li>
+          <li><a href="data-structures_1.html">Data Structures I</a></li>
+          <li>
+            <a href="data-structures_2.html">Data Structures II</a>
+          </li>
+          <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+          <li><a href="debugging.html">Debugging</a></li>
+          <li><a href="libraries.html">Libraries & Imports</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <section class="overview">
+        <h2>Overview</h2>
+        <p>
+          This section focuses on using <code>for</code> loops to iterate over
+          sequences in Python. A <code>for</code> loop allows you to execute a
+          block of code repeatedly for each item in a sequence, such as a
+          list, tuple, string, or any iterable object. This is particularly
+          useful when you want to perform the same action on multiple items
+          without needing to manually write out each operation.
+        </p>
+      </section>
+
+      <section class="loops">
+        <h2>For Loops</h2>
+        <p>Basic structure:</p>
+        <pre class="code-block">
 for item in sequence:
-    # Code to execute for each item</pre
-          >
-          <p>In this structure:</p>
-          <ul>
-            <li>
-              <code>item</code>: A variable that takes the value of each element
-              in the sequence on each iteration.
-            </li>
-            <li>
-              <code>sequence</code>: The collection of items you want to iterate
-              over, which can be a list, tuple, string, or other iterable.
-            </li>
-          </ul>
+    # Code to execute for each item</pre>
+        <p>In this structure:</p>
+        <ul>
+          <li>
+            <code>item</code>: A variable that takes the value of each element
+            in the sequence on each iteration.
+          </li>
+          <li>
+            <code>sequence</code>: The collection of items you want to iterate
+            over, which can be a list, tuple, string, or other iterable.
+          </li>
+        </ul>
         </br>
 
-          <p>Example:</p>
-          <pre class="code-block">
+        <p>Example:</p>
+        <pre class="code-block">
 fruits = ["apple", "banana", "cherry"]
 
 for fruit in fruits:
     print(fruit)</pre>
-          <p>
-            In this example, the <code>for</code> loop goes through each element
-            in the <code>fruits</code> list. During each iteration, the variable
-            <code>fruit</code> takes the value of the current item, and
-            <code>print(fruit)</code> outputs that value to the console. The
-            output will be:
-          </p>
-          <pre class="code-block">
+        <p>
+          In this example, the <code>for</code> loop goes through each element
+          in the <code>fruits</code> list. During each iteration, the variable
+          <code>fruit</code> takes the value of the current item, and
+          <code>print(fruit)</code> outputs that value to the console. The
+          output will be:
+        </p>
+        <pre class="code-block">
 apple
 banana
 cherry</pre>
 
-          <h3>More Examples:</h3>
-          <p>1. Iterating Over a String:</p>
-          <pre class="code-block">
+        <h3>More Examples:</h3>
+        <p>1. Iterating Over a String:</p>
+        <pre class="code-block">
 word = "hello"
 for letter in word:
     print(letter)</pre>
-          <p>This will output each letter in the word "hello":</p>
-          <pre class="code-block">
+        <p>This will output each letter in the word "hello":</p>
+        <pre class="code-block">
 h
 e
 l
 l
 o</pre>
 
-          <p>2. Summing Numbers in a List:</p>
-          <pre class="code-block">
+        <p>2. Summing Numbers in a List:</p>
+        <pre class="code-block">
 numbers = [1, 2, 3, 4, 5]
 total = 0
 
@@ -107,129 +110,142 @@ for number in numbers:
     total += number
 
 print("Total:", total)</pre>
-          <p>
-            In this example, the <code>for</code> loop iterates over each number
-            in the <code>numbers</code> list, adding each number to the
-            <code>total</code> variable. The final output will be:
-          </p>
-          <pre class="code-block">
+        <p>
+          In this example, the <code>for</code> loop iterates over each number
+          in the <code>numbers</code> list, adding each number to the
+          <code>total</code> variable. The final output will be:
+        </p>
+        <pre class="code-block">
 Total: 15</pre>
 
-          <h3>Conclusion</h3>
-          <p>
-            <code>For</code> loops are a powerful tool in Python for iterating
-            over sequences. They simplify repetitive tasks and enhance code
-            readability. Understanding how to use <code>for</code> loops
-            effectively will enable you to handle collections of data with ease.
-          </p>
-        </section>
+        <h3>Conclusion</h3>
+        <p>
+          <code>For</code> loops are a powerful tool in Python for iterating
+          over sequences. They simplify repetitive tasks and enhance code
+          readability. Understanding how to use <code>for</code> loops
+          effectively will enable you to handle collections of data with ease.
+        </p>
+      </section>
 
 
-        <section class="range-loop">
-          <h2>Using <code>range()</code> in For Loops</h2>
-          <p>
-              The <code>range()</code> function in Python generates a sequence of numbers, which can be used to control the number of iterations in a <code>for</code> loop. It is particularly useful when you want to execute a block of code a specific number of times.
-          </p>
-          <p>
-              The basic syntax of <code>range()</code> is:
-          </p>
-          <pre class="code-block">
+      <section class="range-loop">
+        <h2>Using <code>range()</code> in For Loops</h2>
+        <p>
+          The <code>range()</code> function in Python generates a sequence of numbers, which can be used to control the
+          number of iterations in a <code>for</code> loop. It is particularly useful when you want to execute a block of
+          code a specific number of times.
+        </p>
+        <p>
+          The basic syntax of <code>range()</code> is:
+        </p>
+        <pre class="code-block">
 range(start, stop, step)</pre>
-          <ul>
-              <li><code>start</code> (optional): The value at which to start the sequence. The default is 0.</li>
-              <li><code>stop</code>: The value at which to stop (exclusive). The loop will run up to, but not including, this value.</li>
-              <li><code>step</code> (optional): The difference between each consecutive number in the sequence. The default is 1.</li>
-          </ul>
-      
-          <p>Example with <code>range()</code>:</p>
-          <pre class="code-block">
+        <ul>
+          <li><code>start</code> (optional): The value at which to start the sequence. The default is 0.</li>
+          <li><code>stop</code>: The value at which to stop (exclusive). The loop will run up to, but not including,
+            this value.</li>
+          <li><code>step</code> (optional): The difference between each consecutive number in the sequence. The default
+            is 1.</li>
+        </ul>
+
+        <p>Example with <code>range()</code>:</p>
+        <pre class="code-block">
 for i in range(1, 6):
     print(i)</pre>
-          <p>
-              In this example, the <code>for</code> loop will iterate over the numbers generated by <code>range(1, 6)</code>, which produces the numbers 1, 2, 3, 4, and 5. The output will be:
-          </p>
-          <pre class="code-block">
+        <p>
+          In this example, the <code>for</code> loop will iterate over the numbers generated by
+          <code>range(1, 6)</code>, which produces the numbers 1, 2, 3, 4, and 5. The output will be:
+        </p>
+        <pre class="code-block">
 1
 2
 3
 4
 5</pre>
-      
-          <h3>More Examples:</h3>
-      
-          <p>1. Using <code>range()</code> to Calculate a Sum:</p>
-          <pre class="code-block">
+
+        <h3>More Examples:</h3>
+
+        <p>1. Using <code>range()</code> to Calculate a Sum:</p>
+        <pre class="code-block">
 total_sum = 0
 for i in range(1, 11):  # Sum numbers from 1 to 10
     total_sum += i
 
 print("Total Sum:", total_sum)</pre>
-          <p>
-              In this example, the loop calculates the sum of numbers from 1 to 10. The final output will be:
-          </p>
-          <pre class="code-block">
+        <p>
+          In this example, the loop calculates the sum of numbers from 1 to 10. The final output will be:
+        </p>
+        <pre class="code-block">
 Total Sum: 55</pre>
-      
-          <p>2. Specifying a Step Value:</p>
-          <pre class="code-block">
+
+        <p>2. Specifying a Step Value:</p>
+        <pre class="code-block">
 for i in range(0, 10, 2):  # Iterate from 0 to 9, stepping by 2
     print(i)</pre>
-          <p>
-              This example uses a step value of 2, which means it will print every second number starting from 0 up to, but not including, 10. The output will be:
-          </p>
-          <pre class="code-block">
+        <p>
+          This example uses a step value of 2, which means it will print every second number starting from 0 up to, but
+          not including, 10. The output will be:
+        </p>
+        <pre class="code-block">
 0
 2
 4
 6
 8</pre>
-      
-          <p>3. Counting Backwards:</p>
-          <pre class="code-block">
+
+        <p>3. Counting Backwards:</p>
+        <pre class="code-block">
 for i in range(5, 0, -1):  # Count down from 5 to 1
     print(i)</pre>
-          <p>
-              Here, the <code>range()</code> function is called with a negative step value. The loop counts backwards from 5 to 1, and the output will be:
-          </p>
-          <pre class="code-block">
+        <p>
+          Here, the <code>range()</code> function is called with a negative step value. The loop counts backwards from 5
+          to 1, and the output will be:
+        </p>
+        <pre class="code-block">
 5
 4
 3
 2
 1</pre>
-      
-          <p>4. Using <code>range()</code> with Lists:</p>
-          <pre class="code-block">
+
+        <p>4. Using <code>range()</code> with Lists:</p>
+        <pre class="code-block">
 colors = ["red", "green", "blue", "yellow"]
 
 for i in range(len(colors)):  # Iterate through the list using its index
     print(f"Color {i + 1}: {colors[i]}")</pre>
-          <p>
-              In this example, <code>len(colors)</code> gives the total number of elements in the <code>colors</code> list. The loop iterates through the list by index, printing each color along with its position. The output will be:
-          </p>
-          <pre class="code-block">
+        <p>
+          In this example, <code>len(colors)</code> gives the total number of elements in the <code>colors</code> list.
+          The loop iterates through the list by index, printing each color along with its position. The output will be:
+        </p>
+        <pre class="code-block">
 Color 1: red
 Color 2: green
 Color 3: blue
 Color 4: yellow</pre>
-      
-          <h3>Conclusion</h3>
-          <p>
-              The <code>range()</code> function is a versatile tool for creating sequences of numbers, making it easy to control iterations in <code>for</code> loops. Understanding how to use <code>range()</code> effectively can greatly enhance your ability to work with repetitive tasks and data structures in Python.
-          </p>
+
+        <h3>Conclusion</h3>
+        <p>
+          The <code>range()</code> function is a versatile tool for creating sequences of numbers, making it easy to
+          control iterations in <code>for</code> loops. Understanding how to use <code>range()</code> effectively can
+          greatly enhance your ability to work with repetitive tasks and data structures in Python.
+        </p>
       </section>
-      
+
 
       <section class="break-continue">
         <h2>Break and Continue Statements</h2>
-    
+
         <p>
-            In Python, the <code>break</code> and <code>continue</code> statements are control flow tools that allow you to modify the behavior of loops. They enable more complex iterations by giving you the ability to exit a loop prematurely or skip certain iterations, respectively.
+          In Python, the <code>break</code> and <code>continue</code> statements are control flow tools that allow you
+          to modify the behavior of loops. They enable more complex iterations by giving you the ability to exit a loop
+          prematurely or skip certain iterations, respectively.
         </p>
-    
+
         <h3>Break Statement</h3>
         <p>
-            The <code>break</code> statement is used to exit a loop immediately. When <code>break</code> is executed, the loop terminates, and control moves to the next statement following the loop.
+          The <code>break</code> statement is used to exit a loop immediately. When <code>break</code> is executed, the
+          loop terminates, and control moves to the next statement following the loop.
         </p>
         <p>Example of using the <code>break</code> statement:</p>
         <pre class="code-block">
@@ -238,14 +254,15 @@ for i in range(1, 10):
         break
     print(i)</pre>
         <p>
-            In this example, the loop iterates over the numbers from 1 to 9. When <code>i</code> reaches 5, the <code>break</code> statement is executed, which terminates the loop. The output will be:
+          In this example, the loop iterates over the numbers from 1 to 9. When <code>i</code> reaches 5, the
+          <code>break</code> statement is executed, which terminates the loop. The output will be:
         </p>
         <pre class="code-block">
 1
 2
 3
 4</pre>
-    
+
         <p>Additional Example of <code>break</code>:</p>
         <pre class="code-block">
 search_list = [1, 2, 3, 4, 5, 6]
@@ -258,14 +275,18 @@ for number in search_list:
 else:
     print("Target not found")</pre>
         <p>
-            In this example, we search for a specific target number in a list. When the target is found, the loop prints a message and exits using <code>break</code>. If the loop completes without finding the target, the <code>else</code> clause will execute, printing "Target not found." The output in this case will be:
+          In this example, we search for a specific target number in a list. When the target is found, the loop prints a
+          message and exits using <code>break</code>. If the loop completes without finding the target, the
+          <code>else</code> clause will execute, printing "Target not found." The output in this case will be:
         </p>
         <pre class="code-block">
 Target found: 4</pre>
-    
+
         <h3>Continue Statement</h3>
         <p>
-            The <code>continue</code> statement is used to skip the current iteration of a loop and move to the next iteration. When <code>continue</code> is encountered, the remaining code inside the loop for the current iteration is skipped, and the next iteration begins.
+          The <code>continue</code> statement is used to skip the current iteration of a loop and move to the next
+          iteration. When <code>continue</code> is encountered, the remaining code inside the loop for the current
+          iteration is skipped, and the next iteration begins.
         </p>
         <p>Example of using the <code>continue</code> statement:</p>
         <pre class="code-block">
@@ -274,7 +295,9 @@ for i in range(1, 10):
         continue
     print(i)</pre>
         <p>
-            In this example, the loop iterates over the numbers from 1 to 9. If the number is even (i.e., divisible by 2), the <code>continue</code> statement is executed, which skips the <code>print()</code> function for that iteration. The output will be:
+          In this example, the loop iterates over the numbers from 1 to 9. If the number is even (i.e., divisible by 2),
+          the <code>continue</code> statement is executed, which skips the <code>print()</code> function for that
+          iteration. The output will be:
         </p>
         <pre class="code-block">
 1
@@ -282,7 +305,7 @@ for i in range(1, 10):
 5
 7
 9</pre>
-    
+
         <p>Additional Example of <code>continue</code>:</p>
         <pre class="code-block">
 for i in range(1, 16):
@@ -290,119 +313,125 @@ for i in range(1, 16):
         continue
     print(i, end=' ')</pre>
         <p>
-            In this example, we iterate through numbers from 1 to 15. If a number is divisible by 3, the <code>continue</code> statement is executed, skipping the <code>print()</code> function for that number. The output will be:
+          In this example, we iterate through numbers from 1 to 15. If a number is divisible by 3, the
+          <code>continue</code> statement is executed, skipping the <code>print()</code> function for that number. The
+          output will be:
         </p>
         <pre class="code-block">
 1 2 4 5 7 8 10 11 13 14</pre>
-    
+
         <h3>Summary</h3>
         <p>
-            The <code>break</code> and <code>continue</code> statements are powerful tools that enhance the control you have over loop execution in Python. Use <code>break</code> to exit a loop when a certain condition is met, and <code>continue</code> to skip to the next iteration when a condition occurs, allowing for more efficient and readable code.
+          The <code>break</code> and <code>continue</code> statements are powerful tools that enhance the control you
+          have over loop execution in Python. Use <code>break</code> to exit a loop when a certain condition is met, and
+          <code>continue</code> to skip to the next iteration when a condition occurs, allowing for more efficient and
+          readable code.
         </p>
-    </section>
-    
+      </section>
 
-        <section class="practice">
-          <h2>Practice</h2>
-          <p>Try out these exercises to reinforce your understanding:</p>
 
-          <h3>1. Print Numbers from 1 to 10</h3>
-          <p>
-            Write a program that prints numbers from 1 to 10 using a `for` loop.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+      <section class="practice">
+        <h2>Practice</h2>
+        <p>Try out these exercises to reinforce your understanding:</p>
+
+        <h3>1. Print Numbers from 1 to 10</h3>
+        <p>
+          Write a program that prints numbers from 1 to 10 using a `for` loop.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 for i in range(1, 11):
     print(i)</pre>
-          </details>
+        </details>
 
-          <h3>2. Calculate the Sum of Numbers</h3>
-          <p>
-            Write a program that calculates the sum of all numbers from 1 to 100
-            using a `for` loop.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>2. Calculate the Sum of Numbers</h3>
+        <p>
+          Write a program that calculates the sum of all numbers from 1 to 100
+          using a `for` loop.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 total_sum = 0
 for i in range(1, 101):
     total_sum = total_sum + i #Alternative: total_sum += i
 print("Total sum:", total_sum)</pre>
-          </details>
+        </details>
 
-          <h3>3. Print Each Character in a String</h3>
-          <p>
-            Write a program that prints each character of a string (text)
-          </p>
-          <pre class="code-block">text = "programming"</pre>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>3. Print Each Character in a String</h3>
+        <p>
+          Write a program that prints each character of a string (text)
+        </p>
+        <pre class="code-block">text = "programming"</pre>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 text = "programming"
 for char in text:
     print(char)</pre>
-          </details>
+        </details>
 
-          <h3>4. Count Down from 10 to 1</h3>
-          <p>
-            Write a program that counts down from 10 to 1 using a `for` loop.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>4. Count Down from 10 to 1</h3>
+        <p>
+          Write a program that counts down from 10 to 1 using a `for` loop.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 for i in range(10, 0, -1):
     print(i)</pre>
-          </details>
+        </details>
 
-          <h3>5. List of Squares</h3>
-          <p>
-            Write a program that prints the square of each number from 1 to 5.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>5. List of Squares</h3>
+        <p>
+          Write a program that prints the square of each number from 1 to 5.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 for i in range(1, 6):
     print(i ** 2)</pre>
-          </details>
+        </details>
 
-          <h3>6. Print Multiples of 3</h3>
-          <p>
-            Write a program that prints the multiples of 3 between 1 and 30.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>6. Print Multiples of 3</h3>
+        <p>
+          Write a program that prints the multiples of 3 between 1 and 30.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 for i in range(3, 31, 3):
     print(i)</pre>
-          </details>
-          <details>
-            <summary>Alternative Solution</summary>
-            <pre class="code-block">
+        </details>
+        <details>
+          <summary>Alternative Solution</summary>
+          <pre class="code-block">
 for i in range(1, 31):
     if i % 3 == 0:
         print(i)</pre>
         </details>
 
-          <h3>7. Print a List of Names</h3>
-          <p>Write a program that prints each name from a list of names.</p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>7. Print a List of Names</h3>
+        <p>Write a program that prints each name from a list of names.</p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 names = ["Alice", "Bob", "Charlie", "David"]
 for name in names:
     print(name)</pre>
-          </details>
-        </section>
+        </details>
+      </section>
 
-        <p>
-          <a href="assignments/for-loops-practice.html">Practice Exercises</a>
-        </p>
-      </main>
-    </div>
+      <p>
+        <a href="assignments/for-loops-practice.html">Practice Exercises</a>
+      </p>
+    </main>
+  </div>
 
-    <footer>
-      <p>&copy; 2024 Introduction to Programming (Python)</p>
-    </footer>
-  </body>
+  <footer>
+    <p>&copy; 2024 Introduction to Programming (Python)</p>
+  </footer>
+</body>
+
 </html>

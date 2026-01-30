@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Breakdowns - Introduction to Programming</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .project-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        .project-card a {
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Introduction to Programming</h1>
+        <h2>Project Breakdowns</h2>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Programming Basics</a></li>
+                    <li><a href="if_else_statement.html">If/Else Statements</a></li>
+                    <li><a href="for_loops.html">For Loops</a></li>
+                    <li><a href="while_loops.html">While Loops</a></li>
+                    <li><a href="functions_1.html">Functions I</a></li>
+                    <li><a href="functions_2.html">Functions II</a></li>
+                    <li><a href="data-structures_1.html">Data Structures I</a></li>
+                    <li><a href="data-structures_2.html">Data Structures II</a></li>
+                    <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+                    <li><a href="libraries.html">Libraries & Imports</a></li>
+                    <li><a href="debugging.html">Debugging</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <section class="overview">
+                <h2>Code Walkthroughs</h2>
+                <p>
+                    Here we analyze the code for the projects you've encountered. We break down how the logic works
+                    line-by-line, explaining how the <strong>Frontend</strong> (User Interface) talks to the
+                    <strong>Backend</strong> (Logic).
+                </p>
+            </section>
+
+            <section class="projects-list">
+                <div class="project-card">
+                    <h3>Project 1: Simple Calculator</h3>
+                    <p>
+                        A basic calculator that handles Addition, Subtraction, Multiplication, and Division. Learns
+                        about error handling and function calls.
+                    </p>
+                    <a href="project_calculator.html">View Breakdown &rarr;</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Project 2: Temperature Converter</h3>
+                    <p>
+                        Converts temperatures between Celsius, Fahrenheit, and Kelvin. Learns about conditional logic
+                        and reusable functions.
+                    </p>
+                    <a href="project_converter.html">View Breakdown &rarr;</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Project 3: To-Do App</h3>
+                    <p>
+                        A task manager that allows adding, checking off, and deleting tasks. Learns about Lists and
+                        Dictionaries.
+                    </p>
+                    <a href="project_todo.html">View Breakdown &rarr;</a>
+                </div>
+            </section>
+
+            <p>
+                <a href="libraries.html">&larr; Back to Libraries</a>
+            </p>
+
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Introduction to Programming (Python)</p>
+    </footer>
+</body>
+
+</html>

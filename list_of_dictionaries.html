@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to Programming - List of Dictionaries</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .code-explanation {
+            background-color: #f9f9f9;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .analogy-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .interactive-demo {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Introduction to Programming</h1>
+        <h2>Advanced Data Structures: List of Dictionaries</h2>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Programming Basics</a></li>
+                    <li><a href="if_else_statement.html">If/Else Statements</a></li>
+                    <li><a href="for_loops.html">For Loops</a></li>
+                    <li><a href="while_loops.html">While Loops</a></li>
+                    <li><a href="functions_1.html">Functions I</a></li>
+                    <li><a href="functions_2.html">Functions II</a></li>
+                    <li><a href="data-structures_1.html">Data Structures I</a></li>
+                    <li><a href="data-structures_2.html">Data Structures II</a></li>
+                    <li><a href="list_of_dictionaries.html" class="active">Data Structures Combination</a></li>
+                    <li><a href="debugging.html">Debugging</a></li>
+                    <li><a href="libraries.html">Libraries & Imports</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <section class="intro">
+                <h2>Combining Lists and Dictionaries</h2>
+                <p>
+                    By now, you've learned about <strong>Lists</strong> (ordered collections of items) and
+                    <strong>Dictionaries</strong> (key-value pairs describing a single object).
+                </p>
+                <p>
+                    In the real world, data is rarely just a simple list of numbers or a single object. usually, we have
+                    <strong>a list of objects</strong>.
+                </p>
+                <div class="analogy-box">
+                    <h3>💡 The Spreadsheet Analogy</h3>
+                    <p>Think of a <strong>List of Dictionaries</strong> like a spreadsheet (Excel or Google Sheets):</p>
+                    <ul>
+                        <li>The <strong>List</strong> is the whole sheet (the rows).</li>
+                        <li>Each <strong>Dictionary</strong> is a single row (representing one person, one product, or
+                            one task).</li>
+                        <li>The <strong>Keys</strong> are the column headers (Name, Age, Status).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="structure">
+                <h2>The Structure</h2>
+                <p>Let's look at how we structure data for a <strong>To-Do App</strong>.</p>
+
+                <h3>1. A Single Task (Dictionary)</h3>
+                <p>A single task has properties like what to do and whether it's done.</p>
+                <pre class="code-block">
+task1 = {
+    "task": "Buy milk",
+    "status": "pending"
+}</pre>
+
+                <h3>2. A List of Tasks (List of Dictionaries)</h3>
+                <p>Since we have many tasks, we put them inside a list.</p>
+                <pre class="code-block">
+todos = [
+    { "task": "Buy milk", "status": "pending" },      # Index 0
+    { "task": "Walk dog", "status": "completed" },    # Index 1
+    { "task": "Do homework", "status": "pending" }    # Index 2
+]</pre>
+            </section>
+
+            <section class="operations">
+                <h2>How to Access and Modify Data</h2>
+                <p>To work with this structure, you combine the rules of lists (indexing) with the rules of dictionaries
+                    (keys).</p>
+
+                <div class="code-explanation">
+                    <h3>1. Accessing a Specific Item</h3>
+                    <p><strong>Syntax:</strong> <code>list_name[index][key]</code></p>
+                    <pre class="code-block">
+# Get the first task's name
+print(todos[0]["task"])  
+# Output: "Buy milk"
+
+# Get the second task's status
+print(todos[1]["status"]) 
+# Output: "completed"</pre>
+                </div>
+
+                <div class="code-explanation">
+                    <h3>2. Modifying Data</h3>
+                    <p>You can change values just like you would with a normal variable.</p>
+                    <pre class="code-block">
+# Mark the first task as completed
+todos[0]["status"] = "completed"
+
+# Change the name of the last task
+todos[2]["task"] = "Finish Python Project"</pre>
+                </div>
+
+                <div class="code-explanation">
+                    <h3>3. Adding a New Item</h3>
+                    <p>Since it's a list, you use <code>.append()</code>. You append a new dictionary.</p>
+                    <pre class="code-block">
+new_task = {
+    "task": "Call Mom",
+    "status": "pending"
+}
+
+todos.append(new_task)</pre>
+                </div>
+            </section>
+
+            <section class="looping">
+                <h2>Looping Through the Data</h2>
+                <p>This is the most common pattern you will see in apps. We loop through the list, and for each item
+                    (dictionary), we access its keys.</p>
+
+                <pre class="code-block">
+for todo in todos:
+    # 'todo' is the dictionary for the current iteration
+    print(f"Task: {todo['task']} - Status: {todo['status']}")
+
+# Output:
+# Task: Buy milk - Status: completed
+# Task: Walk dog - Status: completed
+# Task: Finish Python Project - Status: pending
+# Task: Call Mom - Status: pending</pre>
+            </section>
+
+            <section class="practice">
+                <h2>Practice Exercises</h2>
+
+                <h3>Exercise 1: Student Grades</h3>
+                <p>Create a list of dictionaries representing students. Each student should have a <code>"name"</code>
+                    and a <code>"grade"</code>.</p>
+                <details>
+                    <summary>Show Solution</summary>
+                    <pre class="code-block">
+students = [
+    {"name": "Alice", "grade": 85},
+    {"name": "Bob", "grade": 92},
+    {"name": "Charlie", "grade": 78}
+]
+
+# Print Bob's grade
+print(students[1]["grade"])</pre>
+                </details>
+
+                <h3>Exercise 2: Finding a Value</h3>
+                <p>Loop through the students list above and print the name of any student with a grade higher than 90.
+                </p>
+                <details>
+                    <summary>Show Solution</summary>
+                    <pre class="code-block">
+for student in students:
+    if student["grade"] > 90:
+        print(student["name"])
+# Output: Bob</pre>
+                </details>
+            </section>
+
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Introduction to Programming (Python)</p>
+    </footer>
+</body>
+
+</html>

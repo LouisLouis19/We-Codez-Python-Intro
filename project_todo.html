@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project 3: To-Do App - Introduction to Programming</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .code-explanation {
+            background-color: #f9f9f9;
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .line-number {
+            font-weight: bold;
+            color: #555;
+            margin-right: 10px;
+        }
+
+        .concept-box {
+            background-color: #e7f3fe;
+            border: 1px solid #b6d4fe;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .concept-title {
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .data-vis {
+            font-family: monospace;
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Introduction to Programming</h1>
+        <h2>Project 3: To-Do Application Breakdown</h2>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Programming Basics</a></li>
+                    <li><a href="if_else_statement.html">If/Else Statements</a></li>
+                    <li><a href="for_loops.html">For Loops</a></li>
+                    <li><a href="while_loops.html">While Loops</a></li>
+                    <li><a href="functions_1.html">Functions I</a></li>
+                    <li><a href="functions_2.html">Functions II</a></li>
+                    <li><a href="data-structures_1.html">Data Structures I</a></li>
+                    <li><a href="data-structures_2.html">Data Structures II</a></li>
+                    <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+                    <li><a href="libraries.html">Libraries & Imports</a></li>
+                    <li><a href="debugging.html">Debugging</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <p><a href="projects.html">&larr; Back to Projects</a></p>
+
+            <section class="overview">
+                <h2>The Big Picture: Data Structures</h2>
+                <p>
+                    Unlike the previous projects which just calculated numbers on the fly, this project needs to
+                    <strong>remember</strong> things. It needs a memory storage.
+                </p>
+                <div class="concept-box">
+                    <span class="concept-title">Data Structure: List of Dictionaries</span>
+                    <p>We need to store a list of tasks. Each task has two pieces of information: the
+                        <strong>Name</strong> ("Buy Milk") and the <strong>Status</strong> (Done or Not Done).
+                    </p>
+                    <p>We represent this as a <strong>List</strong> (the container) filled with
+                        <strong>Dictionaries</strong> (the individual tasks).
+                    </p>
+
+                    <div class="data-vis">
+                        todos = [
+                        { "task": "Buy milk", "completed": False }, # Index 0
+                        { "task": "Walk the dog", "completed": True }, # Index 1
+                        { "task": "Do homework", "completed": False } # Index 2
+                        ]</div>
+                </div>
+            </section>
+
+            <section class="backend">
+                <h2>Part 1: The Database Manager (backend_todo.py)</h2>
+                <p>This file manages our <code>todos</code> list. It is the only file allowed to touch the data.</p>
+
+                <div class="code-explanation">
+                    <h3>1. The Global Variable</h3>
+                    <p><span class="line-number">Line 3:</span></p>
+                    <pre class="code-block">todos = []</pre>
+                    <p>This empty list is initialized when the program starts. It lives in the memory of the backend.
+                    </p>
+                </div>
+
+                <div class="code-explanation">
+                    <h3>2. Creating a New Task</h3>
+                    <p><span class="line-number">Lines 15-20:</span></p>
+                    <pre class="code-block">
+def add_todo(task_name):
+    new_todo = {} 
+    new_todo["task"] = task_name
+    new_todo["completed"] = False
+    todos.append(new_todo)</pre>
+                    <p>
+                        1. We create a new empty dictionary: <code>{}</code>.
+                        <br>2. We set the key <code>"task"</code> to whatever the user typed.
+                        <br>3. We set the key <code>"completed"</code> to <code>False</code> (default).
+                        <br>4. We <code>append</code> (add) this dictionary to the end of our main <code>todos</code>
+                        list.
+                    </p>
+                </div>
+
+                <div class="code-explanation">
+                    <h3>3. Updating data by Index</h3>
+                    <p><span class="line-number">Lines 28-32:</span></p>
+                    <pre class="code-block">
+def check_todo(index): 
+    # todos[index] gives us the specific dictionary, e.g., the one at 0
+    activity = todos[index] 
+    activity["completed"] = True</pre>
+                    <p>
+                        We use the <strong>Index</strong> (position number) to find the exact task.
+                        <br>If <code>index</code> is 0, <code>todos[0]</code> gives us
+                        <code>{"task": "Buy milk", "completed": False}</code>.
+                        <br>We then change that specific dictionary's "completed" value to <code>True</code>.
+                    </p>
+                </div>
+            </section>
+
+            <section class="frontend">
+                <h2>Part 2: The Interface (todo_app.py)</h2>
+
+                <div class="code-explanation">
+                    <h3>1. Viewing the Data (The For Loop)</h3>
+                    <p><span class="line-number">Lines 18-25:</span></p>
+                    <pre class="code-block">
+if choice == '1':
+    todos = backend_todo.list_todos() 
+    for i, todo in enumerate(todos):
+        status = "[x]" if todo["completed"] else "[ ]"
+        print(f"{i}. {status} {todo['task']}")</pre>
+                    <p>
+                        Here we need to show the list to the user.
+                    <ul>
+                        <li><code>backend_todo.list_todos()</code>: Fetches the raw data.</li>
+                        <li><code>enumerate(todos)</code>: A fancy loop that gives us both the item (<code>todo</code>)
+                            AND its position number (<code>i</code>). We need <code>i</code> so the user can say "Delete
+                            number 2".</li>
+                        <li><code>todo['task']</code>: Accesses the name of the task from the dictionary.</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div class="code-explanation">
+                    <h3>2. User Actions with Indices</h3>
+                    <p><span class="line-number">Lines 32-38:</span></p>
+                    <pre class="code-block">
+index = int(input("Enter index to check: "))
+if backend_todo.check_todo(index):
+    # ...</pre>
+                    <p>
+                        The user sees a list like:
+                        <br><code>0. [ ] Buy milk</code>
+                        <br><code>1. [x] Walk dog</code>
+                        <br>If they want to complete "Buy milk", they type <code>0</code>. The frontend converts this to
+                        an integer and sends it to the backend to update the database.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Introduction to Programming (Python)</p>
+    </footer>
+</body>
+
+</html>

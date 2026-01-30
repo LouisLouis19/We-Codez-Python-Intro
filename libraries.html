@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to Programming - Libraries & Imports</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Introduction to Programming</h1>
+        <h2>Python Libraries and Imports</h2>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Programming Basics</a></li>
+                    <li><a href="if_else_statement.html">If/Else Statements</a></li>
+                    <li><a href="for_loops.html">For Loops</a></li>
+                    <li><a href="while_loops.html">While Loops</a></li>
+                    <li><a href="functions_1.html">Functions I</a></li>
+                    <li><a href="functions_2.html">Functions II</a></li>
+                    <li><a href="data-structures_1.html">Data Structures I</a></li>
+                    <li><a href="data-structures_2.html">Data Structures II</a></li>
+                    <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+                    <li><a href="debugging.html">Debugging</a></li>
+                    <li><a href="libraries.html" class="active">Libraries & Imports</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <section class="overview">
+                <h2>Overview</h2>
+                <p>
+                    Imagine you are building a house. You don't make every hammer, saw, and drill yourself; you buy a
+                    toolbox that already has them!
+                </p>
+                <p>
+                    In Python, <strong>Libraries</strong> (or <strong>Modules</strong>) are like those toolboxes. They
+                    are collections of code that others have written to solve common problems, so you don't have to
+                    reinvent the wheel.
+                </p>
+            </section>
+
+            <section class="what-is-module">
+                <h2>What is a Module?</h2>
+                <p>
+                    A module is simply a file containing Python code (functions, variables, classes). Python comes with
+                    a huge collection of modules built-in, known as the <strong>Standard Library</strong>.
+                </p>
+                <p>
+                    To use these tools, you need to <strong>import</strong> them into your code.
+                </p>
+            </section>
+
+            <section class="how-to-import">
+                <h2>How to Import Modules</h2>
+                <p>There are a few ways to bring a module's code into your program.</p>
+
+                <h3>1. Import the entire module</h3>
+                <p>Use the <code>import</code> keyword followed by the module name.</p>
+                <pre class="code-block">
+import math
+
+print(math.sqrt(16))  # Output: 4.0</pre>
+                <p>Note that you have to use <code>math.</code> before using any function from the module.</p>
+
+                <h3>2. Import specific items</h3>
+                <p>If you only need one specific tool, you can import just that.</p>
+                <pre class="code-block">
+from random import randint
+
+number = randint(1, 10) # Generates a random number between 1 and 10
+print(number)</pre>
+                <p>Here, you don't need to use <code>random.</code> prefix.</p>
+
+                <h3>3. Import with an alias (nickname)</h3>
+                <p>You can give a module a shorter name to make it easier to type.</p>
+                <pre class="code-block">
+import datetime as dt
+
+current_time = dt.datetime.now()
+print(current_time)</pre>
+            </section>
+
+            <section class="common-libraries">
+                <h2>Common Standard Libraries</h2>
+                <p>Here are some super useful modules that come with Python:</p>
+
+                <h3>The <code>math</code> Module</h3>
+                <p>Provides mathematical functions.</p>
+                <ul>
+                    <li><code>math.sqrt(x)</code>: Returns the square root of x.</li>
+                    <li><code>math.ceil(x)</code>: Rounds x up to the nearest integer.</li>
+                    <li><code>math.floor(x)</code>: Rounds x down to the nearest integer.</li>
+                    <li><code>math.pi</code>: The constant value of PI (3.14159...).</li>
+                </ul>
+                <pre class="code-block">
+import math
+
+print(math.ceil(4.2))   # Output: 5
+print(math.floor(4.9))  # Output: 4</pre>
+
+                <h3>The <code>random</code> Module</h3>
+                <p>Great for games and simulations where you need chance.</p>
+                <ul>
+                    <li><code>random.randint(a, b)</code>: Returns a random integer between a and b (inclusive).</li>
+                    <li><code>random.choice(list)</code>: Picks a random element from a list.</li>
+                    <li><code>random.random()</code>: Returns a random float between 0.0 and 1.0.</li>
+                </ul>
+                <pre class="code-block">
+import random
+
+colors = ["red", "blue", "green"]
+print(random.choice(colors))  # Output: (could be any of the three)</pre>
+            </section>
+
+            <section class="custom-modules">
+                <h2>Creating Your Own Modules</h2>
+                <p>
+                    You aren't limited to just Python's built-in modules. You can create your own! This is super useful
+                    for organizing your code, especially in larger projects.
+                </p>
+                <p>
+                    Any Python file ending in <code>.py</code> can be a module.
+                </p>
+
+                <h3>How to do it:</h3>
+                <ol>
+                    <li><strong>Create a file</strong> with functions you want to reuse (e.g.,
+                        <code>my_tools.py</code>).
+                    </li>
+                    <li><strong>Import it</strong> in another file using <code>import my_tools</code>.</li>
+                    <li><strong>Use it</strong> by calling <code>my_tools.function_name()</code>.</li>
+                </ol>
+
+                <h3>Example:</h3>
+                <p><strong>File 1: <code>greetings.py</code> (The Module)</strong></p>
+                <pre class="code-block">
+def say_hello(name):
+    return "Hello, " + name + "!"</pre>
+
+                <p><strong>File 2: <code>main.py</code> (Your Program)</strong></p>
+                <pre class="code-block">
+import greetings
+
+message = greetings.say_hello("Alice")
+print(message)  # Output: Hello, Alice!</pre>
+
+                <p>
+                    We will see this in action in the <a href="projects.html"><strong>Project Breakdowns</strong></a>
+                    page!
+                </p>
+            </section>
+
+            <section class="practice">
+                <h2>Practice</h2>
+
+                <h3>1. Dice Roll</h3>
+                <p>Write a program that simulates rolling a 6-sided die using the <code>random</code> module.</p>
+                <details>
+                    <summary>Solution</summary>
+                    <div>
+                        <pre class="code-block">
+import random
+
+roll = random.randint(1, 6)
+print("You rolled a:", roll)</pre>
+                    </div>
+                </details>
+
+                <h3>2. Circle Area Calculator</h3>
+                <p>Calculate the area of a circle with radius 5 using <code>math.pi</code>.</p>
+                <details>
+                    <summary>Solution</summary>
+                    <div>
+                        <pre class="code-block">
+import math
+
+radius = 5
+area = math.pi * (radius ** 2)
+print("Area:", area)</pre>
+                    </div>
+                </details>
+            </section>
+
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Introduction to Programming (Python)</p>
+    </footer>
+</body>
+
+</html>

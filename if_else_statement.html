@@ -1,89 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction to Programming - If/Else Statements</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Introduction to Programming</h1>
-      <h2>Control Flow: If/Else Statements</h2>
-    </header>
 
-    <div class="container">
-      <aside class="sidebar">
-        <nav>
-          <ul>
-            <li><a href="index.html">Programming Basics</a></li>
-            <li>
-              <a href="if_else_statement.html" class="active"
-                >If/Else Statements</a
-              >
-            </li>
-            <li><a href="for_loops.html">For Loops</a></li>
-            <li><a href="while_loops.html">While Loops</a></li>
-            <li><a href="functions_1.html">Functions I</a></li>
-            <li><a href="functions_2.html">Functions II</a></li>
-            <li><a href="data-structures_1.html">Data Structures I</a></li>
-            <li>
-              <a href="data-structures_2.html">Data Structures II</a>
-            </li>
-            <li><a href="debugging.html">Debugging</a></li>
-          </ul>
-        </nav>
-      </aside>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to Programming - If/Else Statements</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-      <main>
-        <section class="overview">
-          <h2>Overview</h2>
-          <p>
-              This section introduces conditional statements in Python, with a focus on the <code>if/else</code> structure. Conditional statements are essential for decision-making in programming, allowing your code to perform different actions based on specific conditions. By understanding and using <code>if</code> and <code>else</code> statements effectively, you can make your programs more dynamic and responsive.
-          </p>
+<body>
+  <header>
+    <h1>Introduction to Programming</h1>
+    <h2>Control Flow: If/Else Statements</h2>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Programming Basics</a></li>
+          <li>
+            <a href="if_else_statement.html" class="active">If/Else Statements</a>
+          </li>
+          <li><a href="for_loops.html">For Loops</a></li>
+          <li><a href="while_loops.html">While Loops</a></li>
+          <li><a href="functions_1.html">Functions I</a></li>
+          <li><a href="functions_2.html">Functions II</a></li>
+          <li><a href="data-structures_1.html">Data Structures I</a></li>
+          <li>
+            <a href="data-structures_2.html">Data Structures II</a>
+          </li>
+          <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+          <li><a href="debugging.html">Debugging</a></li>
+          <li><a href="libraries.html">Libraries & Imports</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <section class="overview">
+        <h2>Overview</h2>
+        <p>
+          This section introduces conditional statements in Python, with a focus on the <code>if/else</code> structure.
+          Conditional statements are essential for decision-making in programming, allowing your code to perform
+          different actions based on specific conditions. By understanding and using <code>if</code> and
+          <code>else</code> statements effectively, you can make your programs more dynamic and responsive.
+        </p>
       </section>
-      
+
       <section class="conditionals">
-          <h2>If/Else Statements</h2>
-          <p>
-              Conditional statements enable your program to make decisions and execute certain blocks of code depending on whether specific conditions are met. The <code>if/else</code> structure is one of the most common ways to create conditional logic, making it a fundamental tool for controlling program flow.
-          </p>
-      
-          <h3>Basic Structure</h3>
-          <p>
-              The syntax for an <code>if/else</code> statement in Python is simple:
-          </p>
-          <pre class="code-block">
+        <h2>If/Else Statements</h2>
+        <p>
+          Conditional statements enable your program to make decisions and execute certain blocks of code depending on
+          whether specific conditions are met. The <code>if/else</code> structure is one of the most common ways to
+          create conditional logic, making it a fundamental tool for controlling program flow.
+        </p>
+
+        <h3>Basic Structure</h3>
+        <p>
+          The syntax for an <code>if/else</code> statement in Python is simple:
+        </p>
+        <pre class="code-block">
 if condition:
     # Code to execute if the condition is True
 else:
     # Code to execute if the condition is False</pre>
-      
-          <ul>
-              <li><strong>If</strong>: The <code>if</code> keyword introduces the condition. If the condition evaluates to <code>True</code>, the code inside the <code>if</code> block executes.</li>
-              <li><strong>Else</strong>: The <code>else</code> block is optional and only runs if the <code>if</code> condition is <code>False</code>. If there’s no <code>else</code> block, the program skips it and moves on.</li>
-              <li><strong>Condition</strong>: The condition is typically an expression that evaluates to a Boolean value (<code>True</code> or <code>False</code>). Python will evaluate the condition, and only one of the blocks will execute based on whether the condition is met.</li>
-          </ul>
-      
-          <h3>Example</h3>
-          <p>Let’s look at a simple example to demonstrate the <code>if/else</code> structure:</p>
-          <pre class="code-block">
+
+        <ul>
+          <li><strong>If</strong>: The <code>if</code> keyword introduces the condition. If the condition evaluates to
+            <code>True</code>, the code inside the <code>if</code> block executes.
+          </li>
+          <li><strong>Else</strong>: The <code>else</code> block is optional and only runs if the <code>if</code>
+            condition is <code>False</code>. If there’s no <code>else</code> block, the program skips it and moves on.
+          </li>
+          <li><strong>Condition</strong>: The condition is typically an expression that evaluates to a Boolean value
+            (<code>True</code> or <code>False</code>). Python will evaluate the condition, and only one of the blocks
+            will execute based on whether the condition is met.</li>
+        </ul>
+
+        <h3>Example</h3>
+        <p>Let’s look at a simple example to demonstrate the <code>if/else</code> structure:</p>
+        <pre class="code-block">
 age = 20
 
 if age >= 18:
     print("You are an adult.")
 else:
     print("You are a minor.")</pre>
-      
-          <p>
-              In this example, the program checks if the variable <code>age</code> is 18 or older. If the condition is <code>True</code>, it prints "You are an adult." If it’s <code>False</code>, it prints "You are a minor."
-          </p>
-      
-          <h3>Nested If/Else Statements</h3>
-          <p>
-              You can nest <code>if/else</code> statements within each other to handle more complex conditions. This structure is especially helpful when decisions depend on multiple related factors.
-          </p>
-          <pre class="code-block">
+
+        <p>
+          In this example, the program checks if the variable <code>age</code> is 18 or older. If the condition is
+          <code>True</code>, it prints "You are an adult." If it’s <code>False</code>, it prints "You are a minor."
+        </p>
+
+        <h3>Nested If/Else Statements</h3>
+        <p>
+          You can nest <code>if/else</code> statements within each other to handle more complex conditions. This
+          structure is especially helpful when decisions depend on multiple related factors.
+        </p>
+        <pre class="code-block">
 age = 17
 has_permission = True
 
@@ -94,49 +109,55 @@ else:
         print("You are a minor, but you have permission.")
     else:
         print("You are a minor and do not have permission.")</pre>
-          <p>
-              In this example, if <code>age</code> is under 18, a second <code>if</code> statement checks whether <code>has_permission</code> is <code>True</code>. This nested approach allows for more detailed decision-making.
-          </p>
-      
-          <h3>Common Pitfalls</h3>
-          <ul>
-              <li>
-                  <strong>Indentation Errors</strong>: Each block of code inside <code>if</code>, <code>elif</code>, or <code>else</code> statements must be consistently indented. In Python, indentation is crucial for defining the scope of these blocks.
-              </li>
-              <li>
-                  <strong>Order of Conditions</strong>: In a series of <code>if</code> and <code>elif</code> statements, Python stops evaluating once it finds a <code>True</code> condition. Make sure conditions are ordered logically to avoid unintended results.
-              </li>
-          </ul>
+        <p>
+          In this example, if <code>age</code> is under 18, a second <code>if</code> statement checks whether
+          <code>has_permission</code> is <code>True</code>. This nested approach allows for more detailed
+          decision-making.
+        </p>
+
+        <h3>Common Pitfalls</h3>
+        <ul>
+          <li>
+            <strong>Indentation Errors</strong>: Each block of code inside <code>if</code>, <code>elif</code>, or
+            <code>else</code> statements must be consistently indented. In Python, indentation is crucial for defining
+            the scope of these blocks.
+          </li>
+          <li>
+            <strong>Order of Conditions</strong>: In a series of <code>if</code> and <code>elif</code> statements,
+            Python stops evaluating once it finds a <code>True</code> condition. Make sure conditions are ordered
+            logically to avoid unintended results.
+          </li>
+        </ul>
       </section>
-      
 
-        <section class="else-if">
-          <h2>Elif and Else Statements</h2>
-          <p>
-            The <code>if</code> statement allows us to execute code based on a
-            condition. However, when you need to check multiple conditions,
-            using just an <code>if</code> statement can be inefficient. This is
-            where <code>elif</code> (short for "else if") and
-            <code>else</code> come into play.
-          </p>
 
-          <p>
-            <strong>Elif</strong> statements help handle multiple conditions.
-            Once a condition in an <code>if</code> or <code>elif</code> block
-            evaluates as true, the corresponding block of code is executed, and
-            the remaining conditions are ignored.
-          </p>
+      <section class="else-if">
+        <h2>Elif and Else Statements</h2>
+        <p>
+          The <code>if</code> statement allows us to execute code based on a
+          condition. However, when you need to check multiple conditions,
+          using just an <code>if</code> statement can be inefficient. This is
+          where <code>elif</code> (short for "else if") and
+          <code>else</code> come into play.
+        </p>
 
-          <p>
-            The <strong>else</strong> block serves as a "catch-all" for
-            situations where none of the <code>if</code> or
-            <code>elif</code> conditions are met. It ensures that your code
-            still responds to inputs even when they don't match any specific
-            condition.
-          </p>
+        <p>
+          <strong>Elif</strong> statements help handle multiple conditions.
+          Once a condition in an <code>if</code> or <code>elif</code> block
+          evaluates as true, the corresponding block of code is executed, and
+          the remaining conditions are ignored.
+        </p>
 
-          <p>Example:</p>
-          <pre class="code-block">
+        <p>
+          The <strong>else</strong> block serves as a "catch-all" for
+          situations where none of the <code>if</code> or
+          <code>elif</code> conditions are met. It ensures that your code
+          still responds to inputs even when they don't match any specific
+          condition.
+        </p>
+
+        <p>Example:</p>
+        <pre class="code-block">
 score = 85
         
 if score >= 90:
@@ -146,351 +167,343 @@ elif score >= 80:
 elif score >= 70:
     print("Grade: C")
 else:
-    print("Grade: F")</pre
-          >
+    print("Grade: F")</pre>
 
+        <p>
+          <strong>Explanation:</strong> In this example, the program checks a
+          score to determine the appropriate grade. The first condition checks
+          if the score is greater than or equal to 90. If true, it prints
+          "Grade: A". If false, it moves to the next
+          <code>elif</code> statement, checking if the score is greater than
+          or equal to 80, and so on. Finally, if none of the conditions are
+          true, the <code>else</code> block runs, printing "Grade: F". Note
+          that once a condition is true, the remaining conditions are skipped.
+        </p>
+
+        <p>
+          This conditional structure ensures flexibility in decision-making by
+          providing multiple options for varying conditions. It also keeps
+          your code clean and easy to follow, avoiding complex and nested
+          <code>if</code> statements.
+        </p>
+      </section>
+
+      <section class="logical-operators">
+        <h2>Logical Operators in Python</h2>
+        <p>
+          Logical operators allow you to combine multiple conditions in your
+          code, enabling you to perform complex checks based on several
+          criteria. Python has three primary logical operators:
+        </p>
+        <ul>
+          <li><strong>AND</strong></li>
+          <li><strong>OR</strong></li>
+          <li><strong>NOT</strong></li>
+        </ul>
+
+        <section class="operator" id="and-operator">
+          <h3>AND Operator (<code>and</code>)</h3>
           <p>
-            <strong>Explanation:</strong> In this example, the program checks a
-            score to determine the appropriate grade. The first condition checks
-            if the score is greater than or equal to 90. If true, it prints
-            "Grade: A". If false, it moves to the next
-            <code>elif</code> statement, checking if the score is greater than
-            or equal to 80, and so on. Finally, if none of the conditions are
-            true, the <code>else</code> block runs, printing "Grade: F". Note
-            that once a condition is true, the remaining conditions are skipped.
+            The <code>and</code> operator checks if
+            <strong>both conditions</strong> are true. If either condition is
+            false, the entire expression will evaluate to false.
           </p>
-
-          <p>
-            This conditional structure ensures flexibility in decision-making by
-            providing multiple options for varying conditions. It also keeps
-            your code clean and easy to follow, avoiding complex and nested
-            <code>if</code> statements.
-          </p>
-        </section>
-
-        <section class="logical-operators">
-          <h2>Logical Operators in Python</h2>
-          <p>
-            Logical operators allow you to combine multiple conditions in your
-            code, enabling you to perform complex checks based on several
-            criteria. Python has three primary logical operators:
-          </p>
-          <ul>
-            <li><strong>AND</strong></li>
-            <li><strong>OR</strong></li>
-            <li><strong>NOT</strong></li>
-          </ul>
-
-          <section class="operator" id="and-operator">
-            <h3>AND Operator (<code>and</code>)</h3>
-            <p>
-              The <code>and</code> operator checks if
-              <strong>both conditions</strong> are true. If either condition is
-              false, the entire expression will evaluate to false.
-            </p>
-            <pre class="code-block">
+          <pre class="code-block">
 age = 25
 if age >= 18 and age <= 35:
     print("You are a young adult.")</pre>
-            <p>
-              <b>Explanation:</b> The condition
-              <code>age >= 18 and age <= 35</code> will only be true if
-              <code>age</code> is both 18 or older <strong>and</strong> 35 or
-              younger. If <code>age</code> were 40, this statement would not
-              print anything because <code>age <= 35</code> would be false.
-            </p>
+          <p>
+            <b>Explanation:</b> The condition
+            <code>age >= 18 and age <= 35</code> will only be true if
+            <code>age</code> is both 18 or older <strong>and</strong> 35 or
+            younger. If <code>age</code> were 40, this statement would not
+            print anything because <code>age <= 35</code> would be false.
+          </p>
 
           </br>
-            <h4>More Examples with AND</h4>
-            <pre class="code-block">
+          <h4>More Examples with AND</h4>
+          <pre class="code-block">
 salary = 5000
 years_experience = 3
 if salary > 3000 and years_experience > 2:
     print("Eligible for senior position.")</pre>
-            <p>
-              This example checks that the person has a salary greater than 3000
-              <strong>and</strong> more than 2 years of experience.
-            </p>
-          </section>
+          <p>
+            This example checks that the person has a salary greater than 3000
+            <strong>and</strong> more than 2 years of experience.
+          </p>
+        </section>
 
-          <section class="operator" id="or-operator">
-            <h3>OR Operator (<code>or</code>)</h3>
-            <p>
-              The <code>or</code> operator checks if
-              <strong>at least one condition</strong> is true. If any one of the
-              conditions is true, the entire expression will evaluate to true.
-            </p>
-            <pre class="code-block">
+        <section class="operator" id="or-operator">
+          <h3>OR Operator (<code>or</code>)</h3>
+          <p>
+            The <code>or</code> operator checks if
+            <strong>at least one condition</strong> is true. If any one of the
+            conditions is true, the entire expression will evaluate to true.
+          </p>
+          <pre class="code-block">
 temperature = 30
 if temperature < 15 or temperature > 25:
     print("The weather is outside the comfortable range.")</pre>
-            <p>
-              <b>Explanation:</b> This code checks if the temperature is below 15
-              <strong>or</strong> above 25. If either condition is true, the
-              message will print.
-            </p>
+          <p>
+            <b>Explanation:</b> This code checks if the temperature is below 15
+            <strong>or</strong> above 25. If either condition is true, the
+            message will print.
+          </p>
           </br>
 
-            <h4>More Examples with OR</h4>
-            <pre class="code-block">
+          <h4>More Examples with OR</h4>
+          <pre class="code-block">
 day = "Saturday"
 if day == "Saturday" or day == "Sunday":
     print("It's the weekend!")
             </pre>
-            <p>
-              This example checks if the day is either Saturday
-              <strong>or</strong> Sunday to determine if it's the weekend.
-            </p>
-          </section>
+          <p>
+            This example checks if the day is either Saturday
+            <strong>or</strong> Sunday to determine if it's the weekend.
+          </p>
+        </section>
 
-          <section class="operator" id="not-operator">
-            <h3>NOT Operator (<code>not</code>)</h3>
-            <p>
-              The <code>not</code> operator reverses the Boolean value of a
-              condition. If the condition is true, <code>not</code> makes it
-              false, and if it’s false, <code>not</code> makes it true.
-            </p>
-            <pre class="code-block">
+        <section class="operator" id="not-operator">
+          <h3>NOT Operator (<code>not</code>)</h3>
+          <p>
+            The <code>not</code> operator reverses the Boolean value of a
+            condition. If the condition is true, <code>not</code> makes it
+            false, and if it’s false, <code>not</code> makes it true.
+          </p>
+          <pre class="code-block">
 is_raining = False
 if not is_raining:
     print("You can leave the umbrella at home.")</pre>
-            <p>
-              <b>Explanation:</b> <code>not is_raining</code> inverts the value of
-              <code>is_raining</code>. So if <code>is_raining</code> is false,
-              <code>not is_raining</code> is true, and the message will print.
-            </p>
+          <p>
+            <b>Explanation:</b> <code>not is_raining</code> inverts the value of
+            <code>is_raining</code>. So if <code>is_raining</code> is false,
+            <code>not is_raining</code> is true, and the message will print.
+          </p>
           </br>
 
-            <h4>More Examples with NOT</h4>
-            <pre class="code-block">
+          <h4>More Examples with NOT</h4>
+          <pre class="code-block">
         is_sunny = True
         if not is_sunny:
             print("It might be cloudy or rainy today.")
             </pre>
-            <p>
-              This example checks if <code>is_sunny</code> is false (i.e., it’s
-              not sunny) and prints a message accordingly.
-            </p>
-          </section>
+          <p>
+            This example checks if <code>is_sunny</code> is false (i.e., it’s
+            not sunny) and prints a message accordingly.
+          </p>
+        </section>
 
-          <style>
-            .summary table {
-              width: 100%;
-              border-collapse: collapse;
-            }
-            
-            .summary th, .summary td {
-              border: 1px solid #ccc;
-              padding: 8px;
-              text-align: left;
-            }
-            
-            .summary th {
-              background-color: #f2f2f2;
-              font-weight: bold;
-            }
-            
-            .summary td code {
-              font-family: monospace;
-              color: #333;
-            }
-          </style>
-          
-          <section class="summary">
-            <h3>Summary Table</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Operator</th>
-                  <th>Description</th>
-                  <th>Example</th>
-                  <th>Result</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>and</code></td>
-                  <td>True if <strong>both</strong> conditions are true</td>
-                  <td><code>True and False</code></td>
-                  <td>False</td>
-                </tr>
-                <tr>
-                  <td><code>or</code></td>
-                  <td>True if <strong>at least one</strong> condition is true</td>
-                  <td><code>True or False</code></td>
-                  <td>True</td>
-                </tr>
-                <tr>
-                  <td><code>not</code></td>
-                  <td>Reverses the Boolean value of a single condition</td>
-                  <td><code>not True</code></td>
-                  <td>False</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
+        <style>
+          .summary table {
+            width: 100%;
+            border-collapse: collapse;
+          }
 
-          <section class="additional-examples">
-            <h3>Additional Examples</h3>
-            <h4>AND Example</h4>
-            <pre class="code-block">
+          .summary th,
+          .summary td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+          }
+
+          .summary th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+          }
+
+          .summary td code {
+            font-family: monospace;
+            color: #333;
+          }
+        </style>
+
+        <section class="summary">
+          <h3>Summary Table</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Operator</th>
+                <th>Description</th>
+                <th>Example</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>and</code></td>
+                <td>True if <strong>both</strong> conditions are true</td>
+                <td><code>True and False</code></td>
+                <td>False</td>
+              </tr>
+              <tr>
+                <td><code>or</code></td>
+                <td>True if <strong>at least one</strong> condition is true</td>
+                <td><code>True or False</code></td>
+                <td>True</td>
+              </tr>
+              <tr>
+                <td><code>not</code></td>
+                <td>Reverses the Boolean value of a single condition</td>
+                <td><code>not True</code></td>
+                <td>False</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="additional-examples">
+          <h3>Additional Examples</h3>
+          <h4>AND Example</h4>
+          <pre class="code-block">
 age = 20
 has_license = True
 if age >= 18 and has_license:
     print("You are allowed to drive.")</pre>
 
-            <h4>OR Example</h4>
-            <pre class="code-block">
+          <h4>OR Example</h4>
+          <pre class="code-block">
 temperature = -5
 wind_speed = 30
 if temperature < 0 or wind_speed > 20:
     print("Weather conditions are extreme!")</pre>
 
-            <h4>NOT Example</h4>
-            <pre class="code-block">
+          <h4>NOT Example</h4>
+          <pre class="code-block">
 is_member = False
 if not is_member:
     print("Please sign up to become a member.")</pre>
-          </section>
         </section>
+      </section>
 
-        <section class="practice">
-          <h2>Practice</h2>
-          <p>
-            Try out these simple exercises to get comfortable with if/else
-            statements:
-          </p>
+      <section class="practice">
+        <h2>Practice</h2>
+        <p>
+          Try out these simple exercises to get comfortable with if/else
+          statements:
+        </p>
 
-          <h3>1. Positive or Negative</h3>
-          <p>Check if a number is positive or negative:</p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>1. Positive or Negative</h3>
+        <p>Check if a number is positive or negative:</p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 number = 4
 if number >= 0:
     print("Positive")
 else:
-    print("Negative")</pre
-            >
-          </details>
+    print("Negative")</pre>
+        </details>
 
-          <h3>2. Greater Than 10</h3>
-          <p>Check if a number is greater than 10:</p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>2. Greater Than 10</h3>
+        <p>Check if a number is greater than 10:</p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 number = 15
 if number > 10:
     print("Greater than 10")
 else:
-    print("Not greater than 10")</pre
-            >
-          </details>
+    print("Not greater than 10")</pre>
+        </details>
 
-          <h3>3. Check if a Number is Zero</h3>
-          <p>Write a program to check if a number is zero:</p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>3. Check if a Number is Zero</h3>
+        <p>Write a program to check if a number is zero:</p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 number = 0
 if number == 0:
     print("The number is zero.")
 else:
-    print("The number is not zero.")</pre
-            >
-          </details>
+    print("The number is not zero.")</pre>
+        </details>
 
-          <h3>4. Check if a String is Empty</h3>
-          <p>Check if a string is empty:</p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>4. Check if a String is Empty</h3>
+        <p>Check if a string is empty:</p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 text = ""
 if text == "":
     print("The string is empty.")
 else:
-    print("The string is not empty.")</pre
-            >
-          </details>
+    print("The string is not empty.")</pre>
+        </details>
 
-          <h3>5. Compare Two Numbers</h3>
-          <p>Check if one number is greater than another:</p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>5. Compare Two Numbers</h3>
+        <p>Check if one number is greater than another:</p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 a = 3
 b = 5
 if a > b:
     print("a is greater than b")
 else:
-    print("a is not greater than b")</pre
-            >
-          </details>
+    print("a is not greater than b")</pre>
+        </details>
 
-          <h3>6. Check if Someone Can Vote</h3>
-          <p>Check if a person is old enough to vote (18 years or older):</p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>6. Check if Someone Can Vote</h3>
+        <p>Check if a person is old enough to vote (18 years or older):</p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 age = 20
 if age >= 18:
     print("Eligible to vote")
 else:
-    print("Not eligible to vote")</pre
-            >
-          </details>
+    print("Not eligible to vote")</pre>
+        </details>
 
-          <h3>7. Check if a Number is Positive, Negative, or Zero</h3>
-          <p>Determine if a number is positive, negative, or zero:</p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>7. Check if a Number is Positive, Negative, or Zero</h3>
+        <p>Determine if a number is positive, negative, or zero:</p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 number = -1
 if number > 0:
     print("Positive")
 elif number == 0:
     print("Zero")
 else:
-    print("Negative")</pre
-            >
-          </details>
+    print("Negative")</pre>
+        </details>
 
-          <h3>8. Check if Someone is a Teenager</h3>
-          <p>Check if a person is a teenager (between 13 and 19):</p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>8. Check if Someone is a Teenager</h3>
+        <p>Check if a person is a teenager (between 13 and 19):</p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 age = 14
 if 13 <= age <= 19:
     print("Teenager")
 else:
-    print("Not a teenager")</pre
-            >
-          </details>
+    print("Not a teenager")</pre>
+        </details>
 
-          <h3>9. Simple Password Check</h3>
-          <p>Check if a given password matches a stored password:</p>
-          <details>
-            <summary>Solution</summary>
-            <pre class="code-block">
+        <h3>9. Simple Password Check</h3>
+        <p>Check if a given password matches a stored password:</p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
 password = "1234"
 entered_password = "1234"
 if entered_password == password:
     print("Access Granted")
 else:
-    print("Access Denied")</pre
-            >
-          </details>
-        </section>
+    print("Access Denied")</pre>
+        </details>
+      </section>
 
-        <p>
-          <a href="assignments/if-else-practice.html">Practice Exercises</a>
-        </p>
-      </main>
-    </div>
+      <p>
+        <a href="assignments/if-else-practice.html">Practice Exercises</a>
+      </p>
+    </main>
+  </div>
 
-    <footer>
-      <p>&copy; 2024 Introduction to Programming (Python)</p>
-    </footer>
-  </body>
+  <footer>
+    <p>&copy; 2024 Introduction to Programming (Python)</p>
+  </footer>
+</body>
+
 </html>

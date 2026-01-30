@@ -1,87 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction to Programming - Function Parameters and Scope</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Introduction to Programming</h1>
-      <h2>Function Parameters, Scope, and Built-in Functions</h2>
-    </header>
 
-    <div class="container">
-      <aside class="sidebar">
-        <nav>
-          <ul>
-            <li><a href="index.html">Programming Basics</a></li>
-            <li>
-              <a href="if_else_statement.html">If/Else Statements</a>
-            </li>
-            <li><a href="for_loops.html">For Loops</a></li>
-            <li><a href="while_loops.html">While Loops</a></li>
-            <li><a href="functions_1.html">Functions I</a></li>
-            <li>
-              <a href="functions_2.html" class="active">Functions II</a>
-            </li>
-            <li><a href="data-structures_1.html">Data Structures I</a></li>
-            <li>
-              <a href="data-structures_2.html">Data Structures II</a>
-            </li>
-            <li><a href="debugging.html">Debugging</a></li>
-          </ul>
-        </nav>
-      </aside>
-      <main>
-        <section class="overview">
-          <h2>Overview</h2>
-          <p>
-              This week, we dive deeper into Python functions, focusing on function parameters, scope, and built-in functions. Understanding these concepts is essential for writing clean, reusable code and helps in structuring programs more effectively. Functions allow us to organize code, make it modular, and reduce redundancy by encapsulating logic that can be reused.
-          </p>
-          <p>
-              Parameters and scope determine how functions interact with the data passed to them and variables within and outside of the function. This section will guide you through defining and using parameters, including setting defaults, using multiple parameters, and the advantages of each approach.
-          </p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to Programming - Function Parameters and Scope</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Introduction to Programming</h1>
+    <h2>Function Parameters, Scope, and Built-in Functions</h2>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Programming Basics</a></li>
+          <li>
+            <a href="if_else_statement.html">If/Else Statements</a>
+          </li>
+          <li><a href="for_loops.html">For Loops</a></li>
+          <li><a href="while_loops.html">While Loops</a></li>
+          <li><a href="functions_1.html">Functions I</a></li>
+          <li>
+            <a href="functions_2.html" class="active">Functions II</a>
+          </li>
+          <li><a href="data-structures_1.html">Data Structures I</a></li>
+          <li>
+            <a href="data-structures_2.html">Data Structures II</a>
+          </li>
+          <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+          <li><a href="debugging.html">Debugging</a></li>
+          <li><a href="libraries.html">Libraries & Imports</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main>
+      <section class="overview">
+        <h2>Overview</h2>
+        <p>
+          This week, we dive deeper into Python functions, focusing on function parameters, scope, and built-in
+          functions. Understanding these concepts is essential for writing clean, reusable code and helps in structuring
+          programs more effectively. Functions allow us to organize code, make it modular, and reduce redundancy by
+          encapsulating logic that can be reused.
+        </p>
+        <p>
+          Parameters and scope determine how functions interact with the data passed to them and variables within and
+          outside of the function. This section will guide you through defining and using parameters, including setting
+          defaults, using multiple parameters, and the advantages of each approach.
+        </p>
       </section>
-      
+
       <section class="function-parameters">
-          <h2>Function Parameters</h2>
-          <p>
-              Function parameters allow you to pass data into a function, making it more flexible and reusable. You define parameters in the function's definition, creating placeholders that will accept values when you call the function. These values, known as arguments, are provided when calling the function.
-          </p>
-          <p>Example:</p>
-          <pre class="code-block">
+        <h2>Function Parameters</h2>
+        <p>
+          Function parameters allow you to pass data into a function, making it more flexible and reusable. You define
+          parameters in the function's definition, creating placeholders that will accept values when you call the
+          function. These values, known as arguments, are provided when calling the function.
+        </p>
+        <p>Example:</p>
+        <pre class="code-block">
 def greet(name):
     print("Hello, " + name)
 
 greet("Alice")  # Output: Hello, Alice
 greet("Bob")    # Output: Hello, Bob</pre>
-          <p>
-              Here, <code>name</code> is a parameter that allows us to greet any user dynamically. <code>greet("Alice")</code> and <code>greet("Bob")</code> demonstrate how this function adapts to different inputs. The flexibility of parameters enables the function to be reused with different values.
-          </p>
-      
-          <h3>Default Parameters</h3>
-          <p>
-              In Python, you can assign default values to parameters. This means that if an argument is not provided for that parameter when the function is called, the default value will be used. This is especially useful when there’s a common value that works for most cases, but you still want the option to override it if needed.
-          </p>
-          <p>Example:</p>
-          <pre class="code-block">
+        <p>
+          Here, <code>name</code> is a parameter that allows us to greet any user dynamically.
+          <code>greet("Alice")</code> and <code>greet("Bob")</code> demonstrate how this function adapts to different
+          inputs. The flexibility of parameters enables the function to be reused with different values.
+        </p>
+
+        <h3>Default Parameters</h3>
+        <p>
+          In Python, you can assign default values to parameters. This means that if an argument is not provided for
+          that parameter when the function is called, the default value will be used. This is especially useful when
+          there’s a common value that works for most cases, but you still want the option to override it if needed.
+        </p>
+        <p>Example:</p>
+        <pre class="code-block">
 def greet(name, greeting="Hello"):
     print(greeting + ", " + name)
 
 greet("Alice")            # Output: Hello, Alice
 greet("Bob", "Hi")        # Output: Hi, Bob</pre>
-          <p>
-              In the above example, <code>greeting</code> has a default value of <code>"Hello"</code>. When <code>greet("Alice")</code> is called, the default greeting is used. When <code>greet("Bob", "Hi")</code> is called, the default greeting is overridden by <code>"Hi"</code>.
-          </p>
-      
-          <h4>Using Multiple Default Parameters</h4>
-          <p>
-              You can assign default values to multiple parameters in a function. However, all parameters with default values must come after any parameters without default values in the function definition.
-          </p>
-          <p>Example:</p>
-          <pre class="code-block">
+        <p>
+          In the above example, <code>greeting</code> has a default value of <code>"Hello"</code>. When
+          <code>greet("Alice")</code> is called, the default greeting is used. When <code>greet("Bob", "Hi")</code> is
+          called, the default greeting is overridden by <code>"Hi"</code>.
+        </p>
+
+        <h4>Using Multiple Default Parameters</h4>
+        <p>
+          You can assign default values to multiple parameters in a function. However, all parameters with default
+          values must come after any parameters without default values in the function definition.
+        </p>
+        <p>Example:</p>
+        <pre class="code-block">
 def describe_pet(pet_name, animal_type="dog", sound="woof"):
     print("I have a " + animal_type + " named " + pet_name + ".")
     print("It says " + sound + "!")
@@ -89,52 +107,69 @@ def describe_pet(pet_name, animal_type="dog", sound="woof"):
 describe_pet("Buddy")                 # Uses default values for animal_type and sound
 describe_pet("Milo", "cat", "meow")   # Overrides both defaults
 describe_pet("Charlie", sound="chirp") # Overrides only the sound</pre>
-          <p>
-              In this example, <code>animal_type</code> and <code>sound</code> have default values. When <code>describe_pet("Buddy")</code> is called, the defaults are used. With <code>describe_pet("Milo", "cat", "meow")</code>, both defaults are overridden. In <code>describe_pet("Charlie", sound="chirp")</code>, only the <code>sound</code> parameter is overridden, while <code>animal_type</code> retains its default.
-          </p>
-      
-          <h4>Positional vs. Keyword Arguments</h4>
-          <p>
-              When calling a function, arguments can be passed in two ways:
-              <ul>
-                  <li><strong>Positional arguments:</strong> The arguments are assigned to parameters based on their position in the call.</li>
-                  <li><strong>Keyword arguments:</strong> Arguments are passed as key-value pairs, allowing you to specify which parameter each value should correspond to, regardless of their position in the function call.</li>
-              </ul>
-          </p>
-          <p>Example:</p>
-          <pre class="code-block">
+        <p>
+          In this example, <code>animal_type</code> and <code>sound</code> have default values. When
+          <code>describe_pet("Buddy")</code> is called, the defaults are used. With
+          <code>describe_pet("Milo", "cat", "meow")</code>, both defaults are overridden. In
+          <code>describe_pet("Charlie", sound="chirp")</code>, only the <code>sound</code> parameter is overridden,
+          while <code>animal_type</code> retains its default.
+        </p>
+
+        <h4>Positional vs. Keyword Arguments</h4>
+        <p>
+          When calling a function, arguments can be passed in two ways:
+        <ul>
+          <li><strong>Positional arguments:</strong> The arguments are assigned to parameters based on their position in
+            the call.</li>
+          <li><strong>Keyword arguments:</strong> Arguments are passed as key-value pairs, allowing you to specify which
+            parameter each value should correspond to, regardless of their position in the function call.</li>
+        </ul>
+        </p>
+        <p>Example:</p>
+        <pre class="code-block">
 def introduce(first_name, last_name, age):
     print(f"My name is {first_name} {last_name} and I am {age} years old.")
 
 introduce("Jane", "Doe", 28)            # Positional
 introduce(age=30, first_name="John", last_name="Smith")  # Keyword</pre>
-          <p>
-              In the example above, the positional call <code>introduce("Jane", "Doe", 28)</code> assigns values based on their order, while the keyword argument call <code>introduce(age=30, first_name="John", last_name="Smith")</code> assigns them explicitly, making the code more readable.
-          </p>
-      
-          <h4>Importance of Default Parameters</h4>
-          <p>
-              Default parameters are useful when you want to provide flexible function interfaces, allowing users to call the function with fewer arguments while still having the option to override defaults if needed. This makes your functions more versatile, easier to use in different scenarios, and helps ensure that some values are always provided, improving code robustness.
-          </p>
-          
+        <p>
+          In the example above, the positional call <code>introduce("Jane", "Doe", 28)</code> assigns values based on
+          their order, while the keyword argument call
+          <code>introduce(age=30, first_name="John", last_name="Smith")</code> assigns them explicitly, making the code
+          more readable.
+        </p>
+
+        <h4>Importance of Default Parameters</h4>
+        <p>
+          Default parameters are useful when you want to provide flexible function interfaces, allowing users to call
+          the function with fewer arguments while still having the option to override defaults if needed. This makes
+          your functions more versatile, easier to use in different scenarios, and helps ensure that some values are
+          always provided, improving code robustness.
+        </p>
+
       </section>
-      
+
       <section class="scope">
         <h2>Scope</h2>
         <p>
-          Scope refers to the visibility and lifetime of variables within different parts of a program. In Python, variables can have two primary levels of scope, which determine where in the code those variables can be accessed:
+          Scope refers to the visibility and lifetime of variables within different parts of a program. In Python,
+          variables can have two primary levels of scope, which determine where in the code those variables can be
+          accessed:
         </p>
         <ul>
-          <li><strong>Local Scope:</strong> Variables defined inside a function, which are accessible only within that function.</li>
-          <li><strong>Global Scope:</strong> Variables defined outside any function, which are accessible from any part of the program.</li>
+          <li><strong>Local Scope:</strong> Variables defined inside a function, which are accessible only within that
+            function.</li>
+          <li><strong>Global Scope:</strong> Variables defined outside any function, which are accessible from any part
+            of the program.</li>
         </ul>
         <p>
           Understanding scope helps in managing variables more effectively and preventing conflicts in larger programs.
         </p>
-      
+
         <h3>Local Scope</h3>
         <p>
-          Local scope refers to variables that are defined within a function. These variables are only accessible within that function, and trying to access them outside the function will result in an error.
+          Local scope refers to variables that are defined within a function. These variables are only accessible within
+          that function, and trying to access them outside the function will result in an error.
         </p>
         <p>Example:</p>
         <pre class="code-block">
@@ -144,14 +179,17 @@ def my_function():
 
 my_function()
 print(x)  # This will cause an error because x is not accessible here</pre>
-      
+
         <p>
-          In the example above, the variable <code>x</code> is created within <code>my_function()</code> and is local to that function. Attempting to access it outside of the function will cause a <code>NameError</code> because <code>x</code> only exists within the function's scope.
+          In the example above, the variable <code>x</code> is created within <code>my_function()</code> and is local to
+          that function. Attempting to access it outside of the function will cause a <code>NameError</code> because
+          <code>x</code> only exists within the function's scope.
         </p>
-      
+
         <h3>Global Scope</h3>
         <p>
-          Global scope refers to variables that are defined outside of any function or block. Variables in the global scope are accessible from anywhere within the program, including inside functions.
+          Global scope refers to variables that are defined outside of any function or block. Variables in the global
+          scope are accessible from anywhere within the program, including inside functions.
         </p>
         <p>Example:</p>
         <pre class="code-block">
@@ -162,14 +200,18 @@ def my_function():
 
 my_function()
 print(x)  # Still accessible here</pre>
-      
+
         <p>
-          In this case, <code>x</code> is defined globally, so it can be accessed from both inside and outside the function <code>my_function()</code>. Global variables are often used for values that need to be accessed across multiple functions.
+          In this case, <code>x</code> is defined globally, so it can be accessed from both inside and outside the
+          function <code>my_function()</code>. Global variables are often used for values that need to be accessed
+          across multiple functions.
         </p>
-      
+
         <h3>Modifying Global Variables</h3>
         <p>
-          If you want to modify a global variable inside a function, you need to use the <code>global</code> keyword. Without it, Python will treat any variable assignment inside the function as creating a new local variable, not changing the global one.
+          If you want to modify a global variable inside a function, you need to use the <code>global</code> keyword.
+          Without it, Python will treat any variable assignment inside the function as creating a new local variable,
+          not changing the global one.
         </p>
         <p>Example:</p>
         <pre class="code-block">
@@ -182,68 +224,73 @@ def my_function():
 
 my_function()
 print(x)  # Global variable x has been changed to 30</pre>
-      
+
         <p>
-          By using the <code>global</code> keyword inside <code>my_function()</code>, you tell Python that <code>x</code> refers to the global variable, allowing you to modify it. Without <code>global</code>, <code>x</code> would be treated as a local variable within the function.
+          By using the <code>global</code> keyword inside <code>my_function()</code>, you tell Python that
+          <code>x</code> refers to the global variable, allowing you to modify it. Without <code>global</code>,
+          <code>x</code> would be treated as a local variable within the function.
         </p>
-      
+
         <h3>Summary</h3>
         <p>
-          Understanding scope in Python is crucial for managing variable visibility and avoiding conflicts or unintended side effects in your programs. Here’s a summary of the different scopes:
+          Understanding scope in Python is crucial for managing variable visibility and avoiding conflicts or unintended
+          side effects in your programs. Here’s a summary of the different scopes:
         </p>
         <ul>
           <li><strong>Local Scope:</strong> Variables accessible only within the function they are defined in.</li>
-          <li><strong>Global Scope:</strong> Variables accessible throughout the program, including inside functions.</li>
+          <li><strong>Global Scope:</strong> Variables accessible throughout the program, including inside functions.
+          </li>
         </ul>
         <p>
-          Mastering these scope levels helps you write cleaner and more predictable code by controlling where and how variables can be accessed or modified.
+          Mastering these scope levels helps you write cleaner and more predictable code by controlling where and how
+          variables can be accessed or modified.
         </p>
       </section>
-      
 
-        <section class="builtin-functions">
-          <h2>Using Built-in Python Functions</h2>
-          <p>
-            Python comes with a wide range of built-in functions that perform
-            common tasks, simplifying code and making it more readable. These
-            functions are always available without the need to import any
-            modules, meaning you can start using them right away.
-          </p>
 
-          <h3>Common Built-in Functions</h3>
-          <p>Here are some commonly used built-in Python functions:</p>
-          <ul>
-            <li>
-              <b>len()</b>: Returns the length (number of items) of an object
-              (e.g., list, tuple, string).
-            </li>
-            <li>
-              <b>max()</b>: Returns the largest item in an iterable or the
-              largest of multiple arguments.
-            </li>
-            <li>
-              <b>min()</b>: Returns the smallest item in an iterable or the
-              smallest of multiple arguments.
-            </li>
-            <li><b>sum()</b>: Returns the sum of all items in an iterable.</li>
-            <li>
-              <b>type()</b>: Returns the type of an object (e.g., list, int,
-              str).
-            </li>
-            <li><b>abs()</b>: Returns the absolute value of a number.</li>
-            <li>
-              <b>round()</b>: Rounds a floating-point number to a specified
-              number of decimal places.
-            </li>
-            <li>
-              <b>sorted()</b>: Returns a new sorted list from the items in an
-              iterable.
-            </li>
-          </ul>
+      <section class="builtin-functions">
+        <h2>Using Built-in Python Functions</h2>
+        <p>
+          Python comes with a wide range of built-in functions that perform
+          common tasks, simplifying code and making it more readable. These
+          functions are always available without the need to import any
+          modules, meaning you can start using them right away.
+        </p>
 
-          <h3>Example Usage</h3>
-          <p>Example of using some common built-in functions:</p>
-          <pre class="code-block">
+        <h3>Common Built-in Functions</h3>
+        <p>Here are some commonly used built-in Python functions:</p>
+        <ul>
+          <li>
+            <b>len()</b>: Returns the length (number of items) of an object
+            (e.g., list, tuple, string).
+          </li>
+          <li>
+            <b>max()</b>: Returns the largest item in an iterable or the
+            largest of multiple arguments.
+          </li>
+          <li>
+            <b>min()</b>: Returns the smallest item in an iterable or the
+            smallest of multiple arguments.
+          </li>
+          <li><b>sum()</b>: Returns the sum of all items in an iterable.</li>
+          <li>
+            <b>type()</b>: Returns the type of an object (e.g., list, int,
+            str).
+          </li>
+          <li><b>abs()</b>: Returns the absolute value of a number.</li>
+          <li>
+            <b>round()</b>: Rounds a floating-point number to a specified
+            number of decimal places.
+          </li>
+          <li>
+            <b>sorted()</b>: Returns a new sorted list from the items in an
+            iterable.
+          </li>
+        </ul>
+
+        <h3>Example Usage</h3>
+        <p>Example of using some common built-in functions:</p>
+        <pre class="code-block">
 numbers = [1, 2, 3, 4, 5]
 print("Length:", len(numbers))  # Output: 5
 print("Max:", max(numbers))     # Output: 5
@@ -256,79 +303,77 @@ value = -42
 print("Absolute Value:", abs(value))   # Output: 42
 float_number = 7.56789
 print("Rounded Value:", round(float_number, 2))  # Output: 7.57
-print("Sorted List:", sorted([4, 2, 3, 1, 5]))   # Output: [1, 2, 3, 4, 5]</pre
-          >
+print("Sorted List:", sorted([4, 2, 3, 1, 5]))   # Output: [1, 2, 3, 4, 5]</pre>
 
-          <h3>Function Details</h3>
-          <p>Here are some additional details on a few of these functions:</p>
-          <ul>
-            <li>
-              <b>abs()</b>: This function returns the absolute value of a
-              number, which is the number's distance from zero on the number
-              line, without considering its sign (positive or negative).
-              <pre class="code-block">
+        <h3>Function Details</h3>
+        <p>Here are some additional details on a few of these functions:</p>
+        <ul>
+          <li>
+            <b>abs()</b>: This function returns the absolute value of a
+            number, which is the number's distance from zero on the number
+            line, without considering its sign (positive or negative).
+            <pre class="code-block">
 print(abs(-10))  # Output: 10
-print(abs(10))   # Output: 10</pre
-              >
-            </li>
-            <li>
-              <b>round()</b>: This function rounds a floating-point number to a
-              specified number of decimal places. If no number of decimal places
-              is provided, it rounds to the nearest integer.
-              <pre class="code-block">
+print(abs(10))   # Output: 10</pre>
+          </li>
+          <li>
+            <b>round()</b>: This function rounds a floating-point number to a
+            specified number of decimal places. If no number of decimal places
+            is provided, it rounds to the nearest integer.
+            <pre class="code-block">
 print(round(4.567))       # Output: 5
 print(round(4.567, 2))    # Output: 4.57
-print(round(4.567, 1))    # Output: 4.6</pre
-              >
-            </li>
-            <li>
-              <b>sorted()</b>: This function returns a new sorted list from an
-              iterable, such as a list or tuple. It does not modify the original
-              iterable.
-              <pre class="code-block">
+print(round(4.567, 1))    # Output: 4.6</pre>
+          </li>
+          <li>
+            <b>sorted()</b>: This function returns a new sorted list from an
+            iterable, such as a list or tuple. It does not modify the original
+            iterable.
+            <pre class="code-block">
 unsorted_list = [3, 1, 4, 1, 5, 9]
 sorted_list = sorted(unsorted_list)
 print("Unsorted:", unsorted_list)  # Output: [3, 1, 4, 1, 5, 9]
-print("Sorted:", sorted_list)      # Output: [1, 1, 3, 4, 5, 9]</pre
-              >
-            </li>
-          </ul>
+print("Sorted:", sorted_list)      # Output: [1, 1, 3, 4, 5, 9]</pre>
+          </li>
+        </ul>
 
-          <h3>Exploring More Built-in Functions</h3>
-          <p>
-            Python provides over 60 built-in functions, and they can greatly
-            enhance your programming efficiency. Some other commonly used
-            functions include:
-          </p>
-          <ul>
-            <li><b>input()</b>: Reads a string from standard input.</li>
-            <li>
-              <b>int()</b>, <b>float()</b>, <b>str()</b>: Convert between
-              different data types.
-            </li>
-            <li><b>open()</b>: Opens a file and returns a file object.</li>
-            <li>
-              <b>help()</b>: Provides help on Python objects and functions.
-            </li>
-          </ul>
-          <p>
-            For a full list of built-in functions, you can check Python's
-            official documentation or use the <code>help()</code> function
-            directly in your Python environment.
-          </p>
-        </section>
+        <h3>Exploring More Built-in Functions</h3>
+        <p>
+          Python provides over 60 built-in functions, and they can greatly
+          enhance your programming efficiency. Some other commonly used
+          functions include:
+        </p>
+        <ul>
+          <li><b>input()</b>: Reads a string from standard input.</li>
+          <li>
+            <b>int()</b>, <b>float()</b>, <b>str()</b>: Convert between
+            different data types.
+          </li>
+          <li><b>open()</b>: Opens a file and returns a file object.</li>
+          <li>
+            <b>help()</b>: Provides help on Python objects and functions.
+          </li>
+        </ul>
+        <p>
+          For a full list of built-in functions, you can check Python's
+          official documentation or use the <code>help()</code> function
+          directly in your Python environment.
+        </p>
+      </section>
 
-        <section class="practice">
-          <h2>Practice</h2>
+      <section class="practice">
+        <h2>Practice</h2>
 
-          <h3>1. Loop with Conditional Message Display</h3>
-<p>
-  Create a function <code>display_message</code> that takes a message and a number of repetitions as parameters, with a default value of 4 for repetitions. The function should print the message only on odd-numbered repetitions (e.g., 1st, 3rd, etc.). If no message is provided, print "Default Message" instead.
-</p>
-<details>
-  <summary>Solution</summary>
-  <div>
-    <pre class="code-block">
+        <h3>1. Loop with Conditional Message Display</h3>
+        <p>
+          Create a function <code>display_message</code> that takes a message and a number of repetitions as parameters,
+          with a default value of 4 for repetitions. The function should print the message only on odd-numbered
+          repetitions (e.g., 1st, 3rd, etc.). If no message is provided, print "Default Message" instead.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <div>
+            <pre class="code-block">
 def display_message(message="Default Message", repetitions=4):
     for i in range(1, repetitions + 1):
         if i % 2 != 0:
@@ -337,20 +382,20 @@ def display_message(message="Default Message", repetitions=4):
 display_message("Hello!")  # Will print on 1st and 3rd repetitions
 display_message("Python is fun", 5)
 display_message(repetitions=3)  # Will print "Default Message" on 1st and 3rd repetitions</pre>
-  </div>
-</details>
+          </div>
+        </details>
 
 
-          <h3>2. Cumulative Product of Odd Numbers</h3>
-          <p>
-            Write a function <code>cumulative_product</code> that takes a list
-            of numbers and returns the cumulative product of only the odd
-            numbers. Ignore even numbers during the calculation.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <div>
-              <pre class="code-block">
+        <h3>2. Cumulative Product of Odd Numbers</h3>
+        <p>
+          Write a function <code>cumulative_product</code> that takes a list
+          of numbers and returns the cumulative product of only the odd
+          numbers. Ignore even numbers during the calculation.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <div>
+            <pre class="code-block">
 def cumulative_product(numbers):
     product = 1
     for num in numbers:
@@ -359,22 +404,21 @@ def cumulative_product(numbers):
     return product
 
 numbers = [1, 2, 3, 4, 5]
-print(cumulative_product(numbers))  # Output: 15</pre
-              >
-            </div>
-          </details>
+print(cumulative_product(numbers))  # Output: 15</pre>
+          </div>
+        </details>
 
-          <h3>3. Loop with Conditional Logic and Default Parameters</h3>
-          <p>
-            Create a function <code>find_largest</code> that accepts a list of
-            numbers and an optional threshold (default value of 10). The
-            function should return the largest number in the list that is less
-            than the threshold.
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <div>
-              <pre class="code-block">
+        <h3>3. Loop with Conditional Logic and Default Parameters</h3>
+        <p>
+          Create a function <code>find_largest</code> that accepts a list of
+          numbers and an optional threshold (default value of 10). The
+          function should return the largest number in the list that is less
+          than the threshold.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <div>
+            <pre class="code-block">
 def find_largest(numbers, threshold=10):
     largest = None
     for num in numbers:
@@ -384,19 +428,20 @@ def find_largest(numbers, threshold=10):
     return largest
 
 numbers = [12, 7, 5, 19, 2]
-print(find_largest(numbers))  # Output: 7</pre
-              >
-            </div>
-          </details>
+print(find_largest(numbers))  # Output: 7</pre>
+          </div>
+        </details>
 
-          <h3>4. Summing Common Multiples in a Range</h3>
-<p>
-  Write a function <code>sum_common_multiples</code> that takes a range limit and two numbers as parameters, <code>a</code> and <code>b</code>. The function should return the sum of all numbers within the range (from 1 up to the limit, inclusive) that are multiples of both <code>a</code> and <code>b</code>.
-</p>
-<details>
-  <summary>Solution</summary>
-  <div>
-    <pre class="code-block">
+        <h3>4. Summing Common Multiples in a Range</h3>
+        <p>
+          Write a function <code>sum_common_multiples</code> that takes a range limit and two numbers as parameters,
+          <code>a</code> and <code>b</code>. The function should return the sum of all numbers within the range (from 1
+          up to the limit, inclusive) that are multiples of both <code>a</code> and <code>b</code>.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <div>
+            <pre class="code-block">
 def sum_common_multiples(limit, a, b):
     total = 0
     for i in range(1, limit + 1):
@@ -407,14 +452,15 @@ def sum_common_multiples(limit, a, b):
 # Example usage
 print(sum_common_multiples(20, 2, 3))  # Returns the sum of numbers like 6, 12, 18
 print(sum_common_multiples(50, 4, 5))  # Returns the sum of numbers like 20, 40</pre>
+          </div>
+        </details>
+      </section>
+      <p><a href="assignments/functions2-practice.html">Practice Exercises</a></p>
+    </main>
   </div>
-</details>
-        </section>
-        <p><a href="assignments/functions2-practice.html">Practice Exercises</a></p>
-      </main>
-    </div>
-    <footer>
-      <p>&copy; 2024 Introduction to Programming (Python)</p>
-    </footer>
-  </body>
+  <footer>
+    <p>&copy; 2024 Introduction to Programming (Python)</p>
+  </footer>
+</body>
+
 </html>
