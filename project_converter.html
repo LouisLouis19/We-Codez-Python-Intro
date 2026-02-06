@@ -34,6 +34,99 @@
             margin-bottom: 10px;
             display: block;
         }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .success-box {
+            background-color: #d4edda;
+            border: 1px solid #28a745;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-weight: bold;
+            color: #155724;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .step-by-step li {
+            margin-bottom: 10px;
+        }
+
+        .data-vis {
+            font-family: monospace;
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .flow-diagram {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .flow-diagram .arrow {
+            font-size: 2em;
+            margin: 10px;
+        }
     </style>
 </head>
 
@@ -56,7 +149,7 @@
                     <li><a href="data-structures_1.html">Data Structures I</a></li>
                     <li><a href="data-structures_2.html">Data Structures II</a></li>
                     <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
-                    <li><a href="libraries.html">Libraries & Imports</a></li>
+                    <li><a href="libraries.html">Libraries &amp; Imports</a></li>
                     <li><a href="debugging.html">Debugging</a></li>
                 </ul>
             </nav>
@@ -64,92 +157,640 @@
         <main>
             <p><a href="projects.html">&larr; Back to Projects</a></p>
 
+            <!-- ==================== OVERVIEW ==================== -->
             <section class="overview">
-                <h2>The Big Picture: Logic Separation</h2>
+                <h2>🎯 What Are We Building?</h2>
                 <p>
-                    In the calculator, we only had 4 operations. Here, we can convert Celsius to Fahrenheit, Celsius to
-                    Kelvin, Fahrenheit to Celsius... there are <strong>6 possible combinations</strong>!
+                    We're building a <strong>Temperature Converter</strong> that can convert between Celsius,
+                    Fahrenheit, and Kelvin! The user selects what to convert FROM and what to convert TO.
                 </p>
+
                 <div class="concept-box">
-                    <span class="concept-title">Frontend vs Backend Roles</span>
+                    <span class="concept-title">🌡️ The Three Temperature Scales</span>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Scale</th>
+                            <th>Water Freezes</th>
+                            <th>Water Boils</th>
+                            <th>Used In</th>
+                        </tr>
+                        <tr>
+                            <td>Celsius (°C)</td>
+                            <td>0°C</td>
+                            <td>100°C</td>
+                            <td>Most countries, science</td>
+                        </tr>
+                        <tr>
+                            <td>Fahrenheit (°F)</td>
+                            <td>32°F</td>
+                            <td>212°F</td>
+                            <td>USA, some Caribbean countries</td>
+                        </tr>
+                        <tr>
+                            <td>Kelvin (K)</td>
+                            <td>273.15K</td>
+                            <td>373.15K</td>
+                            <td>Science (absolute scale)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">🚦 The Traffic Controller Pattern</span>
+                    <p>
+                        In the calculator, we had 4 operations. Here, we can convert between
+                        <strong>6 different combinations</strong>:
+                    </p>
                     <ul>
-                        <li><strong>Frontend (converter.py):</strong> Asks user "What are we converting <em>from</em>?"
-                            and "What are we converting <em>to</em>?". Then it acts as a <strong>Traffic
-                                Controller</strong> to route the data.</li>
-                        <li><strong>Backend (backend_temperature.py):</strong> Contains the physics formulas. It doesn't
-                            know what the user selected, it just knows how to calculate.</li>
+                        <li>Celsius → Fahrenheit</li>
+                        <li>Celsius → Kelvin</li>
+                        <li>Fahrenheit → Celsius</li>
+                        <li>Fahrenheit → Kelvin</li>
+                        <li>Kelvin → Celsius</li>
+                        <li>Kelvin → Fahrenheit</li>
                     </ul>
+                    <p>
+                        The frontend acts as a <strong>Traffic Controller</strong> — it figures out which direction
+                        to go based on user input, then sends the request to the right backend function.
+                    </p>
+                </div>
+
+                <div class="flow-diagram">
+                    <div><strong>User Input</strong></div>
+                    <div class="arrow">↓</div>
+                    <div>Source: Kelvin (3) | Target: Celsius (1)</div>
+                    <div class="arrow">↓</div>
+                    <div><strong>Traffic Controller Logic</strong></div>
+                    <div class="arrow">↓</div>
+                    <div><code>backend_temperature.kelvin_to_celsius(val)</code></div>
+                    <div class="arrow">↓</div>
+                    <div><strong>Result Displayed</strong></div>
                 </div>
             </section>
 
+            <!-- ==================== BACKEND ==================== -->
             <section class="backend">
-                <h2>Part 1: The Formulas (backend_temperature.py)</h2>
+                <h2>🔧 Part 1: The Formulas (backend_temperature.py)</h2>
+                <p>
+                    This file contains the <strong>physics formulas</strong> for temperature conversion.
+                    Each function does exactly ONE thing — convert from one scale to another.
+                </p>
 
+                <!-- CELSIUS TO KELVIN -->
                 <div class="code-explanation">
-                    <h3>Specific Single-Purpose Functions</h3>
+                    <h3>1. Celsius to Kelvin (Lines 3-5)</h3>
                     <p><span class="line-number">Lines 3-5:</span></p>
                     <pre class="code-block">
 def celsius_to_kelvin(val):
     kelvin = val + 273.15
     return kelvin</pre>
+
+                    <div class="step-by-step">
+                        <strong>Understanding the formula:</strong>
+                        <ol>
+                            <li>
+                                <code>def celsius_to_kelvin(val):</code> — Create a function that takes
+                                <code>val</code> (the temperature in Celsius).
+                            </li>
+                            <li>
+                                <code>kelvin = val + 273.15</code> — The formula! Kelvin = Celsius + 273.15
+                                <ul>
+                                    <li>0°C = 273.15K (freezing point of water)</li>
+                                    <li>100°C = 373.15K (boiling point of water)</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <code>return kelvin</code> — Give the answer back.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Example</span>
+                        <div class="data-vis">
+celsius_to_kelvin(25)
+# val = 25
+# kelvin = 25 + 273.15 = 298.15
+# return 298.15
+
+# So: 25°C = 298.15K
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CELSIUS TO FAHRENHEIT -->
+                <div class="code-explanation">
+                    <h3>2. Celsius to Fahrenheit (Lines 8-10)</h3>
+                    <p><span class="line-number">Lines 8-10:</span></p>
+                    <pre class="code-block">
+def celsius_to_fahrenheit(val):
+    fahrenheit = (val * 9 / 5) + 32
+    return fahrenheit</pre>
+
+                    <div class="step-by-step">
+                        <strong>The formula: F = (C × 9/5) + 32</strong>
+                        <p>
+                            This is the classic conversion formula. Let's understand why it works:
+                        </p>
+                        <ol>
+                            <li>
+                                <code>(val * 9 / 5)</code> — Celsius and Fahrenheit have different "step sizes".
+                                For every 1°C change, Fahrenheit changes by 9/5 (or 1.8) degrees.
+                            </li>
+                            <li>
+                                <code>+ 32</code> — The freezing point of water is 0°C but 32°F. We add 32 to
+                                "shift" our scale.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Example</span>
+                        <div class="data-vis">
+celsius_to_fahrenheit(0)
+# val = 0
+# fahrenheit = (0 * 9/5) + 32 = 0 + 32 = 32
+# return 32
+
+# So: 0°C = 32°F (freezing point!) ✓
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KELVIN TO CELSIUS -->
+                <div class="code-explanation">
+                    <h3>3. Kelvin to Celsius (Lines 13-15)</h3>
+                    <p><span class="line-number">Lines 13-15:</span></p>
+                    <pre class="code-block">
+def kelvin_to_celcius(val):
+    celcius = val - 273.15
+    return celcius</pre>
+
+                    <div class="step-by-step">
+                        <strong>The reverse of Celsius to Kelvin:</strong>
+                        <p>
+                            If Kelvin = Celsius + 273.15, then Celsius = Kelvin - 273.15. Simple!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- KELVIN TO FAHRENHEIT -->
+                <div class="code-explanation">
+                    <h3>4. Kelvin to Fahrenheit (Lines 18-20)</h3>
+                    <p><span class="line-number">Lines 18-20:</span></p>
+                    <pre class="code-block">
+def kelvin_to_fahrenheit(val):
+    fahrenheit = (val - 273.15) * 1.8 + 32
+    return fahrenheit</pre>
+
+                    <div class="step-by-step">
+                        <strong>A two-step conversion:</strong>
+                        <p>
+                            This is actually doing TWO conversions in one formula:
+                        </p>
+                        <ol>
+                            <li><code>(val - 273.15)</code> — First, convert Kelvin to Celsius</li>
+                            <li><code>* 1.8 + 32</code> — Then, convert Celsius to Fahrenheit</li>
+                        </ol>
+                        <p>Note: <code>1.8</code> is the same as <code>9/5</code></p>
+                    </div>
+                </div>
+
+                <!-- FAHRENHEIT TO CELSIUS -->
+                <div class="code-explanation">
+                    <h3>5. Fahrenheit to Celsius (Lines 23-25)</h3>
+                    <p><span class="line-number">Lines 23-25:</span></p>
+                    <pre class="code-block">
+def fahrenheit_to_celsius(val):
+    celsius = (val - 32) / 1.8
+    return celsius</pre>
+
+                    <div class="step-by-step">
+                        <strong>The reverse formula: C = (F - 32) / 1.8</strong>
+                        <p>
+                            This is the opposite of Celsius to Fahrenheit. We subtract 32 first, then divide.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAHRENHEIT TO KELVIN -->
+                <div class="code-explanation">
+                    <h3>6. Fahrenheit to Kelvin (Lines 28-30)</h3>
+                    <p><span class="line-number">Lines 28-30:</span></p>
+                    <pre class="code-block">
+def fahrenheit_to_kelvin(val):
+    kelvin = (val - 32) * 5 / 9 + 273.15
+    return kelvin</pre>
+
+                    <div class="step-by-step">
+                        <strong>Another two-step conversion:</strong>
+                        <ol>
+                            <li><code>(val - 32) * 5/9</code> — First, convert Fahrenheit to Celsius</li>
+                            <li><code>+ 273.15</code> — Then, convert Celsius to Kelvin</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">🎯 Single-Purpose Functions</span>
                     <p>
-                        Each function does exactly <strong>one thing</strong>. This makes it easy to test. If Celsius to
-                        Kelvin conversion is wrong, we know exactly which 3 lines of code to check.
+                        Notice how each function does exactly <strong>ONE thing</strong>? This is called the
+                        <strong>Single Responsibility Principle</strong>. Benefits:
                     </p>
+                    <ul>
+                        <li><strong>Easy to test:</strong> If Celsius to Kelvin is wrong, we know exactly which 3 lines
+                            to fix.</li>
+                        <li><strong>Easy to read:</strong> The function name tells you exactly what it does.</li>
+                        <li><strong>Easy to reuse:</strong> If another program needs temperature conversion, just import
+                            this file!</li>
+                    </ul>
                 </div>
             </section>
 
+            <!-- ==================== FRONTEND ==================== -->
             <section class="frontend">
-                <h2>Part 2: The Traffic Controller (converter.py)</h2>
+                <h2>🖥️ Part 2: The Traffic Controller (converter.py)</h2>
+                <p>
+                    This file handles user interaction and determines which backend function to call based on
+                    the user's choices.
+                </p>
 
+                <!-- IMPORTS -->
                 <div class="code-explanation">
-                    <h3>1. Reusable Input Helper</h3>
+                    <h3>1. Importing Files (Lines 1-2)</h3>
+                    <p><span class="line-number">Lines 1-2:</span></p>
+                    <pre class="code-block">
+import backend_temperature
+import sys</pre>
+
+                    <div class="step-by-step">
+                        <strong>What we're importing:</strong>
+                        <ul>
+                            <li><code>backend_temperature</code> — Our custom file with all the conversion formulas.
+                            </li>
+                            <li><code>sys</code> — Python's system module (optional, for advanced features).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- GET NUMBER HELPER -->
+                <div class="code-explanation">
+                    <h3>2. Input Validation (Lines 4-10)</h3>
+                    <p><span class="line-number">Lines 4-10:</span></p>
+                    <pre class="code-block">
+def get_number(prompt):
+    """Helper to get a valid number from user input."""
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid input. Please enter a numeric value.")</pre>
+
+                    <div class="step-by-step">
+                        <strong>Same as the calculator!</strong>
+                        <p>
+                            This function keeps asking for a number until the user types a valid one.
+                            See the Calculator breakdown for a detailed explanation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- GET UNIT CHOICE -->
+                <div class="code-explanation">
+                    <h3>3. Reusable Unit Selection (Lines 15-26)</h3>
                     <p><span class="line-number">Lines 15-26:</span></p>
                     <pre class="code-block">
 def get_unit_choice(prompt_type):
+    """Helper to get a valid unit choice."""
     while True:
         print(f"\nSelect {prompt_type} Unit:")
-        # ... prints 1. Celsius 2. Fahrenheit ...</pre>
-                    <p>
-                        We need to ask the user to choose a unit twice: once for the <strong>Source</strong> (Start) and
-                        once for the <strong>Target</strong> (End).
-                        <br>Instead of writing the same code twice, we create a function <code>get_unit_choice</code>.
-                        We pass in <code>"Source"</code> or <code>"Target"</code> as the <code>prompt_type</code> to
-                        slightly change what it prints.
-                    </p>
+        print("1. Celsius")
+        print("2. Fahrenheit")
+        print("3. Kelvin")
+        
+        choice = input(f"Enter your choice (1/2/3): ").strip()
+        if choice in ('1', '2', '3'):
+            return choice
+        print("Invalid choice. Please select 1, 2, or 3.")</pre>
+
+                    <div class="step-by-step">
+                        <strong>Why create this function?</strong>
+                        <p>
+                            We need to ask the user to choose a unit <strong>twice</strong>: once for the
+                            SOURCE (what we're converting from) and once for the TARGET (what we're converting to).
+                        </p>
+                        <p>
+                            Instead of writing the same code twice, we create a <strong>reusable function</strong>!
+                        </p>
+                        <ol>
+                            <li>
+                                <code>def get_unit_choice(prompt_type):</code> — Takes a string like "Source" or
+                                "Target"
+                            </li>
+                            <li>
+                                <code>print(f"\nSelect {prompt_type} Unit:")</code> — Uses an f-string to show
+                                "Select Source Unit:" or "Select Target Unit:"
+                            </li>
+                            <li>
+                                <code>while True:</code> — Keep asking until we get a valid answer (1, 2, or 3)
+                            </li>
+                            <li>
+                                <code>if choice in ('1', '2', '3'):</code> — Check if the input is valid
+                            </li>
+                            <li>
+                                <code>return choice</code> — Give back the user's choice
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Reusability in Action</span>
+                        <div class="data-vis">
+# First call:
+get_unit_choice("Source")
+# Shows: "Select Source Unit:"
+# User picks 3 (Kelvin)
+# Returns: '3'
+
+# Second call:
+get_unit_choice("Target")
+# Shows: "Select Target Unit:"
+# User picks 1 (Celsius)
+# Returns: '1'
+
+# Same function, different output based on parameter!
+                        </div>
+                    </div>
                 </div>
 
+                <!-- GET UNIT NAME -->
                 <div class="code-explanation">
-                    <h3>2. The "Switchboard" Logic</h3>
+                    <h3>4. Converting Numbers to Names (Lines 28-32)</h3>
+                    <p><span class="line-number">Lines 28-32:</span></p>
+                    <pre class="code-block">
+def get_unit_name(choice):
+    if choice == '1': return "Celsius"
+    if choice == '2': return "Fahrenheit"
+    if choice == '3': return "Kelvin"
+    return "Unknown"</pre>
+
+                    <div class="step-by-step">
+                        <strong>Why do we need this?</strong>
+                        <p>
+                            The user selected '3' (a number). But when we display results, we want to show
+                            "Kelvin" (the name). This function converts numbers to names.
+                        </p>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">📝 Short-circuit Returns</span>
+                        <p>
+                            Notice there's no <code>elif</code> or <code>else</code> between the <code>if</code>
+                            statements?
+                            That's because <code>return</code> immediately exits the function! Once we find a match,
+                            we return and the other lines never run.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- THE CONVERT FUNCTION -->
+                <div class="code-explanation">
+                    <h3>5. The Traffic Controller Logic (Lines 34-53)</h3>
                     <p><span class="line-number">Lines 34-53:</span></p>
                     <pre class="code-block">
-def convert(val, src, tgt):
+def convert(val, src, tgt): # src = 3, tgt = 1
+    if src == tgt:
+        return val
+    
     # Celsius Source
     if src == '1': 
         if tgt == '2': return backend_temperature.celsius_to_fahrenheit(val)
-        if tgt == '3': return backend_temperature.celsius_to_kelvin(val)</pre>
-                    <p>
-                        This function determines which Backend function to call.
-                        <br><strong>How it works:</strong>
-                    <ul>
-                        <li>If <code>src == '1'</code> (Celsius) AND <code>tgt == '2'</code> (Fahrenheit)...</li>
-                        <li>...then call the specific function <code>celsius_to_fahrenheit(val)</code>.</li>
-                    </ul>
-                    This keeps the main part of our program clean. We just say "Convert this", and this function figures
-                    out <em>how</em>.
-                    </p>
+        if tgt == '3': return backend_temperature.celsius_to_kelvin(val)
+    
+    # Fahrenheit Source
+    if src == '2':
+        if tgt == '1': return backend_temperature.fahrenheit_to_celsius(val)
+        if tgt == '3': return backend_temperature.fahrenheit_to_kelvin(val)
+
+    # Kelvin Source
+    if src == '3':
+        if tgt == '1': return backend_temperature.kelvin_to_celsius(val)
+        if tgt == '2': return backend_temperature.kelvin_to_fahrenheit(val)
+    
+    return val # Should not happen</pre>
+
+                    <div class="step-by-step">
+                        <strong>This is the "switchboard" — it routes the conversion to the right function!</strong>
+                        <ol>
+                            <li>
+                                <code>def convert(val, src, tgt):</code> — Takes three inputs:
+                                <ul>
+                                    <li><code>val</code> — the temperature value (e.g., 100)</li>
+                                    <li><code>src</code> — source unit ('1', '2', or '3')</li>
+                                    <li><code>tgt</code> — target unit ('1', '2', or '3')</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <code>if src == tgt: return val</code> — If source and target are the same
+                                (like Celsius to Celsius), just return the original value. No conversion needed!
+                            </li>
+                            <li>
+                                <code>if src == '1':</code> — If converting FROM Celsius...
+                                <ul>
+                                    <li><code>if tgt == '2':</code> — ...TO Fahrenheit → call celsius_to_fahrenheit</li>
+                                    <li><code>if tgt == '3':</code> — ...TO Kelvin → call celsius_to_kelvin</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Same pattern repeats for Fahrenheit and Kelvin sources!
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Trace Through an Example</span>
+                        <div class="data-vis">
+convert(300, '3', '1')
+# val = 300, src = '3' (Kelvin), tgt = '1' (Celsius)
+
+# Step 1: Is src == tgt? No (3 != 1), continue...
+# Step 2: Is src == '1'? No, skip...
+# Step 3: Is src == '2'? No, skip...
+# Step 4: Is src == '3'? YES!
+# Is tgt == '1'? YES!
+# Call: backend_temperature.kelvin_to_celsius(300)
+# Result: 300 - 273.15 = 26.85
+# Return: 26.85
+
+# So: 300K = 26.85°C ✓
+                        </div>
+                    </div>
                 </div>
 
+                <!-- MAIN FUNCTION -->
                 <div class="code-explanation">
-                    <h3>3. String Formating for Display</h3>
-                    <p><span class="line-number">Line 69:</span></p>
+                    <h3>6. The Main Function (Lines 55-75)</h3>
+                    <p><span class="line-number">Lines 55-75:</span></p>
                     <pre class="code-block">
-print(f"Result: ... {result:.2f} {get_unit_name(tgt_choice)}")</pre>
-                    <p>
-                        <code>{result:.2f}</code> tells Python to format the decimal number to only show <strong>2
-                            decimal places</strong>. So instead of <code>75.59999999</code>, the user sees
-                        <code>75.60</code>.
-                    </p>
+def main():
+    print("Welcome to the Temperature Converter!")
+    print_separator()
+
+    while True:
+        print("\n--- New Conversion ---")
+        src_choice = get_unit_choice("Source")
+        tgt_choice = get_unit_choice("Target")
+        
+        val = get_number(f"Enter temperature in {get_unit_name(src_choice)}: ")
+        
+        result = convert(val, src_choice, tgt_choice)
+        
+        print_separator()
+        print(f"Result: {val} {get_unit_name(src_choice)} = {result:.2f} {get_unit_name(tgt_choice)}")
+        print_separator()
+        
+        cont = input("Do you want to perform another conversion? (y/n): ").strip().lower()
+        if cont != 'y':
+            print("\nThank you for using the converter. Goodbye!")
+            break</pre>
+
+                    <div class="step-by-step">
+                        <strong>The complete flow:</strong>
+                        <ol>
+                            <li>
+                                <code>print("Welcome...")</code> — Greet the user.
+                            </li>
+                            <li>
+                                <code>while True:</code> — Start the main loop (keeps running until user quits).
+                            </li>
+                            <li>
+                                <code>src_choice = get_unit_choice("Source")</code> — Ask: "What are you converting
+                                FROM?"
+                            </li>
+                            <li>
+                                <code>tgt_choice = get_unit_choice("Target")</code> — Ask: "What are you converting TO?"
+                            </li>
+                            <li>
+                                <code>val = get_number(f"...{get_unit_name(src_choice)}...")</code> — Ask for the value.
+                                Notice how we use <code>get_unit_name()</code> to show "Enter temperature in Kelvin:"
+                                instead of "Enter temperature in 3:".
+                            </li>
+                            <li>
+                                <code>result = convert(val, src_choice, tgt_choice)</code> — Do the conversion!
+                            </li>
+                            <li>
+                                <code>print(f"Result: ... {result:.2f} ...")</code> — Display the result with 2 decimal
+                                places.
+                            </li>
+                            <li>
+                                <code>cont = input("...").strip().lower()</code> — Ask if they want to continue.
+                                <ul>
+                                    <li><code>.strip()</code> — Removes extra spaces</li>
+                                    <li><code>.lower()</code> — Converts to lowercase (so "Y", "y", "YES" all work)</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <code>if cont != 'y': break</code> — If they didn't type "y", exit the loop.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- DECIMAL FORMATTING -->
+                <div class="code-explanation">
+                    <h3>7. Formatting Decimal Numbers</h3>
+                    <p><span class="line-number">Key Line:</span></p>
+                    <pre class="code-block">print(f"Result: {val} ... = {result:.2f} ...")</pre>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🔢 What is <code>:.2f</code>?</span>
+                        <p>
+                            Inside an f-string, <code>{result:.2f}</code> means "format this number with 2 decimal
+                            places".
+                        </p>
+                        <ul>
+                            <li><code>:</code> — Start of format specifier</li>
+                            <li><code>.2</code> — 2 decimal places</li>
+                            <li><code>f</code> — format as a float (decimal number)</li>
+                        </ul>
+                        <div class="data-vis">
+result = 75.599999999
+
+print(result) # Shows: 75.599999999
+print(f"{result:.2f}") # Shows: 75.60
+print(f"{result:.1f}") # Shows: 75.6
+print(f"{result:.0f}") # Shows: 76
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== SUMMARY ==================== -->
+            <section class="summary">
+                <h2>📝 Summary: Key Concepts Learned</h2>
+
+                <div class="concept-box">
+                    <span class="concept-title">✅ Concepts in This Project</span>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Concept</th>
+                            <th>Where Used</th>
+                            <th>What It Does</th>
+                        </tr>
+                        <tr>
+                            <td>Reusable Functions</td>
+                            <td><code>get_unit_choice(prompt_type)</code></td>
+                            <td>Same function used multiple times with different parameters</td>
+                        </tr>
+                        <tr>
+                            <td>Single Responsibility</td>
+                            <td><code>celsius_to_kelvin()</code></td>
+                            <td>Each function does exactly one thing</td>
+                        </tr>
+                        <tr>
+                            <td>Routing/Switching</td>
+                            <td><code>convert()</code></td>
+                            <td>Decide which function to call based on inputs</td>
+                        </tr>
+                        <tr>
+                            <td>Number Formatting</td>
+                            <td><code>{result:.2f}</code></td>
+                            <td>Display numbers with specific decimal places</td>
+                        </tr>
+                        <tr>
+                            <td>String Methods</td>
+                            <td><code>.strip().lower()</code></td>
+                            <td>Clean and normalize user input</td>
+                        </tr>
+                        <tr>
+                            <td>Input Validation</td>
+                            <td><code>while True</code> loops</td>
+                            <td>Keep asking until valid input is received</td>
+                        </tr>
+                        <tr>
+                            <td>Separation of Concerns</td>
+                            <td>Two files</td>
+                            <td>Keep UI separate from logic</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">🎯 What Makes This Different from the Calculator?</span>
+                    <ul>
+                        <li>
+                            <strong>More functions:</strong> 6 conversion functions instead of 4 operations
+                        </li>
+                        <li>
+                            <strong>Two-step selection:</strong> User picks BOTH source and target units
+                        </li>
+                        <li>
+                            <strong>Routing logic:</strong> The <code>convert()</code> function acts as a "switchboard"
+                        </li>
+                        <li>
+                            <strong>Continue prompt:</strong> Asks if user wants to do another conversion
+                        </li>
+                    </ul>
                 </div>
             </section>
 

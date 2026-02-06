@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project 8: Student Grade Manager - Introduction to Programming</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .code-explanation {
+            background-color: #f9f9f9;
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .line-number {
+            font-weight: bold;
+            color: #555;
+            margin-right: 10px;
+        }
+
+        .concept-box {
+            background-color: #e7f3fe;
+            border: 1px solid #b6d4fe;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .concept-title {
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .success-box {
+            background-color: #d4edda;
+            border: 1px solid #28a745;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-weight: bold;
+            color: #155724;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .step-by-step li {
+            margin-bottom: 10px;
+        }
+
+        .data-vis {
+            font-family: monospace;
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .flow-diagram {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .beginner-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #0dcaf0;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .beginner-tip-title {
+            font-weight: bold;
+            color: #055160;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Introduction to Programming</h1>
+        <h2>Project 8: Student Grade Manager Breakdown</h2>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Programming Basics</a></li>
+                    <li><a href="if_else_statement.html">If/Else Statements</a></li>
+                    <li><a href="for_loops.html">For Loops</a></li>
+                    <li><a href="while_loops.html">While Loops</a></li>
+                    <li><a href="functions_1.html">Functions I</a></li>
+                    <li><a href="functions_2.html">Functions II</a></li>
+                    <li><a href="data-structures_1.html">Data Structures I</a></li>
+                    <li><a href="data-structures_2.html">Data Structures II</a></li>
+                    <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+                    <li><a href="libraries.html">Libraries &amp; Imports</a></li>
+                    <li><a href="debugging.html">Debugging</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <p><a href="projects.html">&larr; Back to Projects</a></p>
+
+            <!-- ==================== OVERVIEW ==================== -->
+            <section class="overview">
+                <h2>🎯 What Are We Building?</h2>
+                <p>
+                    We're building a <strong>Student Grade Manager</strong> — a simple app to track students 
+                    and their grades! You can add students, add grades for each student, and view all students 
+                    with their grade averages.
+                </p>
+
+                <div class="beginner-tip">
+                    <span class="beginner-tip-title">🌟 Perfect for Beginners!</span>
+                    <p>
+                        This is a <strong>revision project</strong> — it's designed to help you practice 
+                        everything you've learned! It's simpler than some other projects, but it reinforces 
+                        the most important concepts.
+                    </p>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">📚 What Does a Grade Manager Do?</span>
+                    <p>
+                        Think of a teacher's gradebook:
+                    </p>
+                    <ul>
+                        <li><strong>Add students</strong> to the class</li>
+                        <li><strong>Record grades</strong> for each student (tests, homework, etc.)</li>
+                        <li><strong>Calculate averages</strong> to see how each student is doing</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">🔑 Key Concepts Practiced</span>
+                    <ul>
+                        <li><strong>Lists of Dictionaries:</strong> Each student is a dictionary in a list</li>
+                        <li><strong>Lists Inside Dictionaries:</strong> Each student has a list of grades</li>
+                        <li><strong>Passing Lists to Functions:</strong> Data passed as parameters</li>
+                        <li><strong>Calculating Averages:</strong> Sum divided by count</li>
+                        <li><strong>Error Handling:</strong> What if a list is empty?</li>
+                    </ul>
+                </div>
+
+                <div class="flow-diagram">
+                    <div><strong>📊 GRADE MANAGER</strong></div>
+                    <div style="display: flex; justify-content: space-around; margin-top: 15px;">
+                        <div>👤 Add<br>Student</div>
+                        <div>📝 Add<br>Grade</div>
+                        <div>📋 View All<br>& Averages</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== DATA STRUCTURE ==================== -->
+            <section class="data-structure">
+                <h2>📊 Understanding the Data</h2>
+                
+                <div class="concept-box">
+                    <span class="concept-title">📦 Simple Yet Powerful Structure</span>
+                    <p>Each student has just two fields:</p>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Example</th>
+                            <th>Purpose</th>
+                        </tr>
+                        <tr>
+                            <td><code>name</code></td>
+                            <td>String</td>
+                            <td>"Kayleen"</td>
+                            <td>Student's name</td>
+                        </tr>
+                        <tr>
+                            <td><code>grades</code></td>
+                            <td>List</td>
+                            <td>[100, 90, 85]</td>
+                            <td>All their grades</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="code-explanation">
+                    <h3>The Data Structure Visualized</h3>
+                    <p>The backend file includes helpful comments showing the structure:</p>
+                    <div class="data-vis">
+students = [
+    {"name": "Kayleen", "grades": [100, 90, 80, 70]},
+    {"name": "Stephanie", "grades": [100]},
+    {"name": "Louis", "grades": [50]}
+]
+
+# Each student is a dictionary
+# The "grades" field is a LIST of numbers
+# The entire thing is a LIST of dictionaries
+                    </div>
+                </div>
+
+                <div class="beginner-tip">
+                    <span class="beginner-tip-title">💡 Starting Empty</span>
+                    <p>
+                        Unlike other projects that start with sample data, this one starts with an 
+                        <strong>empty list</strong>:
+                    </p>
+                    <div class="data-vis">
+students = []  # Empty at the start!
+
+# User adds students one by one
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== BACKEND ==================== -->
+            <section class="backend">
+                <h2>🔧 Part 1: The Backend (backend_grades.py)</h2>
+                <p>
+                    Let's break down each function in the backend.
+                </p>
+
+                <!-- ADD STUDENT -->
+                <div class="code-explanation">
+                    <h3>1. Adding a Student (Lines 33-36)</h3>
+                    <p><span class="line-number">Lines 33-36:</span></p>
+                    <pre class="code-block">
+def add_student(students, name):
+    new_student = {"name": name, "grades": []}
+    students.append(new_student)
+    return students</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Step by step:</strong>
+                        <ol>
+                            <li>
+                                <code>new_student = {"name": name, "grades": []}</code> — Create a dictionary 
+                                with the student's name and an <strong>empty</strong> grades list.
+                            </li>
+                            <li>
+                                <code>students.append(new_student)</code> — Add this dictionary to the list.
+                            </li>
+                            <li>
+                                <code>return students</code> — Return the updated list.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Trace Example</span>
+                        <div class="data-vis">
+# Before: students = []
+
+add_student(students, "Kayleen")
+
+# After: students = [{"name": "Kayleen", "grades": []}]
+
+add_student(students, "Stephanie")
+
+# After: students = [
+#     {"name": "Kayleen", "grades": []},
+#     {"name": "Stephanie", "grades": []}
+# ]
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADD GRADE -->
+                <div class="code-explanation">
+                    <h3>2. Adding a Grade (Lines 19-29)</h3>
+                    <p><span class="line-number">Lines 19-29:</span></p>
+                    <pre class="code-block">
+def add_grade(students, name, grade):
+    for student in students:
+        # 1st Run: student = {"name": "Kayleen", "grades": [0, 100]}
+        # 2nd Run: student = {"name": "Stephanie", "grades": [100]}
+        if student["name"] == name:
+            # student["grade"] = grade  # Update score (1st Assumption)
+            student["grades"].append(grade)
+            return students
+    new_student = {"name": name, "grades": [grade]}
+    students.append(new_student)
+    return students</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Two scenarios:</strong>
+                        <ol>
+                            <li>
+                                <strong>Student EXISTS:</strong> Find them, append the grade to their list.
+                            </li>
+                            <li>
+                                <strong>Student DOESN'T EXIST:</strong> Create a new student with this grade!
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🎨 The Code Comments Are Learning Tools!</span>
+                        <p>
+                            Notice the comments like <code># 1st Run: student = ...</code>? These show you 
+                            what the variable contains during each loop iteration. This is a great way to 
+                            learn and debug!
+                        </p>
+                    </div>
+
+                    <div class="warning-box">
+                        <span class="warning-title">⚠️ Auto-Creating Students</span>
+                        <p>
+                            This function is "smart" — if you try to add a grade for a student that doesn't 
+                            exist, it creates the student automatically!
+                        </p>
+                        <div class="data-vis">
+students = []  # Empty
+
+add_grade(students, "Kayleen", 100)
+# Kayleen doesn't exist → creates her with grade 100
+
+# Result: [{"name": "Kayleen", "grades": [100]}]
+                        </div>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Adding Multiple Grades</span>
+                        <div class="data-vis">
+# Start: [{"name": "Kayleen", "grades": [100]}]
+
+add_grade(students, "Kayleen", 90)
+# Kayleen exists → append 90
+
+# Result: [{"name": "Kayleen", "grades": [100, 90]}]
+
+add_grade(students, "Kayleen", 85)
+# Kayleen exists → append 85
+
+# Result: [{"name": "Kayleen", "grades": [100, 90, 85]}]
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GET ALL STUDENTS -->
+                <div class="code-explanation">
+                    <h3>3. Getting All Students (Lines 40-41)</h3>
+                    <p><span class="line-number">Lines 40-41:</span></p>
+                    <pre class="code-block">
+def get_all_students(students):
+    return students</pre>
+                    
+                    <div class="beginner-tip">
+                        <span class="beginner-tip-title">🤔 Why Have This Function?</span>
+                        <p>
+                            This function just returns the list — so why have it? A few reasons:
+                        </p>
+                        <ul>
+                            <li><strong>Consistency:</strong> All data access goes through functions</li>
+                            <li><strong>Future-proofing:</strong> Later you could add filtering or sorting</li>
+                            <li><strong>Abstraction:</strong> The frontend doesn't need to know how data is stored</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CALCULATE AVERAGE -->
+                <div class="code-explanation">
+                    <h3>4. Calculating the Average (Lines 44-47)</h3>
+                    <p><span class="line-number">Lines 44-47:</span></p>
+                    <pre class="code-block">
+def calculate_average(student_grade):
+    if len(student_grade) == 0:
+        return 0
+    return sum(student_grade) / len(student_grade)</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Understanding the math:</strong>
+                        <ol>
+                            <li>
+                                <code>if len(student_grade) == 0:</code> — Check if the list is empty.
+                            </li>
+                            <li>
+                                <code>return 0</code> — If empty, return 0 (can't divide by zero!).
+                            </li>
+                            <li>
+                                <code>sum(student_grade)</code> — Add all grades together.
+                            </li>
+                            <li>
+                                <code>len(student_grade)</code> — Count how many grades.
+                            </li>
+                            <li>
+                                <code>sum / len</code> — Divide to get the average.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="warning-box">
+                        <span class="warning-title">⚠️ Division by Zero!</span>
+                        <p>
+                            If a student has no grades, <code>len(student_grade)</code> is 0, and dividing 
+                            by 0 would crash the program! That's why we check first.
+                        </p>
+                        <div class="data-vis">
+grades = []
+sum(grades)  # Returns 0
+len(grades)  # Returns 0
+
+0 / 0  # ERROR! Cannot divide by zero!
+
+# That's why we check: if len(grades) == 0: return 0
+                        </div>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Average Calculation Example</span>
+                        <div class="data-vis">
+grades = [100, 90, 80, 70]
+
+sum(grades)  # 100 + 90 + 80 + 70 = 340
+len(grades)  # 4
+
+340 / 4 = 85.0  # Average!
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== FRONTEND ==================== -->
+            <section class="frontend">
+                <h2>🖥️ Part 2: The User Interface (grade_app.py)</h2>
+                <p>
+                    This file handles user interaction and calls the backend functions.
+                </p>
+
+                <!-- INITIALIZATION -->
+                <div class="code-explanation">
+                    <h3>1. Starting with an Empty List (Lines 8-11)</h3>
+                    <p><span class="line-number">Lines 8-11:</span></p>
+                    <pre class="code-block">
+def main():
+    # Initialize our data structure: A list of dictionaries
+    # Example: [{"name": "Louis", "grades": [90, 85]}]
+    students = []</pre>
+                    
+                    <div class="beginner-tip">
+                        <span class="beginner-tip-title">📝 Helpful Comments!</span>
+                        <p>
+                            The comments show exactly what the data structure will look like. This is 
+                            excellent practice — always document your data structures!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ADD STUDENT -->
+                <div class="code-explanation">
+                    <h3>2. Adding a Student (Lines 22-25)</h3>
+                    <p><span class="line-number">Lines 22-25:</span></p>
+                    <pre class="code-block">
+if choice == '1':
+    name = input("Enter student name: ")
+    backend_grades.add_student(students, name)
+    print(f"Student '{name}' added.")</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Simple and clean:</strong>
+                        <ol>
+                            <li>Ask for the student's name.</li>
+                            <li>Call the backend function with the list and name.</li>
+                            <li>Confirm the action with a message.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- ADD GRADE -->
+                <div class="code-explanation">
+                    <h3>3. Adding a Grade (Lines 27-36)</h3>
+                    <p><span class="line-number">Lines 27-36:</span></p>
+                    <pre class="code-block">
+elif choice == '2':
+    name = input("Enter student name: ")
+    try:
+        grade = float(input("Enter grade: "))
+        if backend_grades.add_grade(students, name, grade):
+            print(f"Grade {grade} added for {name}.")
+        else:
+            print(f"Student '{name}' not found.")
+    except ValueError:
+        print("Invalid grade. Please enter a number.")</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>With error handling:</strong>
+                        <ol>
+                            <li>Ask for the student name.</li>
+                            <li>Ask for the grade (could be a decimal like 87.5).</li>
+                            <li>Convert with <code>float()</code> — might fail if user types "abc".</li>
+                            <li>If conversion fails, catch the error and show a message.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- VIEW ALL -->
+                <div class="code-explanation">
+                    <h3>4. Viewing Students with Averages (Lines 38-46)</h3>
+                    <p><span class="line-number">Lines 38-46:</span></p>
+                    <pre class="code-block">
+elif choice == '3':
+    all_students = backend_grades.get_all_students(students)
+    if not all_students:
+        print("No students found.")
+    else:
+        for student in all_students:
+            # Calculate average using backend function
+            avg = backend_grades.calculate_average(student["grades"])
+            print(f"Name: {student['name']}, Grades: {student['grades']}, Average: {avg:.2f}")</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Breaking it down:</strong>
+                        <ol>
+                            <li>
+                                <code>all_students = get_all_students(students)</code> — Get the full list.
+                            </li>
+                            <li>
+                                <code>if not all_students:</code> — Check if empty.
+                            </li>
+                            <li>
+                                <code>for student in all_students:</code> — Loop through each student.
+                            </li>
+                            <li>
+                                <code>student["grades"]</code> — Get their grades list.
+                            </li>
+                            <li>
+                                <code>calculate_average(student["grades"])</code> — Calculate their average.
+                            </li>
+                            <li>
+                                <code>{avg:.2f}</code> — Format average to 2 decimal places.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Output Example</span>
+                        <div class="data-vis">
+Name: Kayleen, Grades: [100, 90, 80, 70], Average: 85.00
+Name: Stephanie, Grades: [100], Average: 100.00
+Name: Louis, Grades: [50], Average: 50.00
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== PROGRAM ENTRY -->
+            <section class="entry-point">
+                <h2>🚀 How the Program Starts</h2>
+                
+                <div class="code-explanation">
+                    <h3>The Entry Point (Lines 55-56)</h3>
+                    <p><span class="line-number">Lines 55-56:</span></p>
+                    <pre class="code-block">
+if __name__ == "__main__":
+    main()</pre>
+                    
+                    <div class="concept-box">
+                        <span class="concept-title">📘 What Does This Mean?</span>
+                        <p>
+                            <code>__name__</code> is a special Python variable:
+                        </p>
+                        <ul>
+                            <li>
+                                When you RUN a file directly (e.g., <code>python3 grade_app.py</code>), 
+                                <code>__name__</code> equals <code>"__main__"</code>
+                            </li>
+                            <li>
+                                When a file is IMPORTED, <code>__name__</code> equals the file's name
+                            </li>
+                        </ul>
+                        <p>
+                            So this code says: "Only run <code>main()</code> if this file is being run directly, 
+                            not imported."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="beginner-tip">
+                    <span class="beginner-tip-title">💡 The Comments at the Top!</span>
+                    <p>
+                        The file includes helpful comments:
+                    </p>
+                    <pre class="code-block">
+# 1. Code starts from main()
+# 2. Run Code --> From File with main() // python3 grade_app.py (File name)</pre>
+                    <p>
+                        This tells you: "The program starts at <code>main()</code>, and you run it with 
+                        <code>python3 grade_app.py</code>."
+                    </p>
+                </div>
+            </section>
+
+            <!-- ==================== SUMMARY ==================== -->
+            <section class="summary">
+                <h2>📝 Summary: Key Concepts Reviewed</h2>
+                
+                <div class="concept-box">
+                    <span class="concept-title">✅ Concepts Practiced in This Project</span>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Concept</th>
+                            <th>Where Used</th>
+                            <th>What It Does</th>
+                        </tr>
+                        <tr>
+                            <td>List of Dictionaries</td>
+                            <td><code>students = [{}]</code></td>
+                            <td>Store multiple items with properties</td>
+                        </tr>
+                        <tr>
+                            <td>List in Dictionary</td>
+                            <td><code>"grades": []</code></td>
+                            <td>Store multiple values in one field</td>
+                        </tr>
+                        <tr>
+                            <td>Passing Lists to Functions</td>
+                            <td><code>add_student(students, ...)</code></td>
+                            <td>Functions can modify passed data</td>
+                        </tr>
+                        <tr>
+                            <td>Loop through List</td>
+                            <td><code>for student in students:</code></td>
+                            <td>Process each item</td>
+                        </tr>
+                        <tr>
+                            <td>sum() and len()</td>
+                            <td><code>sum(grades) / len(grades)</code></td>
+                            <td>Calculate totals and counts</td>
+                        </tr>
+                        <tr>
+                            <td>Empty list check</td>
+                            <td><code>if len(list) == 0:</code></td>
+                            <td>Prevent division by zero</td>
+                        </tr>
+                        <tr>
+                            <td>Error Handling</td>
+                            <td><code>try/except ValueError</code></td>
+                            <td>Handle invalid input gracefully</td>
+                        </tr>
+                        <tr>
+                            <td>Entry Point</td>
+                            <td><code>if __name__ == "__main__":</code></td>
+                            <td>Control when code runs</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="success-box">
+                    <span class="success-title">🎉 Great Job!</span>
+                    <p>
+                        This project may seem simple, but it covers ALL the fundamental concepts you need! 
+                        If you understand this project, you have a solid foundation for more complex programs.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Introduction to Programming (Python)</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project 7: Employee Management - Introduction to Programming</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .code-explanation {
+            background-color: #f9f9f9;
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .line-number {
+            font-weight: bold;
+            color: #555;
+            margin-right: 10px;
+        }
+
+        .concept-box {
+            background-color: #e7f3fe;
+            border: 1px solid #b6d4fe;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .concept-title {
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .success-box {
+            background-color: #d4edda;
+            border: 1px solid #28a745;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-weight: bold;
+            color: #155724;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .step-by-step li {
+            margin-bottom: 10px;
+        }
+
+        .data-vis {
+            font-family: monospace;
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .flow-diagram {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Introduction to Programming</h1>
+        <h2>Project 7: Employee Management System Breakdown</h2>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Programming Basics</a></li>
+                    <li><a href="if_else_statement.html">If/Else Statements</a></li>
+                    <li><a href="for_loops.html">For Loops</a></li>
+                    <li><a href="while_loops.html">While Loops</a></li>
+                    <li><a href="functions_1.html">Functions I</a></li>
+                    <li><a href="functions_2.html">Functions II</a></li>
+                    <li><a href="data-structures_1.html">Data Structures I</a></li>
+                    <li><a href="data-structures_2.html">Data Structures II</a></li>
+                    <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+                    <li><a href="libraries.html">Libraries &amp; Imports</a></li>
+                    <li><a href="debugging.html">Debugging</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <p><a href="projects.html">&larr; Back to Projects</a></p>
+
+            <!-- ==================== OVERVIEW ==================== -->
+            <section class="overview">
+                <h2>🎯 What Are We Building?</h2>
+                <p>
+                    We're building an <strong>Employee Management System</strong> — software that HR departments 
+                    use to track employees! You can view all employees, filter by department, give raises, 
+                    assign projects, and calculate department costs.
+                </p>
+
+                <div class="concept-box">
+                    <span class="concept-title">👔 What is HR Software?</span>
+                    <p>
+                        Human Resources (HR) departments need to track:
+                    </p>
+                    <ul>
+                        <li><strong>Who works here?</strong> (Names, IDs)</li>
+                        <li><strong>What do they do?</strong> (Department, Role)</li>
+                        <li><strong>How much do they earn?</strong> (Salary)</li>
+                        <li><strong>What are they working on?</strong> (Projects)</li>
+                        <li><strong>How are they performing?</strong> (Performance rating)</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">🆕 What's New in This Project?</span>
+                    <ul>
+                        <li><strong>Lists Inside Dictionaries:</strong> Each employee has a list of projects!</li>
+                        <li><strong>Returning Tuples:</strong> Functions return multiple values (success, message)</li>
+                        <li><strong>Percentage Calculations:</strong> Salary raises calculated as percentages</li>
+                        <li><strong>List Comprehensions:</strong> Compact way to filter data</li>
+                        <li><strong>Filtering by Category:</strong> Get employees in a specific department</li>
+                    </ul>
+                </div>
+
+                <div class="flow-diagram">
+                    <div><strong>👥 EMPLOYEE MANAGEMENT</strong></div>
+                    <div style="display: flex; justify-content: space-around; margin-top: 15px;">
+                        <div>📋 View<br>Employees</div>
+                        <div>➕ Add<br>Employee</div>
+                        <div>🔍 Filter by<br>Department</div>
+                        <div>💰 Give<br>Raise</div>
+                        <div>📁 Assign<br>Project</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== DATA STRUCTURE ==================== -->
+            <section class="data-structure">
+                <h2>📊 Understanding the Data</h2>
+                
+                <div class="concept-box">
+                    <span class="concept-title">📦 Employee Data Structure</span>
+                    <p>Each employee has a LOT of information:</p>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Example</th>
+                            <th>Purpose</th>
+                        </tr>
+                        <tr>
+                            <td><code>id</code></td>
+                            <td>Integer</td>
+                            <td>101</td>
+                            <td>Unique identifier</td>
+                        </tr>
+                        <tr>
+                            <td><code>name</code></td>
+                            <td>String</td>
+                            <td>"Alice Smith"</td>
+                            <td>Employee's name</td>
+                        </tr>
+                        <tr>
+                            <td><code>department</code></td>
+                            <td>String</td>
+                            <td>"Engineering"</td>
+                            <td>Which team they're on</td>
+                        </tr>
+                        <tr>
+                            <td><code>role</code></td>
+                            <td>String</td>
+                            <td>"Software Engineer"</td>
+                            <td>Their job title</td>
+                        </tr>
+                        <tr>
+                            <td><code>salary</code></td>
+                            <td>Float</td>
+                            <td>85000.00</td>
+                            <td>Annual salary</td>
+                        </tr>
+                        <tr>
+                            <td><code>projects</code></td>
+                            <td><strong>List</strong></td>
+                            <td>["Website Redesign"]</td>
+                            <td>Assigned projects</td>
+                        </tr>
+                        <tr>
+                            <td><code>performance_rating</code></td>
+                            <td>Float</td>
+                            <td>4.5</td>
+                            <td>Performance score (1-5)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="warning-box">
+                    <span class="warning-title">⚠️ Notice: A List Inside a Dictionary!</span>
+                    <p>
+                        The <code>projects</code> field is a <strong>list</strong> because one employee can 
+                        work on MULTIPLE projects!
+                    </p>
+                    <div class="data-vis">
+# One employee:
+employee = {
+    "id": 101,
+    "name": "Alice Smith",
+    "department": "Engineering",
+    "role": "Software Engineer",
+    "salary": 85000.00,
+    "projects": ["Website Redesign", "API Migration"],  # ← A LIST!
+    "performance_rating": 4.5
+}
+
+# Accessing projects:
+employee["projects"]     # Returns: ["Website Redesign", "API Migration"]
+employee["projects"][0]  # Returns: "Website Redesign"
+
+# Adding a new project:
+employee["projects"].append("New Project")
+# Now: ["Website Redesign", "API Migration", "New Project"]
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== BACKEND ==================== -->
+            <section class="backend">
+                <h2>🔧 Part 1: The Backend (employee_backend.py)</h2>
+                <p>
+                    This file contains all the employee management logic.
+                </p>
+
+                <!-- INITIALIZE DATA -->
+                <div class="code-explanation">
+                    <h3>1. Sample Employee Data (Lines 1-53)</h3>
+                    <p><span class="line-number">Lines 1-53:</span></p>
+                    <pre class="code-block">
+def initialize_employees():
+    """
+    Creates sample employee data.
+    Returns:
+        list: A list of employee dictionaries.
+    """
+    return [
+        {
+            "id": 101,
+            "name": "Alice Smith",
+            "department": "Engineering",
+            "role": "Software Engineer",
+            "salary": 85000.00,
+            "projects": ["Website Redesign", "API Migration"],
+            "performance_rating": 4.5
+        },
+        # ... more employees ...
+    ]</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Sample departments:</strong>
+                        <ul>
+                            <li>Engineering (2 employees)</li>
+                            <li>Sales (1 employee)</li>
+                            <li>Marketing (1 employee)</li>
+                            <li>HR (1 employee)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ADD EMPLOYEE -->
+                <div class="code-explanation">
+                    <h3>2. Adding New Employees (Lines 59-75)</h3>
+                    <p><span class="line-number">Lines 59-75:</span></p>
+                    <pre class="code-block">
+def add_employee(employees, name, department, role, salary):
+    """Adds a new employee to the list."""
+    new_id = 101
+    if employees:
+        new_id = max(e["id"] for e in employees) + 1
+        
+    new_employee = {
+        "id": new_id,
+        "name": name,
+        "department": department,
+        "role": role,
+        "salary": float(salary),
+        "projects": [],              # Empty list - no projects yet!
+        "performance_rating": 0.0    # Default rating
+    }
+    employees.append(new_employee)
+    return new_employee</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Key points:</strong>
+                        <ol>
+                            <li>
+                                <code>new_id = 101</code> — Employee IDs start at 101 (not 1).
+                            </li>
+                            <li>
+                                <code>"projects": []</code> — New employees start with an empty project list.
+                            </li>
+                            <li>
+                                <code>"performance_rating": 0.0</code> — Default rating until reviewed.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- FILTER BY DEPARTMENT -->
+                <div class="code-explanation">
+                    <h3>3. Filtering by Department (Lines 77-79)</h3>
+                    <p><span class="line-number">Lines 77-79:</span></p>
+                    <pre class="code-block">
+def get_employees_by_department(employees, department):
+    """Returns a list of employees in a specific department."""
+    return [e for e in employees if e["department"].lower() == department.lower()]</pre>
+                    
+                    <div class="concept-box">
+                        <span class="concept-title">📝 List Comprehension</span>
+                        <p>
+                            This one-liner is called a <strong>list comprehension</strong>. It's a compact way 
+                            to filter a list!
+                        </p>
+                        <div class="data-vis">
+# List comprehension (1 line):
+[e for e in employees if e["department"].lower() == department.lower()]
+
+# Equivalent for loop (4 lines):
+result = []
+for e in employees:
+    if e["department"].lower() == department.lower():
+        result.append(e)
+return result
+                        </div>
+                        <p><strong>How to read it:</strong> "Give me each <code>e</code> from <code>employees</code> 
+                        WHERE the department matches."</p>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Filter Example</span>
+                        <div class="data-vis">
+get_employees_by_department(employees, "Engineering")
+
+# Returns:
+[
+    {"id": 101, "name": "Alice Smith", "department": "Engineering", ...},
+    {"id": 103, "name": "Charlie Brown", "department": "Engineering", ...}
+]
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GIVE RAISE -->
+                <div class="code-explanation">
+                    <h3>4. Giving a Raise (Lines 81-93)</h3>
+                    <p><span class="line-number">Lines 81-93:</span></p>
+                    <pre class="code-block">
+def give_raise(employees, emp_id, percentage):
+    """
+    Increases an employee's salary by a percentage (e.g., 5 for 5%).
+    Returns:
+        tuple: (bool success, str message)
+    """
+    for emp in employees:
+        if emp["id"] == emp_id:
+            old_salary = emp["salary"]
+            raise_amount = old_salary * (percentage / 100)
+            emp["salary"] += raise_amount
+            return True, f"Raise applied. New salary for {emp['name']}: ${emp['salary']:,.2f}"
+    return False, "Employee ID not found."</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Understanding percentage calculations:</strong>
+                        <ol>
+                            <li>
+                                <code>old_salary = emp["salary"]</code> — Save the current salary.
+                            </li>
+                            <li>
+                                <code>percentage / 100</code> — Convert percentage to decimal (5% → 0.05).
+                            </li>
+                            <li>
+                                <code>raise_amount = old_salary * 0.05</code> — Calculate the raise.
+                            </li>
+                            <li>
+                                <code>emp["salary"] += raise_amount</code> — Add it to the salary.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Raise Calculation Example</span>
+                        <div class="data-vis">
+# Give Alice (salary $85,000) a 10% raise:
+
+old_salary = 85000
+percentage = 10
+raise_amount = 85000 * (10 / 100)
+             = 85000 * 0.10
+             = 8500
+
+new_salary = 85000 + 8500 = $93,500
+                        </div>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">📦 Returning a Tuple</span>
+                        <p>
+                            This function returns TWO values at once using a <strong>tuple</strong>:
+                        </p>
+                        <div class="data-vis">
+# Function returns two values:
+return True, "Raise applied. New salary..."
+
+# Caller receives both:
+success, msg = give_raise(employees, 101, 10)
+
+# success = True
+# msg = "Raise applied. New salary for Alice Smith: $93,500.00"
+
+# Or if employee not found:
+success, msg = give_raise(employees, 999, 10)
+
+# success = False
+# msg = "Employee ID not found."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ASSIGN PROJECT -->
+                <div class="code-explanation">
+                    <h3>5. Assigning Projects (Lines 95-101)</h3>
+                    <p><span class="line-number">Lines 95-101:</span></p>
+                    <pre class="code-block">
+def assign_project(employees, emp_id, project_name):
+    """Assigns a project to an employee."""
+    for emp in employees:
+        if emp["id"] == emp_id:
+            emp["projects"].append(project_name)
+            return True, f"Assigned '{project_name}' to {emp['name']}."
+    return False, "Employee ID not found."</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>How it works:</strong>
+                        <ol>
+                            <li>Find the employee by ID.</li>
+                            <li><code>emp["projects"].append(project_name)</code> — Add the new project to their list.</li>
+                            <li>Return success message.</li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Assigning a Project</span>
+                        <div class="data-vis">
+# Before:
+alice = {"name": "Alice", "projects": ["Website Redesign"]}
+
+assign_project(employees, 101, "Mobile App")
+
+# After:
+alice = {"name": "Alice", "projects": ["Website Redesign", "Mobile App"]}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEPARTMENT SALARY -->
+                <div class="code-explanation">
+                    <h3>6. Calculating Department Costs (Lines 103-107)</h3>
+                    <p><span class="line-number">Lines 103-107:</span></p>
+                    <pre class="code-block">
+def calculate_department_salary(employees, department):
+    """Calculates total salary cost for a department."""
+    dept_employees = get_employees_by_department(employees, department)
+    total = sum(e["salary"] for e in dept_employees)
+    return total, len(dept_employees)</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>How it works:</strong>
+                        <ol>
+                            <li>
+                                First, filter to get only employees in that department.
+                            </li>
+                            <li>
+                                <code>sum(e["salary"] for e in dept_employees)</code> — Add up all salaries.
+                            </li>
+                            <li>
+                                <code>len(dept_employees)</code> — Count how many employees.
+                            </li>
+                            <li>
+                                Return BOTH the total and the count!
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">📊 The sum() Function</span>
+                        <p>
+                            <code>sum()</code> adds up all values in a collection:
+                        </p>
+                        <div class="data-vis">
+# Simple sum:
+sum([1, 2, 3, 4, 5])  # Returns 15
+
+# Sum with generator expression:
+sum(e["salary"] for e in dept_employees)
+
+# If dept_employees contains:
+# Alice: $85,000
+# Charlie: $92,000
+# sum() returns: $177,000
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== FRONTEND ==================== -->
+            <section class="frontend">
+                <h2>🖥️ Part 2: The User Interface (employee_app.py)</h2>
+                <p>
+                    This file handles user interaction and displays employee data.
+                </p>
+
+                <!-- VIEW ALL EMPLOYEES -->
+                <div class="code-explanation">
+                    <h3>1. Displaying Employees with Projects (Lines 18-27)</h3>
+                    <p><span class="line-number">Lines 18-27:</span></p>
+                    <pre class="code-block">
+if choice == '1':
+    all_emps = employee_backend.get_all_employees(employees)
+    if not all_emps:
+        print("No employees found.")
+    else:
+        print(f"{'ID':<5} {'Name':<15} {'Dep':<12} {'Role':<15} {'Salary':<10} {'Projects'}")
+        print("-" * 80)
+        for e in all_emps:
+            projects_str = ", ".join(e["projects"]) if e["projects"] else "None"
+            print(f"{e['id']:<5} {e['name']:<15} {e['department']:<12} {e['role']:<15} ${e['salary']:<9.0f} {projects_str}")</pre>
+                    
+                    <div class="concept-box">
+                        <span class="concept-title">🔗 Joining List Items into a String</span>
+                        <p>
+                            <code>", ".join(e["projects"])</code> converts a list into a comma-separated string:
+                        </p>
+                        <div class="data-vis">
+projects = ["Website Redesign", "API Migration"]
+
+", ".join(projects)
+# Returns: "Website Redesign, API Migration"
+
+# If empty:
+projects = []
+", ".join(projects) if projects else "None"
+# Returns: "None"
+                        </div>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Output Example</span>
+                        <div class="data-vis">
+ID    Name            Dep          Role            Salary     Projects
+--------------------------------------------------------------------------------
+101   Alice Smith     Engineering  Software Eng.   $85000     Website Redesign, API Migration
+102   Bob Jones       Sales        Sales Associate $55000     Client Acquisition Q1
+103   Charlie Brown   Engineering  DevOps Engineer $92000     Server Upgrade
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GIVE RAISE -->
+                <div class="code-explanation">
+                    <h3>2. Handling Tuple Returns (Lines 51-58)</h3>
+                    <p><span class="line-number">Lines 51-58:</span></p>
+                    <pre class="code-block">
+elif choice == '4':
+    try:
+        emp_id = int(input("Enter Employee ID: "))
+        percent = float(input("Enter raise percentage (e.g. 5 for 5%): "))
+        success, msg = employee_backend.give_raise(employees, emp_id, percent)
+        print(msg)
+    except ValueError:
+        print("Error: Invalid ID or percentage.")</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Unpacking the tuple:</strong>
+                        <p>
+                            <code>success, msg = give_raise(...)</code> — This "unpacks" the two values returned 
+                            by the function into separate variables.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- DEPARTMENT COSTS -->
+                <div class="code-explanation">
+                    <h3>3. Displaying Department Statistics (Lines 69-78)</h3>
+                    <p><span class="line-number">Lines 69-78:</span></p>
+                    <pre class="code-block">
+elif choice == '6':
+    dept = input("Enter Department Name: ")
+    total_cost, count = employee_backend.calculate_department_salary(employees, dept)
+    if count > 0:
+        print(f"--- {dept} Department Cost ---")
+        print(f"Total Salaries: ${total_cost:,.2f}")
+        print(f"Employee Count: {count}")
+        print(f"Average Salary: ${total_cost/count:,.2f}")
+    else:
+        print(f"No data for department: {dept}")</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Calculating the average:</strong>
+                        <p>
+                            <code>total_cost/count</code> — Divide total by number of employees to get average.
+                        </p>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Department Statistics</span>
+                        <div class="data-vis">
+--- Engineering Department Cost ---
+Total Salaries: $177,000.00
+Employee Count: 2
+Average Salary: $88,500.00
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== SUMMARY ==================== -->
+            <section class="summary">
+                <h2>📝 Summary: Key Concepts Learned</h2>
+                
+                <div class="concept-box">
+                    <span class="concept-title">✅ Concepts in This Project</span>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Concept</th>
+                            <th>Where Used</th>
+                            <th>What It Does</th>
+                        </tr>
+                        <tr>
+                            <td>Lists Inside Dictionaries</td>
+                            <td><code>"projects": [...]</code></td>
+                            <td>Store multiple related items in one field</td>
+                        </tr>
+                        <tr>
+                            <td>List Comprehension</td>
+                            <td><code>[e for e in list if ...]</code></td>
+                            <td>Filter lists in one line</td>
+                        </tr>
+                        <tr>
+                            <td>Tuple Returns</td>
+                            <td><code>return True, "message"</code></td>
+                            <td>Return multiple values from a function</td>
+                        </tr>
+                        <tr>
+                            <td>Tuple Unpacking</td>
+                            <td><code>success, msg = func()</code></td>
+                            <td>Assign multiple return values at once</td>
+                        </tr>
+                        <tr>
+                            <td>Percentage Math</td>
+                            <td><code>value * (percent/100)</code></td>
+                            <td>Calculate percentage increases</td>
+                        </tr>
+                        <tr>
+                            <td>join() Method</td>
+                            <td><code>", ".join(list)</code></td>
+                            <td>Convert list to comma-separated string</td>
+                        </tr>
+                        <tr>
+                            <td>sum() Function</td>
+                            <td><code>sum(e["salary"] for ...)</code></td>
+                            <td>Add up values from multiple items</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Introduction to Programming (Python)</p>
+    </footer>
+</body>
+
+</html>

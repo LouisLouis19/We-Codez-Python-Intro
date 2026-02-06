@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project 5: Expense Tracker - Introduction to Programming</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .code-explanation {
+            background-color: #f9f9f9;
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .line-number {
+            font-weight: bold;
+            color: #555;
+            margin-right: 10px;
+        }
+
+        .concept-box {
+            background-color: #e7f3fe;
+            border: 1px solid #b6d4fe;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .concept-title {
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .success-box {
+            background-color: #d4edda;
+            border: 1px solid #28a745;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-weight: bold;
+            color: #155724;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .step-by-step li {
+            margin-bottom: 10px;
+        }
+
+        .data-vis {
+            font-family: monospace;
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .flow-diagram {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .flow-diagram .arrow {
+            font-size: 2em;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Introduction to Programming</h1>
+        <h2>Project 5: Expense Tracker Breakdown</h2>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Programming Basics</a></li>
+                    <li><a href="if_else_statement.html">If/Else Statements</a></li>
+                    <li><a href="for_loops.html">For Loops</a></li>
+                    <li><a href="while_loops.html">While Loops</a></li>
+                    <li><a href="functions_1.html">Functions I</a></li>
+                    <li><a href="functions_2.html">Functions II</a></li>
+                    <li><a href="data-structures_1.html">Data Structures I</a></li>
+                    <li><a href="data-structures_2.html">Data Structures II</a></li>
+                    <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+                    <li><a href="libraries.html">Libraries &amp; Imports</a></li>
+                    <li><a href="debugging.html">Debugging</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <p><a href="projects.html">&larr; Back to Projects</a></p>
+
+            <!-- ==================== OVERVIEW ==================== -->
+            <section class="overview">
+                <h2>🎯 What Are We Building?</h2>
+                <p>
+                    We're building an <strong>Expense Tracker</strong> — a personal finance app that tracks your 
+                    income and expenses! You can add money you earn (income), money you spend (expenses), and 
+                    see how much money you have left.
+                </p>
+
+                <div class="concept-box">
+                    <span class="concept-title">💰 Personal Finance 101</span>
+                    <p>Managing money is simple math:</p>
+                    <div class="data-vis">
+Remaining Balance = Total Income - Total Expenses
+
+Example:
+  You earned: $5,000 (salary)
+  You spent:  $1,350.50 (rent + groceries)
+  You have:   $3,649.50 left!
+                    </div>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">🆕 What's New in This Project?</span>
+                    <ul>
+                        <li><strong>Two Types of Data:</strong> Income AND Expenses (tracked with a "type" field)</li>
+                        <li><strong>Unique IDs:</strong> Each transaction has a unique ID number</li>
+                        <li><strong>Calculated Summaries:</strong> The app calculates totals and balances</li>
+                        <li><strong>Formatted Tables:</strong> Data displayed in neat columns</li>
+                        <li><strong>Date Tracking:</strong> Each transaction records when it happened</li>
+                    </ul>
+                </div>
+
+                <div class="flow-diagram">
+                    <div><strong>💵 INCOME</strong> (Salary, Bonus)</div>
+                    <div class="arrow">↓</div>
+                    <div><strong>📋 TRANSACTIONS LIST</strong></div>
+                    <div class="arrow">↑</div>
+                    <div><strong>💸 EXPENSES</strong> (Rent, Food, Bills)</div>
+                </div>
+            </section>
+
+            <!-- ==================== DATA STRUCTURE ==================== -->
+            <section class="data-structure">
+                <h2>📊 Understanding the Data</h2>
+                
+                <div class="concept-box">
+                    <span class="concept-title">📦 What Information Does Each Transaction Need?</span>
+                    <p>Every transaction (income or expense) needs these pieces of information:</p>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Example</th>
+                            <th>Why We Need It</th>
+                        </tr>
+                        <tr>
+                            <td><code>id</code></td>
+                            <td>Integer</td>
+                            <td>1, 2, 3...</td>
+                            <td>Unique identifier to find/delete specific transactions</td>
+                        </tr>
+                        <tr>
+                            <td><code>name</code></td>
+                            <td>String</td>
+                            <td>"Salary", "Groceries"</td>
+                            <td>Description of what the money is for</td>
+                        </tr>
+                        <tr>
+                            <td><code>amount</code></td>
+                            <td>Float</td>
+                            <td>5000.0, 150.50</td>
+                            <td>How much money (always positive)</td>
+                        </tr>
+                        <tr>
+                            <td><code>category</code></td>
+                            <td>String</td>
+                            <td>"Salary", "Food", "Housing"</td>
+                            <td>Group similar transactions together</td>
+                        </tr>
+                        <tr>
+                            <td><code>type</code></td>
+                            <td>String</td>
+                            <td>"income" or "expense"</td>
+                            <td>Is this money coming IN or going OUT?</td>
+                        </tr>
+                        <tr>
+                            <td><code>date</code></td>
+                            <td>String</td>
+                            <td>"2024-01-15"</td>
+                            <td>When did this transaction happen?</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="code-explanation">
+                    <h3>The Data Structure</h3>
+                    <div class="data-vis">
+transactions = [
+    {
+        "id": 1,
+        "name": "Salary",
+        "amount": 5000.0,
+        "category": "Salary",
+        "type": "income",      # Money coming IN
+        "date": "2024-01-01"
+    },
+    {
+        "id": 2,
+        "name": "Groceries",
+        "amount": 150.50,
+        "category": "Food",
+        "type": "expense",     # Money going OUT
+        "date": "2024-01-02"
+    },
+    {
+        "id": 3,
+        "name": "Rent",
+        "amount": 1200.0,
+        "category": "Housing",
+        "type": "expense",     # Money going OUT
+        "date": "2024-01-03"
+    }
+]
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <span class="warning-title">⚠️ The "type" Field is Critical!</span>
+                    <p>
+                        The <code>"type"</code> field tells us whether to <strong>add</strong> or <strong>subtract</strong> 
+                        this amount from our balance:
+                    </p>
+                    <ul>
+                        <li><code>"income"</code> → Add to balance (money we receive)</li>
+                        <li><code>"expense"</code> → Subtract from balance (money we spend)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ==================== BACKEND ==================== -->
+            <section class="backend">
+                <h2>🔧 Part 1: The Data Manager (backend_expense.py)</h2>
+                <p>
+                    This file stores all transactions and provides functions to add, delete, and calculate totals.
+                </p>
+
+                <!-- IMPORTS AND STORAGE -->
+                <div class="code-explanation">
+                    <h3>1. Setting Up Storage (Lines 1-6)</h3>
+                    <p><span class="line-number">Lines 1-6:</span></p>
+                    <pre class="code-block">
+import datetime
+
+# Data storage
+transactions = []
+current_id = 1</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Understanding each line:</strong>
+                        <ol>
+                            <li>
+                                <code>import datetime</code> — Import Python's datetime library to work with dates.
+                            </li>
+                            <li>
+                                <code>transactions = []</code> — Create an empty list to store all our transaction 
+                                dictionaries.
+                            </li>
+                            <li>
+                                <code>current_id = 1</code> — A counter to give each transaction a unique ID.
+                                <ul>
+                                    <li>First transaction gets ID 1</li>
+                                    <li>Second transaction gets ID 2</li>
+                                    <li>And so on...</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🔢 Why Use Unique IDs?</span>
+                        <p>
+                            Unlike the To-Do app where we used the <strong>index</strong> (position) to identify items, 
+                            this app uses <strong>unique IDs</strong>. Why?
+                        </p>
+                        <ul>
+                            <li><strong>Indexes change:</strong> If you delete item at index 1, everything shifts!</li>
+                            <li><strong>IDs stay constant:</strong> Transaction #5 is ALWAYS transaction #5, even if others are deleted.</li>
+                        </ul>
+                        <div class="data-vis">
+# With indexes (To-Do app style):
+Before delete: [Item0, Item1, Item2]  # Delete Item1
+After delete:  [Item0, Item2]         # Item2 is now at index 1!
+
+# With IDs (Expense Tracker style):
+Before delete: [ID:1, ID:2, ID:3]  # Delete ID:2
+After delete:  [ID:1, ID:3]        # ID:3 is still ID:3!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADD SAMPLE DATA -->
+                <div class="code-explanation">
+                    <h3>2. Sample Data (Lines 8-16)</h3>
+                    <p><span class="line-number">Lines 8-16:</span></p>
+                    <pre class="code-block">
+def add_sample_data():
+    """Adds sample data to the expense tracker."""
+    global transactions, current_id
+    transactions = [
+        {"id": 1, "name": "Salary", "amount": 5000.0, "category": "Salary", "type": "income", "date": "2024-01-01"},
+        {"id": 2, "name": "Groceries", "amount": 150.50, "category": "Food", "type": "expense", "date": "2024-01-02"},
+        {"id": 3, "name": "Rent", "amount": 1200.0, "category": "Housing", "type": "expense", "date": "2024-01-03"}
+    ]
+    current_id = 4</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>What's happening:</strong>
+                        <ol>
+                            <li>
+                                <code>global transactions, current_id</code> — We need to modify BOTH global variables.
+                            </li>
+                            <li>
+                                We create 3 sample transactions: 1 income and 2 expenses.
+                            </li>
+                            <li>
+                                <code>current_id = 4</code> — The NEXT transaction added will get ID 4.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Sample Data Balance Check</span>
+                        <div class="data-vis">
+Total Income:  $5,000.00 (Salary)
+Total Expenses: $150.50 (Groceries) + $1,200.00 (Rent) = $1,350.50
+Remaining:     $5,000.00 - $1,350.50 = $3,649.50
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NOTE ABOUT INCOMPLETE BACKEND -->
+                <div class="warning-box">
+                    <span class="warning-title">📝 Note: Backend Functions to Implement</span>
+                    <p>
+                        The backend file has a comment <code># More Functions here...</code> indicating these 
+                        functions need to be implemented:
+                    </p>
+                    <ul>
+                        <li><code>add_transaction()</code> — Add a new income or expense</li>
+                        <li><code>get_transactions()</code> — Return all transactions</li>
+                        <li><code>delete_transaction()</code> — Remove a transaction by ID</li>
+                        <li><code>get_balance_summary()</code> — Calculate totals and remaining balance</li>
+                    </ul>
+                    <p>Let's see how these would work:</p>
+                </div>
+
+                <!-- ADD TRANSACTION CONCEPT -->
+                <div class="code-explanation">
+                    <h3>3. Adding a Transaction (Concept)</h3>
+                    <p>Here's how an <code>add_transaction</code> function would work:</p>
+                    <pre class="code-block">
+def add_transaction(name, amount, category, trans_type):
+    """Adds a new transaction (income or expense)."""
+    global transactions, current_id
+    
+    if amount <= 0:  # Amount must be positive!
+        return False
+    
+    new_transaction = {
+        "id": current_id,
+        "name": name,
+        "amount": amount,
+        "category": category,
+        "type": trans_type,  # "income" or "expense"
+        "date": datetime.date.today().isoformat()  # Today's date
+    }
+    
+    transactions.append(new_transaction)
+    current_id += 1  # Increment for next transaction
+    return True</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Key points:</strong>
+                        <ol>
+                            <li>
+                                <code>if amount <= 0: return False</code> — Validate that amounts are positive.
+                            </li>
+                            <li>
+                                <code>"id": current_id</code> — Use the current ID counter.
+                            </li>
+                            <li>
+                                <code>datetime.date.today().isoformat()</code> — Get today's date in "YYYY-MM-DD" format.
+                            </li>
+                            <li>
+                                <code>current_id += 1</code> — Increment so the next transaction gets a new ID.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- GET BALANCE SUMMARY CONCEPT -->
+                <div class="code-explanation">
+                    <h3>4. Calculating the Balance (Concept)</h3>
+                    <p>Here's how a <code>get_balance_summary</code> function would work:</p>
+                    <pre class="code-block">
+def get_balance_summary():
+    """Calculates and returns financial summary."""
+    total_income = 0
+    total_expenses = 0
+    
+    for t in transactions:
+        if t["type"] == "income":
+            total_income += t["amount"]
+        else:  # type == "expense"
+            total_expenses += t["amount"]
+    
+    return {
+        "original_balance": total_income,
+        "total_expenses": total_expenses,
+        "remaining_balance": total_income - total_expenses
+    }</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>The logic:</strong>
+                        <ol>
+                            <li>
+                                Loop through ALL transactions.
+                            </li>
+                            <li>
+                                Check the <code>"type"</code> field of each transaction.
+                            </li>
+                            <li>
+                                If <code>"income"</code> → add to <code>total_income</code>.
+                            </li>
+                            <li>
+                                If <code>"expense"</code> → add to <code>total_expenses</code>.
+                            </li>
+                            <li>
+                                Return a dictionary with all three values.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">📦 Returning a Dictionary</span>
+                        <p>
+                            This function returns a <strong>dictionary</strong> with multiple values, not just one number!
+                        </p>
+                        <div class="data-vis">
+summary = get_balance_summary()
+
+# summary is now:
+# {
+#     "original_balance": 5000.0,
+#     "total_expenses": 1350.50,
+#     "remaining_balance": 3649.50
+# }
+
+# Access each value:
+print(summary["original_balance"])    # 5000.0
+print(summary["total_expenses"])      # 1350.50
+print(summary["remaining_balance"])   # 3649.50
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== FRONTEND ==================== -->
+            <section class="frontend">
+                <h2>🖥️ Part 2: The User Interface (expense_app.py)</h2>
+                <p>
+                    This file handles user interaction, displays menus, and calls backend functions.
+                </p>
+
+                <!-- ADDING INCOME -->
+                <div class="code-explanation">
+                    <h3>1. Adding Income (Lines 19-29)</h3>
+                    <p><span class="line-number">Lines 19-29:</span></p>
+                    <pre class="code-block">
+if choice == '1':
+    name = input("Enter income source: ")
+    try:
+        amount = float(input("Enter amount: "))
+        category = input("Enter category (e.g., Salary, Bonus): ")
+        if backend_expense.add_transaction(name, amount, category, "income"):
+            print("Income added successfully.")
+        else:
+            print("Invalid amount. Must be positive.")
+    except ValueError:
+        print("Invalid input. Please enter a number for amount.")</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Flow of adding income:</strong>
+                        <ol>
+                            <li>Ask for the income source (name), like "Salary" or "Freelance Work".</li>
+                            <li>Ask for the amount (converted to float with error handling).</li>
+                            <li>Ask for a category to organize similar income sources.</li>
+                            <li>Call the backend with <code>"income"</code> as the type.</li>
+                            <li>The backend returns <code>True</code> if successful, <code>False</code> if invalid.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- ADDING EXPENSE -->
+                <div class="code-explanation">
+                    <h3>2. Adding Expense (Lines 31-41)</h3>
+                    <p><span class="line-number">Lines 31-41:</span></p>
+                    <pre class="code-block">
+elif choice == '2':
+    name = input("Enter expense name: ")
+    try:
+        amount = float(input("Enter amount: "))
+        category = input("Enter category (e.g., Food, Rent): ")
+        if backend_expense.add_transaction(name, amount, category, "expense"):
+            print("Expense added successfully.")
+        else:
+            print("Invalid amount. Must be positive.")
+    except ValueError:
+        print("Invalid input. Please enter a number for amount.")</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Almost identical to adding income!</strong>
+                        <p>
+                            The only difference is we pass <code>"expense"</code> as the type instead of <code>"income"</code>.
+                        </p>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🔄 Code Reuse</span>
+                        <p>
+                            Notice how both income and expense use the SAME <code>add_transaction</code> function? 
+                            The only difference is the <code>type</code> parameter. This is efficient!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- VIEW SUMMARY -->
+                <div class="code-explanation">
+                    <h3>3. Viewing Financial Summary (Lines 43-48)</h3>
+                    <p><span class="line-number">Lines 43-48:</span></p>
+                    <pre class="code-block">
+elif choice == '3':
+    summary = backend_expense.get_balance_summary()
+    print("\n--- Financial Summary ---")
+    print(f"Original Balance (Total Income): ${summary['original_balance']:.2f}")
+    print(f"Total Expenses:                  ${summary['total_expenses']:.2f}")
+    print(f"Remaining Balance:               ${summary['remaining_balance']:.2f}")</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Breaking down the display:</strong>
+                        <ol>
+                            <li>
+                                <code>summary = backend_expense.get_balance_summary()</code> — Get the summary dictionary 
+                                from the backend.
+                            </li>
+                            <li>
+                                <code>${summary['original_balance']:.2f}</code> — Access the value and format with 
+                                2 decimal places.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Example Output</span>
+                        <div class="data-vis">
+--- Financial Summary ---
+Original Balance (Total Income): $5000.00
+Total Expenses:                  $1350.50
+Remaining Balance:               $3649.50
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW TRANSACTION HISTORY -->
+                <div class="code-explanation">
+                    <h3>4. Displaying a Formatted Table (Lines 50-58)</h3>
+                    <p><span class="line-number">Lines 50-58:</span></p>
+                    <pre class="code-block">
+elif choice == '4':
+    transactions = backend_expense.get_transactions()
+    if not transactions:
+        print("No transactions found.")
+    else:
+        print(f"{'ID':<5} {'Name':<20} {'Amount':<10} {'Type':<10} {'Category':<15} {'Date':<12}")
+        print("-" * 75)
+        for t in transactions:
+            print(f"{t['id']:<5} {t['name']:<20} ${t['amount']:<9.2f} {t['type']:<10} {t['category']:<15} {t['date']:<12}")</pre>
+                    
+                    <div class="concept-box">
+                        <span class="concept-title">📏 String Formatting with Width</span>
+                        <p>
+                            The <code>&lt;5</code>, <code>&lt;20</code>, etc. are <strong>width specifiers</strong>. 
+                            They make columns line up neatly!
+                        </p>
+                        <ul>
+                            <li><code>{'ID':&lt;5}</code> — "ID" padded to 5 characters, left-aligned</li>
+                            <li><code>{'Name':&lt;20}</code> — "Name" padded to 20 characters, left-aligned</li>
+                            <li><code>{t['amount']:&lt;9.2f}</code> — Amount with 2 decimals, padded to 9 characters</li>
+                        </ul>
+                        <div class="data-vis">
+# Without width specifiers:
+1 Salary 5000.0 income Salary 2024-01-01
+2 Groceries 150.5 expense Food 2024-01-02
+
+# With width specifiers:
+ID    Name                 Amount     Type       Category        Date
+-------------------------------------------------------------
+1     Salary               $5000.00   income     Salary          2024-01-01
+2     Groceries            $150.50    expense    Food            2024-01-02
+                        </div>
+                        <p>Much easier to read!</p>
+                    </div>
+                </div>
+
+                <!-- DELETE TRANSACTION -->
+                <div class="code-explanation">
+                    <h3>5. Deleting by ID (Lines 60-69)</h3>
+                    <p><span class="line-number">Lines 60-69:</span></p>
+                    <pre class="code-block">
+elif choice == '5':
+    try:
+        t_id = int(input("Enter Transaction ID to delete: "))
+        deleted = backend_expense.delete_transaction(t_id)
+        if deleted:
+            print(f"Deleted: {deleted['name']} (${deleted['amount']})")
+        else:
+            print("Transaction ID not found.")
+    except ValueError:
+        print("Please enter a valid number.")</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>The deletion flow:</strong>
+                        <ol>
+                            <li>Ask for the transaction ID (not the index!).</li>
+                            <li>Call the backend's delete function.</li>
+                            <li>If found, the function returns the deleted transaction dictionary.</li>
+                            <li>Show confirmation with the name and amount.</li>
+                            <li>If not found, the function returns <code>None</code> or <code>False</code>.</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== SUMMARY ==================== -->
+            <section class="summary">
+                <h2>📝 Summary: Key Concepts Learned</h2>
+                
+                <div class="concept-box">
+                    <span class="concept-title">✅ Concepts in This Project</span>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Concept</th>
+                            <th>Where Used</th>
+                            <th>What It Does</th>
+                        </tr>
+                        <tr>
+                            <td>Unique IDs</td>
+                            <td><code>current_id</code></td>
+                            <td>Give each item a permanent identifier</td>
+                        </tr>
+                        <tr>
+                            <td>Type Field</td>
+                            <td><code>"type": "income"/"expense"</code></td>
+                            <td>Distinguish between different kinds of data</td>
+                        </tr>
+                        <tr>
+                            <td>Aggregation</td>
+                            <td><code>get_balance_summary()</code></td>
+                            <td>Calculate totals from multiple records</td>
+                        </tr>
+                        <tr>
+                            <td>Return Dictionary</td>
+                            <td><code>return {"key": value}</code></td>
+                            <td>Return multiple related values together</td>
+                        </tr>
+                        <tr>
+                            <td>Width Formatting</td>
+                            <td><code>{value:&lt;10}</code></td>
+                            <td>Create aligned table columns</td>
+                        </tr>
+                        <tr>
+                            <td>Date Handling</td>
+                            <td><code>datetime.date.today()</code></td>
+                            <td>Work with dates in Python</td>
+                        </tr>
+                        <tr>
+                            <td>ID-based Deletion</td>
+                            <td><code>delete_transaction(id)</code></td>
+                            <td>Find and remove items by unique ID</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">🎯 Real-World Applications</span>
+                    <p>This pattern is used in:</p>
+                    <ul>
+                        <li>Banking apps (tracking deposits and withdrawals)</li>
+                        <li>E-commerce (tracking orders and refunds)</li>
+                        <li>Inventory systems (tracking stock in and out)</li>
+                        <li>Any system where you need to track "in" vs "out" movements</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Introduction to Programming (Python)</p>
+    </footer>
+</body>
+
+</html>

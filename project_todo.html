@@ -35,6 +35,53 @@
             display: block;
         }
 
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .success-box {
+            background-color: #d4edda;
+            border: 1px solid #28a745;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-weight: bold;
+            color: #155724;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .step-by-step li {
+            margin-bottom: 10px;
+        }
+
         .data-vis {
             font-family: monospace;
             background: #333;
@@ -43,6 +90,49 @@
             border-radius: 5px;
             white-space: pre;
             overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .visual-list {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+
+        .visual-list .item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .visual-list .item.completed {
+            text-decoration: line-through;
+            opacity: 0.7;
         }
     </style>
 </head>
@@ -66,7 +156,7 @@
                     <li><a href="data-structures_1.html">Data Structures I</a></li>
                     <li><a href="data-structures_2.html">Data Structures II</a></li>
                     <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
-                    <li><a href="libraries.html">Libraries & Imports</a></li>
+                    <li><a href="libraries.html">Libraries &amp; Imports</a></li>
                     <li><a href="debugging.html">Debugging</a></li>
                 </ul>
             </nav>
@@ -74,115 +164,745 @@
         <main>
             <p><a href="projects.html">&larr; Back to Projects</a></p>
 
+            <!-- ==================== OVERVIEW ==================== -->
             <section class="overview">
-                <h2>The Big Picture: Data Structures</h2>
+                <h2>🎯 What Are We Building?</h2>
                 <p>
-                    Unlike the previous projects which just calculated numbers on the fly, this project needs to
-                    <strong>remember</strong> things. It needs a memory storage.
+                    We're building a <strong>To-Do List Application</strong> — a program that remembers tasks!
+                    You can add tasks, mark them as complete, and delete them. Unlike the calculator and converter
+                    which just do one-time calculations, this program <strong>stores data</strong>.
                 </p>
-                <div class="concept-box">
-                    <span class="concept-title">Data Structure: List of Dictionaries</span>
-                    <p>We need to store a list of tasks. Each task has two pieces of information: the
-                        <strong>Name</strong> ("Buy Milk") and the <strong>Status</strong> (Done or Not Done).
-                    </p>
-                    <p>We represent this as a <strong>List</strong> (the container) filled with
-                        <strong>Dictionaries</strong> (the individual tasks).
-                    </p>
 
-                    <div class="data-vis">
-                        todos = [
-                        { "task": "Buy milk", "completed": False }, # Index 0
-                        { "task": "Walk the dog", "completed": True }, # Index 1
-                        { "task": "Do homework", "completed": False } # Index 2
-                        ]</div>
+                <div class="concept-box">
+                    <span class="concept-title">💡 What's Different About This Project?</span>
+                    <p>
+                        <strong>The Calculator:</strong> Takes 2 numbers → Calculates → Shows result → Forgets
+                        everything
+                    </p>
+                    <p>
+                        <strong>The To-Do App:</strong> Stores a list of tasks → Remembers them → Let's you add, update,
+                        delete
+                    </p>
+                    <p>
+                        This is our first project with <strong>persistent data</strong> — information that stays
+                        around while the program runs!
+                    </p>
+                </div>
+
+                <div class="visual-list">
+                    <div><strong>📋 Your To-Do List:</strong></div>
+                    <div class="item">0. [ ] Buy milk</div>
+                    <div class="item completed">1. [x] Walk the dog</div>
+                    <div class="item">2. [ ] Finish homework</div>
                 </div>
             </section>
 
-            <section class="backend">
-                <h2>Part 1: The Database Manager (backend_todo.py)</h2>
-                <p>This file manages our <code>todos</code> list. It is the only file allowed to touch the data.</p>
+            <!-- ==================== DATA STRUCTURE ==================== -->
+            <section class="data-structure">
+                <h2>📊 Understanding the Data Structure</h2>
+                <p>
+                    Before we look at code, we need to understand <strong>how to store tasks</strong>. This is
+                    the most important concept in this project!
+                </p>
 
-                <div class="code-explanation">
-                    <h3>1. The Global Variable</h3>
-                    <p><span class="line-number">Line 3:</span></p>
-                    <pre class="code-block">todos = []</pre>
-                    <p>This empty list is initialized when the program starts. It lives in the memory of the backend.
-                    </p>
+                <div class="concept-box">
+                    <span class="concept-title">🤔 What Information Does Each Task Have?</span>
+                    <p>Each task needs TWO pieces of information:</p>
+                    <ol>
+                        <li><strong>task</strong> — The name of the task (e.g., "Buy milk")</li>
+                        <li><strong>completed</strong> — Is it done? (<code>True</code> or <code>False</code>)</li>
+                    </ol>
                 </div>
 
+                <div class="concept-box">
+                    <span class="concept-title">📦 Why a Dictionary?</span>
+                    <p>
+                        A regular variable can only hold ONE value. But we need to store TWO things for each task!
+                    </p>
+                    <p>
+                        A <strong>dictionary</strong> lets us store multiple values with labels (keys):
+                    </p>
+                    <div class="data-vis">
+# One task as a dictionary
+one_task = {
+"task": "Buy milk", # Key: "task" Value: "Buy milk"
+"completed": False # Key: "completed" Value: False
+}
+
+# Accessing the values:
+one_task["task"] # Returns: "Buy milk"
+one_task["completed"] # Returns: False
+
+# Changing a value:
+one_task["completed"] = True # Now it's completed!
+                    </div>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">📋 Why a List of Dictionaries?</span>
+                    <p>
+                        We have MULTIPLE tasks. So we put all task dictionaries inside a <strong>list</strong>:
+                    </p>
+                    <div class="data-vis">
+todos = [
+{"task": "Buy milk", "completed": False}, # Index 0
+{"task": "Walk the dog", "completed": True}, # Index 1
+{"task": "Finish homework", "completed": False} # Index 2
+]
+
+# Accessing:
+todos[0] # Returns: {"task": "Buy milk", "completed": False}
+todos[0]["task"] # Returns: "Buy milk"
+todos[1]["completed"] # Returns: True
+
+# The index (0, 1, 2) tells us WHICH task
+# The key ("task", "completed") tells us WHAT info about that task
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <span class="warning-title">⚠️ Indexes Start at 0!</span>
+                    <p>
+                        In Python (and most programming languages), lists are <strong>0-indexed</strong>:
+                    </p>
+                    <ul>
+                        <li>First item = index <code>0</code></li>
+                        <li>Second item = index <code>1</code></li>
+                        <li>Third item = index <code>2</code></li>
+                    </ul>
+                    <p>
+                        When the user wants to complete "Buy milk", they type <code>0</code>, not <code>1</code>!
+                    </p>
+                </div>
+            </section>
+
+            <!-- ==================== BACKEND ==================== -->
+            <section class="backend">
+                <h2>🔧 Part 1: The Database Manager (backend_todo.py)</h2>
+                <p>
+                    This file is like a <strong>database</strong>. It stores all tasks and is the ONLY file
+                    allowed to directly modify the data.
+                </p>
+
+                <!-- GLOBAL VARIABLE -->
                 <div class="code-explanation">
-                    <h3>2. Creating a New Task</h3>
+                    <h3>1. Creating the Data Storage (Lines 2-3)</h3>
+                    <p><span class="line-number">Lines 2-3:</span></p>
+                    <pre class="code-block">
+# Data storage
+todos = []  # List</pre>
+
+                    <div class="step-by-step">
+                        <strong>What's happening here?</strong>
+                        <ol>
+                            <li>
+                                <code># Data storage</code> — A comment explaining what this section is for.
+                            </li>
+                            <li>
+                                <code>todos = []</code> — Create an <strong>empty list</strong> called
+                                <code>todos</code>.
+                                This will hold all our task dictionaries.
+                            </li>
+                        </ol>
+                        <p>
+                            This is a <strong>global variable</strong> — it exists outside any function, so ALL
+                            functions in this file can access and modify it.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ADD SAMPLE DATA -->
+                <div class="code-explanation">
+                    <h3>2. Adding Sample Data (Lines 5-12)</h3>
+                    <p><span class="line-number">Lines 5-12:</span></p>
+                    <pre class="code-block">
+def add_sample_data():
+    """Adds sample data to the todo list."""
+    global todos
+    todos = [
+        {"task": "Buy milk", "completed": False},
+        {"task": "Walk the dog", "completed": True},
+        {"task": "Finish homework", "completed": False}
+    ]</pre>
+
+                    <div class="step-by-step">
+                        <strong>Breaking it down:</strong>
+                        <ol>
+                            <li>
+                                <code>def add_sample_data():</code> — Define a function with no parameters.
+                            </li>
+                            <li>
+                                <code>"""..."""</code> — Docstring describing what the function does.
+                            </li>
+                            <li>
+                                <code>global todos</code> — Tell Python we want to modify the global <code>todos</code>
+                                variable, not create a new local one.
+                            </li>
+                            <li>
+                                <code>todos = [...]</code> — Fill the list with 3 sample tasks so we have something
+                                to work with when the program starts.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🔑 The <code>global</code> Keyword</span>
+                        <p>
+                            <strong>Without <code>global todos</code>:</strong> Python would create a NEW local
+                            variable called <code>todos</code> inside the function. The global one wouldn't change!
+                        </p>
+                        <p>
+                            <strong>With <code>global todos</code>:</strong> Python modifies the existing global
+                            variable. All other functions will see the updated data.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ADD TODO -->
+                <div class="code-explanation">
+                    <h3>3. Adding a New Task (Lines 15-20)</h3>
                     <p><span class="line-number">Lines 15-20:</span></p>
                     <pre class="code-block">
-def add_todo(task_name):
-    new_todo = {} 
+def add_todo(task_name): # Cry
+    """Adds a new todo item."""
+    new_todo = {}  # Key => task, completed
     new_todo["task"] = task_name
     new_todo["completed"] = False
     todos.append(new_todo)</pre>
-                    <p>
-                        1. We create a new empty dictionary: <code>{}</code>.
-                        <br>2. We set the key <code>"task"</code> to whatever the user typed.
-                        <br>3. We set the key <code>"completed"</code> to <code>False</code> (default).
-                        <br>4. We <code>append</code> (add) this dictionary to the end of our main <code>todos</code>
-                        list.
-                    </p>
+
+                    <div class="step-by-step">
+                        <strong>Let's trace through: <code>add_todo("Cry")</code></strong>
+                        <ol>
+                            <li>
+                                <code>def add_todo(task_name):</code> — Takes one input: the task name.
+                            </li>
+                            <li>
+                                <code>new_todo = {}</code> — Create an empty dictionary. Think of it as an
+                                empty box for our new task.
+                            </li>
+                            <li>
+                                <code>new_todo["task"] = task_name</code> — Put the task name inside.
+                                Now we have: <code>{"task": "Cry"}</code>
+                            </li>
+                            <li>
+                                <code>new_todo["completed"] = False</code> — New tasks aren't done yet!
+                                Now we have: <code>{"task": "Cry", "completed": False}</code>
+                            </li>
+                            <li>
+                                <code>todos.append(new_todo)</code> — Add this dictionary to the end of our list.
+                                <ul>
+                                    <li><code>.append()</code> is a list method that adds an item to the END.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Before and After</span>
+                        <div class="data-vis">
+# BEFORE add_todo("Cry"):
+todos = [
+{"task": "Buy milk", "completed": False},
+{"task": "Walk the dog", "completed": True},
+{"task": "Finish homework", "completed": False}
+]
+
+# AFTER add_todo("Cry"):
+todos = [
+{"task": "Buy milk", "completed": False},
+{"task": "Walk the dog", "completed": True},
+{"task": "Finish homework", "completed": False},
+{"task": "Cry", "completed": False} # ← NEW! Index 3
+]
+                        </div>
+                    </div>
                 </div>
 
+                <!-- LIST TODOS -->
                 <div class="code-explanation">
-                    <h3>3. Updating data by Index</h3>
+                    <h3>4. Getting All Tasks (Lines 23-25)</h3>
+                    <p><span class="line-number">Lines 23-25:</span></p>
+                    <pre class="code-block">
+def list_todos():
+    """Returns the list of all todo items."""
+    return todos</pre>
+
+                    <div class="step-by-step">
+                        <strong>The simplest function!</strong>
+                        <p>
+                            This just returns the entire <code>todos</code> list. The frontend calls this
+                            when it needs to display all tasks.
+                        </p>
+                        <p>
+                            <strong>Why use a function?</strong> Instead of letting the frontend access
+                            <code>todos</code> directly, we use a function. This is called
+                            <strong>encapsulation</strong>
+                            — keeping the data "hidden" and controlled.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CHECK TODO -->
+                <div class="code-explanation">
+                    <h3>5. Marking a Task as Complete (Lines 28-32)</h3>
                     <p><span class="line-number">Lines 28-32:</span></p>
                     <pre class="code-block">
-def check_todo(index): 
-    # todos[index] gives us the specific dictionary, e.g., the one at 0
-    activity = todos[index] 
-    activity["completed"] = True</pre>
-                    <p>
-                        We use the <strong>Index</strong> (position number) to find the exact task.
-                        <br>If <code>index</code> is 0, <code>todos[0]</code> gives us
-                        <code>{"task": "Buy milk", "completed": False}</code>.
-                        <br>We then change that specific dictionary's "completed" value to <code>True</code>.
-                    </p>
+def check_todo(index):  # index = 2
+    """Marks a todo item as completed."""
+    activity = todos[index]  # {"task": "Finish homework", "completed": False}
+    activity["completed"] = True
+    return True</pre>
+
+                    <div class="step-by-step">
+                        <strong>Let's trace through: <code>check_todo(2)</code></strong>
+                        <ol>
+                            <li>
+                                <code>def check_todo(index):</code> — Takes the index (position) of the task to
+                                complete.
+                            </li>
+                            <li>
+                                <code>activity = todos[index]</code> — Get the dictionary at that position.
+                                <ul>
+                                    <li>If <code>index = 2</code>, then
+                                        <code>activity = {"task": "Finish homework", "completed": False}</code></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <code>activity["completed"] = True</code> — Change the "completed" value to
+                                <code>True</code>.
+                            </li>
+                            <li>
+                                <code>return True</code> — Return True to indicate success.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🔗 Why Does This Actually Change the List?</span>
+                        <p>
+                            When we write <code>activity = todos[index]</code>, <code>activity</code> doesn't
+                            become a COPY of the dictionary — it becomes a <strong>reference</strong> to the
+                            SAME dictionary!
+                        </p>
+                        <p>
+                            So when we change <code>activity["completed"]</code>, we're actually changing the
+                            dictionary inside <code>todos</code>. They're pointing to the same object in memory.
+                        </p>
+                        <div class="data-vis">
+todos[2] # {"task": "Finish homework", "completed": False}
+activity = todos[2] # activity points to THE SAME dictionary
+activity["completed"] = True
+todos[2] # {"task": "Finish homework", "completed": True} ← Changed!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DELETE TODO -->
+                <div class="code-explanation">
+                    <h3>6. Deleting a Task (Lines 35-40)</h3>
+                    <p><span class="line-number">Lines 35-40:</span></p>
+                    <pre class="code-block">
+def delete_todo(index):
+    """Deletes a todo item."""
+    deleted_item = todos[index]
+    todos.pop(index)
+    return deleted_item</pre>
+
+                    <div class="step-by-step">
+                        <strong>Let's trace through: <code>delete_todo(1)</code></strong>
+                        <ol>
+                            <li>
+                                <code>deleted_item = todos[index]</code> — First, save the task we're about to delete
+                                (so we can tell the user what was deleted).
+                            </li>
+                            <li>
+                                <code>todos.pop(index)</code> — Remove the item at that index from the list.
+                                <ul>
+                                    <li><code>.pop(index)</code> is a list method that removes AND returns the item at
+                                        that position.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <code>return deleted_item</code> — Return the deleted task so we can display it.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="warning-box">
+                        <span class="warning-title">⚠️ Indexes Shift After Deletion!</span>
+                        <div class="data-vis">
+# BEFORE delete_todo(1):
+todos = [
+{"task": "Buy milk", ...}, # Index 0
+{"task": "Walk the dog", ...}, # Index 1 ← This gets deleted
+{"task": "Finish homework", ...} # Index 2
+]
+
+# AFTER delete_todo(1):
+todos = [
+{"task": "Buy milk", ...}, # Index 0 (unchanged)
+{"task": "Finish homework", ...} # Index 1 ← Was index 2, now index 1!
+]
+                        </div>
+                        <p>
+                            After deleting, all items after the deleted one shift down by 1! "Finish homework"
+                            was at index 2, but now it's at index 1.
+                        </p>
+                    </div>
                 </div>
             </section>
 
+            <!-- ==================== FRONTEND ==================== -->
             <section class="frontend">
-                <h2>Part 2: The Interface (todo_app.py)</h2>
+                <h2>🖥️ Part 2: The Interface (todo_app.py)</h2>
+                <p>
+                    This file handles user interaction — showing menus, collecting input, and displaying tasks.
+                </p>
 
+                <!-- IMPORT -->
                 <div class="code-explanation">
-                    <h3>1. Viewing the Data (The For Loop)</h3>
+                    <h3>1. Connecting to the Backend (Line 2)</h3>
+                    <p><span class="line-number">Line 2:</span></p>
+                    <pre class="code-block">import backend_todo</pre>
+
+                    <div class="step-by-step">
+                        <p>
+                            This imports our backend file. Now we can call all its functions with
+                            <code>backend_todo.function_name()</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MAIN START -->
+                <div class="code-explanation">
+                    <h3>2. Starting with Sample Data (Lines 4-6)</h3>
+                    <p><span class="line-number">Lines 4-6:</span></p>
+                    <pre class="code-block">
+def main():
+    # Initialize with sample data
+    backend_todo.add_sample_data()</pre>
+
+                    <div class="step-by-step">
+                        <p>
+                            When the program starts, we call <code>add_sample_data()</code> so there are
+                            already some tasks to work with.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MENU -->
+                <div class="code-explanation">
+                    <h3>3. The Menu System (Lines 8-16)</h3>
+                    <p><span class="line-number">Lines 8-16:</span></p>
+                    <pre class="code-block">
+while True:
+    print("\n--- To-Do App ---")
+    print("1. List To-Dos")
+    print("2. Add To-Do")
+    print("3. Check To-Do (Complete)")
+    print("4. Delete To-Do")
+    print("5. Exit")
+    
+    choice = input("Enter your choice: ")</pre>
+
+                    <div class="step-by-step">
+                        <p>
+                            Same pattern as before! <code>while True</code> creates an infinite loop, and we
+                            show a menu every time.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIST TODOS -->
+                <div class="code-explanation">
+                    <h3>4. Displaying All Tasks (Lines 18-25)</h3>
                     <p><span class="line-number">Lines 18-25:</span></p>
                     <pre class="code-block">
 if choice == '1':
     todos = backend_todo.list_todos() 
-    for i, todo in enumerate(todos):
-        status = "[x]" if todo["completed"] else "[ ]"
-        print(f"{i}. {status} {todo['task']}")</pre>
-                    <p>
-                        Here we need to show the list to the user.
-                    <ul>
-                        <li><code>backend_todo.list_todos()</code>: Fetches the raw data.</li>
-                        <li><code>enumerate(todos)</code>: A fancy loop that gives us both the item (<code>todo</code>)
-                            AND its position number (<code>i</code>). We need <code>i</code> so the user can say "Delete
-                            number 2".</li>
-                        <li><code>todo['task']</code>: Accesses the name of the task from the dictionary.</li>
-                    </ul>
-                    </p>
+    if not todos:
+        print("No to-dos found.")
+    else:
+        for i, todo in enumerate(todos):
+            status = "[x]" if todo["completed"] else "[ ]"
+            print(f"{i}. {status} {todo['task']}")</pre>
+
+                    <div class="step-by-step">
+                        <strong>This is the most complex display logic. Let's break it apart:</strong>
+                        <ol>
+                            <li>
+                                <code>todos = backend_todo.list_todos()</code> — Get the list of all tasks.
+                            </li>
+                            <li>
+                                <code>if not todos:</code> — If the list is empty...
+                            </li>
+                            <li>
+                                <code>for i, todo in enumerate(todos):</code> — Loop through the list.
+                                <strong><code>enumerate()</code> is special — it gives us BOTH the index AND the
+                                    item!</strong>
+                            </li>
+                            <li>
+                                <code>status = "[x]" if todo["completed"] else "[ ]"</code> — A ternary expression:
+                                <ul>
+                                    <li>If completed is True → show "[x]" (checked)</li>
+                                    <li>If completed is False → show "[ ]" (empty)</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <code>print(f"{i}. {status} {todo['task']}")</code> — Display the task with its index
+                                and status.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🔢 What is <code>enumerate()</code>?</span>
+                        <p>
+                            Normally, a for loop gives you just the item:
+                        </p>
+                        <div class="data-vis">
+# Normal for loop:
+for todo in todos:
+print(todo) # {"task": "Buy milk", "completed": False}
+# But we don't know the index!
+                        </div>
+                        <p>
+                            <code>enumerate()</code> gives you BOTH the index AND the item:
+                        </p>
+                        <div class="data-vis">
+# With enumerate:
+for i, todo in enumerate(todos):
+print(i) # 0
+print(todo) # {"task": "Buy milk", "completed": False}
+# Now we know the index!
+                        </div>
+                        <p>
+                            We need the index so users can say "Complete task 2" or "Delete task 0".
+                        </p>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Example Output</span>
+                        <div class="data-vis">
+--- To-Do App ---
+1. List To-Dos
+...
+
+0. [ ] Buy milk
+1. [x] Walk the dog
+2. [ ] Finish homework
+                        </div>
+                    </div>
                 </div>
 
+                <!-- ADD TODO -->
                 <div class="code-explanation">
-                    <h3>2. User Actions with Indices</h3>
-                    <p><span class="line-number">Lines 32-38:</span></p>
+                    <h3>5. Adding a New Task (Lines 27-30)</h3>
+                    <p><span class="line-number">Lines 27-30:</span></p>
                     <pre class="code-block">
-index = int(input("Enter index to check: "))
-if backend_todo.check_todo(index):
-    # ...</pre>
-                    <p>
-                        The user sees a list like:
-                        <br><code>0. [ ] Buy milk</code>
-                        <br><code>1. [x] Walk dog</code>
-                        <br>If they want to complete "Buy milk", they type <code>0</code>. The frontend converts this to
-                        an integer and sends it to the backend to update the database.
-                    </p>
+elif choice == '2':
+    task = input("Enter task name: ")  # Cry
+    backend_todo.add_todo(task)
+    print("To-Do added successfully.")</pre>
+
+                    <div class="step-by-step">
+                        <ol>
+                            <li>Ask the user for the task name.</li>
+                            <li>Send it to the backend to create the task.</li>
+                            <li>Confirm success.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- CHECK TODO -->
+                <div class="code-explanation">
+                    <h3>6. Completing a Task (Lines 32-40)</h3>
+                    <p><span class="line-number">Lines 32-40:</span></p>
+                    <pre class="code-block">
+elif choice == '3':
+    try:
+        index = int(input("Enter index to check: "))
+        if backend_todo.check_todo(index):
+            print("To-Do checked successfully.")
+        else:
+            print("Invalid index.")
+    except ValueError:
+        print("Please enter a valid number.")</pre>
+
+                    <div class="step-by-step">
+                        <strong>Why <code>try/except</code>?</strong>
+                        <ol>
+                            <li>
+                                <code>index = int(input(...))</code> — We need to convert the user's input to an
+                                integer.
+                            </li>
+                            <li>
+                                <strong>Problem:</strong> If the user types "banana", <code>int("banana")</code> fails!
+                            </li>
+                            <li>
+                                <code>try:</code> — Try to do the dangerous conversion...
+                            </li>
+                            <li>
+                                <code>except ValueError:</code> — If it fails, catch the error and show a nice message.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🔄 The int() Function</span>
+                        <p>
+                            <code>input()</code> always returns a <strong>string</strong>. Even if the user types "42",
+                            Python sees it as the text "42", not the number 42.
+                        </p>
+                        <div class="data-vis">
+user_input = input("Number: ") # User types: 42
+print(type(user_input)) # <class 'str'> ← It's a string!
+
+# To use it as a number, we must convert:
+index = int(user_input) # Now it's an integer
+print(type(index)) # <class 'int'> ← Now it's a number!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DELETE TODO -->
+                <div class="code-explanation">
+                    <h3>7. Deleting a Task (Lines 42-51)</h3>
+                    <p><span class="line-number">Lines 42-51:</span></p>
+                    <pre class="code-block">
+elif choice == '4':
+    try:
+        index = int(input("Enter index to delete: "))
+        deleted_item = backend_todo.delete_todo(index)
+        if deleted_item:
+            print(f"Deleted: {deleted_item['task']}")
+        else:
+            print("Invalid index.")
+    except ValueError:
+        print("Please enter a valid number.")</pre>
+
+                    <div class="step-by-step">
+                        <strong>Showing what was deleted:</strong>
+                        <p>
+                            <code>delete_todo()</code> returns the deleted task dictionary. We access its
+                            <code>['task']</code> key to show the name: "Deleted: Walk the dog".
+                        </p>
+                        <p>
+                            This confirms to the user exactly what was removed!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- EXIT -->
+                <div class="code-explanation">
+                    <h3>8. Exiting (Lines 53-57)</h3>
+                    <p><span class="line-number">Lines 53-57:</span></p>
+                    <pre class="code-block">
+elif choice == '5':
+    print("Exiting...")
+    break
+else:
+    print("Invalid choice, please try again.")</pre>
+
+                    <div class="step-by-step">
+                        <p>
+                            <code>break</code> exits the <code>while True</code> loop Exits. And exits the program.
+                        </p>
+                        <p>
+                            <code>else:</code> catches any invalid menu choices.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ENTRY POINT -->
+                <div class="code-explanation">
+                    <h3>9. The Entry Point (Lines 59-60)</h3>
+                    <p><span class="line-number">Lines 59-60:</span></p>
+                    <pre class="code-block">
+if __name__ == "__main__":
+    main()</pre>
+
+                    <div class="step-by-step">
+                        <p>
+                            This starts the program when the file is run directly. Without this line,
+                            <code>main()</code> would never be called!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== SUMMARY ==================== -->
+            <section class="summary">
+                <h2>📝 Summary: Key Concepts Learned</h2>
+
+                <div class="concept-box">
+                    <span class="concept-title">✅ Concepts in This Project</span>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Concept</th>
+                            <th>Where Used</th>
+                            <th>What It Does</th>
+                        </tr>
+                        <tr>
+                            <td>List of Dictionaries</td>
+                            <td><code>todos = [{...}, {...}]</code></td>
+                            <td>Store multiple items with multiple properties each</td>
+                        </tr>
+                        <tr>
+                            <td>Global Variables</td>
+                            <td><code>todos = []</code></td>
+                            <td>Data accessible to all functions in the file</td>
+                        </tr>
+                        <tr>
+                            <td>enumerate()</td>
+                            <td><code>for i, todo in enumerate(todos)</code></td>
+                            <td>Get both index AND item while looping</td>
+                        </tr>
+                        <tr>
+                            <td>List Methods</td>
+                            <td><code>.append()</code>, <code>.pop()</code></td>
+                            <td>Add and remove items from lists</td>
+                        </tr>
+                        <tr>
+                            <td>Dictionary Access</td>
+                            <td><code>todo["task"]</code></td>
+                            <td>Get values using keys</td>
+                        </tr>
+                        <tr>
+                            <td>Ternary Expression</td>
+                            <td><code>"[x]" if completed else "[ ]"</code></td>
+                            <td>One-line if/else for simple cases</td>
+                        </tr>
+                        <tr>
+                            <td>Type Conversion</td>
+                            <td><code>int(input(...))</code></td>
+                            <td>Convert string input to integer</td>
+                        </tr>
+                        <tr>
+                            <td>Error Handling</td>
+                            <td><code>try/except ValueError</code></td>
+                            <td>Handle invalid input gracefully</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">🎯 What Makes This Different from Previous Projects?</span>
+                    <ul>
+                        <li>
+                            <strong>Data Persistence:</strong> Tasks stay in memory while the program runs
+                        </li>
+                        <li>
+                            <strong>CRUD Operations:</strong> Create, Read, Update (check), Delete — the 4 basic data
+                            operations
+                        </li>
+                        <li>
+                            <strong>Index-based Access:</strong> Users interact with data using position numbers
+                        </li>
+                        <li>
+                            <strong>Complex Data Structure:</strong> List of dictionaries instead of simple values
+                        </li>
+                    </ul>
                 </div>
             </section>
 

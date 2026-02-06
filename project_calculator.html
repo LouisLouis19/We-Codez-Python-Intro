@@ -34,6 +34,85 @@
             margin-bottom: 10px;
             display: block;
         }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .success-box {
+            background-color: #d4edda;
+            border: 1px solid #28a745;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-weight: bold;
+            color: #155724;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .step-by-step li {
+            margin-bottom: 10px;
+        }
+
+        .data-vis {
+            font-family: monospace;
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
     </style>
 </head>
 
@@ -56,7 +135,7 @@
                     <li><a href="data-structures_1.html">Data Structures I</a></li>
                     <li><a href="data-structures_2.html">Data Structures II</a></li>
                     <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
-                    <li><a href="libraries.html">Libraries & Imports</a></li>
+                    <li><a href="libraries.html">Libraries &amp; Imports</a></li>
                     <li><a href="debugging.html">Debugging</a></li>
                 </ul>
             </nav>
@@ -64,141 +143,665 @@
         <main>
             <p><a href="projects.html">&larr; Back to Projects</a></p>
 
+            <!-- ==================== OVERVIEW ==================== -->
             <section class="overview">
-                <h2>The Big Picture: Frontend vs Backend</h2>
+                <h2>🎯 What Are We Building?</h2>
+                <p>
+                    We're building a <strong>Simple Calculator</strong> that can add, subtract, multiply, and divide
+                    numbers. The user picks an operation, enters two numbers, and gets the result!
+                </p>
+
                 <div class="concept-box">
-                    <span class="concept-title">Analogy: The Restaurant</span>
+                    <span class="concept-title">🍽️ Analogy: The Restaurant</span>
                     <p>Think of this program like a restaurant:</p>
                     <ul>
-                        <li><strong>The Frontend (calculator.py)</strong> is the <strong>Waiter</strong>. It talks to
+                        <li>
+                            <strong>The Frontend (calculator.py)</strong> is the <strong>Waiter</strong>. It talks to
                             the customer (you), takes your order (numbers and operation), and brings you the food
-                            (result). It doesn't cook the food itself.</li>
-                        <li><strong>The Backend (backend_math.py)</strong> is the <strong>Chef</strong>. It stays in the
+                            (result). It doesn't cook the food itself.
+                        </li>
+                        <li>
+                            <strong>The Backend (backend_math.py)</strong> is the <strong>Chef</strong>. It stays in the
                             kitchen, receives orders from the waiter, performs the actual cooking (math), and hands the
-                            dish back. It never talks to the customer directly.</li>
+                            dish back. It never talks to the customer directly.
+                        </li>
                     </ul>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">🧠 Why Two Files?</span>
+                    <p>
+                        Separating code into <strong>Frontend</strong> and <strong>Backend</strong> is a fundamental
+                        programming practice called <strong>Separation of Concerns</strong>:
+                    </p>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>File</th>
+                            <th>Role</th>
+                            <th>Handles</th>
+                            <th>Uses print/input?</th>
+                        </tr>
+                        <tr>
+                            <td><code>calculator.py</code></td>
+                            <td>Frontend (UI)</td>
+                            <td>User interaction (menus, input, display)</td>
+                            <td>✅ YES</td>
+                        </tr>
+                        <tr>
+                            <td><code>backend_math.py</code></td>
+                            <td>Backend (Logic)</td>
+                            <td>Actual calculations</td>
+                            <td>❌ NO</td>
+                        </tr>
+                    </table>
+                    <p>
+                        <strong>Benefits:</strong> If you want to change how the menu looks, you only touch the
+                        frontend.
+                        If you want to add a new math operation, you only touch the backend!
+                    </p>
                 </div>
             </section>
 
+            <!-- ==================== BACKEND ==================== -->
             <section class="backend">
-                <h2>Part 1: The Chef (backend_math.py)</h2>
-                <p>This file handles the <strong>logic</strong>. It's pure math. It doesn't know about
-                    <code>input()</code> or <code>print()</code> because the Chef doesn't talk to customers.
+                <h2>🔧 Part 1: The Chef (backend_math.py)</h2>
+                <p>
+                    This file handles ALL the math. It's pure logic. It doesn't know about <code>input()</code> or
+                    <code>print()</code> because the Chef doesn't talk to customers.
                 </p>
 
+                <!-- ADD FUNCTION -->
                 <div class="code-explanation">
-                    <h3>1. Simple Math Functions</h3>
+                    <h3>1. The Add Function (Lines 1-4)</h3>
                     <p><span class="line-number">Lines 1-4:</span></p>
                     <pre class="code-block">
 def add(x, y): 
     """Returns the sum of x and y."""
     total = x + y
     return total</pre>
-                    <p>
-                        This allows us to say <code>add(5, 3)</code> later and get <code>8</code> back.
-                        <br>Notice it uses <code>return</code>, not <code>print</code>. It gives the answer back to
-                        whoever asked for it (the specific waiter).
-                    </p>
+
+                    <div class="step-by-step">
+                        <strong>Let's break down every part:</strong>
+                        <ol>
+                            <li>
+                                <code>def add(x, y):</code> — This creates a new function called <code>add</code>.
+                                <ul>
+                                    <li><code>def</code> = "define" (I'm creating a new function)</li>
+                                    <li><code>add</code> = the name of the function</li>
+                                    <li><code>(x, y)</code> = <strong>parameters</strong> — the inputs this function
+                                        needs</li>
+                                    <li><code>:</code> = marks the start of the function body</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <code>"""Returns the sum of x and y."""</code> — This is a <strong>docstring</strong>.
+                                It's a special comment (inside triple quotes) that describes what the function does.
+                                It's documentation for other programmers (and your future self!).
+                            </li>
+                            <li>
+                                <code>total = x + y</code> — Creates a variable called <code>total</code> and stores
+                                the result of <code>x + y</code> in it.
+                            </li>
+                            <li>
+                                <code>return total</code> — <strong>This is crucial!</strong> The function gives the
+                                answer back to whoever called it. Without <code>return</code>, the calculation would be
+                                lost!
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🔄 Return vs Print — What's the Difference?</span>
+                        <p><strong><code>print()</code></strong> displays something on the screen for humans to see.
+                            The computer forgets the value immediately after.</p>
+                        <p><strong><code>return</code></strong> gives a value BACK to the code that called the function.
+                            The value can be stored, used in more calculations, or displayed later.</p>
+                        <div class="data-vis">
+# Example with return:
+result = add(5, 3) # result now contains 8
+print(result) # Shows: 8
+print(result * 2) # Shows: 16 (we can still use it!)
+
+# If add() used print instead of return:
+result = add(5, 3) # Would print "8" but result would be None!
+print(result * 2) # ERROR! None * 2 doesn't work
+                        </div>
+                    </div>
                 </div>
 
+                <!-- SUBTRACT FUNCTION -->
                 <div class="code-explanation">
-                    <h3>2. Handling Special Cases (Errors)</h3>
+                    <h3>2. The Subtract Function (Lines 6-9)</h3>
+                    <p><span class="line-number">Lines 6-9:</span></p>
+                    <pre class="code-block">
+def subtract(x, y):
+    """Returns the difference of x and y."""
+    total = x - y
+    return total</pre>
+
+                    <div class="step-by-step">
+                        <strong>How it works:</strong>
+                        <p>
+                            Same structure as <code>add</code>, but uses <code>-</code> instead of <code>+</code>!
+                        </p>
+                        <p>
+                            If we call <code>subtract(10, 3)</code>:
+                        </p>
+                        <ol>
+                            <li><code>x</code> becomes <code>10</code></li>
+                            <li><code>y</code> becomes <code>3</code></li>
+                            <li><code>total = 10 - 3</code> = <code>7</code></li>
+                            <li><code>return 7</code> — gives back <code>7</code></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- MULTIPLY FUNCTION -->
+                <div class="code-explanation">
+                    <h3>3. The Multiply Function (Lines 11-14)</h3>
+                    <p><span class="line-number">Lines 11-14:</span></p>
+                    <pre class="code-block">
+def multiply(x, y):
+    """Returns the product of x and y."""
+    total = x * y
+    return total</pre>
+
+                    <div class="step-by-step">
+                        <strong>Multiplication in Python:</strong>
+                        <p>
+                            In Python, we use <code>*</code> for multiplication (not <code>×</code>).
+                        </p>
+                        <p>
+                            <code>multiply(4, 5)</code> would return <code>20</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- DIVIDE FUNCTION -->
+                <div class="code-explanation">
+                    <h3>4. The Divide Function — Handling Errors! (Lines 16-21)</h3>
                     <p><span class="line-number">Lines 16-21:</span></p>
                     <pre class="code-block">
 def divide(x, y):
+    """Returns the quotient of x and y. Raises ValueError on division by zero."""
     if y == 0:
         raise ValueError("Division by Zero Error") 
     total = x / y
     return total</pre>
-                    <p>
-                        In math, you cannot divide by zero. If we try <code>5 / 0</code>, Python will crash.
-                        <br>Here, the Chef checks the ingredients. If <code>y</code> is 0, they refuse to cook and
-                        "raise a flag" (raise an Error) saying "I can't do this!".
-                        <br>The Frontend will have to catch this flag later.
-                    </p>
+
+                    <div class="step-by-step">
+                        <strong>Why is divide different?</strong>
+                        <p>
+                            In math, you <strong>cannot divide by zero</strong>. If we try <code>5 / 0</code>,
+                            Python would crash with an error!
+                        </p>
+                        <ol>
+                            <li>
+                                <code>if y == 0:</code> — Check: is the second number (divisor) zero?
+                            </li>
+                            <li>
+                                <code>raise ValueError("Division by Zero Error")</code> — If yes, we "raise" an error
+                                ourselves. This is like the Chef saying: "I refuse to cook this! It's impossible!"
+                            </li>
+                            <li>
+                                If <code>y</code> is NOT zero, we continue normally and <code>return x / y</code>.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="warning-box">
+                        <span class="warning-title">⚠️ What is <code>raise</code>?</span>
+                        <p>
+                            <code>raise</code> creates an <strong>error on purpose</strong>. It's our way of saying
+                            "Something is wrong! I can't continue!"
+                        </p>
+                        <p>
+                            This error will "bubble up" to whoever called the function. The frontend will need to
+                            "catch" this error (using <code>try/except</code>) and handle it gracefully.
+                        </p>
+                    </div>
                 </div>
             </section>
 
+            <!-- ==================== FRONTEND ==================== -->
             <section class="frontend">
-                <h2>Part 2: The Waiter (calculator.py)</h2>
-                <p>This file handles the <strong>User Interface</strong>.</p>
+                <h2>🖥️ Part 2: The Waiter (calculator.py)</h2>
+                <p>This file handles the <strong>User Interface</strong> — everything the user sees and interacts with.
+                </p>
 
+                <!-- IMPORTS -->
                 <div class="code-explanation">
-                    <h3>1. Hiring the Chef</h3>
-                    <p><span class="line-number">Line 1:</span></p>
-                    <pre class="code-block">import backend_math</pre>
-                    <p>
-                        This import statement links the two files. It tells Python: "Hey, we are going to use the tools
-                        defined in the <code>backend_math.py</code> file."
-                    </p>
+                    <h3>1. Importing the Backend (Lines 1-2)</h3>
+                    <p><span class="line-number">Lines 1-2:</span></p>
+                    <pre class="code-block">
+import backend_math
+import sys</pre>
+
+                    <div class="step-by-step">
+                        <strong>What is <code>import</code>?</strong>
+                        <ol>
+                            <li>
+                                <code>import backend_math</code> — This links our frontend to the backend file.
+                                Now we can use ALL the functions from <code>backend_math.py</code> by writing
+                                <code>backend_math.function_name()</code>.
+                            </li>
+                            <li>
+                                <code>import sys</code> — Imports Python's system module. This is optional and
+                                can be used for advanced features (like exiting the program).
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">📦 Think of Imports Like Tools in a Toolbox</span>
+                        <p>
+                            <code>backend_math</code> is the toolbox. <code>add</code>, <code>subtract</code>,
+                            <code>multiply</code>, <code>divide</code> are the tools inside.
+                        </p>
+                        <p>
+                            To use a tool: <code>backend_math.add(5, 3)</code> = "Open the toolbox, use the add tool"
+                        </p>
+                    </div>
                 </div>
 
+                <!-- GET NUMBER HELPER -->
                 <div class="code-explanation">
-                    <h3>2. Validating User Input (The Safety Net)</h3>
-                    <p><span class="line-number">Lines 4-11:</span></p>
+                    <h3>2. The Input Validator (Lines 4-10)</h3>
+                    <p><span class="line-number">Lines 4-10:</span></p>
                     <pre class="code-block">
 def get_number(prompt):
+    """Helper to get a valid number from user input."""
     while True:
         try:
             return float(input(prompt))
         except ValueError:
             print("Invalid input. Please enter a numeric value.")</pre>
-                    <p>
-                        <strong>The Problem:</strong> If the program asks for a number and you type "banana", the
-                        program normally crashes.
-                        <br><strong>The Solution:</strong>
-                    <ul>
-                        <li><code>while True</code>: Keep asking forever until we get a valid answer.</li>
-                        <li><code>try</code>: Attempt to convert the input to a number (float).</li>
-                        <li><code>except ValueError</code>: If the conversion fails (e.g. "banana" isn't a number),
-                            don't crash! Just print an error and loop again.</li>
-                    </ul>
-                    </p>
+
+                    <div class="step-by-step">
+                        <strong>Why do we need this?</strong>
+                        <p>
+                            <strong>The Problem:</strong> If we ask for a number and the user types "banana", the
+                            program crashes!
+                        </p>
+                        <p>
+                            <strong>The Solution:</strong> This function keeps asking until the user gives a valid
+                            number.
+                        </p>
+                        <ol>
+                            <li>
+                                <code>def get_number(prompt):</code> — Takes a "prompt" (the message to display).
+                            </li>
+                            <li>
+                                <code>while True:</code> — Creates an infinite loop. Keep trying forever until we
+                                succeed!
+                            </li>
+                            <li>
+                                <code>try:</code> — "Try to do this dangerous thing..."
+                            </li>
+                            <li>
+                                <code>return float(input(prompt))</code> — Ask for input, convert it to a number
+                                (<code>float</code>), and return it. If this works, we exit the loop!
+                            </li>
+                            <li>
+                                <code>except ValueError:</code> — "...if it fails with a ValueError, do this instead:"
+                            </li>
+                            <li>
+                                <code>print("Invalid input...")</code> — Tell the user what went wrong. Then the
+                                loop restarts and asks again!
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ This Prevents Crashes!</span>
+                        <div class="data-vis">
+# Without get_number():
+>>> Enter number: banana
+ERROR! Program crashes.
+
+# With get_number():
+>>> Enter number: banana
+Invalid input. Please enter a numeric value.
+>>> Enter number: 42
+(Works! Continues happily.)
+                        </div>
+                    </div>
                 </div>
 
+                <!-- PRINT SEPARATOR -->
                 <div class="code-explanation">
-                    <h3>3. The Infinite Loop (The Shift)</h3>
-                    <p><span class="line-number">Lines 15-31:</span></p>
+                    <h3>3. Visual Separator Helper (Lines 12-13)</h3>
+                    <p><span class="line-number">Lines 12-13:</span></p>
+                    <pre class="code-block">
+def print_separator():
+    print("-" * 40)</pre>
+
+                    <div class="step-by-step">
+                        <strong>What does this do?</strong>
+                        <p>
+                            <code>"-" * 40</code> — The <code>*</code> with strings means "repeat".
+                        </p>
+                        <p>
+                            This prints: <code>----------------------------------------</code> (40 dashes)
+                        </p>
+                        <p>
+                            We use it to visually separate sections and make the output look cleaner.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MAIN FUNCTION -->
+                <div class="code-explanation">
+                    <h3>4. The Main Function Start (Lines 15-17)</h3>
+                    <p><span class="line-number">Lines 15-17:</span></p>
                     <pre class="code-block">
 def main():
-    while True:
-        # ... prints menu ...
-        choice = input(...)</pre>
-                    <p>
-                        We want the calculator to keep running after one calculation. <code>while True</code> creates an
-                        infinite loop. The only way out is if the user selects the "Exit" option, which calls
-                        <code>break</code> to stop the loop.
-                    </p>
+    print("Welcome to the Simple Python Calculator!")
+    print_separator()</pre>
+
+                    <div class="step-by-step">
+                        <strong>The entry point:</strong>
+                        <ol>
+                            <li><code>def main():</code> — Define the main function where everything happens.</li>
+                            <li><code>print("Welcome...")</code> — Display a welcome message.</li>
+                            <li><code>print_separator()</code> — Call our helper function to print the line.</li>
+                        </ol>
+                    </div>
                 </div>
 
+                <!-- INFINITE LOOP AND MENU -->
                 <div class="code-explanation">
-                    <h3>4. Connecting Frontend to Backend</h3>
-                    <p><span class="line-number">Lines 41-43:</span></p>
+                    <h3>5. The Infinite Menu Loop (Lines 19-27)</h3>
+                    <p><span class="line-number">Lines 19-27:</span></p>
                     <pre class="code-block">
-if choice == '1':
-    result = backend_math.add(num1, num2)</pre>
-                    <p>
-                        <strong>The Handover:</strong>
-                        <br>1. The Waiter (Frontend) has <code>num1</code> and <code>num2</code> from the user.
-                        <br>2. It calls <code>backend_math.add(num1, num2)</code>. This passes those numbers to the
-                        Chef.
-                        <br>3. The Chef calculates <code>num1 + num2</code> and returns the answer.
-                        <br>4. The Waiter stores that answer in the variable <code>result</code>.
-                    </p>
+while True: # Calculator never stops 
+    print("\nPlease select an operation:")
+    print("1. Add (+)")
+    print("2. Subtract (-)")
+    print("3. Multiply (*)")
+    print("4. Divide (/)")
+    print("5. Exit")
+    
+    choice = input("\nEnter your choice (1/2/3/4/5): ").strip()</pre>
+
+                    <div class="step-by-step">
+                        <strong>How the menu works:</strong>
+                        <ol>
+                            <li>
+                                <code>while True:</code> — Keep showing the menu forever. This is the calculator's
+                                main loop.
+                            </li>
+                            <li>
+                                <code>print("\n...")</code> — The <code>\n</code> adds a blank line before the text.
+                            </li>
+                            <li>
+                                <code>print("1. Add (+)")</code> etc. — Display all options.
+                            </li>
+                            <li>
+                                <code>choice = input(...).strip()</code> — Get the user's choice. The
+                                <code>.strip()</code>
+                                removes any accidental spaces before/after their input.
+                            </li>
+                        </ol>
+                    </div>
                 </div>
 
+                <!-- EXIT HANDLING -->
                 <div class="code-explanation">
-                    <h3>5. Handling Chef's Refusal</h3>
-                    <p><span class="line-number">Line 58:</span></p>
+                    <h3>6. Handling the Exit Option (Lines 29-31)</h3>
+                    <p><span class="line-number">Lines 29-31:</span></p>
+                    <pre class="code-block">
+if choice == '5': # Calculator only stops on Exit
+    print("\nThank you for using the calculator. Goodbye!")
+    break</pre>
+
+                    <div class="step-by-step">
+                        <strong>Breaking out of the loop:</strong>
+                        <p>
+                            <code>break</code> immediately exits the <code>while True</code> loop. This is the
+                            ONLY way the program ends normally.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CALCULATION LOGIC -->
+                <div class="code-explanation">
+                    <h3>7. Getting Numbers and Calling the Backend (Lines 33-52)</h3>
+                    <p><span class="line-number">Lines 33-52:</span></p>
+                    <pre class="code-block">
+if choice in ('1', '2', '3', '4'):
+    try:
+        num1 = get_number("Enter the first number: ") 
+        num2 = get_number("Enter the second number: ")
+        
+        result = None
+        operation = ""
+
+        if choice == '1':
+            result = backend_math.add(num1, num2)
+            operation = "+"
+        elif choice == '2':
+            result = backend_math.subtract(num1, num2)
+            operation = "-"
+        elif choice == '3':
+            result = backend_math.multiply(num1, num2)
+            operation = "*"
+        elif choice == '4':
+            result = backend_math.divide(num1, num2)
+            operation = "/"</pre>
+
+                    <div class="step-by-step">
+                        <strong>Breaking it down:</strong>
+                        <ol>
+                            <li>
+                                <code>if choice in ('1', '2', '3', '4'):</code> — Check if the choice is one of
+                                the valid options. This is cleaner than writing
+                                <code>if choice == '1' or choice == '2' or ...</code>
+                            </li>
+                            <li>
+                                <code>try:</code> — Start a "try block" in case something goes wrong (like division by
+                                zero).
+                            </li>
+                            <li>
+                                <code>num1 = get_number(...)</code> — Use our helper to safely get the first number.
+                            </li>
+                            <li>
+                                <code>num2 = get_number(...)</code> — Same for the second number.
+                            </li>
+                            <li>
+                                <code>result = None</code> — Create a variable to store the answer (starts empty).
+                            </li>
+                            <li>
+                                <code>operation = ""</code> — Create a variable to store the symbol (for display).
+                            </li>
+                            <li>
+                                <code>if choice == '1':</code> — If user chose "1" (Add)...
+                                <ul>
+                                    <li><code>result = backend_math.add(num1, num2)</code> — Call the backend!</li>
+                                    <li><code>operation = "+"</code> — Remember the symbol for display.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Same pattern for subtract, multiply, and divide.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🔗 The Frontend-Backend Connection</span>
+                        <p>This is where the <strong>Waiter talks to the Chef</strong>:</p>
+                        <div class="data-vis">
+# User selects "1" (Add), then enters 5 and 3
+
+result = backend_math.add(num1, num2)
+# ^^^^^^^^^^^^^^^--- the backend file
+# ^^^--- the function from that file
+# ^^^^^^^^^ --- the numbers from user
+
+# The add() function runs and returns 8
+# result now contains 8
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DISPLAY RESULT -->
+                <div class="code-explanation">
+                    <h3>8. Displaying the Result (Lines 54-56)</h3>
+                    <p><span class="line-number">Lines 54-56:</span></p>
+                    <pre class="code-block">
+print_separator()
+print(f"Result: {num1} {operation} {num2} = {result}")
+print_separator()</pre>
+
+                    <div class="step-by-step">
+                        <strong>F-strings for formatting:</strong>
+                        <p>
+                            <code>f"..."</code> is an <strong>f-string</strong> (formatted string). The curly braces
+                            <code>{}</code> get replaced with the values of the variables inside them.
+                        </p>
+                        <div class="data-vis">
+# If num1=5, operation="+", num2=3, result=8:
+print(f"Result: {num1} {operation} {num2} = {result}")
+# Output: Result: 5 + 3 = 8
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ERROR HANDLING -->
+                <div class="code-explanation">
+                    <h3>9. Catching Errors from the Backend (Lines 58-61)</h3>
+                    <p><span class="line-number">Lines 58-61:</span></p>
                     <pre class="code-block">
 except ValueError as e:
-    print(f"Error: {e}")</pre>
-                    <p>
-                        Remember <code>divide</code> raising an error for zero? This <code>except</code> block catches
-                        that error. If the Chef says "Division by Zero Error", the Waiter catches it and politely prints
-                        "Error: Division by Zero Error" to the user instead of letting the whole restaurant burn down
-                        (program crash).
-                    </p>
+    print(f"Error: {e}")
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")</pre>
+
+                    <div class="step-by-step">
+                        <strong>The safety net:</strong>
+                        <p>
+                            Remember when the <code>divide</code> function raises an error for division by zero?
+                            This is where we <strong>catch</strong> that error!
+                        </p>
+                        <ol>
+                            <li>
+                                <code>except ValueError as e:</code> — If a <code>ValueError</code> occurred,
+                                catch it and store the error message in <code>e</code>.
+                            </li>
+                            <li>
+                                <code>print(f"Error: {e}")</code> — Display the error message nicely.
+                            </li>
+                            <li>
+                                <code>except Exception as e:</code> — Catch ANY other error (just in case!).
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Graceful Error Handling</span>
+                        <div class="data-vis">
+# User tries 5 / 0:
+Enter the first number: 5
+Enter the second number: 0
+Error: Division by Zero Error
+
+# Instead of CRASHING, we show a nice message and continue!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INVALID CHOICE -->
+                <div class="code-explanation">
+                    <h3>10. Handling Invalid Menu Choices (Lines 62-63)</h3>
+                    <p><span class="line-number">Lines 62-63:</span></p>
+                    <pre class="code-block">
+else:
+    print("Invalid choice. Please select a valid option from the menu.")</pre>
+
+                    <div class="step-by-step">
+                        <strong>Catching bad input:</strong>
+                        <p>
+                            If the user types something other than 1, 2, 3, 4, or 5 (like "7" or "hello"),
+                            we politely ask them to try again.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ENTRY POINT -->
+                <div class="code-explanation">
+                    <h3>11. The Entry Point (Lines 65-66)</h3>
+                    <p><span class="line-number">Lines 65-66:</span></p>
+                    <pre class="code-block">
+if __name__ == "__main__":
+    main()</pre>
+
+                    <div class="step-by-step">
+                        <strong>What is this?</strong>
+                        <p>
+                            This is Python's way of saying: "If this file is being run directly (not imported),
+                            execute the <code>main()</code> function."
+                        </p>
+                        <p>
+                            Without this line, the <code>main()</code> function would never be called and nothing
+                            would happen when you run the file!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== SUMMARY ==================== -->
+            <section class="summary">
+                <h2>📝 Summary: Key Concepts Learned</h2>
+
+                <div class="concept-box">
+                    <span class="concept-title">✅ Concepts in This Project</span>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Concept</th>
+                            <th>Where Used</th>
+                            <th>What It Does</th>
+                        </tr>
+                        <tr>
+                            <td>Functions</td>
+                            <td><code>def add(x, y):</code></td>
+                            <td>Reusable blocks of code that take inputs and return outputs</td>
+                        </tr>
+                        <tr>
+                            <td>Return vs Print</td>
+                            <td><code>return total</code></td>
+                            <td>Return gives values back; print just displays</td>
+                        </tr>
+                        <tr>
+                            <td>Imports</td>
+                            <td><code>import backend_math</code></td>
+                            <td>Use code from another file</td>
+                        </tr>
+                        <tr>
+                            <td>While True Loop</td>
+                            <td>Main menu</td>
+                            <td>Keep program running until user exits</td>
+                        </tr>
+                        <tr>
+                            <td>Try/Except</td>
+                            <td>Error handling</td>
+                            <td>Catch errors instead of crashing</td>
+                        </tr>
+                        <tr>
+                            <td>Raise Error</td>
+                            <td><code>raise ValueError(...)</code></td>
+                            <td>Create an error on purpose when something is wrong</td>
+                        </tr>
+                        <tr>
+                            <td>F-strings</td>
+                            <td><code>f"Result: {num1}..."</code></td>
+                            <td>Insert variables into strings easily</td>
+                        </tr>
+                        <tr>
+                            <td>Input Validation</td>
+                            <td><code>get_number()</code></td>
+                            <td>Keep asking until user gives valid input</td>
+                        </tr>
+                    </table>
                 </div>
             </section>
 

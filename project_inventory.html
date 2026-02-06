@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project 6: Inventory Management - Introduction to Programming</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .code-explanation {
+            background-color: #f9f9f9;
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .line-number {
+            font-weight: bold;
+            color: #555;
+            margin-right: 10px;
+        }
+
+        .concept-box {
+            background-color: #e7f3fe;
+            border: 1px solid #b6d4fe;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .concept-title {
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .success-box {
+            background-color: #d4edda;
+            border: 1px solid #28a745;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-weight: bold;
+            color: #155724;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .step-by-step li {
+            margin-bottom: 10px;
+        }
+
+        .data-vis {
+            font-family: monospace;
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .flow-diagram {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Introduction to Programming</h1>
+        <h2>Project 6: Inventory Management System Breakdown</h2>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Programming Basics</a></li>
+                    <li><a href="if_else_statement.html">If/Else Statements</a></li>
+                    <li><a href="for_loops.html">For Loops</a></li>
+                    <li><a href="while_loops.html">While Loops</a></li>
+                    <li><a href="functions_1.html">Functions I</a></li>
+                    <li><a href="functions_2.html">Functions II</a></li>
+                    <li><a href="data-structures_1.html">Data Structures I</a></li>
+                    <li><a href="data-structures_2.html">Data Structures II</a></li>
+                    <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+                    <li><a href="libraries.html">Libraries &amp; Imports</a></li>
+                    <li><a href="debugging.html">Debugging</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <p><a href="projects.html">&larr; Back to Projects</a></p>
+
+            <!-- ==================== OVERVIEW ==================== -->
+            <section class="overview">
+                <h2>🎯 What Are We Building?</h2>
+                <p>
+                    We're building an <strong>Inventory Management System</strong> — software that a store or 
+                    warehouse would use to track products! You can view products, add new ones, update stock 
+                    quantities, search for items, and calculate the total value of inventory.
+                </p>
+
+                <div class="concept-box">
+                    <span class="concept-title">📦 What is Inventory Management?</span>
+                    <p>
+                        Imagine you run a store. You need to know:
+                    </p>
+                    <ul>
+                        <li><strong>What products do you have?</strong> (Laptops, chairs, notebooks...)</li>
+                        <li><strong>How many of each?</strong> (10 laptops, 25 chairs...)</li>
+                        <li><strong>What's each worth?</strong> ($999.99 per laptop...)</li>
+                        <li><strong>Who supplies them?</strong> (TechCorp, SitWell...)</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">🆕 What's New in This Project?</span>
+                    <ul>
+                        <li><strong>Passing Data as Parameters:</strong> The inventory list is passed TO functions, not stored globally</li>
+                        <li><strong>Dynamic ID Generation:</strong> <code>max()</code> function finds the highest ID</li>
+                        <li><strong>Case-Insensitive Search:</strong> Using <code>.lower()</code> for flexible searching</li>
+                        <li><strong>Substring Matching:</strong> Search finds partial matches</li>
+                        <li><strong>Calculations:</strong> Total value = price × quantity for each item</li>
+                    </ul>
+                </div>
+
+                <div class="flow-diagram">
+                    <div><strong>🏪 INVENTORY MANAGEMENT</strong></div>
+                    <div style="display: flex; justify-content: space-around; margin-top: 15px;">
+                        <div>📋 View<br>Products</div>
+                        <div>➕ Add<br>New</div>
+                        <div>🔄 Update<br>Stock</div>
+                        <div>🔍 Search<br>Items</div>
+                        <div>💰 Calculate<br>Value</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== DATA STRUCTURE ==================== -->
+            <section class="data-structure">
+                <h2>📊 Understanding the Data</h2>
+                
+                <div class="concept-box">
+                    <span class="concept-title">📦 What Information Does Each Product Need?</span>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Example</th>
+                            <th>Purpose</th>
+                        </tr>
+                        <tr>
+                            <td><code>id</code></td>
+                            <td>Integer</td>
+                            <td>1, 2, 3</td>
+                            <td>Unique identifier</td>
+                        </tr>
+                        <tr>
+                            <td><code>product_name</code></td>
+                            <td>String</td>
+                            <td>"Laptop"</td>
+                            <td>What is the product?</td>
+                        </tr>
+                        <tr>
+                            <td><code>category</code></td>
+                            <td>String</td>
+                            <td>"Electronics"</td>
+                            <td>Group similar products</td>
+                        </tr>
+                        <tr>
+                            <td><code>price</code></td>
+                            <td>Float</td>
+                            <td>999.99</td>
+                            <td>Price per unit</td>
+                        </tr>
+                        <tr>
+                            <td><code>stock_quantity</code></td>
+                            <td>Integer</td>
+                            <td>10</td>
+                            <td>How many in stock?</td>
+                        </tr>
+                        <tr>
+                            <td><code>supplier</code></td>
+                            <td>String</td>
+                            <td>"TechCorp"</td>
+                            <td>Who supplies this item?</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="code-explanation">
+                    <h3>Sample Inventory Data</h3>
+                    <div class="data-vis">
+inventory = [
+    {
+        "id": 1,
+        "product_name": "Laptop",
+        "category": "Electronics",
+        "price": 999.99,
+        "stock_quantity": 10,
+        "supplier": "TechCorp"
+    },
+    {
+        "id": 2,
+        "product_name": "Office Chair",
+        "category": "Furniture",
+        "price": 149.50,
+        "stock_quantity": 25,
+        "supplier": "SitWell"
+    },
+    {
+        "id": 3,
+        "product_name": "Coffee Maker",
+        "category": "Appliances",
+        "price": 45.00,
+        "stock_quantity": 15,
+        "supplier": "BrewMaster"
+    }
+]
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== BACKEND ==================== -->
+            <section class="backend">
+                <h2>🔧 Part 1: The Backend (inventory_backend.py)</h2>
+                <p>
+                    This file contains all the logic for managing inventory data.
+                </p>
+
+                <!-- INITIALIZE DATA -->
+                <div class="code-explanation">
+                    <h3>1. Creating Sample Data (Lines 1-48)</h3>
+                    <p><span class="line-number">Lines 1-48:</span></p>
+                    <pre class="code-block">
+def initialize_data():
+    """
+    Creates and returns a sample dataset for the inventory.
+    Returns:
+        list: A list of dictionaries representing products.
+    """
+    return [
+        {
+            "id": 1,
+            "product_name": "Laptop",
+            "category": "Electronics",
+            "price": 999.99,
+            "stock_quantity": 10,
+            "supplier": "TechCorp"
+        },
+        # ... more products ...
+    ]</pre>
+                    
+                    <div class="concept-box">
+                        <span class="concept-title">🔄 Different Approach: Return Instead of Global</span>
+                        <p>
+                            Notice this function <strong>returns</strong> the data instead of storing it in a 
+                            global variable! Compare:
+                        </p>
+                        <div class="data-vis">
+# Previous projects (global variable):
+books = []  # Global variable
+def add_sample_data():
+    global books
+    books = [...]  # Modifies global
+
+# This project (return value):
+def initialize_data():
+    return [...]  # Returns data
+
+inventory = initialize_data()  # Caller stores it
+                        </div>
+                        <p>
+                            <strong>Why is this better?</strong> The function doesn't rely on anything outside itself — 
+                            it just returns data. This makes it more reusable and easier to test!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ADD ITEM -->
+                <div class="code-explanation">
+                    <h3>2. Adding New Products (Lines 56-74)</h3>
+                    <p><span class="line-number">Lines 56-74:</span></p>
+                    <pre class="code-block">
+def add_item(inventory, name, category, price, quantity, supplier):
+    """Adds a new item to the inventory."""
+    # Simple ID generation: max ID + 1 or 1 if empty
+    new_id = 1
+    if inventory:
+        new_id = max(item["id"] for item in inventory) + 1
+        
+    new_item = {
+        "id": new_id,
+        "product_name": name,
+        "category": category,
+        "price": float(price),
+        "stock_quantity": int(quantity),
+        "supplier": supplier
+    }
+    inventory.append(new_item)
+    return new_item</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Understanding the ID generation:</strong>
+                        <ol>
+                            <li>
+                                <code>if inventory:</code> — Check if the list is not empty.
+                            </li>
+                            <li>
+                                <code>max(item["id"] for item in inventory)</code> — Find the HIGHEST ID in the list.
+                                <ul>
+                                    <li>This is a <strong>generator expression</strong> — it loops through all items 
+                                        and extracts the "id" field.</li>
+                                    <li><code>max()</code> finds the largest value.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <code>+ 1</code> — Add 1 to get the next available ID.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ ID Generation Example</span>
+                        <div class="data-vis">
+# Current inventory has IDs: [1, 2, 3, 4, 5]
+max(item["id"] for item in inventory)  # Returns 5
+new_id = 5 + 1  # new_id = 6
+
+# Even if we delete ID 3:
+# Inventory has IDs: [1, 2, 4, 5]
+max(...)  # Still returns 5
+new_id = 6  # IDs are never reused!
+                        </div>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">📝 Generator Expression vs For Loop</span>
+                        <p>
+                            <code>max(item["id"] for item in inventory)</code> is a compact way to write:
+                        </p>
+                        <div class="data-vis">
+# Generator expression (one line):
+max_id = max(item["id"] for item in inventory)
+
+# Equivalent for loop (multiple lines):
+all_ids = []
+for item in inventory:
+    all_ids.append(item["id"])
+max_id = max(all_ids)
+                        </div>
+                        <p>Same result, but the generator expression is more elegant!</p>
+                    </div>
+                </div>
+
+                <!-- UPDATE STOCK -->
+                <div class="code-explanation">
+                    <h3>3. Updating Stock Quantity (Lines 76-86)</h3>
+                    <p><span class="line-number">Lines 76-86:</span></p>
+                    <pre class="code-block">
+def update_stock(inventory, product_name, new_quantity):
+    """
+    Updates the stock quantity of a product by name.
+    Returns True if found, False otherwise.
+    """
+    for item in inventory:
+        # Case-insensitive comparison
+        if item["product_name"].lower() == product_name.lower():
+            item["stock_quantity"] = int(new_quantity)
+            return True
+    return False</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Understanding case-insensitive comparison:</strong>
+                        <ol>
+                            <li>
+                                <code>for item in inventory:</code> — Loop through all products.
+                            </li>
+                            <li>
+                                <code>item["product_name"].lower()</code> — Convert product name to lowercase.
+                            </li>
+                            <li>
+                                <code>product_name.lower()</code> — Convert user's input to lowercase.
+                            </li>
+                            <li>
+                                Compare the lowercase versions!
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Case-Insensitive Matching</span>
+                        <div class="data-vis">
+# Product in inventory: "Laptop"
+# User types:           "laptop" or "LAPTOP" or "LaPtOp"
+
+"Laptop".lower()  # "laptop"
+"laptop".lower()  # "laptop"
+"LAPTOP".lower()  # "laptop"
+"LaPtOp".lower()  # "laptop"
+
+# All match! 👍
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEARCH ITEM -->
+                <div class="code-explanation">
+                    <h3>4. Searching Products (Lines 88-97)</h3>
+                    <p><span class="line-number">Lines 88-97:</span></p>
+                    <pre class="code-block">
+def search_item(inventory, name):
+    """
+    Searches for an item by name (case-insensitive substring).
+    Returns a list of matching items.
+    """
+    results = []
+    for item in inventory:
+        if name.lower() in item["product_name"].lower():
+            results.append(item)
+    return results</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Understanding substring search:</strong>
+                        <ol>
+                            <li>
+                                <code>results = []</code> — Create empty list for matches.
+                            </li>
+                            <li>
+                                <code>name.lower() in item["product_name"].lower()</code> — Check if the search 
+                                term appears ANYWHERE in the product name.
+                            </li>
+                            <li>
+                                If it does, add the whole item to results.
+                            </li>
+                            <li>
+                                Return all matches (could be 0, 1, or many).
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🔍 Substring vs Exact Match</span>
+                        <div class="data-vis">
+# Exact match (==):
+"Laptop" == "lap"      # False
+"Laptop" == "Laptop"   # True
+
+# Substring match (in):
+"lap" in "Laptop"      # True! "lap" is inside "Laptop"
+"top" in "Laptop"      # True! "top" is inside "Laptop"
+"xyz" in "Laptop"      # False, "xyz" is not inside
+
+# Practical example:
+search_item(inventory, "wire")
+# Would find: "Wireless Mouse", "Wireless Keyboard", etc.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CALCULATE TOTAL VALUE -->
+                <div class="code-explanation">
+                    <h3>5. Calculating Total Inventory Value (Lines 99-106)</h3>
+                    <p><span class="line-number">Lines 99-106:</span></p>
+                    <pre class="code-block">
+def calculate_total_value(inventory):
+    """
+    Calculates the total value of all items in stock (price * quantity).
+    """
+    total = 0
+    for item in inventory:
+        total += item["price"] * item["stock_quantity"]
+    return total</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>The math:</strong>
+                        <p>
+                            Total Value = Sum of (price × quantity) for each product
+                        </p>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Calculation Example</span>
+                        <div class="data-vis">
+Laptop:        $999.99 × 10 = $9,999.90
+Office Chair:  $149.50 × 25 = $3,737.50
+Coffee Maker:  $45.00  × 15 = $675.00
+Wireless Mouse: $19.99 × 50 = $999.50
+Notebook:      $2.50  × 100 = $250.00
+                                ─────────────
+Total Inventory Value:         $15,661.90
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== FRONTEND ==================== -->
+            <section class="frontend">
+                <h2>🖥️ Part 2: The User Interface (inventory_app.py)</h2>
+                <p>
+                    This file handles user interaction and displays data.
+                </p>
+
+                <!-- INITIALIZATION -->
+                <div class="code-explanation">
+                    <h3>1. Starting the Application (Lines 1-5)</h3>
+                    <p><span class="line-number">Lines 1-5:</span></p>
+                    <pre class="code-block">
+import inventory_backend
+
+def main():
+    # Initialize inventory with sample data
+    inventory = inventory_backend.initialize_data()</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Key difference from previous projects:</strong>
+                        <p>
+                            The <code>initialize_data()</code> function <strong>returns</strong> the data, and we 
+                            store it in a local variable <code>inventory</code>. This variable is then passed to 
+                            all backend functions.
+                        </p>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🔄 Data Flow Comparison</span>
+                        <div class="data-vis">
+# Previous projects:
+backend.add_sample_data()  # Modifies global in backend
+backend.add_item(...)      # Uses global in backend
+
+# This project:
+inventory = backend.initialize_data()  # Get data
+backend.add_item(inventory, ...)       # Pass data to function
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW INVENTORY -->
+                <div class="code-explanation">
+                    <h3>2. Displaying Inventory (Lines 18-26)</h3>
+                    <p><span class="line-number">Lines 18-26:</span></p>
+                    <pre class="code-block">
+if choice == '1':
+    items = inventory_backend.get_inventory(inventory)
+    if not items:
+        print("Inventory is empty.")
+    else:
+        print(f"{'ID':<5} {'Name':<20} {'Category':<15} {'Price':<10} {'Qty':<5} {'Supplier':<15}")
+        print("-" * 75)
+        for item in items:
+            print(f"{item['id']:<5} {item['product_name']:<20} {item['category']:<15} ${item['price']:<9.2f} {item['stock_quantity']:<5} {item['supplier']:<15}")</pre>
+                    
+                    <div class="success-box">
+                        <span class="success-title">✅ Formatted Output</span>
+                        <div class="data-vis">
+ID    Name                 Category        Price      Qty   Supplier
+---------------------------------------------------------------------------
+1     Laptop               Electronics     $999.99    10    TechCorp
+2     Office Chair         Furniture       $149.50    25    SitWell
+3     Coffee Maker         Appliances      $45.00     15    BrewMaster
+4     Wireless Mouse       Electronics     $19.99     50    TechCorp
+5     Notebook             Stationery      $2.50      100   PaperWorks
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADD PRODUCT -->
+                <div class="code-explanation">
+                    <h3>3. Adding New Products (Lines 28-39)</h3>
+                    <p><span class="line-number">Lines 28-39:</span></p>
+                    <pre class="code-block">
+elif choice == '2':
+    print("--- Add New Product ---")
+    name = input("Product Name: ")
+    category = input("Category: ")
+    try:
+        price = float(input("Price: "))
+        qty = int(input("Quantity: "))
+        supplier = input("Supplier: ")
+        inventory_backend.add_item(inventory, name, category, price, qty, supplier)
+        print("Product added successfully!")
+    except ValueError:
+        print("Error: Price must be a number and Quantity must be an integer.")</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Multiple inputs with validation:</strong>
+                        <ol>
+                            <li>Collect all the product information from the user.</li>
+                            <li><code>float(input("Price: "))</code> — Convert price to decimal number.</li>
+                            <li><code>int(input("Quantity: "))</code> — Convert quantity to whole number.</li>
+                            <li>Pass ALL data to the backend function.</li>
+                            <li>If any conversion fails, catch the error.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- SEARCH -->
+                <div class="code-explanation">
+                    <h3>4. Searching Products (Lines 52-60)</h3>
+                    <p><span class="line-number">Lines 52-60:</span></p>
+                    <pre class="code-block">
+elif choice == '4':
+    query = input("Enter name to search: ")
+    results = inventory_backend.search_item(inventory, query)
+    if results:
+        print(f"Found {len(results)} items:")
+        for item in results:
+            print(f"- {item['product_name']} (Qty: {item['stock_quantity']}) - ${item['price']}")
+    else:
+        print("No items found.")</pre>
+                    
+                    <div class="step-by-step">
+                        <strong>Displaying search results:</strong>
+                        <ol>
+                            <li><code>results = search_item(...)</code> — Get list of matching items.</li>
+                            <li><code>len(results)</code> — Count how many matches were found.</li>
+                            <li>Loop through and display each match.</li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Search Example</span>
+                        <div class="data-vis">
+Enter name to search: wire
+
+Found 1 items:
+- Wireless Mouse (Qty: 50) - $19.99
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOTAL VALUE -->
+                <div class="code-explanation">
+                    <h3>5. Displaying Total Value (Lines 62-64)</h3>
+                    <p><span class="line-number">Lines 62-64:</span></p>
+                    <pre class="code-block">
+elif choice == '5':
+    total = inventory_backend.calculate_total_value(inventory)
+    print(f"Total Inventory Value: ${total:,.2f}")</pre>
+                    
+                    <div class="concept-box">
+                        <span class="concept-title">💲 Number Formatting with Commas</span>
+                        <p>
+                            <code>{total:,.2f}</code> formats the number with:
+                        </p>
+                        <ul>
+                            <li><code>,</code> — Thousands separator (commas)</li>
+                            <li><code>.2f</code> — Two decimal places</li>
+                        </ul>
+                        <div class="data-vis">
+total = 15661.90
+
+print(f"${total}")        # $15661.9
+print(f"${total:.2f}")    # $15661.90
+print(f"${total:,.2f}")   # $15,661.90  ← Much nicer!
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== SUMMARY ==================== -->
+            <section class="summary">
+                <h2>📝 Summary: Key Concepts Learned</h2>
+                
+                <div class="concept-box">
+                    <span class="concept-title">✅ Concepts in This Project</span>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Concept</th>
+                            <th>Where Used</th>
+                            <th>What It Does</th>
+                        </tr>
+                        <tr>
+                            <td>Return Data vs Global</td>
+                            <td><code>initialize_data()</code></td>
+                            <td>Functions return data instead of modifying globals</td>
+                        </tr>
+                        <tr>
+                            <td>Pass by Reference</td>
+                            <td><code>add_item(inventory, ...)</code></td>
+                            <td>Data passed to functions can be modified</td>
+                        </tr>
+                        <tr>
+                            <td>Generator Expression</td>
+                            <td><code>max(item["id"] for item in...)</code></td>
+                            <td>Compact way to process list items</td>
+                        </tr>
+                        <tr>
+                            <td>Case-Insensitive Match</td>
+                            <td><code>.lower() == .lower()</code></td>
+                            <td>Compare strings regardless of case</td>
+                        </tr>
+                        <tr>
+                            <td>Substring Search</td>
+                            <td><code>name in product_name</code></td>
+                            <td>Find partial matches</td>
+                        </tr>
+                        <tr>
+                            <td>Aggregation</td>
+                            <td><code>total += price * qty</code></td>
+                            <td>Calculate totals from multiple records</td>
+                        </tr>
+                        <tr>
+                            <td>Number Formatting</td>
+                            <td><code>{value:,.2f}</code></td>
+                            <td>Display numbers with commas and decimals</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Introduction to Programming (Python)</p>
+    </footer>
+</body>
+
+</html>

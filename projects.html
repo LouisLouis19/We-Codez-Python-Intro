@@ -14,7 +14,7 @@
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .project-card:hover {
@@ -31,6 +31,59 @@
             display: inline-block;
             margin-top: 10px;
             font-weight: bold;
+        }
+
+        .concept-box {
+            background-color: #e7f3fe;
+            border: 1px solid #b6d4fe;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .concept-title {
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e9ecef;
+            color: #495057;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin: 5px 5px 5px 0;
+        }
+
+        .tag-beginner {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .tag-intermediate {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .tag-advanced {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .project-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -54,47 +107,211 @@
                     <li><a href="data-structures_1.html">Data Structures I</a></li>
                     <li><a href="data-structures_2.html">Data Structures II</a></li>
                     <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
-                    <li><a href="libraries.html">Libraries & Imports</a></li>
+                    <li><a href="libraries.html">Libraries &amp; Imports</a></li>
                     <li><a href="debugging.html">Debugging</a></li>
                 </ul>
             </nav>
         </aside>
         <main>
             <section class="overview">
-                <h2>Code Walkthroughs</h2>
+                <h2>📚 Code Walkthroughs</h2>
                 <p>
-                    Here we analyze the code for the projects you've encountered. We break down how the logic works
-                    line-by-line, explaining how the <strong>Frontend</strong> (User Interface) talks to the
-                    <strong>Backend</strong> (Logic).
+                    Here we analyze the code for the projects you've encountered. Each breakdown explains how the
+                    logic works <strong>line-by-line</strong>, making it easy for complete beginners to understand
+                    every concept.
                 </p>
+
+                <div class="concept-box">
+                    <span class="concept-title">🎯 What You'll Learn</span>
+                    <p>Each project breakdown covers:</p>
+                    <ul>
+                        <li><strong>The Big Picture</strong> — What the project does and why it's structured the way it
+                            is</li>
+                        <li><strong>Frontend vs Backend</strong> — How the user interface talks to the logic</li>
+                        <li><strong>Line-by-Line Explanations</strong> — Every function and statement explained</li>
+                        <li><strong>Step-by-Step Examples</strong> — Trace through the code with real values</li>
+                        <li><strong>Key Concepts</strong> — Summary of programming concepts used</li>
+                    </ul>
+                </div>
             </section>
 
             <section class="projects-list">
                 <div class="project-card">
-                    <h3>Project 1: Simple Calculator</h3>
+                    <h3><span class="project-number">1</span>Simple Calculator</h3>
                     <p>
-                        A basic calculator that handles Addition, Subtraction, Multiplication, and Division. Learns
-                        about error handling and function calls.
+                        A basic calculator that handles <strong>Addition, Subtraction, Multiplication, and
+                            Division</strong>.
+                        This is the perfect starting point to learn about functions, parameter passing, and the
+                        frontend-backend pattern.
                     </p>
+                    <div>
+                        <span class="tag tag-beginner">Beginner Friendly</span>
+                        <span class="tag">Functions</span>
+                        <span class="tag">Return Values</span>
+                        <span class="tag">Error Handling</span>
+                        <span class="tag">Imports</span>
+                    </div>
                     <a href="project_calculator.html">View Breakdown &rarr;</a>
                 </div>
 
                 <div class="project-card">
-                    <h3>Project 2: Temperature Converter</h3>
+                    <h3><span class="project-number">2</span>Temperature Converter</h3>
                     <p>
-                        Converts temperatures between Celsius, Fahrenheit, and Kelvin. Learns about conditional logic
-                        and reusable functions.
+                        Converts temperatures between <strong>Celsius, Fahrenheit, and Kelvin</strong>. Learn about
+                        reusable functions, the "switchboard" routing pattern, and how to format numbers for display.
                     </p>
+                    <div>
+                        <span class="tag tag-beginner">Beginner Friendly</span>
+                        <span class="tag">Reusable Functions</span>
+                        <span class="tag">Conditional Logic</span>
+                        <span class="tag">Number Formatting</span>
+                        <span class="tag">Routing</span>
+                    </div>
                     <a href="project_converter.html">View Breakdown &rarr;</a>
                 </div>
 
                 <div class="project-card">
-                    <h3>Project 3: To-Do App</h3>
+                    <h3><span class="project-number">3</span>To-Do App</h3>
                     <p>
-                        A task manager that allows adding, checking off, and deleting tasks. Learns about Lists and
-                        Dictionaries.
+                        A task manager that allows <strong>adding, checking off, and deleting tasks</strong>. This is
+                        your first project with persistent data! Learn about lists, dictionaries, and CRUD operations.
                     </p>
+                    <div>
+                        <span class="tag tag-intermediate">Intermediate</span>
+                        <span class="tag">List of Dictionaries</span>
+                        <span class="tag">enumerate()</span>
+                        <span class="tag">Global Variables</span>
+                        <span class="tag">CRUD Operations</span>
+                    </div>
                     <a href="project_todo.html">View Breakdown &rarr;</a>
+                </div>
+
+                <div class="project-card">
+                    <h3><span class="project-number">4</span>Library Management System</h3>
+                    <p>
+                        A complete library system that manages <strong>books, borrowing, and returns</strong>. This
+                        project expands on the To-Do app with more complex data (books have titles, authors, lenders,
+                        and borrow dates) and more sophisticated filtering operations.
+                    </p>
+                    <div>
+                        <span class="tag tag-intermediate">Intermediate</span>
+                        <span class="tag">Complex Dictionaries</span>
+                        <span class="tag">None Values</span>
+                        <span class="tag">Data Filtering</span>
+                        <span class="tag">Status Tracking</span>
+                    </div>
+                    <a href="project_library.html">View Breakdown &rarr;</a>
+                </div>
+
+                <div class="project-card">
+                    <h3><span class="project-number">5</span>Expense Tracker</h3>
+                    <p>
+                        A personal finance app that tracks <strong>income and expenses</strong>. Learn about 
+                        unique IDs, categorizing data with "type" fields, calculating balance summaries, 
+                        and displaying formatted tables with proper column alignment.
+                    </p>
+                    <div>
+                        <span class="tag tag-intermediate">Intermediate</span>
+                        <span class="tag">Unique IDs</span>
+                        <span class="tag">Type Fields</span>
+                        <span class="tag">Aggregation</span>
+                        <span class="tag">Date Handling</span>
+                        <span class="tag">Table Formatting</span>
+                    </div>
+                    <a href="project_expense.html">View Breakdown &rarr;</a>
+                </div>
+
+                <div class="project-card">
+                    <h3><span class="project-number">6</span>Inventory Management System</h3>
+                    <p>
+                        Software that a store would use to <strong>track products, stock levels, and inventory value</strong>. 
+                        Learn a different data flow pattern (returning data vs globals), generator expressions, 
+                        case-insensitive searching, and substring matching.
+                    </p>
+                    <div>
+                        <span class="tag tag-intermediate">Intermediate</span>
+                        <span class="tag">Return vs Global</span>
+                        <span class="tag">Generator Expressions</span>
+                        <span class="tag">Substring Search</span>
+                        <span class="tag">Value Calculations</span>
+                    </div>
+                    <a href="project_inventory.html">View Breakdown &rarr;</a>
+                </div>
+
+                <div class="project-card">
+                    <h3><span class="project-number">7</span>Employee Management System</h3>
+                    <p>
+                        HR software that tracks <strong>employees, departments, salaries, and projects</strong>. 
+                        This project introduces lists inside dictionaries, list comprehensions for filtering, 
+                        tuple returns, percentage calculations, and the join() method.
+                    </p>
+                    <div>
+                        <span class="tag tag-advanced">Advanced</span>
+                        <span class="tag">Lists in Dictionaries</span>
+                        <span class="tag">List Comprehensions</span>
+                        <span class="tag">Tuple Returns</span>
+                        <span class="tag">Percentage Math</span>
+                        <span class="tag">join() Method</span>
+                    </div>
+                    <a href="project_employee.html">View Breakdown &rarr;</a>
+                </div>
+
+                <div class="project-card">
+                    <h3><span class="project-number">8</span>Student Grade Manager (Revision)</h3>
+                    <p>
+                        A revision project that reinforces <strong>all the core concepts</strong> you've learned! 
+                        Track students and their grades, calculate averages, and practice working with lists 
+                        of dictionaries containing lists. Perfect for solidifying your foundation.
+                    </p>
+                    <div>
+                        <span class="tag tag-beginner">Beginner Friendly</span>
+                        <span class="tag">Revision Project</span>
+                        <span class="tag">Average Calculation</span>
+                        <span class="tag">Empty List Handling</span>
+                        <span class="tag">sum() and len()</span>
+                    </div>
+                    <a href="project_grades.html">View Breakdown &rarr;</a>
+                </div>
+            </section>
+
+            <section class="progression">
+                <h2>📈 Suggested Learning Path</h2>
+                <div class="concept-box">
+                    <span class="concept-title">🚀 Build Your Skills Step by Step</span>
+                    <ol>
+                        <li>
+                            <strong>Calculator</strong> — Master the basics: functions, return values, imports,
+                            error handling
+                        </li>
+                        <li>
+                            <strong>Converter</strong> — Learn about reusable functions and routing logic with
+                            more complex conditions
+                        </li>
+                        <li>
+                            <strong>To-Do App</strong> — Understand data structures (lists & dictionaries) and
+                            how to store and manipulate persistent data
+                        </li>
+                        <li>
+                            <strong>Library System</strong> — Combine everything with more complex data structures,
+                            filtering, and real-world application design
+                        </li>
+                        <li>
+                            <strong>Expense Tracker</strong> — Learn unique IDs, type-based categorization, 
+                            aggregation calculations, and table formatting
+                        </li>
+                        <li>
+                            <strong>Inventory System</strong> — Explore different data patterns (return vs global), 
+                            generator expressions, and substring search
+                        </li>
+                        <li>
+                            <strong>Employee System</strong> — Master advanced concepts: lists in dictionaries, 
+                            list comprehensions, tuple returns, and percentage math
+                        </li>
+                        <li>
+                            <strong>Grade Manager (Revision)</strong> — Solidify all your knowledge with a comprehensive 
+                            review project covering core fundamentals
+                        </li>
+                    </ol>
                 </div>
             </section>
 

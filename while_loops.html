@@ -1,174 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction to Programming - While Loops</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Introduction to Programming</h1>
-      <h2>Control Flow: While Loops</h2>
-    </header>
 
-    <div class="container">
-      <aside class="sidebar">
-        <nav>
-          <ul>
-            <li><a href="index.html">Programming Basics</a></li>
-            <li>
-              <a href="if_else_statement.html">If/Else Statements</a>
-            </li>
-            <li><a href="for_loops.html">For Loops</a></li>
-            <li><a href="while_loops.html" class="active">While Loops</a></li>
-            <li><a href="functions_1.html">Functions I</a></li>
-            <li><a href="functions_2.html">Functions II</a></li>
-            <li><a href="data-structures_1.html">Data Structures I</a></li>
-            <li>
-              <a href="data-structures_2.html">Data Structures II</a>
-            </li>
-            <li><a href="debugging.html">Debugging</a></li>
-          </ul>
-        </nav>
-      </aside>
-      <main>
-        <section class="overview">
-          <h2>Overview</h2>
-          <p>
-            This week, we will delve into the fundamentals of
-            <code>while</code> loops and provide extensive practice problems to
-            reinforce your understanding of loop structures and conditional
-            statements. By the end of this section, you’ll know when and how to
-            use <code>while</code> loops effectively, recognize common pitfalls
-            (like infinite loops), and develop confidence in applying
-            <code>while</code> loops for different programming challenges.
-          </p>
-        </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to Programming - While Loops</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-        <section class="while-loops">
-          <h2>While Loops</h2>
-          <p>
-            A <code>while</code> loop in Python repeatedly executes a block of
-            code as long as a specified condition remains true. Unlike
-            <code>for</code> loops, which iterate over a predefined sequence of
-            elements, <code>while</code> loops are particularly useful when the
-            number of iterations is not predetermined or when you want to keep
-            looping until a specific condition is met.
-          </p>
+<body>
+  <header>
+    <h1>Introduction to Programming</h1>
+    <h2>Control Flow: While Loops</h2>
+  </header>
 
-          <p>The basic structure of a <code>while</code> loop is as follows:</p>
-          <pre class="code-block">
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Programming Basics</a></li>
+          <li>
+            <a href="if_else_statement.html">If/Else Statements</a>
+          </li>
+          <li><a href="for_loops.html">For Loops</a></li>
+          <li><a href="while_loops.html" class="active">While Loops</a></li>
+          <li><a href="functions_1.html">Functions I</a></li>
+          <li><a href="functions_2.html">Functions II</a></li>
+          <li><a href="data-structures_1.html">Data Structures I</a></li>
+          <li>
+            <a href="data-structures_2.html">Data Structures II</a>
+          </li>
+          <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+          <li><a href="debugging.html">Debugging</a></li>
+          <li><a href="libraries.html">Libraries & Imports</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main>
+      <section class="overview">
+        <h2>Overview</h2>
+        <p>
+          This week, we will delve into the fundamentals of
+          <code>while</code> loops and provide extensive practice problems to
+          reinforce your understanding of loop structures and conditional
+          statements. By the end of this section, you’ll know when and how to
+          use <code>while</code> loops effectively, recognize common pitfalls
+          (like infinite loops), and develop confidence in applying
+          <code>while</code> loops for different programming challenges.
+        </p>
+      </section>
+
+      <section class="while-loops">
+        <h2>While Loops</h2>
+        <p>
+          A <code>while</code> loop in Python repeatedly executes a block of
+          code as long as a specified condition remains true. Unlike
+          <code>for</code> loops, which iterate over a predefined sequence of
+          elements, <code>while</code> loops are particularly useful when the
+          number of iterations is not predetermined or when you want to keep
+          looping until a specific condition is met.
+        </p>
+
+        <p>The basic structure of a <code>while</code> loop is as follows:</p>
+        <pre class="code-block">
 while condition:
-    # Code to execute while the condition is True</pre
-          >
+    # Code to execute while the condition is True</pre>
 
-          <p>In a <code>while</code> loop:</p>
-          <ul>
-            <li>
-              <strong>Condition</strong>: The loop continues as long as the
-              condition remains true. If the condition is false when the loop
-              starts, the code inside the loop will not execute at all.
-            </li>
-            <li>
-              <strong>Loop Body</strong>: Contains the code that runs on each
-              iteration as long as the condition is true.
-            </li>
-            <li>
-              <strong>Update Condition</strong>: It's important to ensure the
-              condition eventually becomes false to prevent an infinite loop.
-              This is usually done by updating variables within the loop.
-            </li>
-          </ul>
+        <p>In a <code>while</code> loop:</p>
+        <ul>
+          <li>
+            <strong>Condition</strong>: The loop continues as long as the
+            condition remains true. If the condition is false when the loop
+            starts, the code inside the loop will not execute at all.
+          </li>
+          <li>
+            <strong>Loop Body</strong>: Contains the code that runs on each
+            iteration as long as the condition is true.
+          </li>
+          <li>
+            <strong>Update Condition</strong>: It's important to ensure the
+            condition eventually becomes false to prevent an infinite loop.
+            This is usually done by updating variables within the loop.
+          </li>
+        </ul>
         </br>
-          <p>Let’s look at a basic example:</p>
-          <pre class="code-block">
+        <p>Let’s look at a basic example:</p>
+        <pre class="code-block">
 counter = 0
 
 while counter < 5:
     print("Counter is at:", counter)
     counter += 1</pre>
 
-          <p>
-            In this example, the loop starts with <code>counter</code> set to 0.
-            With each iteration, it prints the current value of
-            <code>counter</code> and then increments it by 1. The loop stops
-            once <code>counter</code> reaches 5, as the condition
-            <code>counter &lt; 5</code> becomes false.
-          </p>
-          
+        <p>
+          In this example, the loop starts with <code>counter</code> set to 0.
+          With each iteration, it prints the current value of
+          <code>counter</code> and then increments it by 1. The loop stops
+          once <code>counter</code> reaches 5, as the condition
+          <code>counter &lt; 5</code> becomes false.
+        </p>
+
         </br>
 
-          <h3>Using `while` Loops for Data Input</h3>
-          <p>
-            One common use case for <code>while</code> loops is to keep asking
-            for user input until a valid response is provided. For example:
-          </p>
-          <pre class="code-block">
+        <h3>Using `while` Loops for Data Input</h3>
+        <p>
+          One common use case for <code>while</code> loops is to keep asking
+          for user input until a valid response is provided. For example:
+        </p>
+        <pre class="code-block">
 user_input = ""
 
 while user_input.lower() != "exit":
     user_input = input("Type 'exit' to stop: ")
     print("You entered:", user_input)</pre>
-          <p>
-            This loop will continue to prompt the user to type "exit" until they
-            do so. Note how the loop checks the user input and uses
-            <code>user_input.lower()</code> to ensure the check is
-            case-insensitive.
-          </p>
-        </section>
+        <p>
+          This loop will continue to prompt the user to type "exit" until they
+          do so. Note how the loop checks the user input and uses
+          <code>user_input.lower()</code> to ensure the check is
+          case-insensitive.
+        </p>
+      </section>
 
-        <section class="infinite-loops">
-          <h2>Be Careful with Infinite Loops</h2>
-          <p>
-              While loops are powerful tools that allow you to repeat a block of code as long as a specified condition remains true. However, if that condition never becomes false, the loop will continue indefinitely. This is known as an "infinite loop," which can cause your program to freeze, crash, or become unresponsive.
-          </p>
+      <section class="infinite-loops">
+        <h2>Be Careful with Infinite Loops</h2>
+        <p>
+          While loops are powerful tools that allow you to repeat a block of code as long as a specified condition
+          remains true. However, if that condition never becomes false, the loop will continue indefinitely. This is
+          known as an "infinite loop," which can cause your program to freeze, crash, or become unresponsive.
+        </p>
         </br>
-      
-          <h3>What Causes Infinite Loops?</h3>
-          <p>
-              Infinite loops typically happen when the loop condition is always true and never changes within the loop. This can result from a logic error or forgetting to update a variable that impacts the loop condition.
-          </p>
-      
-          <p>Example of an infinite loop:</p>
-          <pre class="code-block">
+
+        <h3>What Causes Infinite Loops?</h3>
+        <p>
+          Infinite loops typically happen when the loop condition is always true and never changes within the loop. This
+          can result from a logic error or forgetting to update a variable that impacts the loop condition.
+        </p>
+
+        <p>Example of an infinite loop:</p>
+        <pre class="code-block">
 while True:
     print("This loop will run forever!")</pre>
-      
-          <p>
-              In this example, the condition <code>True</code> is constant and never becomes <code>False</code>. As a result, the loop will keep printing indefinitely. Such loops can exhaust your system’s resources, making your program unresponsive.
-          </p>
-      
+
+        <p>
+          In this example, the condition <code>True</code> is constant and never becomes <code>False</code>. As a
+          result, the loop will keep printing indefinitely. Such loops can exhaust your system’s resources, making your
+          program unresponsive.
+        </p>
+
         </br>
-          <h3>How to Avoid Infinite Loops</h3>
-          <p>
-              To prevent infinite loops, make sure the loop’s condition will eventually evaluate to <code>False</code>. You can do this in several ways:
-          </p>
-          <ul>
-              <li><strong>Update variables:</strong> Modify a variable inside the loop that directly affects the loop's condition.</li>
-              <li><strong>Use logical conditions:</strong> Set a logical condition that will naturally change after a certain point.</li>
-              <li><strong>Apply the <code>break</code> statement:</strong> Exit the loop manually if a specific condition is met.</li>
-          </ul>
-      
-          <p>Example of a loop with a variable that affects the condition:</p>
-          <pre class="code-block">
+        <h3>How to Avoid Infinite Loops</h3>
+        <p>
+          To prevent infinite loops, make sure the loop’s condition will eventually evaluate to <code>False</code>. You
+          can do this in several ways:
+        </p>
+        <ul>
+          <li><strong>Update variables:</strong> Modify a variable inside the loop that directly affects the loop's
+            condition.</li>
+          <li><strong>Use logical conditions:</strong> Set a logical condition that will naturally change after a
+            certain point.</li>
+          <li><strong>Apply the <code>break</code> statement:</strong> Exit the loop manually if a specific condition is
+            met.</li>
+        </ul>
+
+        <p>Example of a loop with a variable that affects the condition:</p>
+        <pre class="code-block">
 counter = 0
 while counter < 5:
     print("Counter is", counter)
     counter += 1  # The condition will eventually become False</pre>
-      
-          <p>
-              Here, the <code>counter</code> variable increases with each iteration, eventually making the condition <code>counter < 5</code> false. The loop then stops as expected.
-          </p>
-      
+
+        <p>
+          Here, the <code>counter</code> variable increases with each iteration, eventually making the condition
+          <code>counter < 5</code> false. The loop then stops as expected.
+        </p>
+
         </br>
-          <h3>The <code>break</code> Statement</h3>
-          <p>
-              The <code>break</code> statement allows you to exit a loop prematurely, regardless of the loop’s condition. This is especially useful when waiting for a specific user input or other condition that may or may not occur.
-          </p>
-      
-          <p>Example using the <code>break</code> statement to prevent an infinite loop:</p>
-          <pre class="code-block">
+        <h3>The <code>break</code> Statement</h3>
+        <p>
+          The <code>break</code> statement allows you to exit a loop prematurely, regardless of the loop’s condition.
+          This is especially useful when waiting for a specific user input or other condition that may or may not occur.
+        </p>
+
+        <p>Example using the <code>break</code> statement to prevent an infinite loop:</p>
+        <pre class="code-block">
 while True:
     user_input = input("Type 'exit' to stop the loop: ")
     if user_input == 'exit':
@@ -176,96 +190,116 @@ while True:
         break  # Exit the loop if the user types 'exit'
     else:
         print("The loop continues...")</pre>
-      
-          <p>
-              In this case, the loop will run until the user types "exit." The <code>break</code> statement exits the loop immediately, preventing it from running indefinitely.
-          </p>
-      
+
+        <p>
+          In this case, the loop will run until the user types "exit." The <code>break</code> statement exits the loop
+          immediately, preventing it from running indefinitely.
+        </p>
+
         </br>
-          <h3>Tips for Preventing Infinite Loops</h3>
-          <p>
-              Here are a few best practices to help avoid infinite loops in your programs:
-          </p>
-          <ul>
-              <li><strong>Clearly define the loop condition:</strong> Ensure that the condition will eventually evaluate to <code>False</code>.</li>
-              <li><strong>Monitor the loop variables:</strong> Regularly check that variables affecting the condition are updated within the loop.</li>
-              <li><strong>Use debugging tools:</strong> Print statements can help you see the progress of a loop and detect if it's stuck.</li>
-              <li><strong>Consider using <code>break</code> statements:</strong> If a loop should terminate on certain conditions, use <code>break</code> to manage these cases effectively.</li>
-          </ul>
-      
-          <p>
-              Careful planning of your loop’s logic will help you avoid infinite loops and ensure your programs run smoothly.
-          </p>
+        <h3>Tips for Preventing Infinite Loops</h3>
+        <p>
+          Here are a few best practices to help avoid infinite loops in your programs:
+        </p>
+        <ul>
+          <li><strong>Clearly define the loop condition:</strong> Ensure that the condition will eventually evaluate to
+            <code>False</code>.</li>
+          <li><strong>Monitor the loop variables:</strong> Regularly check that variables affecting the condition are
+            updated within the loop.</li>
+          <li><strong>Use debugging tools:</strong> Print statements can help you see the progress of a loop and detect
+            if it's stuck.</li>
+          <li><strong>Consider using <code>break</code> statements:</strong> If a loop should terminate on certain
+            conditions, use <code>break</code> to manage these cases effectively.</li>
+        </ul>
+
+        <p>
+          Careful planning of your loop’s logic will help you avoid infinite loops and ensure your programs run
+          smoothly.
+        </p>
       </section>
-      
+
       <section class="for-vs-while-loops">
-          <h2>For Loops vs. While Loops: When to Use Each</h2>
-          <p>
-              Both <code>for</code> and <code>while</code> loops allow you to repeat a block of code multiple times. However, they are suited to different scenarios, and choosing the right one can make your code more readable and efficient.
-          </p>
-      
-          <h3>The <code>for</code> Loop</h3>
-          <p>
-              <strong>A <code>for</code> loop is generally used when you know in advance how many times the loop should run.</strong> This loop is ideal for iterating over a sequence like a list, string, or range of numbers. A <code>for</code> loop automatically progresses through the elements in the sequence, making it easy to handle repetitive tasks with known bounds.
-          </p>
-          <p>Example of a <code>for</code> loop:</p>
-          <pre class="code-block">
+        <h2>For Loops vs. While Loops: When to Use Each</h2>
+        <p>
+          Both <code>for</code> and <code>while</code> loops allow you to repeat a block of code multiple times.
+          However, they are suited to different scenarios, and choosing the right one can make your code more readable
+          and efficient.
+        </p>
+
+        <h3>The <code>for</code> Loop</h3>
+        <p>
+          <strong>A <code>for</code> loop is generally used when you know in advance how many times the loop should
+            run.</strong> This loop is ideal for iterating over a sequence like a list, string, or range of numbers. A
+          <code>for</code> loop automatically progresses through the elements in the sequence, making it easy to handle
+          repetitive tasks with known bounds.
+        </p>
+        <p>Example of a <code>for</code> loop:</p>
+        <pre class="code-block">
 for i in range(5):
     print("Iteration number", i)</pre>
-          <p>
-              Here, the loop runs five times, printing the iteration number from 0 to 4. Because the range is specified, you know exactly how many times the loop will execute.
-          </p>
-      
-          <h3>The <code>while</code> Loop</h3>
-          <p>
-              <strong>A <code>while</code> loop is used when the number of iterations is not predetermined.</strong> It continues to run as long as its condition is <code>True</code>, making it suitable for situations where the loop's end depends on dynamic conditions. <code>While</code> loops are commonly used when you’re waiting for an external condition or input.
-          </p>
-          <p>Example of a <code>while</code> loop:</p>
-          <pre class="code-block">
+        <p>
+          Here, the loop runs five times, printing the iteration number from 0 to 4. Because the range is specified, you
+          know exactly how many times the loop will execute.
+        </p>
+
+        <h3>The <code>while</code> Loop</h3>
+        <p>
+          <strong>A <code>while</code> loop is used when the number of iterations is not predetermined.</strong> It
+          continues to run as long as its condition is <code>True</code>, making it suitable for situations where the
+          loop's end depends on dynamic conditions. <code>While</code> loops are commonly used when you’re waiting for
+          an external condition or input.
+        </p>
+        <p>Example of a <code>while</code> loop:</p>
+        <pre class="code-block">
 number = 1
 while number < 100:
     number *= 2
     print("Number is now", number)</pre>
-          <p>
-              In this example, the loop runs until <code>number</code> reaches or exceeds 100. The exact number of iterations isn’t known initially, as it depends on the variable's changing value.
-          </p>
-      
-          <h3>Choosing Between <code>for</code> and <code>while</code> Loops</h3>
-          <p>Here’s a quick summary to help you decide:</p>
-          <ul>
-              <li><strong>Use <code>for</code> loops</strong> when you need to iterate over a known range or collection (like a list or range of numbers). They’re ideal for fixed, countable iterations.</li>
-              <li><strong>Use <code>while</code> loops</strong> when the number of iterations depends on a changing condition that is not predetermined. They’re best for situations where you’re waiting for a specific condition to be met.</li>
-          </ul>
-          <p>
-              By choosing the right loop for the task, you can make your code more efficient and easier to understand.
-          </p>
+        <p>
+          In this example, the loop runs until <code>number</code> reaches or exceeds 100. The exact number of
+          iterations isn’t known initially, as it depends on the variable's changing value.
+        </p>
+
+        <h3>Choosing Between <code>for</code> and <code>while</code> Loops</h3>
+        <p>Here’s a quick summary to help you decide:</p>
+        <ul>
+          <li><strong>Use <code>for</code> loops</strong> when you need to iterate over a known range or collection
+            (like a list or range of numbers). They’re ideal for fixed, countable iterations.</li>
+          <li><strong>Use <code>while</code> loops</strong> when the number of iterations depends on a changing
+            condition that is not predetermined. They’re best for situations where you’re waiting for a specific
+            condition to be met.</li>
+        </ul>
+        <p>
+          By choosing the right loop for the task, you can make your code more efficient and easier to understand.
+        </p>
       </section>
 
-      
 
-        <section class="practice">
-          <h2>Practice Problems</h2>
 
-          <h3>1. Sum of Numbers</h3>
-<p>
-    Write a program that calculates the sum of all numbers from 1 to 100. Solve this using both a <code>for</code> loop and a <code>while</code> loop.
-</p>
-<details>
-    <summary>Solution (Using <code>for</code> Loop)</summary>
-    <div>
-        <pre class="code-block">
+      <section class="practice">
+        <h2>Practice Problems</h2>
+
+        <h3>1. Sum of Numbers</h3>
+        <p>
+          Write a program that calculates the sum of all numbers from 1 to 100. Solve this using both a <code>for</code>
+          loop and a <code>while</code> loop.
+        </p>
+        <details>
+          <summary>Solution (Using <code>for</code> Loop)</summary>
+          <div>
+            <pre class="code-block">
 total_sum = 0
 
 for number in range(1, 101):
     total_sum += number
 
 print("Sum of numbers from 1 to 100 (for loop):", total_sum)</pre>
-    </div>
-</details>
-<details>
-    <summary>Solution (Using <code>while</code> Loop)</summary>
-    <div>
-        <pre class="code-block">
+          </div>
+        </details>
+        <details>
+          <summary>Solution (Using <code>while</code> Loop)</summary>
+          <div>
+            <pre class="code-block">
 total_sum = 0
 number = 1
 
@@ -274,18 +308,19 @@ while number <= 100:
     number += 1
 
 print("Sum of numbers from 1 to 100 (while loop):", total_sum)</pre>
-    </div>
-</details>
+          </div>
+        </details>
 
 
-<h3>2. Count Down from 10</h3>
-<p>
-    Write a program that counts down from 10 to 1 using a <code>while</code> loop. The program should print each number in the countdown, followed by "Blast off!" when it reaches 0.
-</p>
-<details>
-    <summary>Solution</summary>
-    <div>
-        <pre class="code-block">
+        <h3>2. Count Down from 10</h3>
+        <p>
+          Write a program that counts down from 10 to 1 using a <code>while</code> loop. The program should print each
+          number in the countdown, followed by "Blast off!" when it reaches 0.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <div>
+            <pre class="code-block">
 count = 10
 
 while count > 0:
@@ -293,20 +328,20 @@ while count > 0:
     count -= 1
 
 print("Blast off!")</pre>
-    </div>
-</details>
+          </div>
+        </details>
 
 
-          <h3>3. While Loop Factorial Calculation</h3>
-          <p>
-            Write a `while` loop that calculates the factorial of a given
-            number.
-          </p>
-          <pre class="code-block">number = 6</pre>
-          <details>
-            <summary>Solution</summary>
-            <div>
-              <pre class="code-block">
+        <h3>3. While Loop Factorial Calculation</h3>
+        <p>
+          Write a `while` loop that calculates the factorial of a given
+          number.
+        </p>
+        <pre class="code-block">number = 6</pre>
+        <details>
+          <summary>Solution</summary>
+          <div>
+            <pre class="code-block">
 number = 6
 factorial = 1
 
@@ -314,22 +349,21 @@ while number > 0:
     factorial *= number
     number -= 1
 
-print("Factorial:", factorial)</pre
-              >
-            </div>
-          </details>
+print("Factorial:", factorial)</pre>
+          </div>
+        </details>
 
-          <h3>4. FizzBuzz</h3>
-          <p>
-            Write a program that prints the numbers from 1 to 50. For multiples
-            of 3, print "Fizz" instead of the number, and for multiples of 5,
-            print "Buzz". For numbers which are multiples of both 3 and 5, print
-            "FizzBuzz".
-          </p>
-          <details>
-            <summary>Solution</summary>
-            <div>
-              <pre class="code-block">
+        <h3>4. FizzBuzz</h3>
+        <p>
+          Write a program that prints the numbers from 1 to 50. For multiples
+          of 3, print "Fizz" instead of the number, and for multiples of 5,
+          print "Buzz". For numbers which are multiples of both 3 and 5, print
+          "FizzBuzz".
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <div>
+            <pre class="code-block">
 for i in range(1, 51):
     if i % 3 == 0 and i % 5 == 0:
         print("FizzBuzz")
@@ -338,19 +372,19 @@ for i in range(1, 51):
     elif i % 5 == 0:
         print("Buzz")
     else:
-        print(i)</pre
-              >
-            </div>
-          </details>
+        print(i)</pre>
+          </div>
+        </details>
 
-          <h3>5. Count the Number of Digits in a Number</h3>
-<p>
-    Write a program that uses a <code>while</code> loop to count the number of digits in a given positive integer. For example, for the number 12345, the count of digits should be 5.
-</p>
-<details>
-    <summary>Solution</summary>
-    <div>
-        <pre class="code-block">
+        <h3>5. Count the Number of Digits in a Number</h3>
+        <p>
+          Write a program that uses a <code>while</code> loop to count the number of digits in a given positive integer.
+          For example, for the number 12345, the count of digits should be 5.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <div>
+            <pre class="code-block">
 number = 12345  # You can change this number to test with other values
 digit_count = 0
 
@@ -359,15 +393,16 @@ while number > 0:
     digit_count += 1
 
 print("Number of digits:", digit_count)</pre>
-    </div>
-</details>
+          </div>
+        </details>
 
-        </section>
-        <p><a href="assignments/while-loops-practice.html">Practice Exercises</a></p>
-      </main>
-    </div>
-    <footer>
-      <p>&copy; 2024 Introduction to Programming (Python)</p>
-    </footer>
-  </body>
+      </section>
+      <p><a href="assignments/while-loops-practice.html">Practice Exercises</a></p>
+    </main>
+  </div>
+  <footer>
+    <p>&copy; 2024 Introduction to Programming (Python)</p>
+  </footer>
+</body>
+
 </html>

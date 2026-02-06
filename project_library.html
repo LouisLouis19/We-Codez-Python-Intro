@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project 4: Library App - Introduction to Programming</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .code-explanation {
+            background-color: #f9f9f9;
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .line-number {
+            font-weight: bold;
+            color: #555;
+            margin-right: 10px;
+        }
+
+        .concept-box {
+            background-color: #e7f3fe;
+            border: 1px solid #b6d4fe;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .concept-title {
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .data-vis {
+            font-family: monospace;
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .success-box {
+            background-color: #d4edda;
+            border: 1px solid #28a745;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-weight: bold;
+            color: #155724;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .step-by-step li {
+            margin-bottom: 10px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Introduction to Programming</h1>
+        <h2>Project 4: Library Management App Breakdown</h2>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Programming Basics</a></li>
+                    <li><a href="if_else_statement.html">If/Else Statements</a></li>
+                    <li><a href="for_loops.html">For Loops</a></li>
+                    <li><a href="while_loops.html">While Loops</a></li>
+                    <li><a href="functions_1.html">Functions I</a></li>
+                    <li><a href="functions_2.html">Functions II</a></li>
+                    <li><a href="data-structures_1.html">Data Structures I</a></li>
+                    <li><a href="data-structures_2.html">Data Structures II</a></li>
+                    <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+                    <li><a href="libraries.html">Libraries &amp; Imports</a></li>
+                    <li><a href="debugging.html">Debugging</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <p><a href="projects.html">&larr; Back to Projects</a></p>
+
+            <!-- ==================== OVERVIEW ==================== -->
+            <section class="overview">
+                <h2>🎯 What Are We Building?</h2>
+                <p>
+                    We're building a <strong>Library Management System</strong> — a program that lets you manage books
+                    just like a real library! You can add new books, see all books, borrow books, and return them.
+                </p>
+
+                <div class="concept-box">
+                    <span class="concept-title">📖 Real-World Analogy: The Library</span>
+                    <p>Think of this program like a real library:</p>
+                    <ul>
+                        <li><strong>The Bookshelf (our data)</strong> — This is where all the books are stored. Each
+                            book has a title, author, and information about who borrowed it.</li>
+                        <li><strong>The Librarian (backend_library.py)</strong> — This is the person who manages the
+                            bookshelf. They add books, track who borrowed what, and organize everything. The librarian
+                            knows ALL the rules about books.</li>
+                        <li><strong>The Front Desk (library_app.py)</strong> — This is where you (the customer)
+                            interact. You tell the front desk what you want, and they communicate with the librarian
+                            behind the scenes.</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">🧠 Why Two Files?</span>
+                    <p>
+                        We separate the code into two files for <strong>organization</strong> and
+                        <strong>reusability</strong>:
+                    </p>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>File</th>
+                            <th>Role</th>
+                            <th>What It Does</th>
+                            <th>Uses print/input?</th>
+                        </tr>
+                        <tr>
+                            <td><code>library_app.py</code></td>
+                            <td>Frontend (User Interface)</td>
+                            <td>Shows menus, asks for input, displays results</td>
+                            <td>✅ YES</td>
+                        </tr>
+                        <tr>
+                            <td><code>backend_library.py</code></td>
+                            <td>Backend (Logic & Data)</td>
+                            <td>Stores books, handles borrowing/returning logic</td>
+                            <td>❌ NO</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ==================== DATA STRUCTURE ==================== -->
+            <section class="data-structure">
+                <h2>📊 Understanding the Data Structure</h2>
+                <p>
+                    Before we look at the code, let's understand <strong>how books are stored</strong>. This is the most
+                    important concept in this project!
+                </p>
+
+                <div class="concept-box">
+                    <span class="concept-title">📚 What Information Does Each Book Have?</span>
+                    <p>Each book needs to store 4 pieces of information:</p>
+                    <ol>
+                        <li><strong>title</strong> — The name of the book (e.g., "The Hobbit")</li>
+                        <li><strong>author</strong> — Who wrote it (e.g., "J.R.R. Tolkien")</li>
+                        <li><strong>lender</strong> — Who borrowed it? (<code>None</code> if no one has it)</li>
+                        <li><strong>borrow_date</strong> — When was it borrowed? (<code>None</code> if available)</li>
+                    </ol>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">🗂️ Dictionary: The Perfect Container for a Book</span>
+                    <p>
+                        A <strong>dictionary</strong> lets us store multiple pieces of information together using
+                        <strong>key-value pairs</strong>. Think of it like a label on each piece of data.
+                    </p>
+                    <div class="data-vis">
+# One book represented as a dictionary
+book = {
+"title": "The Hobbit", # Key: "title", Value: "The Hobbit"
+"author": "J.R.R. Tolkien", # Key: "author", Value: "J.R.R. Tolkien"
+"lender": None, # Key: "lender", Value: None (not borrowed)
+"borrow_date": None # Key: "borrow_date", Value: None
+}
+                    </div>
+                    <p>
+                        <strong>Why <code>None</code>?</strong> — In Python, <code>None</code> means "no value" or
+                        "empty".
+                        If a book isn't borrowed, there's no lender and no borrow date, so we use <code>None</code>.
+                    </p>
+                </div>
+
+                <div class="concept-box">
+                    <span class="concept-title">📋 List of Dictionaries: The Complete Bookshelf</span>
+                    <p>
+                        We have MANY books, so we put all the book dictionaries inside a <strong>list</strong>:
+                    </p>
+                    <div class="data-vis">
+books = [
+{"title": "The Hobbit", "author": "J.R.R. Tolkien", "lender": None, "borrow_date": None},
+{"title": "1984", "author": "George Orwell", "lender": "Alice", "borrow_date": "2024-01-15"},
+{"title": "The Python Handbook", "author": "Flavio Copes", "lender": None, "borrow_date": None}
+]
+
+# books[0] → The first book (The Hobbit)
+# books[1] → The second book (1984)
+# books[2] → The third book (The Python Handbook)
+
+# books[1]["lender"] → "Alice" (who borrowed the second book)</div>
+                </div>
+
+                <div class="warning-box">
+                    <span class="warning-title">⚠️ Important: Borrowed vs Available</span>
+                    <p>How do we know if a book is borrowed?</p>
+                    <ul>
+                        <li>If <code>lender</code> is <code>None</code> → Book is <strong>AVAILABLE</strong></li>
+                        <li>If <code>lender</code> has a name → Book is <strong>BORROWED</strong></li>
+                    </ul>
+                    <p>This is how we track the status of each book!</p>
+                </div>
+            </section>
+
+            <!-- ==================== BACKEND ==================== -->
+            <section class="backend">
+                <h2>🔧 Part 1: The Librarian (backend_library.py)</h2>
+                <p>
+                    This file is the "brain" of our library. It stores all the books and handles all the operations.
+                    Let's break down every single line!
+                </p>
+
+                <!-- IMPORT -->
+                <div class="code-explanation">
+                    <h3>1. Importing datetime (Line 2)</h3>
+                    <p><span class="line-number">Line 2:</span></p>
+                    <pre class="code-block">import datetime</pre>
+
+                    <div class="step-by-step">
+                        <strong>What is <code>import</code>?</strong>
+                        <p>
+                            Python has lots of built-in tools we can use, but they're stored in "libraries" (also called
+                            "modules"). The <code>import</code> statement loads a library so we can use its tools.
+                        </p>
+                        <p>
+                            <code>datetime</code> is Python's library for working with dates and times. We might use it
+                            later to automatically get today's date when someone borrows a book.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- GLOBAL VARIABLE -->
+                <div class="code-explanation">
+                    <h3>2. Creating the Data Storage (Lines 4-5)</h3>
+                    <p><span class="line-number">Lines 4-5:</span></p>
+                    <pre class="code-block">
+# Data storage
+books = []</pre>
+
+                    <div class="step-by-step">
+                        <strong>What is happening here?</strong>
+                        <ol>
+                            <li><code># Data storage</code> — This is a <strong>comment</strong>. Comments start with
+                                <code>#</code> and are notes for humans. Python ignores them.</li>
+                            <li><code>books = []</code> — We create an empty list called <code>books</code>. This is
+                                where ALL our books will be stored.</li>
+                        </ol>
+                        <p>
+                            <strong>Why empty?</strong> We start with nothing. The <code>add_sample_data()</code>
+                            function
+                            will fill it with example books, and users can add more later.
+                        </p>
+                    </div>
+
+                    <div class="warning-box">
+                        <span class="warning-title">🔍 What is a "Global Variable"?</span>
+                        <p>
+                            A <strong>global variable</strong> is a variable declared outside of any function. This
+                            means
+                            ALL functions in this file can access and modify it.
+                        </p>
+                        <p>
+                            The <code>books</code> list is global — every function can see it and change it.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ADD SAMPLE DATA -->
+                <div class="code-explanation">
+                    <h3>3. Adding Sample Data (Lines 7-14)</h3>
+                    <p><span class="line-number">Lines 7-14:</span></p>
+                    <pre class="code-block">
+def add_sample_data():
+    """Adds sample data to the library."""
+    global books
+    books = [
+        {"title": "The Hobbit", "author": "J.R.R. Tolkien", "lender": None, "borrow_date": None},
+        {"title": "1984", "author": "George Orwell", "lender": "Alice", "borrow_date": "2024-01-15"},
+        {"title": "The Python Handbook", "author": "Flavio Copes", "lender": None, "borrow_date": None}
+    ]</pre>
+
+                    <div class="step-by-step">
+                        <strong>Breaking it down line by line:</strong>
+                        <ol>
+                            <li>
+                                <code>def add_sample_data():</code> — We're defining a function called
+                                <code>add_sample_data</code>.
+                                The <code>()</code> means it takes no inputs (no parameters).
+                            </li>
+                            <li>
+                                <code>"""Adds sample data to the library."""</code> — This is a
+                                <strong>docstring</strong>.
+                                It's a special comment that describes what the function does. It's wrapped in triple
+                                quotes.
+                            </li>
+                            <li>
+                                <code>global books</code> — This tells Python: "I want to modify the global
+                                <code>books</code>
+                                variable, not create a new local one."
+                            </li>
+                            <li>
+                                <code>books = [...]</code> — We fill the books list with 3 sample books. Notice:
+                                <ul>
+                                    <li>"The Hobbit" → Available (lender is <code>None</code>)</li>
+                                    <li>"1984" → Borrowed by Alice on 2024-01-15</li>
+                                    <li>"The Python Handbook" → Available</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="warning-box">
+                        <span class="warning-title">⚠️ Why <code>global books</code>?</span>
+                        <p>
+                            In Python, if you want to <strong>change</strong> a global variable inside a function, you
+                            must
+                            use the <code>global</code> keyword. Without it, Python would create a new local variable
+                            with
+                            the same name, and the global one wouldn't change!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ADD BOOK -->
+                <div class="code-explanation">
+                    <h3>4. Adding a New Book (Lines 18-24)</h3>
+                    <p><span class="line-number">Lines 18-24:</span></p>
+                    <pre class="code-block">
+def add_book(title, author):
+    new_book = {}
+    new_book["title"] = title
+    new_book["author"] = author
+    new_book["lender"] = None
+    new_book["borrow_date"] = None
+    books.append(new_book)</pre>
+
+                    <div class="step-by-step">
+                        <strong>What happens when we call
+                            <code>add_book("Harry Potter", "J.K. Rowling")</code>?</strong>
+                        <ol>
+                            <li>
+                                <code>new_book = {}</code> — Create an empty dictionary. Think of it as an empty box
+                                for our new book's information.
+                            </li>
+                            <li>
+                                <code>new_book["title"] = title</code> — Put the title inside. If <code>title</code> is
+                                "Harry Potter", now we have <code>{"title": "Harry Potter"}</code>
+                            </li>
+                            <li>
+                                <code>new_book["author"] = author</code> — Add the author. Now:
+                                <code>{"title": "Harry Potter", "author": "J.K. Rowling"}</code>
+                            </li>
+                            <li>
+                                <code>new_book["lender"] = None</code> — New books aren't borrowed yet, so lender is
+                                <code>None</code>.
+                            </li>
+                            <li>
+                                <code>new_book["borrow_date"] = None</code> — Same for borrow_date.
+                            </li>
+                            <li>
+                                <code>books.append(new_book)</code> — Add this new book dictionary to the end of our
+                                <code>books</code> list. <code>append()</code> is a list method that adds items to the
+                                end.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Final Result</span>
+                        <p>After running <code>add_book("Harry Potter", "J.K. Rowling")</code>:</p>
+                        <div class="data-vis">
+new_book = {
+"title": "Harry Potter",
+"author": "J.K. Rowling",
+"lender": None,
+"borrow_date": None
+}
+# This dictionary is now INSIDE the books list!</div>
+                    </div>
+                </div>
+
+                <!-- LIST BOOKS -->
+                <div class="code-explanation">
+                    <h3>5. Listing All Books (Lines 27-28)</h3>
+                    <p><span class="line-number">Lines 27-28:</span></p>
+                    <pre class="code-block">
+def list_books():
+    return books</pre>
+
+                    <div class="step-by-step">
+                        <strong>What does this do?</strong>
+                        <p>
+                            This is the simplest function! It just <code>returns</code> the entire <code>books</code>
+                            list.
+                            When the frontend (library_app.py) needs to show all books, it calls this function.
+                        </p>
+                        <p>
+                            <strong>Why not just access <code>books</code> directly?</strong> — By using a function, we
+                            keep the data "hidden" inside the backend. This is a programming principle called
+                            <strong>encapsulation</strong>. It makes the code easier to maintain.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- BORROW BOOK -->
+                <div class="code-explanation">
+                    <h3>6. Borrowing a Book (Lines 31-40)</h3>
+                    <p><span class="line-number">Lines 31-40:</span></p>
+                    <pre class="code-block">
+def borrow_book(title, lender, date):
+    for book in books:
+        # 1st Run -> book = {"title": "The Hobbit", ...}
+        # 2nd Run -> book = {"title": "1984", ...}
+        # 3rd Run -> book = {"title": "The Python Handbook", ...}
+        if book["title"] == title:
+            book["lender"] = lender
+            book["borrow_date"] = date
+
+    return books</pre>
+
+                    <div class="step-by-step">
+                        <strong>Let's trace through:
+                            <code>borrow_book("The Hobbit", "Bob", "2024-02-01")</code></strong>
+                        <ol>
+                            <li>
+                                <code>for book in books:</code> — Start a loop. Each time through, <code>book</code>
+                                becomes
+                                one dictionary from the <code>books</code> list.
+                            </li>
+                            <li>
+                                <strong>First loop iteration:</strong> <code>book</code> = The Hobbit dictionary
+                                <ul>
+                                    <li><code>if book["title"] == title</code> → "The Hobbit" == "The Hobbit" →
+                                        <strong>TRUE!</strong></li>
+                                    <li><code>book["lender"] = lender</code> → Set lender to "Bob"</li>
+                                    <li><code>book["borrow_date"] = date</code> → Set date to "2024-02-01"</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Second and Third iterations:</strong> The titles don't match, so nothing
+                                happens.
+                            </li>
+                            <li>
+                                <code>return books</code> — Return the updated list.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ After Borrowing</span>
+                        <p>The Hobbit dictionary changed from:</p>
+                        <div class="data-vis">
+BEFORE: {"title": "The Hobbit", "author": "J.R.R. Tolkien", "lender": None, "borrow_date":
+None}
+AFTER: {"title": "The Hobbit", "author": "J.R.R. Tolkien", "lender": "Bob", "borrow_date":
+"2024-02-01"}</div>
+                    </div>
+                </div>
+
+                <!-- RETURN BOOK -->
+                <div class="code-explanation">
+                    <h3>7. Returning a Book (Lines 43-52)</h3>
+                    <p><span class="line-number">Lines 43-52:</span></p>
+                    <pre class="code-block">
+def return_book(title): # title -> 1984
+    for book in books:
+        if book["title"] == title:
+            book["lender"] = None
+            book["borrow_date"] = None
+    
+    return books</pre>
+
+                    <div class="step-by-step">
+                        <strong>How returning works:</strong>
+                        <p>
+                            Returning is the <strong>opposite</strong> of borrowing. We find the book by title, then set
+                            <code>lender</code> and <code>borrow_date</code> back to <code>None</code>.
+                        </p>
+                        <p>
+                            If someone calls <code>return_book("1984")</code>:
+                        </p>
+                        <ol>
+                            <li>Loop through books until we find "1984"</li>
+                            <li>Set <code>book["lender"] = None</code> (was "Alice")</li>
+                            <li>Set <code>book["borrow_date"] = None</code> (was "2024-01-15")</li>
+                            <li>The book is now available again!</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- GET BORROWED BOOKS -->
+                <div class="code-explanation">
+                    <h3>8. Getting All Borrowed Books (Lines 55-60)</h3>
+                    <p><span class="line-number">Lines 55-60:</span></p>
+                    <pre class="code-block">
+def get_borrowed_books():
+    borrow_names = [] # [{...}, {...}]
+    for book in books:
+        if book["lender"] != None:
+            borrow_names.append(book)
+    return borrow_names</pre>
+
+                    <div class="step-by-step">
+                        <strong>This function filters the list to show only borrowed books:</strong>
+                        <ol>
+                            <li>
+                                <code>borrow_names = []</code> — Create an empty list to store borrowed books.
+                            </li>
+                            <li>
+                                <code>for book in books:</code> — Loop through every book.
+                            </li>
+                            <li>
+                                <code>if book["lender"] != None:</code> — If the lender is NOT None (meaning someone
+                                borrowed it)...
+                            </li>
+                            <li>
+                                <code>borrow_names.append(book)</code> — Add this book to our results.
+                            </li>
+                            <li>
+                                <code>return borrow_names</code> — Return only the borrowed books.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🔍 != vs ==</span>
+                        <ul>
+                            <li><code>==</code> means "is equal to"</li>
+                            <li><code>!=</code> means "is NOT equal to"</li>
+                        </ul>
+                        <p>So <code>book["lender"] != None</code> checks if there IS a lender (book is borrowed).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== FRONTEND ==================== -->
+            <section class="frontend">
+                <h2>🖥️ Part 2: The Front Desk (library_app.py)</h2>
+                <p>
+                    This file is what the user sees and interacts with. It displays menus, collects input, and
+                    communicates with the backend.
+                </p>
+
+                <!-- IMPORT -->
+                <div class="code-explanation">
+                    <h3>1. Connecting to the Backend (Line 2)</h3>
+                    <p><span class="line-number">Line 2:</span></p>
+                    <pre class="code-block">import backend_library</pre>
+
+                    <div class="step-by-step">
+                        <strong>What does this do?</strong>
+                        <p>
+                            This loads the <code>backend_library.py</code> file. Now we can use ALL the functions
+                            defined
+                            in that file by writing <code>backend_library.function_name()</code>.
+                        </p>
+                        <p>
+                            For example: <code>backend_library.add_book("Title", "Author")</code>
+                        </p>
+                    </div>
+
+                    <div class="warning-box">
+                        <span class="warning-title">⚠️ Important: Both Files Must Be in the Same Folder!</span>
+                        <p>
+                            For <code>import backend_library</code> to work, <code>backend_library.py</code> must be in
+                            the same folder as <code>library_app.py</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MAIN FUNCTION START -->
+                <div class="code-explanation">
+                    <h3>2. The main() Function & Sample Data (Lines 4-6)</h3>
+                    <p><span class="line-number">Lines 4-6:</span></p>
+                    <pre class="code-block">
+def main():
+    # Initialize with sample data
+    backend_library.add_sample_data()</pre>
+
+                    <div class="step-by-step">
+                        <strong>Starting the program:</strong>
+                        <ol>
+                            <li>
+                                <code>def main():</code> — Define the main function. This is where the program's logic
+                                lives.
+                            </li>
+                            <li>
+                                <code>backend_library.add_sample_data()</code> — Call the backend function to load
+                                sample
+                                books. This way, when the program starts, there are already some books to work with.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- THE MAIN MENU LOOP -->
+                <div class="code-explanation">
+                    <h3>3. The Infinite Menu Loop (Lines 8-16)</h3>
+                    <p><span class="line-number">Lines 8-16:</span></p>
+                    <pre class="code-block">
+while True:
+    print("\n--- Library App ---")
+    print("1. Add Book")
+    print("2. List All Books")
+    print("3. Borrow Book")
+    print("4. Return Book")
+    print("5. View Borrowed Books")
+    print("6. Exit")
+    
+    choice = input("Enter your choice: ")</pre>
+
+                    <div class="step-by-step">
+                        <strong>How the menu works:</strong>
+                        <ol>
+                            <li>
+                                <code>while True:</code> — Creates an infinite loop. The program will keep running until
+                                we explicitly <code>break</code> out of it.
+                            </li>
+                            <li>
+                                <code>print("\n--- Library App ---")</code> — Print the header. The <code>\n</code> adds
+                                a blank line before it for readability.
+                            </li>
+                            <li>
+                                <code>print("1. Add Book")</code> etc. — Show all the options the user can choose from.
+                            </li>
+                            <li>
+                                <code>choice = input("Enter your choice: ")</code> — Wait for the user to type something
+                                and press Enter. Store their answer in <code>choice</code>.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- ADD BOOK -->
+                <div class="code-explanation">
+                    <h3>4. Adding a Book (Lines 19-23)</h3>
+                    <p><span class="line-number">Lines 19-23:</span></p>
+                    <pre class="code-block">
+if choice == '1':
+    title = input("Enter book title: ")
+    author = input("Enter author: ")
+    backend_library.add_book(title, author)
+    print("Book added successfully.")</pre>
+
+                    <div class="step-by-step">
+                        <strong>Step by step:</strong>
+                        <ol>
+                            <li><code>if choice == '1':</code> — If the user typed "1"...</li>
+                            <li><code>title = input("Enter book title: ")</code> — Ask for the book's title</li>
+                            <li><code>author = input("Enter author: ")</code> — Ask for the author</li>
+                            <li><code>backend_library.add_book(title, author)</code> — Send this info to the backend!
+                            </li>
+                            <li><code>print("Book added successfully.")</code> — Confirm to the user</li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <span class="concept-title">🔗 The Frontend-Backend Connection</span>
+                        <p>Notice this pattern:</p>
+                        <ol>
+                            <li>Frontend collects data from user (<code>input()</code>)</li>
+                            <li>Frontend sends data to backend (<code>backend_library.add_book(...)</code>)</li>
+                            <li>Backend does the work (creates dictionary, adds to list)</li>
+                            <li>Frontend confirms to user (<code>print()</code>)</li>
+                        </ol>
+                        <p>The frontend NEVER touches the <code>books</code> list directly!</p>
+                    </div>
+                </div>
+
+                <!-- LIST BOOKS -->
+                <div class="code-explanation">
+                    <h3>5. Listing All Books (Lines 25-32)</h3>
+                    <p><span class="line-number">Lines 25-32:</span></p>
+                    <pre class="code-block">
+elif choice == '2':
+    books = backend_library.list_books()
+    if not books:
+        print("No books in library.")
+    else:
+        for book in books:
+            status = f"Borrowed by {book['lender']} on {book['borrow_date']}" if book['lender'] else "Available"
+            print(f"- {book['title']} by {book['author']} ({status})")</pre>
+
+                    <div class="step-by-step">
+                        <strong>This is the most complex display logic. Let's break it apart:</strong>
+                        <ol>
+                            <li>
+                                <code>books = backend_library.list_books()</code> — Get the list of all books from the
+                                backend.
+                            </li>
+                            <li>
+                                <code>if not books:</code> — If the list is empty...
+                            </li>
+                            <li>
+                                <code>print("No books in library.")</code> — Tell the user there are no books.
+                            </li>
+                            <li>
+                                <code>else:</code> — Otherwise (there ARE books)...
+                            </li>
+                            <li>
+                                <code>for book in books:</code> — Loop through each book dictionary.
+                            </li>
+                            <li>
+                                <code>status = f"Borrowed by..." if book['lender'] else "Available"</code> — This is a
+                                <strong>ternary expression</strong>. It means:
+                                <ul>
+                                    <li>IF <code>book['lender']</code> has a value → status = "Borrowed by [name] on
+                                        [date]"</li>
+                                    <li>ELSE → status = "Available"</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <code>print(f"- {book['title']} by {book['author']} ({status})")</code> — Display the
+                                book info.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <span class="success-title">✅ Example Output</span>
+                        <div class="data-vis">
+- The Hobbit by J.R.R. Tolkien (Available)
+- 1984 by George Orwell (Borrowed by Alice on 2024-01-15)
+- The Python Handbook by Flavio Copes (Available)</div>
+                    </div>
+                </div>
+
+                <!-- BORROW BOOK -->
+                <div class="code-explanation">
+                    <h3>6. Borrowing a Book (Lines 34-43)</h3>
+                    <p><span class="line-number">Lines 34-43:</span></p>
+                    <pre class="code-block">
+elif choice == '3':
+    title = input("Enter book title to borrow: ")
+    lender = input("Enter your name: ")
+    date = input("Enter date (YYYY-MM-DD) or leave empty for today: ")
+    if not date:
+        date = None
+    if backend_library.borrow_book(title, lender, date):
+        print("Book borrowed successfully.")
+    else:
+        print("Could not borrow book. It might be invalid or already borrowed.")</pre>
+
+                    <div class="step-by-step">
+                        <strong>Borrowing workflow:</strong>
+                        <ol>
+                            <li>Ask for the book title, borrower's name, and date.</li>
+                            <li>
+                                <code>if not date:</code> — If the user pressed Enter without typing a date...
+                                <br><code>date = None</code> — Set it to None (we could enhance this to use today's
+                                date).
+                            </li>
+                            <li>
+                                <code>backend_library.borrow_book(title, lender, date)</code> — Call the backend to
+                                update
+                                the book's information.
+                            </li>
+                            <li>
+                                The if/else shows a success or failure message.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- RETURN BOOK -->
+                <div class="code-explanation">
+                    <h3>7. Returning a Book (Lines 45-50)</h3>
+                    <p><span class="line-number">Lines 45-50:</span></p>
+                    <pre class="code-block">
+elif choice == '4':
+    title = input("Enter book title to return: ") # 1984
+    if backend_library.return_book(title):
+        print("Book returned successfully.")
+    else:
+        print("Could not return book. Check the title.")</pre>
+
+                    <div class="step-by-step">
+                        <strong>Returning is simpler:</strong>
+                        <p>
+                            We only need the title. The backend will find the book and clear its lender and borrow_date
+                            fields.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- VIEW BORROWED -->
+                <div class="code-explanation">
+                    <h3>8. Viewing Borrowed Books (Lines 52-58)</h3>
+                    <p><span class="line-number">Lines 52-58:</span></p>
+                    <pre class="code-block">
+elif choice == '5':
+    borrowed_books = backend_library.get_borrowed_books()
+    if not borrowed_books:
+        print("No books currently borrowed.")
+    else:
+        for book in borrowed_books:
+            print(f"- {book['title']} (Borrowed by {book['lender']} on {book['borrow_date']}")</pre>
+
+                    <div class="step-by-step">
+                        <strong>Filtering in action:</strong>
+                        <p>
+                            <code>get_borrowed_books()</code> returns ONLY borrowed books (where lender is not None).
+                            This makes it easy to see who has what.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- EXIT -->
+                <div class="code-explanation">
+                    <h3>9. Exiting the Program (Lines 60-64)</h3>
+                    <p><span class="line-number">Lines 60-64:</span></p>
+                    <pre class="code-block">
+elif choice == '6':
+    print("Exiting...")
+    break
+else:
+    print("Invalid choice, please try again.")</pre>
+
+                    <div class="step-by-step">
+                        <strong>Breaking the loop:</strong>
+                        <p>
+                            <code>break</code> exits the <code>while True</code> loop, ending the program.
+                        </p>
+                        <p>
+                            The <code>else:</code> catches any input that isn't 1-6 and asks the user to try again.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ENTRY POINT -->
+                <div class="code-explanation">
+                    <h3>10. The Entry Point (Lines 66-67)</h3>
+                    <p><span class="line-number">Lines 66-67:</span></p>
+                    <pre class="code-block">
+if __name__ == "__main__":
+    main()</pre>
+
+                    <div class="step-by-step">
+                        <strong>What is this magic?</strong>
+                        <p>
+                            This is Python's way of saying: "If this file is being run directly (not imported), execute
+                            the <code>main()</code> function."
+                        </p>
+                        <p>
+                            Without this, the code inside <code>main()</code> would never run! This line is the
+                            <strong>entry point</strong> — where the program starts.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== SUMMARY ==================== -->
+            <section class="summary">
+                <h2>📝 Summary: Key Concepts Learned</h2>
+
+                <div class="concept-box">
+                    <span class="concept-title">✅ Concepts in This Project</span>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Concept</th>
+                            <th>Where Used</th>
+                            <th>What It Does</th>
+                        </tr>
+                        <tr>
+                            <td>List of Dictionaries</td>
+                            <td><code>books = [{...}, {...}]</code></td>
+                            <td>Stores multiple books with multiple properties each</td>
+                        </tr>
+                        <tr>
+                            <td>Global Variables</td>
+                            <td><code>books = []</code> (line 5)</td>
+                            <td>Data accessible to all functions in the file</td>
+                        </tr>
+                        <tr>
+                            <td>For Loops</td>
+                            <td><code>for book in books:</code></td>
+                            <td>Iterate through each item in a list</td>
+                        </tr>
+                        <tr>
+                            <td>Conditional Logic</td>
+                            <td><code>if book["title"] == title:</code></td>
+                            <td>Check conditions before taking action</td>
+                        </tr>
+                        <tr>
+                            <td>None Value</td>
+                            <td><code>lender: None</code></td>
+                            <td>Represents "no value" or "empty"</td>
+                        </tr>
+                        <tr>
+                            <td>Imports</td>
+                            <td><code>import backend_library</code></td>
+                            <td>Use code from another file</td>
+                        </tr>
+                        <tr>
+                            <td>While True Loop</td>
+                            <td>Main menu</td>
+                            <td>Keep program running until user exits</td>
+                        </tr>
+                        <tr>
+                            <td>Ternary Expression</td>
+                            <td><code>x if condition else y</code></td>
+                            <td>One-line if/else for simple cases</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Introduction to Programming (Python)</p>
+    </footer>
+</body>
+
+</html>
