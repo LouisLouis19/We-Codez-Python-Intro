@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Two Pointers - Algorithms</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Introduction to Programming</h1>
+    <h2>Algorithm: Two Pointers</h2>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Programming Basics</a></li>
+          <li><a href="if_else_statement.html">If/Else Statements</a></li>
+          <li><a href="for_loops.html">For Loops</a></li>
+          <li><a href="while_loops.html">While Loops</a></li>
+          <li><a href="functions_1.html">Functions I</a></li>
+          <li><a href="functions_2.html">Functions II</a></li>
+          <li><a href="data-structures_1.html">Data Structures I</a></li>
+          <li><a href="data-structures_2.html">Data Structures II</a></li>
+          <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+          <li><a href="debugging.html">Debugging</a></li>
+          <li><a href="libraries.html">Libraries &amp; Imports</a></li>
+          <li><a href="algorithms.html">Algorithms</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+
+      <!-- SECTION 1: What is Two Pointers? -->
+      <section class="introduction">
+        <h2>What is Two Pointers?</h2>
+        <p>
+          <strong>Two Pointers</strong> is a technique where we use <em>two index variables</em> 
+          (called "pointers") to scan through a list at the same time.
+        </p>
+        <p>
+          Instead of using a slow nested loop (one loop inside another), two pointers let us 
+          solve many problems in a single pass — making our code much faster.
+        </p>
+
+        <h3>Real-Life Analogy: Two People Walking</h3>
+        <p>
+          Imagine a long hallway. Two people start from <strong>opposite ends</strong> and 
+          walk toward each other. Together, they can check the entire hallway much faster 
+          than one person starting at one end and walking all the way to the other.
+        </p>
+
+        <h3>There Are Two Main Patterns</h3>
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Pattern</th>
+              <th>How Pointers Move</th>
+              <th>Example Problems</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Inward (Converging)</strong></td>
+              <td>One starts at the beginning, one at the end. They move toward each other.</td>
+              <td>Two Sum (Sorted), Palindrome Check, Container with Most Water</td>
+            </tr>
+            <tr>
+              <td><strong>Same Direction (Slow &amp; Fast)</strong></td>
+              <td>Both start at the beginning but move at different speeds.</td>
+              <td>Remove Duplicates, Reverse an Array</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- SECTION 2: Pattern 1 — Inward Pointers -->
+      <section>
+        <h2>Pattern 1: Inward (Converging) Pointers</h2>
+        <p>
+          One pointer starts at the <strong>left</strong> (index 0), 
+          and one starts at the <strong>right</strong> (last index). 
+          They move toward each other and stop when they meet.
+        </p>
+
+        <h3>Example: Check if a String is a Palindrome</h3>
+        <p>
+          A <strong>palindrome</strong> is a word that reads the same forwards and backwards. 
+          Examples: <em>racecar</em>, <em>madam</em>, <em>level</em>.
+        </p>
+        <p>
+          The idea: use a left pointer at the first character and a right pointer at the last character. 
+          Compare them. If they match, move both inward. If they don't match — it's not a palindrome!
+        </p>
+        <pre class="code-block">
+# Checking "racecar"
+# [r] a c e c a [r]  → r == r? YES → move inward
+#  r [a] c e c [a] r → a == a? YES → move inward
+#  r  a [c] e [c] a r → c == c? YES → move inward
+#  r  a  c  [e]  c  a  r → only one left in the middle → Palindrome! ✓
+
+# Checking "hello"
+# [h] e l l [o] → h == o? NO → Not a Palindrome! ✗</pre>
+
+        <pre class="code-block">
+def is_palindrome(text):
+    left = 0
+    right = len(text) - 1
+
+    while left < right:
+        # Compare the characters at both pointers
+        if text[left] != text[right]:
+            return False   # Not a palindrome — characters don't match
+
+        # Move both pointers inward
+        left += 1
+        right -= 1
+
+    return True   # All characters matched — it's a palindrome!
+
+print(is_palindrome("racecar"))   # Output: True
+print(is_palindrome("hello"))     # Output: False
+print(is_palindrome("madam"))     # Output: True
+print(is_palindrome("level"))     # Output: True</pre>
+
+        <h3>Example: Two Sum on a Sorted Array</h3>
+        <p>
+          If the array is <strong>sorted</strong>, we can use two pointers to find a pair that adds up to the target — 
+          without using a dictionary!
+        </p>
+        <pre class="code-block">
+# numbers = [1, 3, 5, 11, 12, 21], target = 15
+#
+# [1] 3 5 11 12 [21] → 1+21=22 → TOO BIG  → move right pointer left
+#  1  3 5 11 [12] 21 → 1+12=13 → TOO SMALL → move left pointer right
+#  1 [3] 5 11 [12] 21 → 3+12=15 → FOUND! ✓</pre>
+
+        <pre class="code-block">
+def two_sum_sorted(numbers, target):
+    left = 0
+    right = len(numbers) - 1
+
+    while left < right:
+        current_sum = numbers[left] + numbers[right]
+
+        if current_sum == target:
+            return [left, right]          # Found the pair!
+        elif current_sum < target:
+            left += 1                     # Sum too small → make it bigger
+        else:
+            right -= 1                    # Sum too big → make it smaller
+
+    return None
+
+nums = [1, 3, 5, 11, 12, 21]
+print(two_sum_sorted(nums, 15))    # Output: [1, 4]  (3 + 12 = 15)</pre>
+
+        <h3>Why Move That Direction?</h3>
+        <ul>
+          <li>
+            If the sum is <strong>too small</strong>: we need a bigger number → move the <strong>left</strong> pointer right 
+            (because the list is sorted, moving left pointer right gives us a bigger number).
+          </li>
+          <li>
+            If the sum is <strong>too big</strong>: we need a smaller number → move the <strong>right</strong> pointer left 
+            (moving right pointer left gives us a smaller number).
+          </li>
+        </ul>
+      </section>
+
+      <!-- SECTION 3: Pattern 2 — Same Direction -->
+      <section>
+        <h2>Pattern 2: Same Direction (Slow &amp; Fast)</h2>
+        <p>
+          Both pointers start at the beginning of the list but move at <strong>different speeds</strong>.
+        </p>
+        <ul>
+          <li><strong>Slow pointer</strong>: moves only when we find something useful.</li>
+          <li><strong>Fast pointer</strong>: always moves forward, scanning the whole list.</li>
+        </ul>
+
+        <h3>Example: Reverse an Array</h3>
+        <p>
+          To reverse a list in-place (without creating a new list), we use one pointer at the start and one at the end, 
+          swapping elements and moving them inward.
+        </p>
+        <pre class="code-block">
+# Reverse ["H", "E", "L", "L", "O"]
+# [H] E L L [O]  → swap H and O → [O, E, L, L, H]
+#  O [E] L [L] H → swap E and L → [O, L, L, E, H]
+#  O  L [L] E  H → pointers meet in middle → DONE!
+# Result: [O, L, L, E, H] ✓</pre>
+
+        <pre class="code-block">
+def reverse_array(arr):
+    left = 0
+    right = len(arr) - 1
+
+    while left < right:
+        # Swap the elements at left and right
+        arr[left], arr[right] = arr[right], arr[left]
+
+        # Move both pointers inward
+        left += 1
+        right -= 1
+
+    return arr
+
+chars = ["H", "E", "L", "L", "O"]
+print(reverse_array(chars))   # Output: ['O', 'L', 'L', 'E', 'H']</pre>
+
+        <h3>Example: Remove Duplicates from a Sorted Array</h3>
+        <p>
+          Given a sorted list with duplicates, keep only the unique elements without creating a new list.
+        </p>
+        <pre class="code-block">
+# Input:  [0, 0, 1, 1, 2, 2, 3]
+# Output: [0, 1, 2, 3, ?, ?, ?]  (return length=4)
+#
+# slow = write position (where to place the next unique value)
+# fast = scan position (explores every element)
+#
+# [0], (0), 1, 1, 2  → slow=0, fast=1: nums[slow]=nums[fast]=0 → DUPLICATE, skip
+# [0],  0, (1), 1, 2  → slow=0, fast=2: nums[slow]=0 ≠ nums[fast]=1 → UNIQUE!
+#   → move slow to 1, copy nums[fast] there
+# 0, [1], 1, (1), 2  → slow=1, fast=3: nums[slow]=1 = nums[fast]=1 → DUPLICATE
+# 0, [1], 1, 1, (2)  → slow=1, fast=4: nums[slow]=1 ≠ nums[fast]=2 → UNIQUE!
+#   → move slow to 2, copy 2
+# Result: [0, 1, 2, ...] → length = 3</pre>
+
+        <pre class="code-block">
+def remove_duplicates(nums):
+    if not nums:
+        return 0
+
+    slow = 0   # Points to the last known unique element
+
+    for fast in range(1, len(nums)):
+        if nums[fast] != nums[slow]:   # Found a new unique element
+            slow += 1                  # Move slow forward
+            nums[slow] = nums[fast]    # Overwrite with the unique value
+
+    return slow + 1   # Length of the unique portion
+
+arr = [0, 0, 1, 1, 2, 3, 3]
+length = remove_duplicates(arr)
+print(arr[:length])   # Output: [0, 1, 2, 3]
+print(length)         # Output: 4</pre>
+
+        <h3>Example: Container with Most Water</h3>
+        <p>
+          Given a list of heights, find the two "walls" that can hold the most water between them.
+          The water amount = <code>min(left_height, right_height) × distance_between_them</code>.
+        </p>
+        <pre class="code-block">
+# heights = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+# 
+# Start with widest possible container (left=0, right=8)
+# [1] 8 6 2 5 4 8 3 [7] → min(1,7)=1, width=8 → area=8
+# Move the SHORTER wall (left=1, since height[0]=1 < height[8]=7)
+# 1 [8] 6 2 5 4 8 3 [7] → min(8,7)=7, width=7 → area=49 ← MAX!</pre>
+
+        <pre class="code-block">
+def max_water(heights):
+    left = 0
+    right = len(heights) - 1
+    max_area = 0
+
+    while left < right:
+        width = right - left
+        h = min(heights[left], heights[right])
+        area = width * h
+
+        max_area = max(max_area, area)   # Update max if this is bigger
+
+        # Move the pointer with the SHORTER wall
+        # (Moving the taller wall can never increase area)
+        if heights[left] < heights[right]:
+            left += 1
+        else:
+            right -= 1
+
+    return max_area
+
+heights = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+print(max_water(heights))   # Output: 49</pre>
+      </section>
+
+      <!-- SECTION 4: When to Use Two Pointers -->
+      <section>
+        <h2>When Should I Use Two Pointers?</h2>
+        <p>Look for these clues in a problem:</p>
+        <ul>
+          <li>The list is <strong>sorted</strong> and you need to find a pair or compare elements.</li>
+          <li>You want to avoid a <strong>nested loop</strong> (O(n²) is too slow).</li>
+          <li>You need to process elements from <strong>both ends</strong> at the same time.</li>
+          <li>The problem involves <strong>reversing</strong>, <strong>palindrome checking</strong>, 
+              or <strong>removing duplicates</strong> from a sorted array.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 5: Practice -->
+      <section class="practice">
+        <h2>Practice Questions</h2>
+
+        <h3>1. Palindrome Check</h3>
+        <p>
+          Is <code>"abcba"</code> a palindrome? Trace the two-pointer steps to verify.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# left=0, right=4: 'a' vs 'a' → match → move inward
+# left=1, right=3: 'b' vs 'b' → match → move inward
+# left=2, right=2: pointers meet → DONE
+# Result: True — "abcba" IS a palindrome!
+
+print(is_palindrome("abcba"))    # True
+print(is_palindrome("python"))   # False</pre>
+        </details>
+
+        <h3>2. Two Sum on Sorted Array</h3>
+        <p>
+          Find two indices in <code>[2, 3, 5, 8, 12]</code> that add up to <code>10</code>.
+          Trace each step.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# left=0, right=4: 2+12=14 → TOO BIG  → right=3
+# left=0, right=3: 2+8=10  → FOUND! → return [0, 3]
+# 2 + 8 = 10 ✓
+
+print(two_sum_sorted([2, 3, 5, 8, 12], 10))   # Output: [0, 3]</pre>
+        </details>
+
+        <h3>3. Reverse a String</h3>
+        <p>
+          Reverse the list <code>["P", "Y", "T", "H", "O", "N"]</code> using two pointers.
+          Trace each swap.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# left=0, right=5: swap P and N → [N, Y, T, H, O, P]
+# left=1, right=4: swap Y and O → [N, O, T, H, Y, P]
+# left=2, right=3: swap T and H → [N, O, H, T, Y, P]
+# left=3 >= right=2: DONE
+
+chars = ["P", "Y", "T", "H", "O", "N"]
+print(reverse_array(chars))   # Output: ['N', 'O', 'H', 'T', 'Y', 'P']</pre>
+        </details>
+
+        <h3>4. Remove Duplicates</h3>
+        <p>
+          What is the unique portion length after running <code>remove_duplicates</code> on 
+          <code>[1, 1, 1, 2, 3, 3, 4]</code>?
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# Unique elements: 1, 2, 3, 4 → length = 4
+
+arr = [1, 1, 1, 2, 3, 3, 4]
+length = remove_duplicates(arr)
+print(arr[:length])   # Output: [1, 2, 3, 4]
+print(length)         # Output: 4</pre>
+        </details>
+
+        <h3>5. Slow and Fast vs Inward</h3>
+        <p>
+          Explain the difference between the "Inward (Converging)" pattern and the 
+          "Slow and Fast" pointer pattern. Give one example of each.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# INWARD (Converging): Both pointers start at opposite ends and move TOWARD each other.
+# Example: Palindrome check — left starts at index 0, right at the last index.
+# They move inward until they meet in the middle.
+
+# SLOW & FAST (Same Direction): Both start from the same end but at different speeds.
+# Example: Remove Duplicates — "fast" scans every element, "slow" only advances
+# when a new unique element is found. They always move from left to right.</pre>
+        </details>
+      </section>
+
+      <!-- SECTION: Time Complexity -->
+      <section>
+        <h2>Time Complexity</h2>
+        <p>
+          The Two Pointers technique is specifically designed to replace <em>slow nested loops</em> 
+          with a single efficient pass. Here's how the complexities compare:
+        </p>
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Problem</th>
+              <th>Naive Approach</th>
+              <th>Two Pointers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Two Sum (sorted)</td>
+              <td>O(n²) — check every pair</td>
+              <td>O(n) — one pass from both ends</td>
+            </tr>
+            <tr>
+              <td>Palindrome Check</td>
+              <td>O(n) — reverse and compare strings</td>
+              <td>O(n) — single pass, no extra string created</td>
+            </tr>
+            <tr>
+              <td>Reverse an Array</td>
+              <td>O(n) — create a new reversed list</td>
+              <td>O(n) — in-place, no extra space needed</td>
+            </tr>
+            <tr>
+              <td>Remove Duplicates</td>
+              <td>O(n) — create a new filtered list</td>
+              <td>O(n) — in-place, no extra space needed</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Why is Two Pointers O(n)?</h3>
+        <p>
+          Whether the pointers move inward or in the same direction, each pointer can only 
+          move across the list <em>once</em>. Together, they cover at most <code>n</code> steps total — 
+          so the algorithm is linear, or <strong>O(n)</strong>.
+        </p>
+        <pre class="code-block">
+# Example: Palindrome check on "racecar" (n = 7 characters)
+# left  starts at index 0 and moves RIGHT → at most 3 steps
+# right starts at index 6 and moves LEFT  → at most 3 steps
+# Together: 3 + 3 = 6 steps total → O(n)
+
+# Compare to checking every pair of characters: O(n²)
+# Two Pointers avoids redundant comparisons entirely!</pre>
+
+        <h3>Space Complexity</h3>
+        <p>
+          All Two Pointer patterns shown here work <strong>in-place</strong> — they modify the 
+          original list directly and only use a constant number of extra variables 
+          (<code>left</code>, <code>right</code>, and maybe one temp variable for swapping). 
+          That's <strong>O(1)</strong> extra space.
+        </p>
+      </section>
+
+      <p><a href="algorithms.html">← Back to Algorithms Overview</a></p>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Introduction to Programming (Python)</p>
+  </footer>
+</body>
+
+</html>

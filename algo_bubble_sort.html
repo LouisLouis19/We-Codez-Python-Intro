@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bubble Sort - Algorithms</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Introduction to Programming</h1>
+    <h2>Algorithm: Bubble Sort</h2>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Programming Basics</a></li>
+          <li><a href="if_else_statement.html">If/Else Statements</a></li>
+          <li><a href="for_loops.html">For Loops</a></li>
+          <li><a href="while_loops.html">While Loops</a></li>
+          <li><a href="functions_1.html">Functions I</a></li>
+          <li><a href="functions_2.html">Functions II</a></li>
+          <li><a href="data-structures_1.html">Data Structures I</a></li>
+          <li><a href="data-structures_2.html">Data Structures II</a></li>
+          <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+          <li><a href="debugging.html">Debugging</a></li>
+          <li><a href="libraries.html">Libraries &amp; Imports</a></li>
+          <li><a href="algorithms.html">Algorithms</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+
+      <!-- SECTION 1: What is Bubble Sort? -->
+      <section class="introduction">
+        <h2>What is Bubble Sort?</h2>
+        <p>
+          <strong>Bubble Sort</strong> is one of the simplest sorting algorithms. It works by 
+          repeatedly comparing <strong>adjacent elements</strong> (elements that are next to each other) 
+          and <strong>swapping</strong> them if they are in the wrong order.
+        </p>
+        <p>
+          After each full pass through the list, the <em>largest remaining unsorted element</em> 
+          "bubbles up" to its correct position at the end — just like how air bubbles rise to the top of water.
+        </p>
+
+        <h3>Real-Life Analogy: Sorting Cards</h3>
+        <p>
+          Imagine you're holding a hand of playing cards: <strong>5, 2, 8, 1, 9</strong>.
+        </p>
+        <p>
+          You compare every <strong>pair of adjacent cards</strong> from left to right. 
+          If the left card is bigger than the right card, you swap them. 
+          After one full pass, the <strong>biggest card (9)</strong> is guaranteed to be at the far right. 
+          You then repeat the process for the remaining unsorted cards.
+        </p>
+
+        <h3>The "Sorted Zone" Grows from the Right</h3>
+        <p>
+          After each pass, <strong>one more element is permanently placed at the right end</strong> 
+          in its correct sorted position. The sorted zone grows from right to left, 
+          and the unsorted zone shrinks from left to right.
+        </p>
+        <pre class="code-block">
+numbers = [5, 2, 8, 1, 9]
+
+# After Pass 1:  [2, 5, 1, 8, | 9]    → 9 is in its final place ✓
+# After Pass 2:  [2, 1, 5, | 8, 9]    → 8 is in its final place ✓
+# After Pass 3:  [1, 2, | 5, 8, 9]    → 5 is in its final place ✓
+# After Pass 4:  [1, | 2, 5, 8, 9]    → 2 is in its final place ✓
+# Done! [1, 2, 5, 8, 9]</pre>
+      </section>
+
+      <!-- SECTION 2: Trace One Full Pass -->
+      <section>
+        <h2>Detailed Trace — One Full Pass</h2>
+        <p>
+          Let's trace through the <em>very first pass</em> on <code>[5, 2, 8, 1, 9]</code>:
+        </p>
+        <pre class="code-block">
+Starting list: [5, 2, 8, 1, 9]
+
+Compare index 0 and 1: [5, 2] → 5 > 2? YES → SWAP
+List: [2, 5, 8, 1, 9]
+
+Compare index 1 and 2: [5, 8] → 5 > 8? NO  → No swap
+List: [2, 5, 8, 1, 9]
+
+Compare index 2 and 3: [8, 1] → 8 > 1? YES → SWAP
+List: [2, 5, 1, 8, 9]
+
+Compare index 3 and 4: [8, 9] → 8 > 9? NO  → No swap
+List: [2, 5, 1, 8, 9]
+
+End of Pass 1: The largest element (9) is now at the end! ✓</pre>
+
+        <p>
+          Notice how <strong>9</strong> never got swapped — it was already in the right place and just 
+          "passed through" comparisons. The key observation is that after each pass, the largest 
+          <em>unsorted</em> element bubbles to the end.
+        </p>
+      </section>
+
+      <!-- SECTION 3: The Code -->
+      <section>
+        <h2>Bubble Sort in Python</h2>
+        <pre class="code-block">
+def bubble_sort(arr):
+    n = len(arr)
+
+    # Outer loop: controls how many passes we do
+    # After each pass, the last 'i' elements are already sorted
+    for i in range(n):
+
+        # Inner loop: compare adjacent elements
+        # We go up to n-1-i because the last i elements are already sorted
+        for j in range(n - 1 - i):
+            if arr[j] > arr[j + 1]:     # If left > right, they're in wrong order
+                # Swap them!
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+    return arr
+
+
+# --- Test it! ---
+numbers = [5, 2, 8, 1, 9]
+print(bubble_sort(numbers))   # Output: [1, 2, 5, 8, 9]
+
+more_numbers = [64, 34, 25, 12, 22, 11, 90]
+print(bubble_sort(more_numbers))   # Output: [11, 12, 22, 25, 34, 64, 90]</pre>
+
+        <h3>Understanding the Two Loops</h3>
+        <ul>
+          <li>
+            <strong>Outer loop</strong> (<code>for i in range(n)</code>): 
+            Controls how many passes we make. Runs <code>n</code> times. 
+            After each pass, one more element is permanently placed.
+          </li>
+          <li>
+            <strong>Inner loop</strong> (<code>for j in range(n - 1 - i)</code>): 
+            Compares adjacent pairs within the unsorted portion. 
+            We use <code>n - 1 - i</code> because we don't need to compare the 
+            already-sorted elements at the end (<code>i</code> elements are sorted).
+          </li>
+        </ul>
+      </section>
+
+      <!-- SECTION 4: All Passes Traced -->
+      <section>
+        <h2>All Passes Traced on [5, 2, 8, 1, 9]</h2>
+        <pre class="code-block">
+Initial:  [5, 2, 8, 1, 9]
+
+Pass 1 (i=0): Compare pairs from index 0 to 3
+  [5,2,8,1,9] → 5>2? YES → [2,5,8,1,9]
+  [2,5,8,1,9] → 5>8? NO  → [2,5,8,1,9]
+  [2,5,8,1,9] → 8>1? YES → [2,5,1,8,9]
+  [2,5,1,8,9] → 8>9? NO  → [2,5,1,8,9]
+After Pass 1: [2, 5, 1, 8, | 9]   → 9 is sorted ✓
+
+Pass 2 (i=1): Compare pairs from index 0 to 2
+  [2,5,1,8,9] → 2>5? NO  → [2,5,1,8,9]
+  [2,5,1,8,9] → 5>1? YES → [2,1,5,8,9]
+  [2,1,5,8,9] → 5>8? NO  → [2,1,5,8,9]
+After Pass 2: [2, 1, 5, | 8, 9]   → 8 is sorted ✓
+
+Pass 3 (i=2): Compare pairs from index 0 to 1
+  [2,1,5,8,9] → 2>1? YES → [1,2,5,8,9]
+  [1,2,5,8,9] → 2>5? NO  → [1,2,5,8,9]
+After Pass 3: [1, 2, | 5, 8, 9]   → 5 is sorted ✓
+
+Pass 4 (i=3): Compare pairs from index 0 to 0
+  [1,2,5,8,9] → 1>2? NO  → [1,2,5,8,9]
+After Pass 4: [1, | 2, 5, 8, 9]   → 2 is sorted ✓
+
+Final: [1, 2, 5, 8, 9] ✓</pre>
+      </section>
+
+      <!-- SECTION 5: Bubble Sort on Strings -->
+      <section>
+        <h2>Bubble Sort on Strings</h2>
+        <p>
+          Bubble Sort works on <strong>strings</strong> too! Python compares strings alphabetically 
+          using <code>&lt;</code> and <code>&gt;</code>. For example, <code>"Apple" &lt; "Banana"</code> 
+          because "A" comes before "B" in the alphabet.
+        </p>
+        <pre class="code-block">
+def bubble_sort_strings(arr):
+    n = len(arr)
+
+    for i in range(n):
+        for j in range(n - 1 - i):
+            # String comparison: alphabetical order
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+    return arr
+
+fruits = ["Banana", "Apple", "Cherry", "Date", "Elderberry"]
+print(bubble_sort_strings(fruits))
+# Output: ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry']</pre>
+
+        <pre class="code-block">
+# Tracing the first pass:
+# ["Banana", "Apple", "Cherry"] → "Banana" > "Apple"? YES → swap
+# → ["Apple", "Banana", "Cherry"]
+# "Banana" > "Cherry"? NO → no swap
+# ...and so on.
+# Python compares strings character by character, just like a dictionary!</pre>
+      </section>
+
+      <!-- SECTION 6: Early Stopping Optimization -->
+      <section>
+        <h2>Optimization: Early Stopping</h2>
+        <p>
+          If the list is <em>already sorted</em> (or becomes sorted early), bubble sort will 
+          still run all passes — wasting time. We can add an optimization: 
+          if no swaps happen during a pass, the list is already sorted, and we can stop early!
+        </p>
+        <pre class="code-block">
+def bubble_sort_optimized(arr):
+    n = len(arr)
+
+    for i in range(n):
+        swapped = False   # Track if any swap was made this pass
+
+        for j in range(n - 1 - i):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True    # We made a swap!
+
+        if not swapped:
+            break   # No swaps → list is fully sorted → stop early!
+
+    return arr
+
+# Already sorted list — stops immediately after Pass 1!
+print(bubble_sort_optimized([1, 2, 3, 4, 5]))   # Output: [1, 2, 3, 4, 5]</pre>
+      </section>
+
+      <!-- SECTION 7: Practice -->
+      <section class="practice">
+        <h2>Practice Questions</h2>
+
+        <h3>1. Trace Passes</h3>
+        <p>
+          Trace all passes of bubble sort on <code>[4, 3, 1, 5, 2]</code>. 
+          Show the list after each pass.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+Initial:  [4, 3, 1, 5, 2]
+
+Pass 1:
+  4>3? YES → [3,4,1,5,2]
+  4>1? YES → [3,1,4,5,2]
+  4>5? NO  → [3,1,4,5,2]
+  5>2? YES → [3,1,4,2,5]
+After Pass 1: [3, 1, 4, 2, | 5]
+
+Pass 2:
+  3>1? YES → [1,3,4,2,5]
+  3>4? NO  → [1,3,4,2,5]
+  4>2? YES → [1,3,2,4,5]
+After Pass 2: [1, 3, 2, | 4, 5]
+
+Pass 3:
+  1>3? NO  → [1,3,2,4,5]
+  3>2? YES → [1,2,3,4,5]
+After Pass 3: [1, 2, | 3, 4, 5]
+
+Pass 4: no swaps → done!
+Final: [1, 2, 3, 4, 5] ✓</pre>
+        </details>
+
+        <h3>2. What is "Bubbling"?</h3>
+        <p>
+          Explain in your own words: what exactly is "bubbling" in Bubble Sort? 
+          What value bubbles to where, and after which pass?
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# In each pass, the LARGEST unsorted value "bubbles" to the end of the unsorted portion.
+# This is because whenever a large number is compared with its right neighbor and found
+# to be bigger, it gets swapped — and keeps getting swapped all the way to the right.
+#
+# After Pass 1: the LARGEST value is at the end (index n-1).
+# After Pass 2: the 2nd LARGEST value is at position n-2.
+# After Pass k: the k largest values are in their final positions at the right.</pre>
+        </details>
+
+        <h3>3. Sort Strings</h3>
+        <p>
+          What is the result of sorting <code>["Zebra", "Apple", "Mango", "Banana", "Orange"]</code> 
+          with bubble sort?
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+words = ["Zebra", "Apple", "Mango", "Banana", "Orange"]
+print(bubble_sort_strings(words))
+# Output: ['Apple', 'Banana', 'Mango', 'Orange', 'Zebra']
+
+# Python compares strings alphabetically:
+# "Apple" < "Banana" < "Mango" < "Orange" < "Zebra"</pre>
+        </details>
+
+        <h3>4. Already Sorted</h3>
+        <p>
+          What happens if you run <code>bubble_sort_optimized</code> on a list that is already sorted, 
+          like <code>[1, 2, 3, 4, 5]</code>? How many passes does it make?
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# Pass 1: Compare all adjacent pairs → no swaps needed → swapped = False → STOP!
+# Total: only 1 pass needed!
+# Without the optimization, it would still run 5 passes even though the list is sorted.
+
+print(bubble_sort_optimized([1, 2, 3, 4, 5]))   # Output: [1, 2, 3, 4, 5]
+# Runs only 1 pass.</pre>
+        </details>
+
+        <h3>5. How Many Passes?</h3>
+        <p>
+          For a list of <strong>n</strong> items, how many passes does Bubble Sort make in the <em>worst case</em>? 
+          Why is it called O(n²)?
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# Worst case: the list is sorted in REVERSE order (e.g., [9, 8, 7, 6, 5]).
+# 
+# We need n-1 passes (n items → at most n-1 elements need to be moved to the end).
+# In each pass, we do up to n-1 comparisons.
+#
+# Total comparisons ≈ (n-1) + (n-2) + ... + 1 = n(n-1)/2 ≈ O(n²)
+#
+# Example: n=5 → at most 4+3+2+1=10 comparisons.</pre>
+        </details>
+      </section>
+
+      <!-- SECTION: Time Complexity -->
+      <section>
+        <h2>Time Complexity</h2>
+        <p>
+          Bubble Sort uses two nested loops — the outer loop runs n times, and the inner loop runs 
+          up to n times per pass. This gives us a <em>quadratic</em> time complexity.
+        </p>
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Case</th>
+              <th>Time Complexity</th>
+              <th>When does it happen?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Best Case</strong></td>
+              <td>O(n)</td>
+              <td>The list is already sorted — with early stopping, we detect this in just 1 pass.</td>
+            </tr>
+            <tr>
+              <td><strong>Average Case</strong></td>
+              <td>O(n²)</td>
+              <td>Elements are in a random order — about half the comparisons lead to swaps.</td>
+            </tr>
+            <tr>
+              <td><strong>Worst Case</strong></td>
+              <td>O(n²)</td>
+              <td>The list is sorted in reverse order — every comparison requires a swap.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>What does O(n²) mean in practice?</h3>
+        <pre class="code-block">
+# n = number of items in the list
+
+n = 10        →  up to  45 comparisons
+n = 100       →  up to  4,950 comparisons
+n = 1,000     →  up to  499,500 comparisons
+n = 10,000    →  up to  ~50,000,000 comparisons  ← Very slow for large lists!
+
+# In the worst case (reversed list), the inner loop total comparisons =
+# (n-1) + (n-2) + ... + 1 = n(n-1)/2  →  O(n²)
+
+# For comparison, Python's built-in sort (Timsort) does this in O(n log n) —
+# much faster for large lists! Bubble Sort is mainly used for learning.</pre>
+
+        <h3>Space Complexity</h3>
+        <p>
+          Bubble Sort works <strong>in-place</strong> — it only swaps elements within the original 
+          list and doesn't create any extra lists. It only needs a couple of temporary variables 
+          for the swap. That's <strong>O(1)</strong> extra space — very memory efficient.
+        </p>
+      </section>
+
+      <p><a href="algorithms.html">← Back to Algorithms Overview</a></p>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Introduction to Programming (Python)</p>
+  </footer>
+</body>
+
+</html>

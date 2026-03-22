@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Binary Search - Algorithms</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Introduction to Programming</h1>
+    <h2>Algorithm: Binary Search</h2>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Programming Basics</a></li>
+          <li><a href="if_else_statement.html">If/Else Statements</a></li>
+          <li><a href="for_loops.html">For Loops</a></li>
+          <li><a href="while_loops.html">While Loops</a></li>
+          <li><a href="functions_1.html">Functions I</a></li>
+          <li><a href="functions_2.html">Functions II</a></li>
+          <li><a href="data-structures_1.html">Data Structures I</a></li>
+          <li><a href="data-structures_2.html">Data Structures II</a></li>
+          <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+          <li><a href="debugging.html">Debugging</a></li>
+          <li><a href="libraries.html">Libraries &amp; Imports</a></li>
+          <li><a href="algorithms.html">Algorithms</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+
+      <!-- SECTION 1: What is Binary Search? -->
+      <section class="introduction">
+        <h2>What is Binary Search?</h2>
+        <p>
+          <strong>Binary Search</strong> is a way to find a specific value inside a <em>sorted</em> list — 
+          much faster than looking at every single item one by one.
+        </p>
+        <p>
+          Instead of starting from the beginning and checking each item, Binary Search always looks at the 
+          <strong>middle</strong> of the list first. Then it decides: should I look in the left half, or the right half? 
+          It keeps halving the search space until it finds the answer.
+        </p>
+
+        <h3>Real-Life Analogy: The Dictionary</h3>
+        <p>
+          Imagine you want to find the word <strong>"Mango"</strong> in a physical dictionary.
+        </p>
+        <ul>
+          <li>You DON'T start at page 1 and read every word.</li>
+          <li>You open the dictionary roughly in the <strong>middle</strong>.</li>
+          <li>You see the word <strong>"Lettuce"</strong> — "Mango" comes after "Lettuce" alphabetically, 
+              so you look in the <strong>right half</strong>.</li>
+          <li>You open the middle of that right half and keep going...</li>
+          <li>You find "Mango" in just a few steps!</li>
+        </ul>
+        <p>
+          That is exactly how Binary Search works — but on a list in Python.
+        </p>
+      </section>
+
+      <!-- SECTION 2: The Problem with Linear Search -->
+      <section>
+        <h2>The Problem: Linear Search is Slow</h2>
+        <p>
+          Before Binary Search, there is <strong>Linear Search</strong> — the most basic approach. You 
+          check every element from left to right until you find the target.
+        </p>
+        <pre class="code-block">
+# Linear Search: Check every item one by one
+numbers = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+target = 72
+
+for i in range(len(numbers)):
+    if numbers[i] == target:
+        print(f"Found at index {i}!")  # Found at index 8 — took 9 steps!</pre>
+
+        <p>
+          For a 10-item list, this might be fine. But what if the list had 
+          <strong>1,000,000 items</strong>? In the worst case, you'd check all 1 million items — very slow!
+        </p>
+
+        <h3>Comparison Table</h3>
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>List Size</th>
+              <th>Linear Search (worst case)</th>
+              <th>Binary Search (worst case)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>10 items</td><td>10 steps</td><td>4 steps</td></tr>
+            <tr><td>100 items</td><td>100 steps</td><td>7 steps</td></tr>
+            <tr><td>1,000 items</td><td>1,000 steps</td><td>10 steps</td></tr>
+            <tr><td>1,000,000 items</td><td>1,000,000 steps</td><td>20 steps</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Binary Search is <strong>dramatically faster</strong>. The catch? 
+          The list <strong>must be sorted</strong> first.
+        </p>
+      </section>
+
+      <!-- SECTION 3: How Binary Search Works -->
+      <section>
+        <h2>How Binary Search Works — Step by Step</h2>
+        <p>
+          Let's trace through an example together. We want to find the value <strong>23</strong> 
+          in this sorted list:
+        </p>
+        <pre class="code-block">
+numbers = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+#  index:  0  1  2   3   4   5   6   7   8   9
+target = 23</pre>
+
+        <h3>Step 1: Set up Low and High pointers</h3>
+        <pre class="code-block">
+low  = 0   # Start of the list (index 0)
+high = 9   # End of the list (index 9)</pre>
+
+        <h3>Step 2: Find the Middle</h3>
+        <pre class="code-block">
+mid = (low + high) // 2   # (0 + 9) // 2 = 4
+# numbers[4] = 16
+
+# Is 16 == 23?  NO
+# Is 23 > 16?   YES → Look in the RIGHT half
+# So: low = mid + 1 = 5</pre>
+
+        <h3>Step 3: Search the Right Half</h3>
+        <pre class="code-block">
+# Now: low = 5, high = 9
+mid = (5 + 9) // 2   # = 7
+# numbers[7] = 56
+
+# Is 56 == 23?  NO
+# Is 23 < 56?   YES → Look in the LEFT half
+# So: high = mid - 1 = 6</pre>
+
+        <h3>Step 4: Narrow Down Further</h3>
+        <pre class="code-block">
+# Now: low = 5, high = 6
+mid = (5 + 6) // 2   # = 5
+# numbers[5] = 23
+
+# Is 23 == 23?  YES! → FOUND at index 5!</pre>
+
+        <p>
+          We found <strong>23</strong> in just <strong>3 steps</strong>, 
+          instead of 6 steps with Linear Search!
+        </p>
+      </section>
+
+      <!-- SECTION 4: The Rules of Binary Search -->
+      <section>
+        <h2>The Three Key Rules</h2>
+        <ul>
+          <li>
+            <b>Rule 1 — The list MUST be sorted.</b> Binary Search only works correctly 
+            when data is in order (ascending or descending).
+          </li>
+          <li>
+            <b>Rule 2 — Compare the middle element to the target.</b>
+            <ul>
+              <li>If <code>arr[mid] == target</code> → Found it! Return the index.</li>
+              <li>If <code>target > arr[mid]</code> → Search the <strong>right half</strong> (move <code>low = mid + 1</code>).</li>
+              <li>If <code>target &lt; arr[mid]</code> → Search the <strong>left half</strong> (move <code>high = mid - 1</code>).</li>
+            </ul>
+          </li>
+          <li>
+            <b>Rule 3 — Stop when low > high.</b> If the pointers cross each other, the target 
+            is not in the list. Return <code>-1</code>.
+          </li>
+        </ul>
+      </section>
+
+      <!-- SECTION 5: The Code -->
+      <section>
+        <h2>Binary Search in Python</h2>
+        <pre class="code-block">
+def binary_search(arr, target):
+    low = 0               # Start of the search window
+    high = len(arr) - 1   # End of the search window
+
+    while low <= high:
+        mid = (low + high) // 2   # Find the middle index
+
+        # Case 1: Found the target!
+        if arr[mid] == target:
+            return mid
+
+        # Case 2: Target is in the RIGHT half
+        elif target > arr[mid]:
+            low = mid + 1
+
+        # Case 3: Target is in the LEFT half
+        else:
+            high = mid - 1
+
+    return -1  # Target not found
+
+
+# --- Test it! ---
+numbers = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+
+result = binary_search(numbers, 23)
+print(f"Found 23 at index: {result}")   # Output: Found 23 at index: 5
+
+result = binary_search(numbers, 99)
+print(f"Found 99 at index: {result}")   # Output: Found 99 at index: -1</pre>
+      </section>
+
+      <!-- SECTION 6: Visual Walkthrough -->
+      <section>
+        <h2>Visual Walkthrough</h2>
+        <p>Let's trace the algorithm visually. We search for <strong>target = 23</strong>:</p>
+        <pre class="code-block">
+List:   [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+Index:   0  1  2   3   4   5   6   7   8   9
+
+--- Step 1 ---
+low=0, high=9,  mid=4  → arr[4]=16
+16 vs 23 → 23 is BIGGER → move Low to mid+1=5
+
+--- Step 2 ---
+low=5, high=9,  mid=7  → arr[7]=56
+56 vs 23 → 23 is SMALLER → move High to mid-1=6
+
+--- Step 3 ---
+low=5, high=6,  mid=5  → arr[5]=23
+23 vs 23 → MATCH! Return index 5 ✓</pre>
+      </section>
+
+      <!-- SECTION 7: Variations -->
+      <section>
+        <h2>Variations</h2>
+
+        <h3>Variation 1: Descending (Reversed) List</h3>
+        <p>
+          If the list is sorted from <strong>biggest to smallest</strong>, the logic flips:
+        </p>
+        <ul>
+          <li>If <code>target > arr[mid]</code> → Search the <strong>LEFT</strong> half (bigger numbers are on the left).</li>
+          <li>If <code>target &lt; arr[mid]</code> → Search the <strong>RIGHT</strong> half.</li>
+        </ul>
+        <pre class="code-block">
+def descending_binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if arr[mid] == target:
+            return mid
+        elif target > arr[mid]:   # In descending list, bigger = LEFT
+            high = mid - 1
+        else:
+            low = mid + 1
+
+    return -1
+
+countdown = [100, 85, 70, 55, 40, 25, 10]
+print(descending_binary_search(countdown, 55))  # Output: 3</pre>
+
+        <h3>Variation 2: Searching Strings</h3>
+        <p>
+          Binary Search works on any sorted data — including strings! 
+          Python compares strings alphabetically using <code>&lt;</code> and <code>&gt;</code>.
+        </p>
+        <pre class="code-block">
+def string_binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:    # Alphabetically before → look right
+            low = mid + 1
+        else:                      # Alphabetically after → look left
+            high = mid - 1
+
+    return -1
+
+names = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace"]
+print(string_binary_search(names, "Eve"))     # Output: 4
+print(string_binary_search(names, "Zebra"))   # Output: -1 (not found)</pre>
+      </section>
+
+      <!-- SECTION 8: Practice -->
+      <section class="practice">
+        <h2>Practice Questions</h2>
+
+        <h3>1. Find the Index</h3>
+        <p>
+          Use binary search to find the index of <code>38</code> in the list 
+          <code>[2, 5, 8, 12, 16, 23, 38, 56, 72, 91]</code>. 
+          Trace through each step: what is <code>low</code>, <code>high</code>, and <code>mid</code> at each step?
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# Step 1: low=0, high=9, mid=4 → arr[4]=16 → 38 > 16 → low = 5
+# Step 2: low=5, high=9, mid=7 → arr[7]=56 → 38 < 56 → high = 6
+# Step 3: low=5, high=6, mid=5 → arr[5]=23 → 38 > 23 → low = 6
+# Step 4: low=6, high=6, mid=6 → arr[6]=38 → FOUND! Return 6
+
+numbers = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+print(binary_search(numbers, 38))  # Output: 6</pre>
+        </details>
+
+        <h3>2. Not Found</h3>
+        <p>
+          What does binary search return when searching for <code>50</code> in 
+          <code>[10, 20, 30, 40, 60, 70, 80]</code>? Trace the steps.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# Step 1: low=0, high=6, mid=3 → arr[3]=40 → 50 > 40 → low=4
+# Step 2: low=4, high=6, mid=5 → arr[5]=70 → 50 < 70 → high=4
+# Step 3: low=4, high=4, mid=4 → arr[4]=60 → 50 < 60 → high=3
+# Now: low=4 > high=3 → STOP → return -1
+
+numbers = [10, 20, 30, 40, 60, 70, 80]
+print(binary_search(numbers, 50))  # Output: -1</pre>
+        </details>
+
+        <h3>3. Maximum Steps</h3>
+        <p>
+          If a sorted list has <strong>16 items</strong>, how many steps does Binary Search need in the worst case?
+          (Hint: How many times can you cut 16 in half until you reach 1?)
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# 16 → 8 → 4 → 2 → 1
+# That is 4 steps!
+# In general: worst case = log₂(n) steps
+# log₂(16) = 4 steps
+# log₂(1,000,000) ≈ 20 steps — incredibly efficient!</pre>
+        </details>
+
+        <h3>4. Why Must the List be Sorted?</h3>
+        <p>
+          Try running binary search on an <em>unsorted</em> list: <code>[9, 3, 15, 1, 7]</code>, 
+          searching for <code>7</code>. What goes wrong?
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# Unsorted list: [9, 3, 15, 1, 7]
+# mid = 2 → arr[2] = 15 → 7 < 15 → search LEFT half: [9, 3]
+# mid = 0 → arr[0] = 9  → 7 < 9  → search LEFT half: (nothing left!)
+# low > high → return -1   ← WRONG! 7 IS in the list!
+
+# Binary Search ASSUMES that if mid is too big, the answer is to the left.
+# On an unsorted list, that assumption is FALSE — the target could be anywhere.</pre>
+        </details>
+
+        <h3>5. String Search Challenge</h3>
+        <p>
+          Use the <code>string_binary_search</code> function to find <code>"Charlie"</code> in 
+          <code>["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace"]</code>. 
+          Trace the steps.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# Step 1: low=0, high=6, mid=3 → arr[3]="David" → "Charlie" < "David" → high=2
+# Step 2: low=0, high=2, mid=1 → arr[1]="Bob" → "Charlie" > "Bob" → low=2
+# Step 3: low=2, high=2, mid=2 → arr[2]="Charlie" → FOUND! Return 2
+
+names = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace"]
+print(string_binary_search(names, "Charlie"))  # Output: 2</pre>
+        </details>
+      </section>
+
+      <!-- SECTION: Time Complexity -->
+      <section>
+        <h2>Time Complexity</h2>
+        <p>
+          <strong>Time complexity</strong> is a way to measure <em>how fast an algorithm grows</em> as the 
+          input size increases. We use <strong>Big O notation</strong> (written as O(...)) to describe it.
+        </p>
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Case</th>
+              <th>Time Complexity</th>
+              <th>When does it happen?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Best Case</strong></td>
+              <td>O(1)</td>
+              <td>The target is exactly in the middle on the very first check.</td>
+            </tr>
+            <tr>
+              <td><strong>Average Case</strong></td>
+              <td>O(log n)</td>
+              <td>The target is found after a typical number of halvings.</td>
+            </tr>
+            <tr>
+              <td><strong>Worst Case</strong></td>
+              <td>O(log n)</td>
+              <td>The target is at the very end of the last remaining piece, or not in the list at all.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>What does O(log n) mean?</h3>
+        <p>
+          <strong>log n</strong> means we keep dividing the problem in half. 
+          The number of steps grows very slowly even as the list gets huge:
+        </p>
+        <pre class="code-block">
+# n = number of items in the list
+# log₂(n) = maximum number of steps Binary Search needs
+
+n = 10        → log₂(10)  ≈  4 steps
+n = 100       → log₂(100) ≈  7 steps
+n = 1,000     → log₂(1000)≈ 10 steps
+n = 1,000,000 → log₂(1M)  ≈ 20 steps
+
+# Doubling the list only adds ONE extra step!
+# Compare to Linear Search, which would need 1,000,000 steps for 1M items.</pre>
+
+        <h3>Space Complexity</h3>
+        <p>
+          Binary Search only uses a few variables (<code>low</code>, <code>high</code>, <code>mid</code>) 
+          regardless of how big the list is. That means it uses <strong>O(1)</strong> extra space — 
+          constant, very memory-efficient!
+        </p>
+      </section>
+
+      <p><a href="algorithms.html">← Back to Algorithms Overview</a></p>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Introduction to Programming (Python)</p>
+  </footer>
+</body>
+
+</html>

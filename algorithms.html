@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to Programming - Algorithms</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Introduction to Programming</h1>
+    <h2>Algorithms &amp; Problem-Solving Techniques</h2>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Programming Basics</a></li>
+          <li><a href="if_else_statement.html">If/Else Statements</a></li>
+          <li><a href="for_loops.html">For Loops</a></li>
+          <li><a href="while_loops.html">While Loops</a></li>
+          <li><a href="functions_1.html">Functions I</a></li>
+          <li><a href="functions_2.html">Functions II</a></li>
+          <li><a href="data-structures_1.html">Data Structures I</a></li>
+          <li><a href="data-structures_2.html">Data Structures II</a></li>
+          <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+          <li><a href="debugging.html">Debugging</a></li>
+          <li><a href="libraries.html">Libraries &amp; Imports</a></li>
+          <li><a href="algorithms.html" class="active">Algorithms</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <section class="introduction">
+        <h2>What is an Algorithm?</h2>
+        <p>
+          An <strong>algorithm</strong> is a step-by-step set of instructions for solving a problem. 
+          Think of it like a recipe — you follow the steps in order and you get the result at the end.
+        </p>
+        <p>
+          In programming, algorithms help us solve problems <em>efficiently</em>. 
+          Two programs might produce the same answer, but one could be 1,000 times faster — 
+          that's the power of choosing the right algorithm!
+        </p>
+        <p>
+          In this section, we will explore six fundamental algorithms and techniques that every 
+          programmer should know. Each algorithm has its own dedicated page with a full explanation, 
+          worked examples, and practice questions.
+        </p>
+      </section>
+
+      <section class="algorithm-cards">
+        <h2>Algorithms Covered</h2>
+
+        <article>
+          <h3><a href="algo_binary_search.html">1. Binary Search</a></h3>
+          <p>
+            <strong>What it is:</strong> A fast searching technique that works on a <em>sorted</em> list 
+            by repeatedly cutting the search space in half.
+          </p>
+          <p>
+            <strong>When to use it:</strong> When you need to search a sorted list quickly.
+          </p>
+          <p><a href="algo_binary_search.html">→ Go to Binary Search</a></p>
+        </article>
+
+        <article>
+          <h3><a href="algo_two_sum.html">2. Two Sum (Hash Map)</a></h3>
+          <p>
+            <strong>What it is:</strong> A technique to find two numbers in a list that add up to a target, 
+            using a dictionary (hash map) to remember what we've already seen.
+          </p>
+          <p>
+            <strong>When to use it:</strong> When you need to find a pair (or complement) in a list.
+          </p>
+          <p><a href="algo_two_sum.html">→ Go to Two Sum</a></p>
+        </article>
+
+        <article>
+          <h3><a href="algo_two_pointers.html">3. Two Pointers</a></h3>
+          <p>
+            <strong>What it is:</strong> A technique where you use two index variables (pointers) 
+            to scan a list — often from both ends toward the middle, or both moving in the same direction.
+          </p>
+          <p>
+            <strong>When to use it:</strong> Sorted arrays, checking palindromes, removing duplicates, finding pairs.
+          </p>
+          <p><a href="algo_two_pointers.html">→ Go to Two Pointers</a></p>
+        </article>
+
+        <article>
+          <h3><a href="algo_sliding_window.html">4. Sliding Window</a></h3>
+          <p>
+            <strong>What it is:</strong> A technique to efficiently process a <em>subarray</em> (a group of 
+            consecutive elements) by "sliding" a fixed or variable-size window across the list.
+          </p>
+          <p>
+            <strong>When to use it:</strong> When you need the maximum/minimum sum of a subarray of size k.
+          </p>
+          <p><a href="algo_sliding_window.html">→ Go to Sliding Window</a></p>
+        </article>
+
+        <article>
+          <h3><a href="algo_bubble_sort.html">5. Bubble Sort</a></h3>
+          <p>
+            <strong>What it is:</strong> A simple sorting algorithm that repeatedly compares adjacent 
+            elements and swaps them if they are in the wrong order. Larger values "bubble" to the end.
+          </p>
+          <p>
+            <strong>When to use it:</strong> Great for learning sorting — simple to understand and implement.
+          </p>
+          <p><a href="algo_bubble_sort.html">→ Go to Bubble Sort</a></p>
+        </article>
+
+        <article>
+          <h3><a href="algo_insertion_sort.html">6. Insertion Sort</a></h3>
+          <p>
+            <strong>What it is:</strong> A sorting algorithm that builds the sorted list one element at a time, 
+            inserting each new element into its correct position in the already-sorted portion.
+          </p>
+          <p>
+            <strong>When to use it:</strong> Efficient for small or nearly-sorted lists.
+          </p>
+          <p><a href="algo_insertion_sort.html">→ Go to Insertion Sort</a></p>
+        </article>
+      </section>
+
+      <section class="overview-table">
+        <h2>Quick Comparison</h2>
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Algorithm</th>
+              <th>Type</th>
+              <th>Works On</th>
+              <th>Key Idea</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Binary Search</td>
+              <td>Searching</td>
+              <td>Sorted list</td>
+              <td>Halve the search space each step</td>
+            </tr>
+            <tr>
+              <td>Two Sum</td>
+              <td>Pair Finding</td>
+              <td>Any list</td>
+              <td>Use a dictionary to remember seen values</td>
+            </tr>
+            <tr>
+              <td>Two Pointers</td>
+              <td>Traversal</td>
+              <td>Arrays / Strings</td>
+              <td>Use two index variables to avoid nested loops</td>
+            </tr>
+            <tr>
+              <td>Sliding Window</td>
+              <td>Subarray</td>
+              <td>Arrays</td>
+              <td>Slide a fixed window to track a portion</td>
+            </tr>
+            <tr>
+              <td>Bubble Sort</td>
+              <td>Sorting</td>
+              <td>Any list</td>
+              <td>Swap adjacent pairs until sorted</td>
+            </tr>
+            <tr>
+              <td>Insertion Sort</td>
+              <td>Sorting</td>
+              <td>Any list</td>
+              <td>Insert each element into correct position</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Introduction to Programming (Python)</p>
+  </footer>
+</body>
+
+</html>

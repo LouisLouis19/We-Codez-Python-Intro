@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Two Sum - Algorithms</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Introduction to Programming</h1>
+    <h2>Algorithm: Two Sum (Hash Map)</h2>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Programming Basics</a></li>
+          <li><a href="if_else_statement.html">If/Else Statements</a></li>
+          <li><a href="for_loops.html">For Loops</a></li>
+          <li><a href="while_loops.html">While Loops</a></li>
+          <li><a href="functions_1.html">Functions I</a></li>
+          <li><a href="functions_2.html">Functions II</a></li>
+          <li><a href="data-structures_1.html">Data Structures I</a></li>
+          <li><a href="data-structures_2.html">Data Structures II</a></li>
+          <li><a href="list_of_dictionaries.html">Data Structures Combination</a></li>
+          <li><a href="debugging.html">Debugging</a></li>
+          <li><a href="libraries.html">Libraries &amp; Imports</a></li>
+          <li><a href="algorithms.html">Algorithms</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+
+      <!-- SECTION 1: What is Two Sum? -->
+      <section class="introduction">
+        <h2>What is Two Sum?</h2>
+        <p>
+          <strong>Two Sum</strong> is one of the most famous beginner algorithm problems. 
+          The goal is simple:
+        </p>
+        <p>
+          <em>Given a list of numbers and a target value, find two numbers in the list that add up to the target.</em>
+        </p>
+        <pre class="code-block">
+# Example:
+numbers = [2, 7, 11, 15]
+target = 9
+
+# Which two numbers add up to 9?
+# 2 + 7 = 9  ✓
+# Answer: the numbers at index 0 and index 1</pre>
+
+        <h3>Real-Life Analogy: Shopping</h3>
+        <p>
+          Imagine you have exactly <strong>$10</strong> to spend. You pick up items one by one. 
+          For every item in your basket, you ask yourself: 
+          <em>"Did I already pick up an item that costs exactly $10 minus this item's price?"</em>
+        </p>
+        <p>
+          If you're holding a $3 item, you need a $7 item. You check your memory (your dictionary) 
+          to see if you've already seen a $7 item. If yes — you found your pair!
+        </p>
+      </section>
+
+      <!-- SECTION 2: Brute Force Approach -->
+      <section>
+        <h2>Approach 1: Brute Force (Slow)</h2>
+        <p>
+          The most obvious approach: check every possible pair of numbers using two nested loops.
+        </p>
+        <pre class="code-block">
+def brute_force_two_sum(nums, target):
+    # For every number...
+    for i in range(len(nums)):
+        # ...pair it with every OTHER number
+        for j in range(i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return [i, j]
+    return None
+
+numbers = [2, 7, 11, 15]
+print(brute_force_two_sum(numbers, 9))  # Output: [0, 1]</pre>
+
+        <p>
+          This works, but it is <strong>slow</strong>. If the list has 1,000 numbers, 
+          this could check up to <strong>500,000 pairs</strong>! 
+          The more items, the exponentially slower it gets.
+        </p>
+      </section>
+
+      <!-- SECTION 3: The Dictionary Approach -->
+      <section>
+        <h2>Approach 2: Dictionary (Hash Map) — Fast!</h2>
+        <p>
+          The smarter approach uses a <strong>dictionary</strong> to remember numbers we've already seen. 
+          Instead of comparing every pair, we only loop through the list <strong>once</strong>.
+        </p>
+
+        <h3>The Key Idea</h3>
+        <p>
+          For every number we look at, we calculate its <strong>complement</strong> — the number 
+          it needs to pair with to reach the target:
+        </p>
+        <pre class="code-block">
+complement = target - current_number
+
+# Example: target = 9, current = 2
+# complement = 9 - 2 = 7
+# "Do I already have a 7 stored in my dictionary?"</pre>
+
+        <p>
+          If the complement is already in our dictionary, we found our pair! 
+          If not, we save the current number to the dictionary for later.
+        </p>
+      </section>
+
+      <!-- SECTION 4: Step-by-Step Trace -->
+      <section>
+        <h2>Step-by-Step Walkthrough</h2>
+        <p>Let's trace through an example:</p>
+        <pre class="code-block">
+nums = [2, 7, 11, 15]
+target = 9
+seen = {}    # Our dictionary: stores { number: its_index }</pre>
+
+        <pre class="code-block">
+--- Step 1: i=0, num=2 ---
+complement = 9 - 2 = 7
+Is 7 in seen?  NO  → store 2: seen = { 2: 0 }
+
+--- Step 2: i=1, num=7 ---
+complement = 9 - 7 = 2
+Is 2 in seen?  YES! → 2 is at index 0
+Return [1, 0]  (current index=1, partner index=0)
+
+✓ Found! 7 + 2 = 9</pre>
+
+        <h3>Another Example: Multiple Items</h3>
+        <pre class="code-block">
+nums = [2, 7, 11, 15]
+target = 13
+seen = {}
+
+--- Step 1: num=2,  complement=11 → 11 in seen? NO  → seen={2:0}
+--- Step 2: num=7,  complement=6  → 6  in seen? NO  → seen={2:0, 7:1}
+--- Step 3: num=11, complement=2  → 2  in seen? YES → partner at index 0
+Return [2, 0]  ✓  (11 + 2 = 13)</pre>
+      </section>
+
+      <!-- SECTION 5: The Code -->
+      <section>
+        <h2>Two Sum in Python</h2>
+        <pre class="code-block">
+def two_sum(nums, target):
+    seen = {}   # Dictionary: stores { number_value: index }
+
+    for i in range(len(nums)):
+        num = nums[i]
+        complement = target - num    # What number do we need?
+
+        # Check if the complement is already in our dictionary
+        if complement in seen:
+            return [i, seen[complement]]   # Return both indices
+
+        # If not, save this number and its index for later
+        seen[num] = i
+
+    return None   # No pair found
+
+
+# --- Test it! ---
+print(two_sum([2, 7, 11, 15], 9))    # Output: [1, 0]
+print(two_sum([3, 2, 4], 6))          # Output: [2, 1]
+print(two_sum([1, 5, 3, 8], 11))     # Output: [3, 2]
+print(two_sum([1, 2, 3], 10))         # Output: None (no pair found)</pre>
+      </section>
+
+      <!-- SECTION 6: Variations -->
+      <section>
+        <h2>Variations</h2>
+
+        <h3>Variation 1: Return the Values (not Indices)</h3>
+        <p>
+          Instead of returning the positions, return the actual numbers that add up to the target.
+        </p>
+        <pre class="code-block">
+def two_sum_values(nums, target):
+    seen = set()   # A set just stores values, not indices
+
+    for num in nums:
+        complement = target - num
+
+        if complement in seen:
+            return (complement, num)   # Return the two values
+
+        seen.add(num)
+
+    return None
+
+print(two_sum_values([3, 11, 7], 10))  # Output: (3, 7)
+print(two_sum_values([1, 5, 3], 8))    # Output: (5, 3)</pre>
+
+        <h3>Variation 2: Count How Many Pairs</h3>
+        <p>
+          Count how many distinct pairs in the list add up to the target.
+        </p>
+        <pre class="code-block">
+def count_pairs(nums, target):
+    seen = set()
+    count = 0
+
+    for num in nums:
+        complement = target - num
+
+        if complement in seen:
+            count += 1    # Found a valid pair!
+        else:
+            seen.add(num)
+
+    return count
+
+# [1, 5, 7, -1, 5], target=6
+# Pairs: (1,5) and (7,-1) → count=2
+print(count_pairs([1, 5, 7, -1, 5], 6))   # Output: 2</pre>
+
+        <h3>Variation 3: String Variation (Word Combination)</h3>
+        <p>
+          Can two words from a list be joined together to form a target word?
+        </p>
+        <pre class="code-block">
+def can_combine_words(word_list, target_word):
+    seen = set()
+
+    for word in word_list:
+        # What's the "complement" for strings?
+        # If we have "hot" and target is "hotdog", we need "dog"
+        # Check: does target_word START with this word?
+        if target_word.startswith(word):
+            needed = target_word[len(word):]   # The remaining part
+            if needed in seen:
+                return True
+        seen.add(word)
+
+    return False
+
+words = ["fire", "base", "water", "truck", "ball"]
+print(can_combine_words(words, "fireball"))   # Output: True
+print(can_combine_words(words, "watergun"))   # Output: False</pre>
+      </section>
+
+      <!-- SECTION 7: Dictionary vs. Set -->
+      <section>
+        <h2>Dictionary vs. Set — When to Use Which?</h2>
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Data Structure</th>
+              <th>Stores</th>
+              <th>Use When...</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>dict</code> (dictionary)</td>
+              <td>Key → Value pairs</td>
+              <td>You need to remember both the value AND its index</td>
+            </tr>
+            <tr>
+              <td><code>set</code></td>
+              <td>Values only</td>
+              <td>You only need to know if a value was seen (not where)</td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="code-block">
+# Dictionary: stores value and its index
+seen = {2: 0, 7: 1}      # { number: index }
+
+# Set: just stores whether we've seen it
+seen = {2, 7}             # { number, number, ... }</pre>
+      </section>
+
+      <!-- SECTION 8: Practice -->
+      <section class="practice">
+        <h2>Practice Questions</h2>
+
+        <h3>1. Trace the Algorithm</h3>
+        <p>
+          Trace through <code>two_sum([10, 20, 30, 40, 50], 70)</code> step by step. 
+          What is in <code>seen</code> after each step? When is the pair found?
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# Step 1: num=10, complement=60 → not in seen → seen={10:0}
+# Step 2: num=20, complement=50 → not in seen → seen={10:0, 20:1}
+# Step 3: num=30, complement=40 → not in seen → seen={10:0, 20:1, 30:2}
+# Step 4: num=40, complement=30 → 30 IS in seen! → return [3, 2]
+# 40 + 30 = 70 ✓</pre>
+        </details>
+
+        <h3>2. What if No Pair Exists?</h3>
+        <p>
+          What does <code>two_sum([1, 2, 3, 4], 10)</code> return? Why?
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# Step 1: num=1, complement=9 → not in seen → seen={1:0}
+# Step 2: num=2, complement=8 → not in seen → seen={1:0, 2:1}
+# Step 3: num=3, complement=7 → not in seen → seen={1:0, 2:1, 3:2}
+# Step 4: num=4, complement=6 → not in seen → seen={1:0, 2:1, 3:2, 4:3}
+# Loop ends → return None
+# The maximum possible sum is 3+4=7, which is less than 10.</pre>
+        </details>
+
+        <h3>3. Why is the Dictionary Approach Faster?</h3>
+        <p>
+          Explain in your own words: Why does using a dictionary make Two Sum faster than the brute force approach?
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# Brute Force: We check every pair → if 100 items, check ~5,000 pairs → O(n²)
+
+# Dictionary: We loop through the list ONCE.
+# For every number, we check the dictionary in constant time (very fast).
+# Checking if a key is in a dictionary is O(1) — almost instant!
+# Total: O(n) — just one pass through the list.
+
+# Trade-off: We use a little extra MEMORY (the dictionary)
+# to save a lot of TIME. This is a common trade-off in computer science!</pre>
+        </details>
+
+        <h3>4. Count the Pairs</h3>
+        <p>
+          How many pairs in <code>[2, 4, 3, 5, 1]</code> add up to <code>6</code>?
+          Use <code>count_pairs</code> to check your answer.
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+# Checking pairs: (2,4), (3,3)—same element, skip, (5,1) 
+# Valid distinct pairs: (2,4) and (5,1)
+# Count = 2
+
+print(count_pairs([2, 4, 3, 5, 1], 6))   # Output: 2</pre>
+        </details>
+
+        <h3>5. Word Challenge</h3>
+        <p>
+          Given <code>["super", "man", "bat", "moon", "rise"]</code>, 
+          can we form <code>"superman"</code>? What about <code>"moonrise"</code>?
+        </p>
+        <details>
+          <summary>Solution</summary>
+          <pre class="code-block">
+words = ["super", "man", "bat", "moon", "rise"]
+print(can_combine_words(words, "superman"))  # True  ("super" + "man")
+print(can_combine_words(words, "moonrise"))  # True  ("moon" + "rise")
+print(can_combine_words(words, "batman"))    # True  ("bat" + "man")</pre>
+        </details>
+      </section>
+
+      <!-- SECTION: Time Complexity -->
+      <section>
+        <h2>Time Complexity</h2>
+        <p>
+          <strong>Time complexity</strong> measures how the number of steps grows as the input list gets larger. 
+          The key comparison here is between the <em>brute force</em> approach and the <em>dictionary</em> approach.
+        </p>
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Approach</th>
+              <th>Time Complexity</th>
+              <th>Explanation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Brute Force</strong> (nested loops)</td>
+              <td>O(n²)</td>
+              <td>For every element, we check every other element — two loops inside each other.</td>
+            </tr>
+            <tr>
+              <td><strong>Dictionary</strong> (hash map)</td>
+              <td>O(n)</td>
+              <td>We loop through the list just once. Each dictionary lookup is O(1) — very fast.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>What does O(n) vs O(n²) mean in practice?</h3>
+        <pre class="code-block">
+# n = number of items in the list
+
+# BRUTE FORCE — O(n²):
+n = 10        → up to 45 pairs checked
+n = 100       → up to 4,950 pairs checked
+n = 1,000     → up to 499,500 pairs checked
+n = 10,000    → up to ~50,000,000 pairs checked  ← Very slow!
+
+# DICTIONARY — O(n):
+n = 10        → 10 steps
+n = 100       → 100 steps
+n = 1,000     → 1,000 steps
+n = 10,000    → 10,000 steps  ← Much faster!</pre>
+
+        <h3>Space Complexity</h3>
+        <p>
+          The dictionary approach uses extra memory to store the values we've seen. 
+          In the worst case, we store every element in the dictionary before finding the pair.
+          That is <strong>O(n)</strong> extra space — we trade a little memory for a big speed improvement.
+        </p>
+        <pre class="code-block">
+# This is called the "Time-Space Trade-off":
+# By using O(n) extra space (the dictionary),
+# we reduce the time from O(n²) down to O(n).
+# In most real programs, this trade-off is absolutely worth it!</pre>
+      </section>
+
+      <p><a href="algorithms.html">← Back to Algorithms Overview</a></p>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Introduction to Programming (Python)</p>
+  </footer>
+</body>
+
+</html>
